@@ -226,7 +226,7 @@ nav > a:hover,
 }
 
 
-/* Laptop hover */
+/* Desktop hover */
 
 .dropdown:hover .dropdown-content{
   opacity:1;
@@ -264,7 +264,7 @@ nav > a:hover,
 
 
 /* =========================
-   HERO
+   HERO / SLIDESHOW
 ========================= */
 
 .hero{
@@ -301,6 +301,9 @@ nav > a:hover,
   object-fit:cover;
 }
 
+
+/* Very light image overlay */
+
 .slide::after{
   content:"";
 
@@ -309,72 +312,110 @@ nav > a:hover,
 
   background:
     linear-gradient(
-      90deg,
-      rgba(23,19,79,.78),
-      rgba(23,19,79,.35),
-      rgba(0,0,0,.18)
+      180deg,
+      rgba(0,0,0,.04),
+      rgba(0,0,0,.10),
+      rgba(0,0,0,.32)
     );
 }
 
+
+/* =========================
+   SMALL HERO TEXT
+========================= */
+
 .hero-content{
+
   position:absolute;
 
-  left:8%;
-  top:50%;
+  left:6%;
+  right:6%;
 
-  transform:translateY(-50%);
+  bottom:7%;
 
   z-index:2;
 
   max-width:700px;
 
   color:#ffffff;
+
+  text-shadow:
+    0 2px 8px rgba(0,0,0,.55);
 }
 
+
+/* Small label */
+
 .hero-content .tag{
+
   display:inline-block;
 
-  padding:7px 13px;
+  padding:5px 10px;
 
-  margin-bottom:15px;
+  margin-bottom:6px;
 
   background:
-    rgba(255,255,255,.15);
+    rgba(0,0,0,.25);
 
   border:
     1px solid
-    rgba(255,255,255,.2);
+    rgba(255,255,255,.25);
 
-  border-radius:50px;
+  border-radius:30px;
 
-  font-size:13px;
-  font-weight:700;
+  font-size:10px;
+
+  font-weight:600;
+
+  letter-spacing:.5px;
 }
+
+
+/* Main hero heading is now small */
 
 .hero-content h1{
-  font-size:clamp(34px,5vw,66px);
 
-  line-height:1.08;
+  font-size:
+    clamp(19px,3vw,30px);
 
-  margin-bottom:18px;
+  line-height:1.15;
+
+  margin-bottom:5px;
+
+  font-weight:600;
 }
+
+
+/* Small description */
 
 .hero-content p{
-  max-width:600px;
 
-  font-size:18px;
+  max-width:560px;
+
+  font-size:
+    clamp(10px,1.5vw,14px);
+
+  line-height:1.4;
 
   color:
-    rgba(255,255,255,.9);
+    rgba(255,255,255,.86);
 
-  margin-bottom:25px;
+  margin-bottom:0;
+
+  font-weight:400;
 }
+
+
+/* Hide big buttons from slideshow */
 
 .hero-buttons{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
+  display:none;
 }
+
+
+/* =========================
+   BUTTON
+========================= */
 
 .btn{
   display:inline-flex;
@@ -1237,7 +1278,10 @@ footer strong{
   }
 
 
-  /* MOBILE DROPDOWN */
+  /* =========================
+     MOBILE DROPDOWN
+     EXACTLY UNDER COURSES
+  ========================= */
 
   .dropdown{
 
@@ -1246,6 +1290,10 @@ footer strong{
     flex:1 1 0;
 
     min-width:0;
+
+    display:flex;
+
+    justify-content:center;
   }
 
   .dropdown > a{
@@ -1253,6 +1301,8 @@ footer strong{
     width:100%;
 
     cursor:pointer;
+
+    position:relative;
   }
 
 
@@ -1261,18 +1311,19 @@ footer strong{
     position:absolute;
 
     top:
-      calc(100% + 5px);
+      calc(100% + 6px);
 
-    right:-5px;
+    left:50%;
 
-    left:auto;
+    right:auto;
 
-    transform:none !important;
+    transform:
+      translateX(-50%) !important;
 
-    width:215px;
+    width:220px;
 
     max-width:
-      calc(100vw - 12px);
+      calc(100vw - 20px);
 
     padding:7px;
 
@@ -1297,24 +1348,29 @@ footer strong{
     z-index:99999;
 
     transition:
-      opacity .15s ease;
+      opacity .15s ease,
+      visibility .15s ease;
   }
 
 
-  /* ONLY JAVASCRIPT OPENS THIS */
+  /* OPEN STATE */
 
   .dropdown-content.mobile-open{
 
-    opacity:1;
+    opacity:1 !important;
 
-    visibility:visible;
+    visibility:visible !important;
 
-    pointer-events:auto;
+    pointer-events:auto !important;
+
+    transform:
+      translateX(-50%) !important;
   }
 
 
-  /* IMPORTANT:
-     MOBILE HOVER WILL NOT OPEN */
+  /*
+     Mobile hover disabled
+  */
 
   .dropdown:hover .dropdown-content{
 
@@ -1323,15 +1379,23 @@ footer strong{
     visibility:hidden;
 
     pointer-events:none;
+
+    transform:
+      translateX(-50%) !important;
   }
 
-  .dropdown:hover .dropdown-content.mobile-open{
 
-    opacity:1;
+  .dropdown:hover
+  .dropdown-content.mobile-open{
 
-    visibility:visible;
+    opacity:1 !important;
 
-    pointer-events:auto;
+    visibility:visible !important;
+
+    pointer-events:auto !important;
+
+    transform:
+      translateX(-50%) !important;
   }
 
 
@@ -1361,7 +1425,6 @@ footer strong{
     border-radius:8px;
 
     white-space:normal;
-
   }
 
   .dropdown-content a:hover{
@@ -1371,7 +1434,9 @@ footer strong{
   }
 
 
-  /* MOBILE HERO SMALLER */
+  /* =========================
+     MOBILE HERO
+  ========================= */
 
   .hero{
 
@@ -1384,41 +1449,56 @@ footer strong{
     overflow:hidden;
   }
 
+
   .hero-content{
 
-    left:6%;
+    left:5%;
 
-    right:6%;
+    right:5%;
+
+    bottom:6%;
 
     max-width:none;
   }
 
-  .hero-content h1{
-
-    font-size:
-      clamp(27px,8vw,40px);
-  }
-
-  .hero-content p{
-
-    font-size:14px;
-  }
 
   .hero-content .tag{
 
-    font-size:10px;
+    font-size:9px;
 
     padding:
-      6px 10px;
+      4px 8px;
+
+    margin-bottom:4px;
   }
 
-  .btn{
 
-    padding:
-      10px 14px;
+  .hero-content h1{
 
-    font-size:12px;
+    font-size:
+      clamp(17px,5vw,24px);
+
+    line-height:1.15;
+
+    margin-bottom:3px;
+
+    font-weight:600;
   }
+
+
+  .hero-content p{
+
+    font-size:
+      clamp(9px,2.8vw,12px);
+
+    line-height:1.35;
+
+    max-width:90%;
+
+    color:
+      rgba(255,255,255,.82);
+  }
+
 
   section{
 
@@ -1518,6 +1598,7 @@ footer strong{
     font-size:8.5px;
   }
 
+
   .hero{
 
     height:44svh;
@@ -1525,6 +1606,24 @@ footer strong{
     min-height:285px;
 
     max-height:390px;
+  }
+
+
+  .hero-content{
+
+    bottom:5%;
+  }
+
+
+  .hero-content h1{
+
+    font-size:17px;
+  }
+
+
+  .hero-content p{
+
+    font-size:9px;
   }
 
 }
@@ -1550,6 +1649,18 @@ footer strong{
     min-height:270px;
 
     max-height:360px;
+  }
+
+
+  .hero-content h1{
+
+    font-size:16px;
+  }
+
+
+  .hero-content p{
+
+    font-size:8.5px;
   }
 
 }
@@ -1648,7 +1759,7 @@ footer strong{
 
 
 <!-- =========================
-     HERO
+     HERO / SLIDESHOW
 ========================= -->
 
 <section
@@ -1697,6 +1808,8 @@ footer strong{
   </div>
 
 
+  <!-- SMALL LIGHT TEXT -->
+
   <div class="hero-content">
 
     <div class="tag">
@@ -1704,33 +1817,12 @@ footer strong{
     </div>
 
     <h1>
-      Build Skills.<br>
-      Build Your Future.
+      Learn Practical Technical Skills
     </h1>
 
     <p>
-      Learn practical technical skills with
-      hands-on training at ACE Technical
-      Siliguri.
+      Hands-on training at ACE Technical Siliguri.
     </p>
-
-    <div class="hero-buttons">
-
-      <a
-        href="#courses"
-        class="btn btn-primary"
-      >
-        Explore Courses
-      </a>
-
-      <a
-        href="#admission"
-        class="btn btn-light"
-      >
-        Admission
-      </a>
-
-    </div>
 
   </div>
 
@@ -2862,6 +2954,7 @@ document
 
 /* =================================================
    MOBILE COURSES DROPDOWN
+   OPENS EXACTLY UNDER COURSES
    ================================================= */
 
 const coursesMenu =
@@ -2871,15 +2964,9 @@ const coursesDropdown =
   document.getElementById("coursesDropdown");
 
 
-/* Open / Close */
-
 coursesMenu.addEventListener(
   "click",
   function(event){
-
-    /*
-      Mobile only
-    */
 
     if(window.innerWidth <= 600){
 
@@ -2887,9 +2974,24 @@ coursesMenu.addEventListener(
 
       event.stopPropagation();
 
-      coursesDropdown.classList.toggle(
-        "mobile-open"
-      );
+      const isOpen =
+        coursesDropdown.classList.contains(
+          "mobile-open"
+        );
+
+      if(isOpen){
+
+        coursesDropdown.classList.remove(
+          "mobile-open"
+        );
+
+      }else{
+
+        coursesDropdown.classList.add(
+          "mobile-open"
+        );
+
+      }
 
     }
 
@@ -2897,7 +2999,9 @@ coursesMenu.addEventListener(
 );
 
 
-/* Course option click */
+/* =========================
+   COURSE OPTION CLICK
+========================= */
 
 coursesDropdown
   .querySelectorAll("a")
@@ -2917,7 +3021,9 @@ coursesDropdown
   });
 
 
-/* Click anywhere outside */
+/* =========================
+   OUTSIDE CLICK
+========================= */
 
 document.addEventListener(
   "click",
@@ -2938,7 +3044,9 @@ document.addEventListener(
 );
 
 
-/* Resize */
+/* =========================
+   RESIZE
+========================= */
 
 window.addEventListener(
   "resize",
