@@ -2,27 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>ACE TECHNICAL SILIGURI | Practical Technical Training Institute</title>
 
   <meta
     name="description"
-    content="ACE TECHNICAL SILIGURI is a practical technical training institute in Siliguri offering Mobile, Android, iPhone, Laptop, Computer, LED/LCD TV and Electronics Repairing courses."
+    content="ACE Technical Siliguri - Practical technical training institute offering Mobile Repairing, Android Repairing, iPhone Repairing, Laptop Repairing, Computer Repairing, LED/LCD TV Repairing and Basic Electronics courses."
   />
 
   <meta
     name="keywords"
-    content="ACE Technical Siliguri, technical institute Siliguri, mobile repairing course, laptop repairing course, computer repairing course, electronics course Siliguri"
+    content="ACE Technical Siliguri, technical institute Siliguri, mobile repairing course Siliguri, laptop repairing course Siliguri, computer repairing course, electronics training Siliguri"
   />
 
   <meta name="author" content="ACE TECHNICAL SILIGURI" />
   <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#0b1026" />
+  <meta name="theme-color" content="#0B1026" />
 
   <link
     rel="canonical"
@@ -30,16 +26,35 @@
   />
 
   <!-- Open Graph -->
-  <meta property="og:type" content="website" />
   <meta property="og:title" content="ACE TECHNICAL SILIGURI" />
   <meta
     property="og:description"
     content="Practical Technical Training Institute in Siliguri"
   />
+  <meta property="og:type" content="website" />
   <meta
     property="og:url"
     content="https://acetechnicalsiliguri.github.io/ace-technical-siliguri/"
   />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "ACE TECHNICAL SILIGURI",
+    "description": "Practical Technical Training Institute in Siliguri",
+    "url": "https://acetechnicalsiliguri.github.io/ace-technical-siliguri/",
+    "email": "info@acetechnicalsiliguri.com",
+    "telephone": "+91 99999 99999",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Siliguri",
+      "addressRegion": "West Bengal",
+      "addressCountry": "IN"
+    }
+  }
+  </script>
 
   <style>
     /* =========================================================
@@ -49,36 +64,35 @@
     :root {
       --navy: #0b1026;
       --navy-2: #111936;
-      --navy-3: #17234a;
+      --navy-3: #18234b;
 
       --orange: #ff6b35;
-      --orange-dark: #e95420;
-      --orange-light: #fff0ea;
+      --orange-2: #ff7a00;
+      --orange-light: #fff1ea;
 
-      --cyan: #00bfd3;
-      --cyan-light: #e9fbfd;
+      --cyan: #00c2d7;
+      --cyan-light: #e9fcff;
 
-      --yellow: #ffb703;
-
-      --text: #172033;
-      --text-light: #596579;
+      --cream: #fffaf5;
       --white: #ffffff;
 
-      --background: #fffaf6;
-      --surface: #ffffff;
-      --soft: #f6f8fc;
-      --border: #e8ebf2;
+      --text: #172033;
+      --muted: #667085;
 
-      --shadow-sm: 0 8px 25px rgba(11, 16, 38, 0.07);
-      --shadow: 0 18px 50px rgba(11, 16, 38, 0.11);
-      --shadow-orange: 0 15px 35px rgba(255, 107, 53, 0.22);
+      --border: #e8eaf0;
+      --shadow: 0 18px 45px rgba(11, 16, 38, 0.10);
+      --shadow-soft: 0 10px 28px rgba(11, 16, 38, 0.07);
 
+      --radius-lg: 24px;
+      --radius-md: 18px;
       --radius-sm: 12px;
-      --radius: 20px;
-      --radius-lg: 28px;
 
       --container: 1180px;
     }
+
+    /* =========================================================
+       RESET
+    ========================================================= */
 
     * {
       margin: 0;
@@ -88,18 +102,23 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 95px;
+      overflow-x: clip;
     }
 
     body {
       font-family:
-        Arial,
-        Helvetica,
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
         sans-serif;
-      background: var(--background);
+
+      background: var(--cream);
       color: var(--text);
       line-height: 1.6;
-      overflow-x: hidden;
+      overflow-x: clip;
     }
 
     img {
@@ -108,8 +127,8 @@
     }
 
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
     }
 
     button,
@@ -119,100 +138,96 @@
       font: inherit;
     }
 
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    section {
+      scroll-margin-top: 110px;
+    }
+
     .container {
-      width: min(92%, var(--container));
-      margin: auto;
+      width: min(var(--container), calc(100% - 40px));
+      margin: 0 auto;
     }
 
     /* =========================================================
-       TOP BAR
-    ========================================================= */
-
-    .top-bar {
-      background: var(--navy);
-      color: #dce3ff;
-      font-size: 13px;
-      padding: 8px 0;
-    }
-
-    .top-bar-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .top-info {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .top-info span {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    /* =========================================================
-       HEADER
+       TOP HEADER
     ========================================================= */
 
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(232, 235, 242, 0.9);
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--navy) 0%,
+          #101735 50%,
+          #1b2550 100%
+        );
+
+      box-shadow: 0 8px 30px rgba(11, 16, 38, 0.18);
     }
 
-    .header-inner {
-      min-height: 76px;
+    .header-main {
+      min-height: 78px;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 25px;
+
+      gap: 30px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 11px;
+      gap: 12px;
       flex-shrink: 0;
     }
 
     .brand-mark {
-      width: 45px;
-      height: 45px;
+      width: 46px;
+      height: 46px;
+
       border-radius: 14px;
+
       display: grid;
       place-items: center;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--orange),
+          var(--orange-2)
+        );
+
       color: white;
       font-weight: 900;
-      font-size: 17px;
-      background: linear-gradient(
-        135deg,
-        var(--orange),
-        #ff8a4d
-      );
-      box-shadow: var(--shadow-orange);
+      font-size: 18px;
+
+      box-shadow:
+        0 8px 22px rgba(255, 107, 53, 0.30);
     }
 
-    .brand-text strong {
-      display: block;
-      color: var(--navy);
-      font-size: 17px;
-      line-height: 1.15;
-      letter-spacing: 0.3px;
+    .brand-text {
+      color: white;
+      font-weight: 900;
+      font-size: 18px;
+      line-height: 1.1;
+      letter-spacing: -0.3px;
     }
 
     .brand-text span {
       display: block;
-      color: var(--text-light);
+      color: #8eeef7;
       font-size: 11px;
-      margin-top: 3px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      margin-top: 4px;
     }
 
     /* =========================================================
@@ -226,59 +241,59 @@
     }
 
     .desktop-nav > a,
-    .dropdown-btn {
-      border: none;
-      background: transparent;
-      cursor: pointer;
-      padding: 10px 12px;
+    .dropdown-toggle {
+      color: rgba(255, 255, 255, 0.88);
+
+      padding: 11px 14px;
       border-radius: 10px;
-      color: #30394c;
+
       font-size: 14px;
       font-weight: 700;
-      transition: 0.25s ease;
+
+      transition:
+        background 0.2s ease,
+        color 0.2s ease;
     }
 
     .desktop-nav > a:hover,
-    .dropdown-btn:hover {
-      color: var(--orange);
-      background: var(--orange-light);
+    .dropdown-toggle:hover {
+      color: white;
+      background: rgba(255, 255, 255, 0.09);
     }
-
-    .nav-cta {
-      background: var(--orange) !important;
-      color: white !important;
-      padding: 11px 16px !important;
-      border-radius: 12px !important;
-      box-shadow: 0 8px 20px rgba(255, 107, 53, 0.2);
-    }
-
-    .nav-cta:hover {
-      background: var(--orange-dark) !important;
-      transform: translateY(-1px);
-    }
-
-    /* =========================================================
-       DROPDOWN
-    ========================================================= */
 
     .dropdown {
       position: relative;
     }
 
+    .dropdown-toggle {
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+
     .dropdown-menu {
       position: absolute;
-      top: calc(100% + 8px);
+      top: calc(100% + 12px);
       left: 0;
-      width: 265px;
+
+      width: 260px;
+
       background: white;
       border: 1px solid var(--border);
       border-radius: 16px;
+
       padding: 8px;
+
       box-shadow: var(--shadow);
+
       opacity: 0;
       visibility: hidden;
-      transform: translateY(8px);
-      transition: 0.22s ease;
+      transform: translateY(-8px);
+
+      transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease,
+        transform 0.2s ease;
     }
 
     .dropdown:hover .dropdown-menu,
@@ -290,169 +305,110 @@
 
     .dropdown-menu a {
       display: block;
-      padding: 10px 12px;
+
+      padding: 11px 13px;
+
       border-radius: 10px;
-      font-size: 13px;
-      font-weight: 600;
-      color: #30394c;
-      transition: 0.2s;
+
+      font-size: 14px;
+      font-weight: 700;
+
+      color: var(--text);
     }
 
     .dropdown-menu a:hover {
       background: var(--orange-light);
-      color: var(--orange-dark);
+      color: var(--orange);
     }
 
     /* =========================================================
        MOBILE NAV
     ========================================================= */
 
-    .mobile-nav {
+    .mobile-nav-wrap {
       display: none;
-      border-top: 1px solid var(--border);
-      background: white;
-    }
-
-    .mobile-nav-scroll {
-      display: flex;
-      gap: 7px;
-      overflow-x: auto;
-      padding: 9px 0 10px;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .mobile-nav-scroll::-webkit-scrollbar {
-      display: none;
-    }
-
-    .mobile-nav a,
-    .mobile-course-btn {
-      flex: 0 0 auto;
-      white-space: nowrap;
-      border: 1px solid #e4e7ef;
-      background: #f8f9fc;
-      color: #30394c;
-      border-radius: 999px;
-      padding: 8px 14px;
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .mobile-nav a.active,
-    .mobile-course-btn.active {
-      background: var(--orange);
-      color: white;
-      border-color: var(--orange);
-    }
-
-    .mobile-course-wrap {
-      position: relative;
-      flex: 0 0 auto;
-    }
-
-    .mobile-course-list {
-      display: none;
-      position: absolute;
-      top: 45px;
-      left: 0;
-      width: 245px;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 8px;
-      box-shadow: var(--shadow);
-      z-index: 100;
-    }
-
-    .mobile-course-list.show {
-      display: block;
-    }
-
-    .mobile-course-list a {
-      display: block;
-      border: none;
-      border-radius: 9px;
-      padding: 9px 11px;
-      background: transparent;
-      white-space: normal;
-    }
-
-    .mobile-course-list a:hover {
-      background: var(--orange-light);
-      color: var(--orange-dark);
     }
 
     /* =========================================================
-       HERO / SLIDER
+       HERO
     ========================================================= */
 
     .hero {
       position: relative;
-      min-height: 600px;
+      min-height: 620px;
+
+      display: flex;
+      align-items: center;
+
       overflow: hidden;
+
       background: var(--navy);
+    }
+
+    .hero-slider {
+      position: absolute;
+      inset: 0;
     }
 
     .slide {
       position: absolute;
       inset: 0;
+
       opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.8s ease;
+
+      background-size: cover;
+      background-position: center;
+
+      transition: opacity 0.7s ease;
     }
 
     .slide.active {
       opacity: 1;
-      visibility: visible;
     }
 
-    .slide::before {
+    .slide::after {
       content: "";
+
       position: absolute;
       inset: 0;
+
       background:
         linear-gradient(
           90deg,
-          rgba(11, 16, 38, 0.96) 0%,
-          rgba(11, 16, 38, 0.78) 45%,
-          rgba(11, 16, 38, 0.3) 100%
+          rgba(11, 16, 38, 0.94) 0%,
+          rgba(11, 16, 38, 0.76) 43%,
+          rgba(11, 16, 38, 0.30) 100%
         );
-      z-index: 1;
-    }
-
-    .slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      min-height: 600px;
-      display: flex;
-      align-items: center;
-    }
 
-    .hero-copy {
-      max-width: 680px;
-      color: white;
+      width: min(var(--container), calc(100% - 40px));
+      margin: auto;
+
       padding: 70px 0;
     }
 
     .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      padding: 7px 12px;
+      gap: 8px;
+
+      padding: 8px 13px;
+
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      font-size: 12px;
-      font-weight: 700;
-      margin-bottom: 18px;
+
+      color: white;
+      background: rgba(0, 194, 215, 0.14);
+
+      border: 1px solid rgba(142, 238, 247, 0.25);
+
+      font-size: 13px;
+      font-weight: 800;
+
+      margin-bottom: 20px;
     }
 
     .hero-badge::before {
@@ -461,76 +417,109 @@
       height: 7px;
       border-radius: 50%;
       background: var(--cyan);
-      box-shadow: 0 0 12px var(--cyan);
+      box-shadow: 0 0 0 5px rgba(0, 194, 215, 0.12);
     }
 
     .hero h1 {
-      font-size: clamp(38px, 5vw, 68px);
-      line-height: 1.04;
-      letter-spacing: -1.5px;
-      margin-bottom: 18px;
+      max-width: 760px;
+
+      color: white;
+
+      font-size: clamp(42px, 5.5vw, 72px);
+      line-height: 1.02;
+
+      letter-spacing: -2.5px;
+
+      margin-bottom: 20px;
     }
 
     .hero h1 span {
-      color: #ff8a5c;
+      color: var(--orange);
     }
 
     .hero p {
-      color: #e6eaff;
+      max-width: 640px;
+
+      color: rgba(255, 255, 255, 0.84);
+
       font-size: 18px;
-      max-width: 590px;
-      margin-bottom: 28px;
+      line-height: 1.75;
+
+      margin-bottom: 30px;
     }
 
     .hero-buttons {
       display: flex;
-      align-items: center;
-      gap: 12px;
       flex-wrap: wrap;
+      gap: 12px;
     }
 
     .btn {
+      min-height: 48px;
+
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
+
       padding: 12px 20px;
+
       border-radius: 12px;
+
+      border: 1px solid transparent;
+
       font-weight: 800;
       font-size: 14px;
-      border: 1px solid transparent;
-      transition: 0.25s ease;
+
       cursor: pointer;
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
     }
 
-    .btn-primary {
-      background: var(--orange);
-      color: white;
-      box-shadow: var(--shadow-orange);
-    }
-
-    .btn-primary:hover {
-      background: var(--orange-dark);
+    .btn:hover {
       transform: translateY(-2px);
     }
 
-    .btn-outline {
+    .btn-primary {
+      background: linear-gradient(
+        135deg,
+        var(--orange),
+        var(--orange-2)
+      );
+
       color: white;
-      border-color: rgba(255, 255, 255, 0.35);
+
+      box-shadow:
+        0 12px 25px rgba(255, 107, 53, 0.28);
+    }
+
+    .btn-primary:hover {
+      box-shadow:
+        0 16px 32px rgba(255, 107, 53, 0.35);
+    }
+
+    .btn-outline {
       background: rgba(255, 255, 255, 0.08);
+      color: white;
+      border-color: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(8px);
     }
 
     .btn-outline:hover {
-      background: white;
-      color: var(--navy);
+      background: rgba(255, 255, 255, 0.15);
     }
 
     .slider-dots {
       position: absolute;
       z-index: 5;
-      bottom: 28px;
+
       left: 50%;
+      bottom: 25px;
+
       transform: translateX(-50%);
+
       display: flex;
       gap: 7px;
     }
@@ -538,15 +527,19 @@
     .slider-dot {
       width: 9px;
       height: 9px;
-      border: none;
-      border-radius: 50%;
+
+      border: 0;
+      border-radius: 999px;
+
       background: rgba(255, 255, 255, 0.4);
+
       cursor: pointer;
+
+      transition: all 0.25s ease;
     }
 
     .slider-dot.active {
-      width: 27px;
-      border-radius: 99px;
+      width: 28px;
       background: var(--orange);
     }
 
@@ -556,16 +549,25 @@
 
     .ad-slot {
       display: none;
-      width: 100%;
+
+      width: min(100%, 970px);
       min-height: 90px;
-      margin: 25px auto;
+
+      margin: 35px auto;
+
       align-items: center;
       justify-content: center;
-      border: 1px dashed #ccd2df;
-      border-radius: 15px;
-      color: #7a8497;
+
+      border: 1px dashed #cfd4df;
+      border-radius: 14px;
+
+      background: #f8f9fb;
+
+      color: #8a93a5;
+
       font-size: 12px;
-      background: #fafbfc;
+      font-weight: 700;
+      letter-spacing: 0.5px;
     }
 
     .ad-slot.is-visible {
@@ -573,64 +575,65 @@
     }
 
     /* =========================================================
-       SECTIONS
+       GENERAL SECTIONS
     ========================================================= */
 
-    section {
-      padding: 90px 0;
+    .section {
+      padding: 95px 0;
+    }
+
+    .section-soft {
+      background: #f8faff;
     }
 
     .section-head {
-      max-width: 680px;
-      margin: 0 auto 42px;
-      text-align: center;
+      max-width: 720px;
+      margin-bottom: 45px;
     }
 
     .eyebrow {
-      display: inline-block;
-      color: var(--orange-dark);
-      background: var(--orange-light);
-      border-radius: 999px;
-      padding: 6px 11px;
-      font-size: 11px;
+      color: var(--orange);
+
+      font-size: 12px;
       font-weight: 900;
-      letter-spacing: 0.5px;
+
+      letter-spacing: 1.8px;
       text-transform: uppercase;
-      margin-bottom: 11px;
+
+      margin-bottom: 10px;
     }
 
     .section-head h2 {
-      font-size: clamp(29px, 4vw, 43px);
-      line-height: 1.15;
-      color: var(--navy);
-      margin-bottom: 12px;
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.1;
+
+      letter-spacing: -1.5px;
+
+      margin-bottom: 14px;
     }
 
     .section-head p {
-      color: var(--text-light);
-      font-size: 15px;
+      color: var(--muted);
+      font-size: 16px;
     }
 
     /* =========================================================
        INTRO
     ========================================================= */
 
-    .intro {
-      background: white;
-    }
-
     .intro-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 55px;
+
       align-items: center;
     }
 
     .intro-content h2 {
-      color: var(--navy);
-      font-size: clamp(29px, 4vw, 44px);
-      line-height: 1.15;
-      margin-bottom: 18px;
+      font-size: clamp(32px, 4vw, 50px);
+      line-height: 1.08;
+      letter-spacing: -1.8px;
+      margin-bottom: 20px;
     }
 
     .intro-content h2 span {
@@ -638,14 +641,15 @@
     }
 
     .intro-content p {
-      color: var(--text-light);
-      margin-bottom: 15px;
+      color: var(--muted);
+      font-size: 16px;
+      margin-bottom: 20px;
     }
 
     .intro-points {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px;
       margin-top: 25px;
     }
 
@@ -653,414 +657,456 @@
       display: flex;
       gap: 10px;
       align-items: flex-start;
+
       padding: 14px;
-      background: var(--soft);
+
+      background: white;
       border: 1px solid var(--border);
       border-radius: 14px;
+
+      box-shadow: var(--shadow-soft);
     }
 
-    .intro-icon {
-      width: 31px;
-      height: 31px;
-      flex: 0 0 31px;
+    .intro-point-icon {
+      width: 32px;
+      height: 32px;
+
+      flex: 0 0 32px;
+
       display: grid;
       place-items: center;
+
       border-radius: 9px;
+
       background: var(--cyan-light);
-      color: var(--cyan);
+      color: #008c9c;
+
       font-weight: 900;
     }
 
     .intro-point strong {
       display: block;
-      color: var(--navy);
-      font-size: 13px;
+      font-size: 14px;
+      margin-bottom: 2px;
     }
 
     .intro-point span {
-      display: block;
-      color: var(--text-light);
-      font-size: 11px;
-      margin-top: 2px;
+      color: var(--muted);
+      font-size: 12px;
     }
 
-    .intro-image {
+    .intro-card {
       position: relative;
+
+      min-height: 400px;
+
+      border-radius: 28px;
+      overflow: hidden;
+
+      box-shadow: var(--shadow);
     }
 
-    .intro-image img {
+    .intro-card img {
       width: 100%;
-      height: 390px;
+      height: 100%;
+      min-height: 400px;
       object-fit: cover;
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow);
     }
 
-    .intro-badge {
+    .intro-card-overlay {
       position: absolute;
-      bottom: -20px;
-      left: -20px;
-      background: var(--navy);
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+
+      padding: 18px;
+
+      border-radius: 17px;
+
       color: white;
-      padding: 17px 20px;
-      border-radius: 16px;
-      box-shadow: var(--shadow);
+
+      background: rgba(11, 16, 38, 0.84);
+      backdrop-filter: blur(12px);
+
+      border: 1px solid rgba(255, 255, 255, 0.13);
     }
 
-    .intro-badge strong {
+    .intro-card-overlay strong {
       display: block;
-      font-size: 22px;
-      color: #ff8a5c;
+      font-size: 17px;
+      margin-bottom: 4px;
     }
 
-    .intro-badge span {
-      font-size: 11px;
-      color: #cdd5ef;
+    .intro-card-overlay span {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 13px;
     }
 
     /* =========================================================
-       COURSES
+       COURSE CARDS
     ========================================================= */
 
-    .courses {
-      background: var(--background);
+    .course-grid {
+      display: grid;
+
+      grid-template-columns: repeat(4, 1fr);
+
+      gap: 18px;
     }
 
-    .course-grid {
+    .course-card {
+      position: relative;
+
+      padding: 25px;
+
+      background: white;
+
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+
+      box-shadow: var(--shadow-soft);
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .course-card:hover {
+      transform: translateY(-6px);
+
+      border-color: rgba(255, 107, 53, 0.3);
+
+      box-shadow:
+        0 20px 40px rgba(11, 16, 38, 0.12);
+    }
+
+    .course-icon {
+      width: 50px;
+      height: 50px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 14px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--orange-light),
+          #fff8f3
+        );
+
+      color: var(--orange);
+
+      font-size: 21px;
+      font-weight: 900;
+
+      margin-bottom: 20px;
+    }
+
+    .course-card h3 {
+      font-size: 18px;
+      margin-bottom: 9px;
+    }
+
+    .course-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+
+      margin-bottom: 17px;
+    }
+
+    .course-tag {
+      display: inline-flex;
+
+      padding: 6px 9px;
+
+      border-radius: 999px;
+
+      background: var(--cyan-light);
+      color: #007e8d;
+
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    /* =========================================================
+       WHY CHOOSE US
+    ========================================================= */
+
+    .why-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
 
-    .course-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 25px;
-      box-shadow: var(--shadow-sm);
-      transition: 0.28s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .course-card::after {
-      content: "";
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      background: var(--cyan-light);
-      top: -45px;
-      right: -45px;
-    }
-
-    .course-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow);
-      border-color: #dfe4ef;
-    }
-
-    .course-number {
-      width: 43px;
-      height: 43px;
-      display: grid;
-      place-items: center;
-      border-radius: 13px;
-      background: var(--navy);
-      color: white;
-      font-size: 13px;
-      font-weight: 900;
-      margin-bottom: 19px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .course-card h3 {
-      color: var(--navy);
-      font-size: 18px;
-      margin-bottom: 8px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .course-card p {
-      color: var(--text-light);
-      font-size: 13px;
-      margin-bottom: 16px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .course-tag {
-      display: inline-block;
-      background: var(--cyan-light);
-      color: #008898;
-      border-radius: 999px;
-      padding: 5px 9px;
-      font-size: 10px;
-      font-weight: 800;
-      position: relative;
-      z-index: 2;
-    }
-
-    /* =========================================================
-       WHY CHOOSE
-    ========================================================= */
-
-    .why {
-      background: white;
-    }
-
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
     .why-card {
-      text-align: center;
-      padding: 27px 18px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: white;
-      transition: 0.25s;
-    }
+      padding: 28px;
 
-    .why-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-sm);
+      border-radius: var(--radius-md);
+
+      background: white;
+
+      border: 1px solid var(--border);
+
+      box-shadow: var(--shadow-soft);
     }
 
     .why-icon {
-      width: 55px;
-      height: 55px;
-      margin: 0 auto 15px;
+      width: 52px;
+      height: 52px;
+
       display: grid;
       place-items: center;
-      border-radius: 17px;
-      background: var(--orange-light);
-      color: var(--orange);
-      font-size: 21px;
-      font-weight: 900;
+
+      border-radius: 15px;
+
+      background: var(--navy);
+      color: white;
+
+      margin-bottom: 18px;
+
+      font-size: 20px;
     }
 
     .why-card h3 {
-      color: var(--navy);
-      font-size: 15px;
-      margin-bottom: 7px;
+      font-size: 18px;
+      margin-bottom: 8px;
     }
 
     .why-card p {
-      color: var(--text-light);
-      font-size: 12px;
+      color: var(--muted);
+      font-size: 14px;
     }
 
     /* =========================================================
        GALLERY
     ========================================================= */
 
-    .gallery {
-      background: var(--soft);
-    }
-
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 17px;
+
+      grid-template-columns: repeat(4, 1fr);
+
+      gap: 15px;
     }
 
     .gallery-item {
-      height: 250px;
-      overflow: hidden;
-      border-radius: 18px;
-      background: #ddd;
       position: relative;
-    }
 
-    .gallery-item.large {
-      grid-column: span 2;
+      height: 250px;
+
+      overflow: hidden;
+
+      border-radius: 17px;
+
+      background: #ddd;
+
+      box-shadow: var(--shadow-soft);
     }
 
     .gallery-item img {
       width: 100%;
       height: 100%;
+
       object-fit: cover;
-      transition: 0.5s ease;
+
+      transition: transform 0.4s ease;
     }
 
     .gallery-item:hover img {
-      transform: scale(1.05);
+      transform: scale(1.07);
     }
 
     .gallery-label {
       position: absolute;
-      bottom: 12px;
+
       left: 12px;
-      background: rgba(11, 16, 38, 0.85);
+      bottom: 12px;
+
+      padding: 7px 10px;
+
+      border-radius: 8px;
+
       color: white;
-      border-radius: 9px;
-      padding: 6px 10px;
-      font-size: 10px;
+
+      background: rgba(11, 16, 38, 0.82);
+
+      font-size: 11px;
       font-weight: 800;
+
+      backdrop-filter: blur(8px);
     }
 
     /* =========================================================
        ABOUT
     ========================================================= */
 
-    .about {
-      background: white;
-    }
-
     .about-grid {
       display: grid;
+
       grid-template-columns: 0.9fr 1.1fr;
+
       gap: 55px;
+
       align-items: center;
     }
 
-    .about-image img {
-      height: 430px;
-      width: 100%;
-      object-fit: cover;
-      border-radius: var(--radius-lg);
+    .about-image {
+      height: 440px;
+
+      border-radius: 25px;
+
+      overflow: hidden;
+
       box-shadow: var(--shadow);
     }
 
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     .about-content h2 {
-      color: var(--navy);
-      font-size: clamp(30px, 4vw, 44px);
-      line-height: 1.12;
+      font-size: clamp(32px, 4vw, 50px);
+      line-height: 1.08;
+
+      letter-spacing: -1.8px;
+
       margin-bottom: 18px;
     }
 
-    .about-content h2 span {
-      color: var(--orange);
-    }
-
     .about-content p {
-      color: var(--text-light);
-      margin-bottom: 15px;
+      color: var(--muted);
+      margin-bottom: 17px;
     }
 
     .about-list {
       display: grid;
-      gap: 10px;
+      gap: 11px;
+
       margin-top: 22px;
     }
 
     .about-list div {
       display: flex;
+      align-items: center;
       gap: 10px;
-      align-items: flex-start;
-      font-size: 13px;
+
       font-weight: 700;
-      color: #30394c;
+      font-size: 14px;
     }
 
-    .about-list b {
-      color: var(--cyan);
+    .about-list span {
+      width: 25px;
+      height: 25px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background: var(--cyan-light);
+      color: #008b9b;
+
+      font-size: 12px;
+      font-weight: 900;
     }
 
     /* =========================================================
        ADMISSION
     ========================================================= */
 
-    .admission {
-      background: var(--background);
-    }
-
-    .admission-wrap {
+    .admission-box {
       display: grid;
+
       grid-template-columns: 0.75fr 1.25fr;
-      gap: 35px;
-      align-items: stretch;
+
+      background: var(--navy);
+
+      border-radius: 28px;
+
+      overflow: hidden;
+
+      box-shadow: var(--shadow);
     }
 
     .admission-info {
-      background: var(--navy);
-      color: white;
-      border-radius: var(--radius-lg);
-      padding: 38px;
-      position: relative;
-      overflow: hidden;
-    }
+      padding: 45px;
 
-    .admission-info::after {
-      content: "";
-      position: absolute;
-      width: 210px;
-      height: 210px;
-      border-radius: 50%;
-      background: rgba(0, 191, 211, 0.14);
-      right: -70px;
-      bottom: -70px;
+      background:
+        linear-gradient(
+          145deg,
+          var(--navy),
+          #17214a
+        );
+
+      color: white;
     }
 
     .admission-info h2 {
-      font-size: 35px;
-      line-height: 1.15;
-      margin-bottom: 15px;
-      position: relative;
-      z-index: 2;
-    }
+      font-size: 38px;
+      line-height: 1.1;
 
-    .admission-info h2 span {
-      color: #ff8a5c;
+      letter-spacing: -1px;
+
+      margin-bottom: 15px;
     }
 
     .admission-info p {
-      color: #d5daf0;
+      color: rgba(255, 255, 255, 0.72);
       font-size: 14px;
-      position: relative;
-      z-index: 2;
     }
 
-    .admission-points {
-      margin-top: 28px;
+    .admission-info-list {
       display: grid;
       gap: 14px;
-      position: relative;
-      z-index: 2;
+
+      margin-top: 30px;
     }
 
-    .admission-point {
+    .admission-info-list div {
       display: flex;
-      gap: 10px;
       align-items: center;
-      color: #e9edff;
+      gap: 11px;
+
       font-size: 13px;
+      font-weight: 700;
     }
 
-    .admission-point b {
-      color: var(--cyan);
+    .admission-info-list span {
+      width: 30px;
+      height: 30px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 9px;
+
+      background: rgba(0, 194, 215, 0.13);
+      color: #76edf5;
     }
 
-    .admission-form {
+    .admission-form-wrap {
+      padding: 45px;
+
       background: white;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 34px;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .form-title {
-      color: var(--navy);
-      font-size: 23px;
-      font-weight: 900;
-      margin-bottom: 22px;
     }
 
     .form-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+
+      grid-template-columns: 1fr 1fr;
+
       gap: 16px;
     }
 
     .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+      display: grid;
+      gap: 7px;
     }
 
     .form-group.full {
@@ -1070,81 +1116,101 @@
     .form-group label {
       font-size: 12px;
       font-weight: 800;
-      color: #3a4356;
     }
 
     .form-group input,
     .form-group select,
     .form-group textarea {
       width: 100%;
-      border: 1px solid #dfe3ec;
-      border-radius: 11px;
-      padding: 12px 13px;
-      outline: none;
+
+      border: 1px solid var(--border);
+
       background: #fbfcfe;
+
       color: var(--text);
-      transition: 0.2s;
+
+      padding: 12px 13px;
+
+      border-radius: 11px;
+
+      outline: none;
+
+      transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .form-group input,
+    .form-group select {
+      min-height: 46px;
+    }
+
+    .form-group textarea {
+      min-height: 110px;
+      resize: vertical;
     }
 
     .form-group input:focus,
     .form-group select:focus,
     .form-group textarea:focus {
-      border-color: var(--orange);
-      box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
-      background: white;
-    }
+      border-color: var(--cyan);
 
-    .form-group textarea {
-      min-height: 105px;
-      resize: vertical;
+      box-shadow:
+        0 0 0 4px rgba(0, 194, 215, 0.10);
     }
 
     .form-submit {
-      margin-top: 19px;
-      width: 100%;
+      margin-top: 18px;
     }
 
     /* =========================================================
        CONTACT
     ========================================================= */
 
-    .contact {
-      background: white;
-    }
-
     .contact-grid {
       display: grid;
+
       grid-template-columns: repeat(4, 1fr);
-      gap: 17px;
+
+      gap: 16px;
     }
 
     .contact-card {
-      padding: 23px;
-      background: var(--soft);
+      padding: 24px;
+
+      background: white;
+
       border: 1px solid var(--border);
+
       border-radius: 17px;
+
+      box-shadow: var(--shadow-soft);
     }
 
     .contact-icon {
-      width: 43px;
-      height: 43px;
+      width: 44px;
+      height: 44px;
+
       display: grid;
       place-items: center;
+
       border-radius: 12px;
-      background: var(--cyan-light);
-      color: var(--cyan);
+
+      background: var(--orange-light);
+      color: var(--orange);
+
+      margin-bottom: 14px;
+
       font-weight: 900;
-      margin-bottom: 13px;
     }
 
     .contact-card h3 {
-      color: var(--navy);
-      font-size: 14px;
+      font-size: 15px;
       margin-bottom: 5px;
     }
 
     .contact-card p {
-      color: var(--text-light);
+      color: var(--muted);
       font-size: 12px;
       word-break: break-word;
     }
@@ -1154,32 +1220,55 @@
     ========================================================= */
 
     .cta {
-      padding: 70px 0;
+      padding: 35px 0 95px;
+    }
+
+    .cta-box {
+      padding: 48px;
+
+      border-radius: 28px;
+
       background:
         linear-gradient(
           135deg,
-          var(--navy),
-          #17234a
+          var(--orange),
+          var(--orange-2) 50%,
+          #ff8c32
         );
-      color: white;
-    }
 
-    .cta-inner {
+      color: white;
+
       display: flex;
+
       align-items: center;
       justify-content: space-between;
+
       gap: 30px;
+
+      box-shadow:
+        0 20px 45px rgba(255, 107, 53, 0.22);
     }
 
-    .cta h2 {
+    .cta-box h2 {
       font-size: clamp(28px, 4vw, 42px);
-      line-height: 1.15;
-      margin-bottom: 9px;
+      line-height: 1.1;
+      margin-bottom: 8px;
     }
 
-    .cta p {
-      color: #d3d9ee;
+    .cta-box p {
+      color: rgba(255, 255, 255, 0.82);
       font-size: 14px;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .cta .btn-outline {
+      border-color: rgba(255, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.12);
     }
 
     /* =========================================================
@@ -1187,59 +1276,67 @@
     ========================================================= */
 
     footer {
-      background: #080c1d;
+      background: var(--navy);
       color: white;
-      padding: 45px 0 20px;
+
+      padding: 55px 0 25px;
     }
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr;
+
+      grid-template-columns: 1.5fr 1fr 1fr;
+
       gap: 45px;
-      padding-bottom: 35px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+      padding-bottom: 40px;
     }
 
     .footer-brand {
-      display: flex;
-      gap: 11px;
-      align-items: center;
-      margin-bottom: 15px;
+      max-width: 400px;
     }
 
-    .footer-brand .brand-mark {
-      width: 41px;
-      height: 41px;
-      font-size: 14px;
+    .footer-brand h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
     }
 
-    footer h3 {
-      font-size: 15px;
-      margin-bottom: 12px;
+    .footer-brand p {
+      color: rgba(255, 255, 255, 0.60);
+      font-size: 13px;
     }
 
-    footer p,
-    footer a {
-      color: #aeb6cf;
-      font-size: 12px;
+    .footer-col h4 {
+      font-size: 13px;
+      margin-bottom: 14px;
     }
 
-    footer a {
+    .footer-col a {
       display: block;
-      margin-bottom: 7px;
-      transition: 0.2s;
+
+      color: rgba(255, 255, 255, 0.62);
+
+      font-size: 13px;
+
+      margin-bottom: 9px;
     }
 
-    footer a:hover {
-      color: #ff8a5c;
+    .footer-col a:hover {
+      color: var(--orange);
     }
 
     .footer-bottom {
-      padding-top: 18px;
+      padding-top: 22px;
+
+      border-top: 1px solid rgba(255, 255, 255, 0.10);
+
       display: flex;
+
       justify-content: space-between;
-      gap: 15px;
-      color: #858ea9;
+      gap: 20px;
+
+      color: rgba(255, 255, 255, 0.45);
+
       font-size: 11px;
     }
 
@@ -1247,25 +1344,44 @@
        WHATSAPP
     ========================================================= */
 
-    .whatsapp {
+    .whatsapp-float {
       position: fixed;
+
       right: 22px;
       bottom: 22px;
+
       z-index: 900;
+
       width: 55px;
       height: 55px;
+
       display: grid;
       place-items: center;
+
       border-radius: 50%;
-      background: #20c96b;
+
+      background: #16a34a;
+
       color: white;
-      font-size: 24px;
-      box-shadow: 0 12px 28px rgba(32, 201, 107, 0.3);
-      transition: 0.25s;
+
+      font-size: 21px;
+      font-weight: 900;
+
+      box-shadow:
+        0 12px 30px rgba(22, 163, 74, 0.28);
+
+      border: 3px solid white;
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
     }
 
-    .whatsapp:hover {
-      transform: translateY(-3px) scale(1.03);
+    .whatsapp-float:hover {
+      transform: translateY(-3px) scale(1.04);
+
+      box-shadow:
+        0 16px 35px rgba(22, 163, 74, 0.35);
     }
 
     /* =========================================================
@@ -1273,27 +1389,19 @@
     ========================================================= */
 
     @media (max-width: 1050px) {
-      .desktop-nav {
-        gap: 0;
-      }
-
       .desktop-nav > a,
-      .dropdown-btn {
-        padding: 9px 8px;
-        font-size: 12px;
-      }
-
-      .intro-grid,
-      .about-grid {
-        gap: 35px;
+      .dropdown-toggle {
+        padding-left: 9px;
+        padding-right: 9px;
+        font-size: 13px;
       }
 
       .course-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
       }
 
-      .why-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
       }
 
       .contact-grid {
@@ -1302,378 +1410,494 @@
     }
 
     /* =========================================================
-       MOBILE — MAJOR REDESIGN
+       MOBILE — PREMIUM REDESIGN
     ========================================================= */
 
     @media (max-width: 760px) {
-      html {
-        scroll-padding-top: 125px;
-      }
+
+      /* ---------- GENERAL ---------- */
 
       .container {
-        width: min(91%, 560px);
+        width: min(100% - 28px, 620px);
       }
 
-      /* Top bar */
-
-      .top-bar {
-        display: none;
+      section {
+        scroll-margin-top: 135px;
       }
 
-      /* Header */
+      .section {
+        padding: 65px 0;
+      }
+
+      .section-head {
+        margin-bottom: 30px;
+      }
+
+      .section-head h2 {
+        font-size: 32px;
+        letter-spacing: -1px;
+      }
+
+      .section-head p {
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      /* ---------- HEADER ---------- */
 
       header {
         position: sticky;
         top: 0;
       }
 
-      .header-inner {
-        min-height: 63px;
-        gap: 10px;
+      .header-main {
+        min-height: 66px;
+        gap: 12px;
       }
 
       .brand {
-        gap: 8px;
+        gap: 9px;
       }
 
       .brand-mark {
-        width: 38px;
-        height: 38px;
+        width: 39px;
+        height: 39px;
         border-radius: 11px;
-        font-size: 14px;
+        font-size: 15px;
       }
 
-      .brand-text strong {
+      .brand-text {
         font-size: 14px;
+        letter-spacing: -0.2px;
       }
 
       .brand-text span {
-        font-size: 9px;
-        margin-top: 1px;
+        font-size: 8px;
+        letter-spacing: 1.1px;
+        margin-top: 3px;
       }
 
       .desktop-nav {
         display: none;
       }
 
-      /* Mobile menu */
+      /* ---------- MOBILE NAV ---------- */
+
+      .mobile-nav-wrap {
+        display: block;
+
+        padding: 0 0 9px;
+
+        background: var(--navy);
+      }
 
       .mobile-nav {
+        width: 100%;
+
+        display: flex;
+
+        gap: 7px;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        padding: 2px 14px 1px;
+
+        scrollbar-width: none;
+
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .mobile-nav::-webkit-scrollbar {
+        display: none;
+      }
+
+      .mobile-nav > a,
+      .mobile-course-toggle {
+        flex: 0 0 auto;
+
+        min-height: 38px;
+
+        display: inline-flex;
+
+        align-items: center;
+        justify-content: center;
+
+        padding: 8px 13px;
+
+        border-radius: 999px;
+
+        border: 1px solid rgba(255, 255, 255, 0.10);
+
+        background: rgba(255, 255, 255, 0.055);
+
+        color: rgba(255, 255, 255, 0.80);
+
+        font-size: 12px;
+        font-weight: 800;
+
+        white-space: nowrap;
+
+        cursor: pointer;
+
+        transition:
+          background 0.2s ease,
+          color 0.2s ease;
+      }
+
+      .mobile-nav > a:active,
+      .mobile-course-toggle:active {
+        transform: scale(0.97);
+      }
+
+      .mobile-nav > a.active {
+        background: var(--orange);
+        border-color: var(--orange);
+        color: white;
+      }
+
+      .mobile-course {
+        position: relative;
+        flex: 0 0 auto;
+      }
+
+      .mobile-course-toggle {
+        appearance: none;
+      }
+
+      .mobile-course-menu {
+        position: fixed;
+
+        left: 14px;
+        right: 14px;
+
+        top: 111px;
+
+        max-height: calc(100vh - 130px);
+
+        overflow-y: auto;
+
+        padding: 8px;
+
+        background: white;
+
+        border: 1px solid var(--border);
+        border-radius: 17px;
+
+        box-shadow:
+          0 20px 50px rgba(11, 16, 38, 0.20);
+
+        opacity: 0;
+        visibility: hidden;
+
+        transform: translateY(-7px);
+
+        transition:
+          opacity 0.2s ease,
+          visibility 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      .mobile-course.open .mobile-course-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .mobile-course-menu a {
         display: block;
+
+        padding: 13px 14px;
+
+        border-radius: 11px;
+
+        color: var(--text);
+
+        font-size: 13px;
+        font-weight: 750;
       }
 
-      .mobile-nav-scroll {
-        margin: 0;
-        padding-left: 1px;
-        padding-right: 1px;
+      .mobile-course-menu a:active {
+        background: var(--orange-light);
+        color: var(--orange);
       }
 
-      /* Hero */
+      /* ---------- HERO ---------- */
 
       .hero {
-        min-height: 490px;
+        min-height: 560px;
       }
 
-      .hero-content {
-        min-height: 490px;
-        align-items: flex-end;
+      .slide {
+        background-position: 58% center;
       }
 
-      .slide::before {
+      .slide::after {
         background:
           linear-gradient(
             180deg,
-            rgba(11, 16, 38, 0.28) 0%,
-            rgba(11, 16, 38, 0.64) 40%,
+            rgba(11, 16, 38, 0.55) 0%,
+            rgba(11, 16, 38, 0.83) 58%,
             rgba(11, 16, 38, 0.97) 100%
           );
       }
 
-      .hero-copy {
-        width: 100%;
-        padding: 45px 0 65px;
+      .hero-content {
+        width: min(100% - 28px, 620px);
+
+        padding: 75px 0 90px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        min-height: 560px;
       }
 
       .hero-badge {
-        font-size: 10px;
-        padding: 6px 10px;
-        margin-bottom: 11px;
+        align-self: flex-start;
+
+        font-size: 11px;
+
+        padding: 7px 11px;
+
+        margin-bottom: 15px;
       }
 
       .hero h1 {
-        font-size: 35px;
-        line-height: 1.04;
-        letter-spacing: -0.7px;
-        margin-bottom: 13px;
+        font-size: clamp(38px, 12vw, 54px);
+
+        line-height: 1.02;
+
+        letter-spacing: -1.8px;
+
+        margin-bottom: 15px;
       }
 
       .hero p {
         font-size: 14px;
-        line-height: 1.55;
-        margin-bottom: 19px;
+        line-height: 1.65;
+
+        max-width: 520px;
+
+        margin-bottom: 22px;
       }
 
       .hero-buttons {
-        width: 100%;
         display: grid;
+
         grid-template-columns: 1fr 1fr;
+
         gap: 9px;
       }
 
-      .btn {
-        min-height: 45px;
-        padding: 10px 12px;
-        font-size: 12px;
+      .hero-buttons .btn {
         width: 100%;
+
+        min-height: 47px;
+
+        padding: 10px 12px;
+
+        font-size: 12px;
       }
 
       .slider-dots {
-        bottom: 18px;
+        bottom: 19px;
       }
 
-      /* Sections */
-
-      section {
-        padding: 60px 0;
-      }
-
-      .section-head {
-        margin-bottom: 28px;
-      }
-
-      .eyebrow {
-        font-size: 9px;
-        padding: 5px 9px;
-        margin-bottom: 8px;
-      }
-
-      .section-head h2 {
-        font-size: 28px;
-        margin-bottom: 8px;
-      }
-
-      .section-head p {
-        font-size: 13px;
-        line-height: 1.55;
-      }
-
-      /* Intro */
+      /* ---------- INTRO ---------- */
 
       .intro-grid {
         grid-template-columns: 1fr;
-        gap: 35px;
+
+        gap: 30px;
       }
 
       .intro-content h2 {
-        font-size: 29px;
+        font-size: 34px;
+        letter-spacing: -1.1px;
       }
 
       .intro-content p {
-        font-size: 13px;
+        font-size: 14px;
       }
 
       .intro-points {
         grid-template-columns: 1fr;
         gap: 9px;
-        margin-top: 18px;
       }
 
       .intro-point {
         padding: 12px;
       }
 
-      .intro-image img {
-        height: 270px;
+      .intro-card {
+        min-height: 300px;
+
         border-radius: 20px;
       }
 
-      .intro-badge {
-        left: 14px;
-        bottom: -16px;
-        padding: 12px 15px;
-        border-radius: 13px;
+      .intro-card img {
+        min-height: 300px;
       }
 
-      .intro-badge strong {
-        font-size: 18px;
+      .intro-card-overlay {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+
+        padding: 14px;
       }
 
-      /* Courses */
+      /* ---------- COURSES ---------- */
 
       .course-grid {
         grid-template-columns: 1fr;
-        gap: 12px;
+
+        gap: 13px;
       }
 
       .course-card {
-        padding: 19px;
-        border-radius: 17px;
+        padding: 20px;
+
         display: grid;
-        grid-template-columns: 43px 1fr;
-        column-gap: 13px;
-        align-items: start;
+
+        grid-template-columns: 50px 1fr;
+
+        column-gap: 14px;
       }
 
-      .course-number {
-        grid-row: span 2;
+      .course-icon {
+        grid-row: span 3;
+
         margin-bottom: 0;
       }
 
       .course-card h3 {
         font-size: 16px;
-        margin-top: 1px;
-        margin-bottom: 4px;
+        margin-bottom: 5px;
       }
 
       .course-card p {
         font-size: 12px;
-        line-height: 1.5;
         margin-bottom: 9px;
-        grid-column: 2;
       }
 
       .course-tag {
-        grid-column: 2;
         justify-self: start;
-        font-size: 9px;
-        padding: 4px 8px;
+        font-size: 10px;
       }
 
-      /* Why */
+      /* ---------- WHY ---------- */
 
       .why-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        grid-template-columns: 1fr;
+
+        gap: 12px;
       }
 
       .why-card {
-        padding: 19px 11px;
-        border-radius: 16px;
+        padding: 20px;
       }
 
       .why-icon {
-        width: 44px;
-        height: 44px;
-        border-radius: 13px;
-        font-size: 17px;
-        margin-bottom: 10px;
+        width: 45px;
+        height: 45px;
+
+        margin-bottom: 13px;
       }
 
       .why-card h3 {
-        font-size: 13px;
+        font-size: 16px;
       }
 
       .why-card p {
-        font-size: 10px;
-        line-height: 1.45;
+        font-size: 13px;
       }
 
-      /* Gallery */
+      /* ---------- GALLERY ---------- */
 
       .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr 1fr;
+
         gap: 9px;
       }
 
-      .gallery-item,
-      .gallery-item.large {
-        grid-column: span 1;
-        height: 155px;
+      .gallery-item {
+        height: 180px;
+
         border-radius: 13px;
       }
 
-      .gallery-item.large {
-        grid-column: span 2;
-        height: 190px;
-      }
-
       .gallery-label {
-        bottom: 8px;
         left: 8px;
+        bottom: 8px;
+
         padding: 5px 7px;
-        font-size: 8px;
+
+        font-size: 9px;
       }
 
-      /* About */
+      /* ---------- ABOUT ---------- */
 
       .about-grid {
         grid-template-columns: 1fr;
-        gap: 30px;
+
+        gap: 28px;
       }
 
       .about-image {
-        order: 1;
-      }
+        height: 290px;
 
-      .about-content {
-        order: 2;
-      }
-
-      .about-image img {
-        height: 270px;
-        border-radius: 20px;
+        border-radius: 19px;
       }
 
       .about-content h2 {
-        font-size: 29px;
+        font-size: 34px;
+        letter-spacing: -1.1px;
       }
 
       .about-content p {
-        font-size: 13px;
-        line-height: 1.6;
-      }
-
-      .about-list {
-        gap: 9px;
-        margin-top: 17px;
+        font-size: 14px;
       }
 
       .about-list div {
-        font-size: 12px;
+        font-size: 13px;
       }
 
-      /* Admission */
+      /* ---------- ADMISSION ---------- */
 
-      .admission-wrap {
+      .admission-box {
         grid-template-columns: 1fr;
-        gap: 16px;
-      }
 
-      .admission-info {
-        padding: 27px 22px;
         border-radius: 21px;
       }
 
+      .admission-info {
+        padding: 28px 22px;
+      }
+
       .admission-info h2 {
-        font-size: 29px;
+        font-size: 31px;
       }
 
       .admission-info p {
         font-size: 13px;
       }
 
-      .admission-points {
-        margin-top: 20px;
+      .admission-info-list {
         gap: 10px;
+        margin-top: 20px;
       }
 
-      .admission-point {
-        font-size: 12px;
-      }
-
-      .admission-form {
-        padding: 22px 17px;
-        border-radius: 21px;
-      }
-
-      .form-title {
-        font-size: 20px;
-        margin-bottom: 17px;
+      .admission-form-wrap {
+        padding: 23px 18px;
       }
 
       .form-grid {
         grid-template-columns: 1fr;
-        gap: 12px;
+
+        gap: 13px;
       }
 
       .form-group.full {
@@ -1687,92 +1911,133 @@
       .form-group input,
       .form-group select,
       .form-group textarea {
-        font-size: 13px;
-        padding: 11px;
+        font-size: 14px;
       }
 
-      /* Contact */
+      .form-submit .btn {
+        width: 100%;
+      }
+
+      /* ---------- CONTACT ---------- */
 
       .contact-grid {
         grid-template-columns: 1fr;
+
         gap: 10px;
       }
 
       .contact-card {
-        padding: 16px;
-        border-radius: 15px;
+        padding: 18px;
+
         display: grid;
-        grid-template-columns: 43px 1fr;
-        column-gap: 11px;
-        align-items: center;
+
+        grid-template-columns: 44px 1fr;
+
+        column-gap: 12px;
       }
 
       .contact-icon {
         grid-row: span 2;
+
         margin-bottom: 0;
-        width: 43px;
-        height: 43px;
       }
 
       .contact-card h3 {
-        margin-bottom: 1px;
+        margin-bottom: 2px;
       }
 
-      .contact-card p {
-        font-size: 11px;
-      }
-
-      /* CTA */
+      /* ---------- CTA ---------- */
 
       .cta {
-        padding: 50px 0;
+        padding: 10px 0 65px;
       }
 
-      .cta-inner {
-        flex-direction: column;
-        align-items: stretch;
-        text-align: center;
-        gap: 19px;
+      .cta-box {
+        padding: 27px 20px;
+
+        border-radius: 21px;
+
+        display: block;
       }
 
-      .cta h2 {
-        font-size: 28px;
+      .cta-box h2 {
+        font-size: 30px;
       }
 
-      .cta p {
+      .cta-box p {
+        font-size: 13px;
+
+        margin-top: 8px;
+      }
+
+      .cta-actions {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 8px;
+
+        margin-top: 20px;
+      }
+
+      .cta-actions .btn {
+        width: 100%;
+
+        min-height: 45px;
+
+        padding: 9px 8px;
+
         font-size: 12px;
       }
 
-      .cta .btn {
-        width: 100%;
-      }
-
-      /* Footer */
+      /* ---------- FOOTER ---------- */
 
       footer {
-        padding: 35px 0 17px;
+        padding: 42px 0 20px;
       }
 
       .footer-grid {
         grid-template-columns: 1fr;
-        gap: 27px;
-        padding-bottom: 25px;
+
+        gap: 28px;
+
+        padding-bottom: 28px;
+      }
+
+      .footer-brand h3 {
+        font-size: 20px;
+      }
+
+      .footer-col h4 {
+        margin-bottom: 10px;
       }
 
       .footer-bottom {
-        flex-direction: column;
-        text-align: center;
-        gap: 5px;
+        display: block;
+
+        line-height: 1.7;
       }
 
-      /* WhatsApp */
+      /* ---------- WHATSAPP ---------- */
 
-      .whatsapp {
+      .whatsapp-float {
         right: 15px;
-        bottom: 15px;
-        width: 48px;
-        height: 48px;
-        font-size: 20px;
+        bottom: max(15px, env(safe-area-inset-bottom));
+
+        width: 50px;
+        height: 50px;
+
+        font-size: 19px;
+      }
+
+      /* ---------- ADS ---------- */
+
+      .ad-slot {
+        min-height: 70px;
+
+        margin: 25px auto;
+
+        font-size: 10px;
       }
     }
 
@@ -1780,17 +2045,46 @@
        SMALL PHONES
     ========================================================= */
 
-    @media (max-width: 380px) {
-      .brand-text strong {
+    @media (max-width: 390px) {
+
+      .container {
+        width: calc(100% - 24px);
+      }
+
+      .brand-text {
         font-size: 13px;
       }
 
       .brand-text span {
-        font-size: 8px;
+        font-size: 7px;
+      }
+
+      .mobile-nav {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .mobile-nav > a,
+      .mobile-course-toggle {
+        padding-left: 11px;
+        padding-right: 11px;
+
+        font-size: 11px;
+      }
+
+      .hero {
+        min-height: 535px;
+      }
+
+      .hero-content {
+        min-height: 535px;
+
+        padding-top: 65px;
+        padding-bottom: 80px;
       }
 
       .hero h1 {
-        font-size: 31px;
+        font-size: 36px;
       }
 
       .hero p {
@@ -1801,17 +2095,43 @@
         grid-template-columns: 1fr;
       }
 
-      .why-grid {
+      .gallery-item {
+        height: 155px;
+      }
+
+      .course-card {
+        grid-template-columns: 44px 1fr;
+
+        padding: 17px;
+
+        column-gap: 11px;
+      }
+
+      .course-icon {
+        width: 44px;
+        height: 44px;
+      }
+
+      .cta-actions {
         grid-template-columns: 1fr;
       }
+    }
 
-      .gallery-item,
-      .gallery-item.large {
-        height: 145px;
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
       }
 
-      .gallery-item.large {
-        height: 170px;
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
@@ -1819,510 +2139,272 @@
 
 <body>
 
-  <!-- =========================================================
-       TOP BAR
-  ========================================================= -->
-
-  <div class="top-bar">
-    <div class="container top-bar-inner">
-      <div class="top-info">
-        <span>📍 Siliguri, West Bengal</span>
-        <span>🎓 Practical Technical Training</span>
-      </div>
-
-      <div class="top-info">
-        <span>📞 +91 99999 99999</span>
-        <span>✉ info@acetechnicalsiliguri.com</span>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- =========================================================
+  <!-- =======================================================
        HEADER
-  ========================================================= -->
+  ======================================================== -->
 
   <header>
 
-    <div class="container header-inner">
+    <div class="container header-main">
 
-      <a href="#home" class="brand">
+      <a href="#home" class="brand" aria-label="ACE Technical Siliguri Home">
 
         <div class="brand-mark">
           ACE
         </div>
 
         <div class="brand-text">
-          <strong>ACE TECHNICAL SILIGURI</strong>
-          <span>Practical Technical Training Institute</span>
+          ACE TECHNICAL
+          <span>SILIGURI</span>
         </div>
 
       </a>
 
-
-      <!-- DESKTOP MENU -->
-
-      <nav class="desktop-nav">
+      <!-- DESKTOP NAV -->
+      <nav class="desktop-nav" aria-label="Desktop Navigation">
 
         <a href="#home">Home</a>
 
-        <div class="dropdown">
+        <div class="dropdown" id="desktopCourseDropdown">
 
-          <button class="dropdown-btn">
+          <button
+            class="dropdown-toggle"
+            type="button"
+            aria-expanded="false"
+          >
             Courses ▾
           </button>
 
           <div class="dropdown-menu">
 
-            <a href="#mobile-repairing">
-              Mobile Repairing
-            </a>
-
-            <a href="#android-repairing">
-              Android Repairing
-            </a>
-
-            <a href="#iphone-repairing">
-              iPhone Repairing
-            </a>
-
-            <a href="#laptop-repairing">
-              Laptop Repairing
-            </a>
-
-            <a href="#computer-repairing">
-              Desktop / Computer Repairing
-            </a>
-
-            <a href="#led-repairing">
-              LED / LCD TV Repairing
-            </a>
-
-            <a href="#electronics">
-              Basic Electronics
-            </a>
+            <a href="#courses">Mobile Repairing</a>
+            <a href="#courses">Android Repairing</a>
+            <a href="#courses">iPhone Repairing</a>
+            <a href="#courses">Laptop Repairing</a>
+            <a href="#courses">Desktop / Computer Repairing</a>
+            <a href="#courses">LED / LCD TV Repairing</a>
+            <a href="#courses">Basic Electronics</a>
 
           </div>
 
         </div>
 
         <a href="#gallery">Gallery</a>
-
         <a href="#about">About</a>
-
-        <a href="#admission" class="nav-cta">
-          Admission
-        </a>
-
-        <a href="#contact">
-          Enquiry
-        </a>
+        <a href="#admission">Admission</a>
+        <a href="#contact">Enquiry</a>
 
       </nav>
 
     </div>
 
+    <!-- MOBILE NAV -->
+    <div class="mobile-nav-wrap">
 
-    <!-- MOBILE MENU -->
+      <nav class="mobile-nav" aria-label="Mobile Navigation">
 
-    <nav class="mobile-nav">
+        <a href="#home" class="active">Home</a>
 
-      <div class="container mobile-nav-scroll">
+        <div class="mobile-course" id="mobileCourse">
 
-        <a href="#home" class="active">
-          Home
-        </a>
-
-        <div class="mobile-course-wrap">
-
-          <button class="mobile-course-btn" id="mobileCourseBtn">
+          <button
+            class="mobile-course-toggle"
+            type="button"
+            aria-expanded="false"
+          >
             Courses ▾
           </button>
 
-          <div
-            class="mobile-course-list"
-            id="mobileCourseList"
-          >
+          <div class="mobile-course-menu">
 
-            <a href="#mobile-repairing">
-              Mobile Repairing
-            </a>
-
-            <a href="#android-repairing">
-              Android Repairing
-            </a>
-
-            <a href="#iphone-repairing">
-              iPhone Repairing
-            </a>
-
-            <a href="#laptop-repairing">
-              Laptop Repairing
-            </a>
-
-            <a href="#computer-repairing">
-              Desktop / Computer Repairing
-            </a>
-
-            <a href="#led-repairing">
-              LED / LCD TV Repairing
-            </a>
-
-            <a href="#electronics">
-              Basic Electronics
-            </a>
+            <a href="#courses">Mobile Repairing</a>
+            <a href="#courses">Android Repairing</a>
+            <a href="#courses">iPhone Repairing</a>
+            <a href="#courses">Laptop Repairing</a>
+            <a href="#courses">Desktop / Computer Repairing</a>
+            <a href="#courses">LED / LCD TV Repairing</a>
+            <a href="#courses">Basic Electronics</a>
 
           </div>
 
         </div>
 
-        <a href="#gallery">
-          Gallery
-        </a>
+        <a href="#gallery">Gallery</a>
+        <a href="#about">About</a>
+        <a href="#admission">Admission</a>
+        <a href="#contact">Enquiry</a>
 
-        <a href="#about">
-          About
-        </a>
+      </nav>
 
-        <a href="#admission">
-          Admission
-        </a>
-
-        <a href="#contact">
-          Enquiry
-        </a>
-
-      </div>
-
-    </nav>
+    </div>
 
   </header>
 
 
-  <!-- =========================================================
+  <!-- =======================================================
        HERO
-  ========================================================= -->
+  ======================================================== -->
 
   <main id="home">
 
     <section class="hero">
 
-      <!-- SLIDE 1 -->
+      <div class="hero-slider">
 
-      <div class="slide active">
+        <div
+          class="slide active"
+          style="background-image:url('https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1800&q=85');"
+        ></div>
 
-        <img
-          src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1800&q=85"
-          alt="Technical training classroom"
-        />
+        <div
+          class="slide"
+          style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&q=85');"
+        ></div>
 
-        <div class="container hero-content">
+        <div
+          class="slide"
+          style="background-image:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1800&q=85');"
+        ></div>
 
-          <div class="hero-copy">
+        <div
+          class="slide"
+          style="background-image:url('https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1800&q=85');"
+        ></div>
 
-            <div class="hero-badge">
-              Practical Technical Training
-            </div>
+      </div>
 
-            <h1>
-              Learn Skills.
-              <span>Build Your Future.</span>
-            </h1>
+      <div class="hero-content">
 
-            <p>
-              Practical technical training for students who want to
-              develop real-world repairing and electronics skills.
-            </p>
+        <div class="hero-badge">
+          Practical Technical Training Institute
+        </div>
 
-            <div class="hero-buttons">
+        <h1>
+          Learn Skills.<br />
+          Build Your <span>Future.</span>
+        </h1>
 
-              <a
-                href="#courses"
-                class="btn btn-primary"
-              >
-                Explore Courses
-              </a>
+        <p>
+          Practical technical training in Mobile Repairing,
+          Android, iPhone, Laptop, Computer, LED/LCD TV and
+          Basic Electronics in Siliguri.
+        </p>
 
-              <a
-                href="#admission"
-                class="btn btn-outline"
-              >
-                Apply for Admission
-              </a>
+        <div class="hero-buttons">
 
-            </div>
+          <a
+            href="#admission"
+            class="btn btn-primary"
+          >
+            Apply for Admission
+          </a>
 
-          </div>
+          <a
+            href="#courses"
+            class="btn btn-outline"
+          >
+            Explore Courses
+          </a>
 
         </div>
 
       </div>
-
-
-      <!-- SLIDE 2 -->
-
-      <div class="slide">
-
-        <img
-          src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1800&q=85"
-          alt="Technical practical training"
-        />
-
-        <div class="container hero-content">
-
-          <div class="hero-copy">
-
-            <div class="hero-badge">
-              Hands-on Learning
-            </div>
-
-            <h1>
-              Learn by
-              <span>Doing.</span>
-            </h1>
-
-            <p>
-              Understand practical repairing techniques through
-              hands-on technical learning.
-            </p>
-
-            <div class="hero-buttons">
-
-              <a
-                href="#courses"
-                class="btn btn-primary"
-              >
-                View Courses
-              </a>
-
-              <a
-                href="#contact"
-                class="btn btn-outline"
-              >
-                Enquiry Now
-              </a>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- SLIDE 3 -->
-
-      <div class="slide">
-
-        <img
-          src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1800&q=85"
-          alt="Students learning technical skills"
-        />
-
-        <div class="container hero-content">
-
-          <div class="hero-copy">
-
-            <div class="hero-badge">
-              Skill Development
-            </div>
-
-            <h1>
-              Turn Interest Into
-              <span>Skill.</span>
-            </h1>
-
-            <p>
-              Build technical knowledge and practical confidence
-              through structured training.
-            </p>
-
-            <div class="hero-buttons">
-
-              <a
-                href="#about"
-                class="btn btn-primary"
-              >
-                About Institute
-              </a>
-
-              <a
-                href="#admission"
-                class="btn btn-outline"
-              >
-                Admission
-              </a>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- SLIDE 4 -->
-
-      <div class="slide">
-
-        <img
-          src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1800&q=85"
-          alt="Electronics technical training"
-        />
-
-        <div class="container hero-content">
-
-          <div class="hero-copy">
-
-            <div class="hero-badge">
-              Technical Education
-            </div>
-
-            <h1>
-              Start Your
-              <span>Technical Journey.</span>
-            </h1>
-
-            <p>
-              Explore technical courses designed around practical
-              repairing and electronics skills.
-            </p>
-
-            <div class="hero-buttons">
-
-              <a
-                href="#courses"
-                class="btn btn-primary"
-              >
-                See All Courses
-              </a>
-
-              <a
-                href="#contact"
-                class="btn btn-outline"
-              >
-                Contact Us
-              </a>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
 
       <div class="slider-dots">
 
-        <button class="slider-dot active"></button>
-        <button class="slider-dot"></button>
-        <button class="slider-dot"></button>
-        <button class="slider-dot"></button>
+        <button class="slider-dot active" data-slide="0"></button>
+        <button class="slider-dot" data-slide="1"></button>
+        <button class="slider-dot" data-slide="2"></button>
+        <button class="slider-dot" data-slide="3"></button>
 
       </div>
 
     </section>
 
 
-    <!-- =========================================================
-         AD SLOT - HOME
-    ========================================================= -->
-
-    <div class="container">
-
-      <div
-        class="ad-slot"
-        data-ad-area="home"
-      >
-        Advertisement
-      </div>
-
+    <!-- HOME AD -->
+    <div
+      class="ad-slot"
+      data-ad-area="home"
+      aria-hidden="true"
+    >
+      Advertisement
     </div>
 
 
-    <!-- =========================================================
+    <!-- =====================================================
          INTRO
-    ========================================================= -->
+    ====================================================== -->
 
-    <section class="intro">
+    <section class="section">
 
       <div class="container intro-grid">
 
         <div class="intro-content">
 
-          <span class="eyebrow">
-            About ACE Technical
-          </span>
+          <div class="eyebrow">
+            Welcome to ACE Technical
+          </div>
 
           <h2>
-            Practical Skills for a
-            <span>Technical Future.</span>
+            Practical skills for a
+            <span>better future.</span>
           </h2>
 
           <p>
-            ACE TECHNICAL SILIGURI is focused on practical technical
-            education and skill development.
+            ACE TECHNICAL SILIGURI is focused on practical
+            technical learning. Our courses are designed to
+            help students understand real-world repair and
+            electronics work.
           </p>
 
           <p>
-            Our courses are designed to help learners understand
-            repairing, electronics and computer-related technical
-            skills in a practical learning environment.
+            Learn through practical training, guided learning
+            and hands-on technical activities.
           </p>
 
           <div class="intro-points">
 
             <div class="intro-point">
 
-              <div class="intro-icon">
-                ✓
-              </div>
+              <div class="intro-point-icon">✓</div>
 
               <div>
                 <strong>Practical Learning</strong>
-                <span>Focus on hands-on technical skills.</span>
+                <span>Hands-on technical training</span>
               </div>
 
             </div>
 
             <div class="intro-point">
 
-              <div class="intro-icon">
-                ⚙
-              </div>
+              <div class="intro-point-icon">✓</div>
 
               <div>
-                <strong>Technical Courses</strong>
-                <span>Multiple repairing & electronics courses.</span>
+                <strong>Skill Focused</strong>
+                <span>Learn useful technical skills</span>
               </div>
 
             </div>
 
             <div class="intro-point">
 
-              <div class="intro-icon">
-                ★
-              </div>
+              <div class="intro-point-icon">✓</div>
 
               <div>
-                <strong>Skill Development</strong>
-                <span>Learn useful real-world technical skills.</span>
+                <strong>Multiple Courses</strong>
+                <span>Choose the right technical field</span>
               </div>
 
             </div>
 
             <div class="intro-point">
 
-              <div class="intro-icon">
-                →
-              </div>
+              <div class="intro-point-icon">✓</div>
 
               <div>
-                <strong>Career Focused</strong>
-                <span>Develop skills for future opportunities.</span>
+                <strong>Siliguri</strong>
+                <span>Training institute in Siliguri</span>
               </div>
 
             </div>
@@ -2331,17 +2413,22 @@
 
         </div>
 
-
-        <div class="intro-image">
+        <div class="intro-card">
 
           <img
-            src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1000&q=85"
-            alt="Technical classroom"
+            src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1000&q=85"
+            alt="Technical practical training"
+            loading="lazy"
           />
 
-          <div class="intro-badge">
-            <strong>ACE</strong>
-            <span>Technical Training</span>
+          <div class="intro-card-overlay">
+
+            <strong>Learn. Practice. Improve.</strong>
+
+            <span>
+              Build technical knowledge through practical learning.
+            </span>
+
           </div>
 
         </div>
@@ -2351,12 +2438,12 @@
     </section>
 
 
-    <!-- =========================================================
+    <!-- =====================================================
          COURSES
-    ========================================================= -->
+    ====================================================== -->
 
     <section
-      class="courses"
+      class="section section-soft"
       id="courses"
     >
 
@@ -2364,42 +2451,32 @@
 
         <div class="section-head">
 
-          <span class="eyebrow">
+          <div class="eyebrow">
             Our Courses
-          </span>
+          </div>
 
           <h2>
-            Learn Practical Technical Skills
+            Choose your technical skill
           </h2>
 
           <p>
-            Choose a course and start developing useful technical
-            knowledge and practical skills.
+            Explore our practical technical training courses
+            and choose the field that matches your interest.
           </p>
 
         </div>
 
-
         <div class="course-grid">
 
-          <!-- 1 -->
+          <article class="course-card">
 
-          <article
-            class="course-card"
-            id="mobile-repairing"
-          >
+            <div class="course-icon">📱</div>
 
-            <div class="course-number">
-              01
-            </div>
-
-            <h3>
-              Mobile Repairing
-            </h3>
+            <h3>Mobile Repairing</h3>
 
             <p>
-              Learn practical mobile repairing and troubleshooting
-              fundamentals.
+              Learn mobile hardware, common faults,
+              diagnosis and practical repairing skills.
             </p>
 
             <span class="course-tag">
@@ -2409,24 +2486,15 @@
           </article>
 
 
-          <!-- 2 -->
+          <article class="course-card">
 
-          <article
-            class="course-card"
-            id="android-repairing"
-          >
+            <div class="course-icon">🤖</div>
 
-            <div class="course-number">
-              02
-            </div>
-
-            <h3>
-              Android Repairing
-            </h3>
+            <h3>Android Repairing</h3>
 
             <p>
-              Understand Android device repairing and common
-              technical troubleshooting.
+              Understand Android devices, hardware faults,
+              testing and practical repair methods.
             </p>
 
             <span class="course-tag">
@@ -2436,24 +2504,15 @@
           </article>
 
 
-          <!-- 3 -->
+          <article class="course-card">
 
-          <article
-            class="course-card"
-            id="iphone-repairing"
-          >
+            <div class="course-icon"></div>
 
-            <div class="course-number">
-              03
-            </div>
-
-            <h3>
-              iPhone Repairing
-            </h3>
+            <h3>iPhone Repairing</h3>
 
             <p>
-              Learn the fundamentals of iPhone hardware diagnosis
-              and repairing.
+              Learn iPhone hardware basics, fault diagnosis
+              and practical repairing techniques.
             </p>
 
             <span class="course-tag">
@@ -2463,24 +2522,15 @@
           </article>
 
 
-          <!-- 4 -->
+          <article class="course-card">
 
-          <article
-            class="course-card"
-            id="laptop-repairing"
-          >
+            <div class="course-icon">💻</div>
 
-            <div class="course-number">
-              04
-            </div>
-
-            <h3>
-              Laptop Repairing
-            </h3>
+            <h3>Laptop Repairing</h3>
 
             <p>
-              Learn laptop hardware, troubleshooting and practical
-              repairing fundamentals.
+              Learn laptop hardware, troubleshooting,
+              component testing and repair basics.
             </p>
 
             <span class="course-tag">
@@ -2490,24 +2540,15 @@
           </article>
 
 
-          <!-- 5 -->
+          <article class="course-card">
 
-          <article
-            class="course-card"
-            id="computer-repairing"
-          >
+            <div class="course-icon">🖥️</div>
 
-            <div class="course-number">
-              05
-            </div>
-
-            <h3>
-              Desktop / Computer Repairing
-            </h3>
+            <h3>Desktop / Computer Repairing</h3>
 
             <p>
-              Understand computer hardware, maintenance and
-              troubleshooting.
+              Learn computer hardware, assembly,
+              troubleshooting and maintenance.
             </p>
 
             <span class="course-tag">
@@ -2517,24 +2558,15 @@
           </article>
 
 
-          <!-- 6 -->
+          <article class="course-card">
 
-          <article
-            class="course-card"
-            id="led-repairing"
-          >
+            <div class="course-icon">📺</div>
 
-            <div class="course-number">
-              06
-            </div>
-
-            <h3>
-              LED / LCD TV Repairing
-            </h3>
+            <h3>LED / LCD TV Repairing</h3>
 
             <p>
-              Learn TV electronics, basic diagnosis and practical
-              repairing concepts.
+              Understand TV electronics, common faults,
+              testing and practical repair concepts.
             </p>
 
             <span class="course-tag">
@@ -2544,28 +2576,19 @@
           </article>
 
 
-          <!-- 7 -->
+          <article class="course-card">
 
-          <article
-            class="course-card"
-            id="electronics"
-          >
+            <div class="course-icon">⚡</div>
 
-            <div class="course-number">
-              07
-            </div>
-
-            <h3>
-              Basic Electronics
-            </h3>
+            <h3>Basic Electronics</h3>
 
             <p>
-              Build a foundation in electronic components, circuits
-              and practical concepts.
+              Build a strong foundation in electronic
+              components, circuits and practical basics.
             </p>
 
             <span class="course-tag">
-              Practical Training
+              Foundation Course
             </span>
 
           </article>
@@ -2577,116 +2600,78 @@
     </section>
 
 
-    <!-- =========================================================
-         AD SLOT - COURSES
-    ========================================================= -->
-
-    <div class="container">
-
-      <div
-        class="ad-slot"
-        data-ad-area="courses"
-      >
-        Advertisement
-      </div>
-
+    <!-- COURSES AD -->
+    <div
+      class="ad-slot"
+      data-ad-area="courses"
+      aria-hidden="true"
+    >
+      Advertisement
     </div>
 
 
-    <!-- =========================================================
+    <!-- =====================================================
          WHY CHOOSE US
-    ========================================================= -->
+    ====================================================== -->
 
-    <section class="why">
+    <section class="section">
 
       <div class="container">
 
         <div class="section-head">
 
-          <span class="eyebrow">
+          <div class="eyebrow">
             Why Choose Us
-          </span>
+          </div>
 
           <h2>
-            Learn With a Practical Approach
+            Learn with a practical approach
           </h2>
-
-          <p>
-            Our focus is on building useful technical understanding
-            through practical learning.
-          </p>
 
         </div>
 
-
         <div class="why-grid">
 
-          <div class="why-card">
+          <article class="why-card">
 
-            <div class="why-icon">
-              ⚙
-            </div>
+            <div class="why-icon">🔧</div>
 
-            <h3>
-              Practical Focus
-            </h3>
+            <h3>Hands-on Practice</h3>
 
             <p>
-              Learn concepts with practical technical applications.
+              Focus on practical learning so students
+              can understand technical concepts better.
             </p>
 
-          </div>
+          </article>
 
 
-          <div class="why-card">
+          <article class="why-card">
 
-            <div class="why-icon">
-              🔧
-            </div>
+            <div class="why-icon">🎯</div>
 
-            <h3>
-              Repairing Skills
-            </h3>
+            <h3>Skill Focused Training</h3>
 
             <p>
-              Explore useful repairing and troubleshooting skills.
+              Courses are structured around useful
+              technical knowledge and practical skills.
             </p>
 
-          </div>
+          </article>
 
 
-          <div class="why-card">
+          <article class="why-card">
 
-            <div class="why-icon">
-              💡
-            </div>
+            <div class="why-icon">📚</div>
 
-            <h3>
-              Skill Development
-            </h3>
+            <h3>Multiple Technical Fields</h3>
 
             <p>
-              Develop technical knowledge for future opportunities.
+              Choose from mobile, computer, laptop,
+              TV repair and electronics courses.
             </p>
 
-          </div>
-
-
-          <div class="why-card">
-
-            <div class="why-icon">
-              🎯
-            </div>
-
-            <h3>
-              Student Focused
-            </h3>
-
-            <p>
-              Training designed around learner understanding.
-            </p>
-
-          </div>
+          </article>
 
         </div>
 
@@ -2695,12 +2680,12 @@
     </section>
 
 
-    <!-- =========================================================
+    <!-- =====================================================
          GALLERY
-    ========================================================= -->
+    ====================================================== -->
 
     <section
-      class="gallery"
+      class="section section-soft"
       id="gallery"
     >
 
@@ -2708,42 +2693,29 @@
 
         <div class="section-head">
 
-          <span class="eyebrow">
+          <div class="eyebrow">
             Gallery
-          </span>
+          </div>
 
           <h2>
-            Our Training Environment
+            Inside ACE Technical Siliguri
           </h2>
 
           <p>
-            A preview of practical learning and technical training.
+            A preview of technical learning, practical
+            activities and the training environment.
           </p>
 
         </div>
 
-
         <div class="gallery-grid">
-
-          <div class="gallery-item large">
-
-            <img
-              src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=85"
-              alt="Classroom training"
-            />
-
-            <span class="gallery-label">
-              Classroom
-            </span>
-
-          </div>
-
 
           <div class="gallery-item">
 
             <img
-              src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=900&q=85"
-              alt="Practical training"
+              src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=85"
+              alt="Electronics practical"
+              loading="lazy"
             />
 
             <span class="gallery-label">
@@ -2757,11 +2729,27 @@
 
             <img
               src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=900&q=85"
-              alt="Technical equipment"
+              alt="Technical workshop"
+              loading="lazy"
             />
 
             <span class="gallery-label">
-              Technical Skills
+              Workshop
+            </span>
+
+          </div>
+
+
+          <div class="gallery-item">
+
+            <img
+              src="https://images.unsplash.com/photo-1597423244030-b5f6b5b5b3c6?auto=format&fit=crop&w=900&q=85"
+              alt="Computer training"
+              loading="lazy"
+            />
+
+            <span class="gallery-label">
+              Computer
             </span>
 
           </div>
@@ -2771,21 +2759,8 @@
 
             <img
               src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=85"
-              alt="Computer training"
-            />
-
-            <span class="gallery-label">
-              Computer Training
-            </span>
-
-          </div>
-
-
-          <div class="gallery-item">
-
-            <img
-              src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=85"
-              alt="Students learning"
+              alt="Technology learning"
+              loading="lazy"
             />
 
             <span class="gallery-label">
@@ -2801,28 +2776,22 @@
     </section>
 
 
-    <!-- =========================================================
-         AD SLOT - GALLERY
-    ========================================================= -->
-
-    <div class="container">
-
-      <div
-        class="ad-slot"
-        data-ad-area="gallery"
-      >
-        Advertisement
-      </div>
-
+    <!-- GALLERY AD -->
+    <div
+      class="ad-slot"
+      data-ad-area="gallery"
+      aria-hidden="true"
+    >
+      Advertisement
     </div>
 
 
-    <!-- =========================================================
+    <!-- =====================================================
          ABOUT
-    ========================================================= -->
+    ====================================================== -->
 
     <section
-      class="about"
+      class="section"
       id="about"
     >
 
@@ -2831,55 +2800,57 @@
         <div class="about-image">
 
           <img
-            src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1200&q=85"
+            src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?auto=format&fit=crop&w=1100&q=85"
             alt="Technical training"
+            loading="lazy"
           />
 
         </div>
 
-
         <div class="about-content">
 
-          <span class="eyebrow">
-            About Institute
-          </span>
+          <div class="eyebrow">
+            About Us
+          </div>
 
           <h2>
-            Building Skills Through
-            <span>Practical Training.</span>
+            Building technical
+            <br />
+            <span>skills through practice.</span>
           </h2>
 
           <p>
-            ACE TECHNICAL SILIGURI is a practical technical training
-            institute based in Siliguri.
+            ACE TECHNICAL SILIGURI is a practical technical
+            training institute focused on developing useful
+            repair and electronics skills.
           </p>
 
           <p>
-            The institute focuses on technical education in areas
-            such as mobile repairing, computer repairing, laptop
-            repairing, TV repairing and basic electronics.
+            Our goal is to create a learning environment where
+            students can understand technical concepts and
+            develop confidence through practical activities.
           </p>
 
           <div class="about-list">
 
             <div>
-              <b>✓</b>
-              Practical technical learning
+              <span>✓</span>
+              Practical technical training
             </div>
 
             <div>
-              <b>✓</b>
-              Multiple technical courses
+              <span>✓</span>
+              Multiple repair courses
             </div>
 
             <div>
-              <b>✓</b>
-              Skill-focused training environment
+              <span>✓</span>
+              Student-focused learning
             </div>
 
             <div>
-              <b>✓</b>
-              Student-oriented learning approach
+              <span>✓</span>
+              Siliguri-based training
             </div>
 
           </div>
@@ -2891,256 +2862,268 @@
     </section>
 
 
-    <!-- =========================================================
+    <!-- =====================================================
          ADMISSION
-    ========================================================= -->
+    ====================================================== -->
 
     <section
-      class="admission"
+      class="section section-soft"
       id="admission"
     >
 
-      <div class="container admission-wrap">
+      <div class="container">
 
-        <div class="admission-info">
+        <div class="admission-box">
 
-          <h2>
-            Start Your
-            <span>Technical Journey.</span>
-          </h2>
+          <div class="admission-info">
 
-          <p>
-            Fill out the admission enquiry form and contact the
-            institute for course and admission information.
-          </p>
-
-          <div class="admission-points">
-
-            <div class="admission-point">
-              <b>✓</b>
-              Choose your preferred course
+            <div class="eyebrow">
+              Admission
             </div>
 
-            <div class="admission-point">
-              <b>✓</b>
-              Submit your basic details
+            <h2>
+              Start your technical learning journey.
+            </h2>
+
+            <p>
+              Fill in the admission enquiry form and
+              our team can contact you regarding the
+              selected course.
+            </p>
+
+            <div class="admission-info-list">
+
+              <div>
+                <span>✓</span>
+                Choose your course
+              </div>
+
+              <div>
+                <span>✓</span>
+                Submit your enquiry
+              </div>
+
+              <div>
+                <span>✓</span>
+                Get admission information
+              </div>
+
             </div>
 
-            <div class="admission-point">
-              <b>✓</b>
-              Get admission information
-            </div>
+          </div>
 
-            <div class="admission-point">
-              <b>✓</b>
-              Contact the institute for further details
-            </div>
+
+          <div class="admission-form-wrap">
+
+            <form id="admissionForm">
+
+              <div class="form-grid">
+
+                <div class="form-group">
+
+                  <label for="fullName">
+                    Full Name *
+                  </label>
+
+                  <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    placeholder="Enter your full name"
+                    required
+                  />
+
+                </div>
+
+
+                <div class="form-group">
+
+                  <label for="mobile">
+                    Mobile Number *
+                  </label>
+
+                  <input
+                    type="tel"
+                    id="mobile"
+                    name="mobile"
+                    placeholder="Enter mobile number"
+                    required
+                  />
+
+                </div>
+
+
+                <div class="form-group">
+
+                  <label for="email">
+                    Email
+                  </label>
+
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter email address"
+                  />
+
+                </div>
+
+
+                <div class="form-group">
+
+                  <label for="dob">
+                    Date of Birth
+                  </label>
+
+                  <input
+                    type="date"
+                    id="dob"
+                    name="dob"
+                  />
+
+                </div>
+
+
+                <div class="form-group full">
+
+                  <label for="address">
+                    Address
+                  </label>
+
+                  <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    placeholder="Enter your address"
+                  />
+
+                </div>
+
+
+                <div class="form-group">
+
+                  <label for="course">
+                    Select Course *
+                  </label>
+
+                  <select
+                    id="course"
+                    name="course"
+                    required
+                  >
+
+                    <option value="">
+                      Select a course
+                    </option>
+
+                    <option>
+                      Mobile Repairing
+                    </option>
+
+                    <option>
+                      Android Repairing
+                    </option>
+
+                    <option>
+                      iPhone Repairing
+                    </option>
+
+                    <option>
+                      Laptop Repairing
+                    </option>
+
+                    <option>
+                      Desktop / Computer Repairing
+                    </option>
+
+                    <option>
+                      LED / LCD TV Repairing
+                    </option>
+
+                    <option>
+                      Basic Electronics
+                    </option>
+
+                  </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                  <label for="qualification">
+                    Educational Qualification
+                  </label>
+
+                  <input
+                    type="text"
+                    id="qualification"
+                    name="qualification"
+                    placeholder="e.g. Madhyamik / HS / Graduate"
+                  />
+
+                </div>
+
+
+                <div class="form-group">
+
+                  <label for="admissionDate">
+                    Preferred Admission Date
+                  </label>
+
+                  <input
+                    type="date"
+                    id="admissionDate"
+                    name="admissionDate"
+                  />
+
+                </div>
+
+
+                <div class="form-group full">
+
+                  <label for="message">
+                    Message
+                  </label>
+
+                  <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Write your message..."
+                  ></textarea>
+
+                </div>
+
+              </div>
+
+              <div class="form-submit">
+
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                >
+                  Submit Admission Enquiry
+                </button>
+
+              </div>
+
+            </form>
 
           </div>
 
         </div>
-
-
-        <form
-          class="admission-form"
-          id="admissionForm"
-        >
-
-          <div class="form-title">
-            Admission Enquiry
-          </div>
-
-          <div class="form-grid">
-
-            <div class="form-group">
-
-              <label>
-                Full Name *
-              </label>
-
-              <input
-                type="text"
-                name="name"
-                required
-                placeholder="Enter your full name"
-              />
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label>
-                Mobile Number *
-              </label>
-
-              <input
-                type="tel"
-                name="mobile"
-                required
-                placeholder="Enter mobile number"
-              />
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label>
-                Email
-              </label>
-
-              <input
-                type="email"
-                name="email"
-                placeholder="Enter email address"
-              />
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label>
-                Date of Birth
-              </label>
-
-              <input
-                type="date"
-                name="dob"
-              />
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label>
-                Course *
-              </label>
-
-              <select
-                name="course"
-                required
-              >
-
-                <option value="">
-                  Select a course
-                </option>
-
-                <option>
-                  Mobile Repairing
-                </option>
-
-                <option>
-                  Android Repairing
-                </option>
-
-                <option>
-                  iPhone Repairing
-                </option>
-
-                <option>
-                  Laptop Repairing
-                </option>
-
-                <option>
-                  Desktop / Computer Repairing
-                </option>
-
-                <option>
-                  LED / LCD TV Repairing
-                </option>
-
-                <option>
-                  Basic Electronics
-                </option>
-
-              </select>
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label>
-                Educational Qualification
-              </label>
-
-              <input
-                type="text"
-                name="qualification"
-                placeholder="Example: Madhyamik / HS / Graduate"
-              />
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label>
-                Preferred Admission Date
-              </label>
-
-              <input
-                type="date"
-                name="admissionDate"
-              />
-
-            </div>
-
-
-            <div class="form-group full">
-
-              <label>
-                Address
-              </label>
-
-              <input
-                type="text"
-                name="address"
-                placeholder="Enter your address"
-              />
-
-            </div>
-
-
-            <div class="form-group full">
-
-              <label>
-                Message
-              </label>
-
-              <textarea
-                name="message"
-                placeholder="Write your enquiry..."
-              ></textarea>
-
-            </div>
-
-          </div>
-
-
-          <button
-            type="submit"
-            class="btn btn-primary form-submit"
-          >
-            Submit Admission Enquiry
-          </button>
-
-        </form>
 
       </div>
 
     </section>
 
 
-    <!-- =========================================================
+    <!-- =====================================================
          CONTACT / ENQUIRY
-    ========================================================= -->
+    ====================================================== -->
 
     <section
-      class="contact"
+      class="section"
       id="contact"
     >
 
@@ -3148,17 +3131,17 @@
 
         <div class="section-head">
 
-          <span class="eyebrow">
-            Enquiry
-          </span>
+          <div class="eyebrow">
+            Enquiry & Contact
+          </div>
 
           <h2>
-            Get In Touch
+            Have a question?
           </h2>
 
           <p>
-            Contact ACE TECHNICAL SILIGURI for course and admission
-            information.
+            Contact ACE TECHNICAL SILIGURI for course,
+            admission and training information.
           </p>
 
         </div>
@@ -3166,69 +3149,64 @@
 
         <div class="contact-grid">
 
-          <div class="contact-card">
+          <a
+            href="tel:+919999999999"
+            class="contact-card"
+          >
 
-            <div class="contact-icon">
-              ☎
-            </div>
+            <div class="contact-icon">☎</div>
 
-            <h3>
-              Phone
-            </h3>
-
-            <p>
-              +91 99999 99999
-            </p>
-
-          </div>
-
-
-          <div class="contact-card">
-
-            <div class="contact-icon">
-              WA
-            </div>
-
-            <h3>
-              WhatsApp
-            </h3>
+            <h3>Call Us</h3>
 
             <p>
               +91 99999 99999
             </p>
 
-          </div>
+          </a>
 
 
-          <div class="contact-card">
+          <a
+            href="https://wa.me/919999999999"
+            target="_blank"
+            rel="noopener"
+            class="contact-card"
+          >
 
-            <div class="contact-icon">
-              @
-            </div>
+            <div class="contact-icon">WA</div>
 
-            <h3>
-              Email
-            </h3>
+            <h3>WhatsApp</h3>
+
+            <p>
+              Chat with us
+            </p>
+
+          </a>
+
+
+          <a
+            href="mailto:info@acetechnicalsiliguri.com"
+            class="contact-card"
+          >
+
+            <div class="contact-icon">@</div>
+
+            <h3>Email</h3>
 
             <p>
               info@acetechnicalsiliguri.com
             </p>
 
-          </div>
+          </a>
 
 
           <div class="contact-card">
 
-            <div class="contact-icon">
-              📍
-            </div>
+            <div class="contact-icon">⌖</div>
 
-            <h3>
-              Address
-            </h3>
+            <h3>Location</h3>
 
             <p>
-              Siliguri, West Bengal, India
+              Siliguri, West Bengal
             </p>
 
           </div>
@@ -3240,32 +3218,47 @@
     </section>
 
 
-    <!-- =========================================================
+    <!-- =====================================================
          CTA
-    ========================================================= -->
+    ====================================================== -->
 
     <section class="cta">
 
-      <div class="container cta-inner">
+      <div class="container">
 
-        <div>
+        <div class="cta-box">
 
-          <h2>
-            Ready to Learn a Technical Skill?
-          </h2>
+          <div>
 
-          <p>
-            Explore our courses or send an admission enquiry.
-          </p>
+            <h2>
+              Ready to learn a technical skill?
+            </h2>
+
+            <p>
+              Explore our courses or send an admission enquiry.
+            </p>
+
+          </div>
+
+          <div class="cta-actions">
+
+            <a
+              href="#courses"
+              class="btn btn-outline"
+            >
+              View Courses
+            </a>
+
+            <a
+              href="#admission"
+              class="btn btn-outline"
+            >
+              Apply Now
+            </a>
+
+          </div>
 
         </div>
-
-        <a
-          href="#admission"
-          class="btn btn-primary"
-        >
-          Start Admission Enquiry
-        </a>
 
       </div>
 
@@ -3274,94 +3267,73 @@
   </main>
 
 
-  <!-- =========================================================
+  <!-- =======================================================
        FOOTER
-  ========================================================= -->
+  ======================================================== -->
 
   <footer>
+
+    <!-- FOOTER AD -->
+    <div
+      class="ad-slot"
+      data-ad-area="footer"
+      aria-hidden="true"
+    >
+      Advertisement
+    </div>
 
     <div class="container">
 
       <div class="footer-grid">
 
-        <div>
+        <div class="footer-brand">
 
-          <div class="footer-brand">
-
-            <div class="brand-mark">
-              ACE
-            </div>
-
-            <div class="brand-text">
-              <strong style="color:white;">
-                ACE TECHNICAL SILIGURI
-              </strong>
-
-              <span style="color:#aeb6cf;">
-                Practical Technical Training Institute
-              </span>
-            </div>
-
-          </div>
+          <h3>
+            ACE TECHNICAL SILIGURI
+          </h3>
 
           <p>
-            Practical technical training focused on repairing,
-            electronics and computer-related skills.
+            Practical Technical Training Institute in Siliguri.
+            Learn useful technical skills through practical
+            and focused training.
           </p>
 
         </div>
 
 
-        <div>
+        <div class="footer-col">
 
-          <h3>
+          <h4>
             Quick Links
-          </h3>
+          </h4>
 
-          <a href="#home">
-            Home
-          </a>
-
-          <a href="#courses">
-            Courses
-          </a>
-
-          <a href="#gallery">
-            Gallery
-          </a>
-
-          <a href="#about">
-            About
-          </a>
-
-          <a href="#admission">
-            Admission
-          </a>
-
-          <a href="#contact">
-            Enquiry
-          </a>
+          <a href="#home">Home</a>
+          <a href="#courses">Courses</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#about">About</a>
+          <a href="#admission">Admission</a>
+          <a href="#contact">Enquiry</a>
 
         </div>
 
 
-        <div>
+        <div class="footer-col">
 
-          <h3>
+          <h4>
             Contact
-          </h3>
+          </h4>
 
-          <p>
-            📍 Siliguri, West Bengal
-          </p>
+          <a href="tel:+919999999999">
+            +91 99999 99999
+          </a>
 
-          <p>
-            📞 +91 99999 99999
-          </p>
+          <a href="mailto:info@acetechnicalsiliguri.com">
+            info@acetechnicalsiliguri.com
+          </a>
 
-          <p>
-            ✉ info@acetechnicalsiliguri.com
-          </p>
+          <a href="https://wa.me/919999999999">
+            WhatsApp
+          </a>
 
         </div>
 
@@ -3370,23 +3342,15 @@
 
       <div class="footer-bottom">
 
-        <span>
-          © 2026 ACE TECHNICAL SILIGURI. All Rights Reserved.
-        </span>
+        <div>
+          © <span id="year"></span>
+          ACE TECHNICAL SILIGURI. All rights reserved.
+        </div>
 
-        <span>
+        <div>
           Practical Technical Training Institute
-        </span>
+        </div>
 
-      </div>
-
-      <!-- FOOTER AD SLOT -->
-
-      <div
-        class="ad-slot"
-        data-ad-area="footer"
-      >
-        Advertisement
       </div>
 
     </div>
@@ -3394,43 +3358,37 @@
   </footer>
 
 
-  <!-- =========================================================
-       WHATSAPP
-  ========================================================= -->
+  <!-- =======================================================
+       WHATSAPP FLOATING BUTTON
+  ======================================================== -->
 
   <a
-    class="whatsapp"
+    class="whatsapp-float"
     href="https://wa.me/919999999999"
     target="_blank"
     rel="noopener"
-    aria-label="Chat on WhatsApp"
+    aria-label="Contact ACE Technical Siliguri on WhatsApp"
   >
     WA
   </a>
 
 
-  <!-- =========================================================
+  <!-- =======================================================
        JAVASCRIPT
-  ========================================================= -->
+  ======================================================== -->
 
   <script>
 
-    /* =========================================================
+    /* =======================================================
        ADSENSE READY SETTINGS
-    ========================================================= */
+    ======================================================== */
 
     const AD_SETTINGS = {
-
       master: false,
-
       home: false,
-
       courses: false,
-
       gallery: false,
-
       footer: false
-
     };
 
 
@@ -3463,9 +3421,121 @@
     renderAds();
 
 
-    /* =========================================================
-       SLIDER
-    ========================================================= */
+    /* =======================================================
+       DESKTOP COURSE DROPDOWN
+    ======================================================== */
+
+    const desktopDropdown =
+      document.getElementById(
+        "desktopCourseDropdown"
+      );
+
+    const desktopDropdownButton =
+      desktopDropdown.querySelector(
+        ".dropdown-toggle"
+      );
+
+    desktopDropdownButton.addEventListener(
+      "click",
+      function () {
+
+        const isOpen =
+          desktopDropdown.classList.toggle(
+            "open"
+          );
+
+        desktopDropdownButton.setAttribute(
+          "aria-expanded",
+          isOpen
+        );
+
+      }
+    );
+
+
+    document.addEventListener(
+      "click",
+      function (event) {
+
+        if (
+          !desktopDropdown.contains(event.target)
+        ) {
+
+          desktopDropdown.classList.remove(
+            "open"
+          );
+
+          desktopDropdownButton.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+        }
+
+      }
+    );
+
+
+    /* =======================================================
+       MOBILE COURSE DROPDOWN
+    ======================================================== */
+
+    const mobileCourse =
+      document.getElementById(
+        "mobileCourse"
+      );
+
+    const mobileCourseButton =
+      mobileCourse.querySelector(
+        ".mobile-course-toggle"
+      );
+
+    mobileCourseButton.addEventListener(
+      "click",
+      function () {
+
+        const isOpen =
+          mobileCourse.classList.toggle(
+            "open"
+          );
+
+        mobileCourseButton.setAttribute(
+          "aria-expanded",
+          isOpen
+        );
+
+      }
+    );
+
+
+    document
+      .querySelectorAll(
+        ".mobile-course-menu a"
+      )
+      .forEach((link) => {
+
+        link.addEventListener(
+          "click",
+          function () {
+
+            mobileCourse.classList.remove(
+              "open"
+            );
+
+            mobileCourseButton.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+          }
+        );
+
+      });
+
+
+    /* =======================================================
+       HERO SLIDER
+    ======================================================== */
 
     const slides =
       document.querySelectorAll(".slide");
@@ -3474,6 +3544,8 @@
       document.querySelectorAll(".slider-dot");
 
     let currentSlide = 0;
+
+    let slideTimer;
 
 
     function showSlide(index) {
@@ -3486,7 +3558,6 @@
         );
 
       });
-
 
       dots.forEach((dot, i) => {
 
@@ -3505,164 +3576,68 @@
     function nextSlide() {
 
       const next =
-        (currentSlide + 1) % slides.length;
+        (currentSlide + 1) %
+        slides.length;
 
       showSlide(next);
 
     }
 
 
-    dots.forEach((dot, index) => {
+    function startSlider() {
+
+      clearInterval(slideTimer);
+
+      slideTimer =
+        setInterval(
+          nextSlide,
+          5000
+        );
+
+    }
+
+
+    dots.forEach((dot) => {
 
       dot.addEventListener(
         "click",
-        () => showSlide(index)
+        function () {
+
+          const index =
+            Number(
+              dot.dataset.slide
+            );
+
+          showSlide(index);
+
+          startSlider();
+
+        }
       );
 
     });
 
 
-    setInterval(
-      nextSlide,
-      5000
-    );
+    startSlider();
 
 
-    /* =========================================================
-       MOBILE COURSE MENU
-    ========================================================= */
+    /* =======================================================
+       MOBILE NAV ACTIVE STATE
+    ======================================================== */
 
-    const mobileCourseBtn =
-      document.getElementById(
-        "mobileCourseBtn"
-      );
-
-    const mobileCourseList =
-      document.getElementById(
-        "mobileCourseList"
-      );
-
-
-    mobileCourseBtn.addEventListener(
-      "click",
-      function (event) {
-
-        event.stopPropagation();
-
-        mobileCourseList.classList.toggle(
-          "show"
-        );
-
-        mobileCourseBtn.classList.toggle(
-          "active"
-        );
-
-      }
-    );
-
-
-    document
-      .querySelectorAll(
-        "#mobileCourseList a"
-      )
-      .forEach((link) => {
-
-        link.addEventListener(
-          "click",
-          () => {
-
-            mobileCourseList.classList.remove(
-              "show"
-            );
-
-            mobileCourseBtn.classList.remove(
-              "active"
-            );
-
-          }
-        );
-
-      });
-
-
-    document.addEventListener(
-      "click",
-      function (event) {
-
-        if (
-          !event.target.closest(
-            ".mobile-course-wrap"
-          )
-        ) {
-
-          mobileCourseList.classList.remove(
-            "show"
-          );
-
-          mobileCourseBtn.classList.remove(
-            "active"
-          );
-
-        }
-
-      }
-    );
-
-
-    /* =========================================================
-       DESKTOP COURSE DROPDOWN
-    ========================================================= */
-
-    const desktopDropdown =
-      document.querySelector(".dropdown");
-
-    const desktopDropdownBtn =
-      document.querySelector(".dropdown-btn");
-
-
-    desktopDropdownBtn.addEventListener(
-      "click",
-      function (event) {
-
-        event.stopPropagation();
-
-        desktopDropdown.classList.toggle(
-          "open"
-        );
-
-      }
-    );
-
-
-    document.addEventListener(
-      "click",
-      function () {
-
-        desktopDropdown.classList.remove(
-          "open"
-        );
-
-      }
-    );
-
-
-    /* =========================================================
-       MOBILE ACTIVE NAV
-    ========================================================= */
-
-    const mobileLinks =
+    const navLinks =
       document.querySelectorAll(
-        ".mobile-nav-scroll > a"
+        ".mobile-nav > a"
       );
 
 
-    mobileLinks.forEach((link) => {
+    navLinks.forEach((link) => {
 
       link.addEventListener(
         "click",
         function () {
 
-          mobileLinks.forEach((item) => {
+          navLinks.forEach((item) => {
 
             item.classList.remove(
               "active"
@@ -3670,7 +3645,7 @@
 
           });
 
-          this.classList.add(
+          link.classList.add(
             "active"
           );
 
@@ -3680,11 +3655,10 @@
     });
 
 
-    /* =========================================================
+    /* =======================================================
        ADMISSION FORM
-       Temporary frontend demo.
-       Supabase will be connected later.
-    ========================================================= */
+       SUPABASE WILL BE CONNECTED LATER
+    ======================================================== */
 
     const admissionForm =
       document.getElementById(
@@ -3703,6 +3677,45 @@
         );
 
         admissionForm.reset();
+
+      }
+    );
+
+
+    /* =======================================================
+       CURRENT YEAR
+    ======================================================== */
+
+    document.getElementById(
+      "year"
+    ).textContent =
+      new Date().getFullYear();
+
+
+    /* =======================================================
+       CLOSE MOBILE DROPDOWN WHEN CLICKING OUTSIDE
+    ======================================================== */
+
+    document.addEventListener(
+      "click",
+      function (event) {
+
+        if (
+          !mobileCourse.contains(
+            event.target
+          )
+        ) {
+
+          mobileCourse.classList.remove(
+            "open"
+          );
+
+          mobileCourseButton.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+        }
 
       }
     );
