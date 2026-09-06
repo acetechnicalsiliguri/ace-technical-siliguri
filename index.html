@@ -66,15 +66,11 @@ header{
   position:sticky;
   top:0;
   z-index:1000;
-
   min-height:72px;
-
   padding:0 5%;
-
   display:flex;
   align-items:center;
   justify-content:space-between;
-
   gap:20px;
 
   background:
@@ -110,29 +106,12 @@ header{
 
 @keyframes logoColorChange{
 
-  0%{
-    color:#ffffff;
-  }
-
-  20%{
-    color:#67e8f9;
-  }
-
-  40%{
-    color:#a7f3d0;
-  }
-
-  60%{
-    color:#fde68a;
-  }
-
-  80%{
-    color:#f9a8d4;
-  }
-
-  100%{
-    color:#ffffff;
-  }
+  0%{color:#ffffff;}
+  20%{color:#67e8f9;}
+  40%{color:#a7f3d0;}
+  60%{color:#fde68a;}
+  80%{color:#f9a8d4;}
+  100%{color:#ffffff;}
 
 }
 
@@ -190,7 +169,6 @@ nav > a:hover,
   position:absolute;
 
   top:calc(100% + 8px);
-
   left:50%;
 
   transform:
@@ -224,9 +202,6 @@ nav > a:hover,
 
   z-index:5000;
 }
-
-
-/* Desktop hover */
 
 .dropdown:hover .dropdown-content{
   opacity:1;
@@ -302,7 +277,8 @@ nav > a:hover,
 }
 
 
-/* Very light image overlay */
+/* LIGHT OVERLAY
+   IMAGE REMAINS CLEAR */
 
 .slide::after{
   content:"";
@@ -313,15 +289,15 @@ nav > a:hover,
   background:
     linear-gradient(
       180deg,
-      rgba(0,0,0,.04),
-      rgba(0,0,0,.10),
-      rgba(0,0,0,.32)
+      rgba(0,0,0,.02),
+      rgba(0,0,0,.06),
+      rgba(0,0,0,.18)
     );
 }
 
 
 /* =========================
-   SMALL HERO TEXT
+   HERO TEXT
 ========================= */
 
 .hero-content{
@@ -331,74 +307,76 @@ nav > a:hover,
   left:6%;
   right:6%;
 
-  bottom:7%;
+  bottom:8%;
 
   z-index:2;
 
-  max-width:700px;
+  max-width:850px;
 
   color:#ffffff;
 
   text-shadow:
-    0 2px 8px rgba(0,0,0,.55);
+    0 3px 12px rgba(0,0,0,.65);
 }
 
 
-/* Small label */
+/* SMALL TAG */
 
 .hero-content .tag{
 
   display:inline-block;
 
-  padding:5px 10px;
+  padding:6px 11px;
 
-  margin-bottom:6px;
+  margin-bottom:9px;
 
   background:
-    rgba(0,0,0,.25);
+    rgba(0,0,0,.18);
 
   border:
     1px solid
-    rgba(255,255,255,.25);
+    rgba(255,255,255,.28);
 
   border-radius:30px;
 
-  font-size:10px;
+  font-size:11px;
 
-  font-weight:600;
+  font-weight:700;
 
-  letter-spacing:.5px;
+  letter-spacing:.8px;
 }
 
 
-/* Main hero heading is now small */
+/* BIG INTERESTING HEADING */
 
 .hero-content h1{
 
   font-size:
-    clamp(19px,3vw,30px);
+    clamp(30px,5vw,58px);
 
-  line-height:1.15;
+  line-height:1.08;
 
   margin-bottom:5px;
 
-  font-weight:600;
+  font-weight:800;
+
+  letter-spacing:-.5px;
 }
 
 
-/* Small description */
+/* SHORT DESCRIPTION */
 
 .hero-content p{
 
-  max-width:560px;
+  max-width:620px;
 
   font-size:
-    clamp(10px,1.5vw,14px);
+    clamp(12px,1.6vw,16px);
 
   line-height:1.4;
 
   color:
-    rgba(255,255,255,.86);
+    rgba(255,255,255,.92);
 
   margin-bottom:0;
 
@@ -406,7 +384,7 @@ nav > a:hover,
 }
 
 
-/* Hide big buttons from slideshow */
+/* NO BIG BUTTONS */
 
 .hero-buttons{
   display:none;
@@ -1280,7 +1258,8 @@ footer strong{
 
   /* =========================
      MOBILE DROPDOWN
-     EXACTLY UNDER COURSES
+     CENTERED DIRECTLY
+     UNDER COURSES
   ========================= */
 
   .dropdown{
@@ -1294,6 +1273,8 @@ footer strong{
     display:flex;
 
     justify-content:center;
+
+    align-items:center;
   }
 
   .dropdown > a{
@@ -1311,33 +1292,30 @@ footer strong{
     position:absolute;
 
     top:
-      calc(100% + 6px);
+      calc(100% + 7px);
 
     left:50%;
 
     right:auto;
 
-    transform:
-      translateX(-50%) !important;
-
-    width:220px;
+    width:240px;
 
     max-width:
-      calc(100vw - 20px);
+      calc(100vw - 16px);
 
-    padding:7px;
+    padding:8px;
 
     background:#080d22;
 
     border:
       1px solid
-      rgba(255,255,255,.2);
+      rgba(255,255,255,.22);
 
-    border-radius:12px;
+    border-radius:13px;
 
     box-shadow:
-      0 15px 40px
-      rgba(0,0,0,.45);
+      0 18px 45px
+      rgba(0,0,0,.5);
 
     opacity:0;
 
@@ -1347,13 +1325,16 @@ footer strong{
 
     z-index:99999;
 
+    transform:
+      translateX(-50%) !important;
+
     transition:
-      opacity .15s ease,
-      visibility .15s ease;
+      opacity .18s ease,
+      visibility .18s ease;
   }
 
 
-  /* OPEN STATE */
+  /* OPEN */
 
   .dropdown-content.mobile-open{
 
@@ -1363,14 +1344,16 @@ footer strong{
 
     pointer-events:auto !important;
 
+    left:50% !important;
+
+    right:auto !important;
+
     transform:
       translateX(-50%) !important;
   }
 
 
-  /*
-     Mobile hover disabled
-  */
+  /* DISABLE NORMAL HOVER ON MOBILE */
 
   .dropdown:hover .dropdown-content{
 
@@ -1379,6 +1362,10 @@ footer strong{
     visibility:hidden;
 
     pointer-events:none;
+
+    left:50%;
+
+    right:auto;
 
     transform:
       translateX(-50%) !important;
@@ -1394,6 +1381,10 @@ footer strong{
 
     pointer-events:auto !important;
 
+    left:50% !important;
+
+    right:auto !important;
+
     transform:
       translateX(-50%) !important;
   }
@@ -1405,12 +1396,12 @@ footer strong{
 
     width:100%;
 
-    min-height:40px;
+    min-height:41px;
 
     padding:
-      9px 10px;
+      9px 12px;
 
-    margin:0;
+    margin:1px 0;
 
     color:#ffffff;
 
@@ -1424,7 +1415,7 @@ footer strong{
 
     border-radius:8px;
 
-    white-space:normal;
+    white-space:nowrap;
   }
 
   .dropdown-content a:hover{
@@ -1456,7 +1447,7 @@ footer strong{
 
     right:5%;
 
-    bottom:6%;
+    bottom:7%;
 
     max-width:none;
   }
@@ -1469,34 +1460,41 @@ footer strong{
     padding:
       4px 8px;
 
-    margin-bottom:4px;
+    margin-bottom:6px;
+
+    background:
+      rgba(0,0,0,.18);
   }
 
+
+  /* BIG MOBILE HEADLINE */
 
   .hero-content h1{
 
     font-size:
-      clamp(17px,5vw,24px);
+      clamp(25px,7.5vw,38px);
 
-    line-height:1.15;
+    line-height:1.08;
 
-    margin-bottom:3px;
+    margin-bottom:5px;
 
-    font-weight:600;
+    font-weight:800;
+
+    letter-spacing:-.3px;
   }
 
 
   .hero-content p{
 
     font-size:
-      clamp(9px,2.8vw,12px);
+      clamp(10px,2.8vw,13px);
 
     line-height:1.35;
 
     max-width:90%;
 
     color:
-      rgba(255,255,255,.82);
+      rgba(255,255,255,.9);
   }
 
 
@@ -1599,6 +1597,15 @@ footer strong{
   }
 
 
+  .dropdown-content{
+
+    width:235px;
+
+    max-width:
+      calc(100vw - 12px);
+  }
+
+
   .hero{
 
     height:44svh;
@@ -1617,7 +1624,9 @@ footer strong{
 
   .hero-content h1{
 
-    font-size:17px;
+    font-size:25px;
+
+    line-height:1.08;
   }
 
 
@@ -1642,6 +1651,16 @@ footer strong{
     font-size:7.8px;
   }
 
+
+  .dropdown-content{
+
+    width:225px;
+
+    max-width:
+      calc(100vw - 10px);
+  }
+
+
   .hero{
 
     height:42svh;
@@ -1654,7 +1673,7 @@ footer strong{
 
   .hero-content h1{
 
-    font-size:16px;
+    font-size:23px;
   }
 
 
@@ -1768,6 +1787,8 @@ footer strong{
   style="padding:0;"
 >
 
+  <!-- SLIDE 1 -->
+
   <div class="slide active">
 
     <img
@@ -1775,8 +1796,27 @@ footer strong{
       alt="Technical training"
     >
 
+    <div class="hero-content">
+
+      <div class="tag">
+        ACE TECHNICAL SILIGURI
+      </div>
+
+      <h1>
+        Master the Skills.<br>
+        Build Your Future.
+      </h1>
+
+      <p>
+        Learn practical technical skills.
+      </p>
+
+    </div>
+
   </div>
 
+
+  <!-- SLIDE 2 -->
 
   <div class="slide">
 
@@ -1785,8 +1825,27 @@ footer strong{
       alt="Computer training"
     >
 
+    <div class="hero-content">
+
+      <div class="tag">
+        PRACTICAL TRAINING
+      </div>
+
+      <h1>
+        Learn Today.<br>
+        Lead Tomorrow.
+      </h1>
+
+      <p>
+        Turn knowledge into practical skills.
+      </p>
+
+    </div>
+
   </div>
 
+
+  <!-- SLIDE 3 -->
 
   <div class="slide">
 
@@ -1795,8 +1854,27 @@ footer strong{
       alt="Practical training"
     >
 
+    <div class="hero-content">
+
+      <div class="tag">
+        TECHNICAL SKILLS
+      </div>
+
+      <h1>
+        Turn Skills<br>
+        Into Your Career.
+      </h1>
+
+      <p>
+        Practice. Learn. Grow.
+      </p>
+
+    </div>
+
   </div>
 
+
+  <!-- SLIDE 4 -->
 
   <div class="slide">
 
@@ -1805,24 +1883,22 @@ footer strong{
       alt="Technical workshop"
     >
 
-  </div>
+    <div class="hero-content">
 
+      <div class="tag">
+        ACE TECHNICAL SILIGURI
+      </div>
 
-  <!-- SMALL LIGHT TEXT -->
+      <h1>
+        Your Future<br>
+        Starts With Skills.
+      </h1>
 
-  <div class="hero-content">
+      <p>
+        Build practical knowledge for tomorrow.
+      </p>
 
-    <div class="tag">
-      PRACTICAL TECHNICAL TRAINING
     </div>
-
-    <h1>
-      Learn Practical Technical Skills
-    </h1>
-
-    <p>
-      Hands-on training at ACE Technical Siliguri.
-    </p>
 
   </div>
 
@@ -2954,7 +3030,7 @@ document
 
 /* =================================================
    MOBILE COURSES DROPDOWN
-   OPENS EXACTLY UNDER COURSES
+   CENTERED DIRECTLY UNDER COURSES
    ================================================= */
 
 const coursesMenu =
@@ -2974,24 +3050,9 @@ coursesMenu.addEventListener(
 
       event.stopPropagation();
 
-      const isOpen =
-        coursesDropdown.classList.contains(
-          "mobile-open"
-        );
-
-      if(isOpen){
-
-        coursesDropdown.classList.remove(
-          "mobile-open"
-        );
-
-      }else{
-
-        coursesDropdown.classList.add(
-          "mobile-open"
-        );
-
-      }
+      coursesDropdown.classList.toggle(
+        "mobile-open"
+      );
 
     }
 
