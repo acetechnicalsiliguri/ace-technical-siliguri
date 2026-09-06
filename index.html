@@ -1,47 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>ACE TECHNICAL SILIGURI | Practical Technical Training Institute</title>
 
   <meta
     name="description"
-    content="ACE TECHNICAL SILIGURI is a practical technical training institute in Siliguri offering hands-on courses in mobile, Android, iPhone, laptop, computer, LED/LCD TV repairing and basic electronics."
-  >
+    content="ACE TECHNICAL SILIGURI is a practical technical training institute in Siliguri offering hands-on training in mobile, Android, iPhone, laptop, computer, LED/LCD TV repairing and basic electronics."
+  />
 
   <meta
     name="keywords"
     content="Technical Training Institute Siliguri, Mobile Repairing Course Siliguri, Laptop Repairing Course Siliguri, Computer Repairing Course Siliguri, Electronics Training Siliguri"
-  >
+  />
 
-  <meta name="author" content="ACE TECHNICAL SILIGURI">
-
-  <meta name="robots" content="index, follow">
-
-  <meta name="theme-color" content="#0b1220">
+  <meta name="author" content="ACE TECHNICAL SILIGURI" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#07111f" />
 
   <link
     rel="canonical"
     href="https://acetechnicalsiliguri.github.io/ace-technical-siliguri/"
-  >
+  />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="ACE TECHNICAL SILIGURI">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="ACE TECHNICAL SILIGURI" />
   <meta
     property="og:description"
     content="Practical Technical Training Institute in Siliguri."
-  >
+  />
   <meta
     property="og:url"
     content="https://acetechnicalsiliguri.github.io/ace-technical-siliguri/"
-  >
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="ACE TECHNICAL SILIGURI">
+  />
+  <meta property="og:site_name" content="ACE TECHNICAL SILIGURI" />
 
-  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -59,10 +54,22 @@
   </script>
 
   <style>
-
-    /* =========================
-       GLOBAL
-    ========================= */
+    :root {
+      --bg: #07111f;
+      --bg-2: #0b1728;
+      --card: #101f33;
+      --card-2: #12253d;
+      --text: #f5f8fc;
+      --muted: #9eafc4;
+      --line: rgba(255,255,255,.09);
+      --primary: #3b82f6;
+      --primary-2: #60a5fa;
+      --cyan: #22d3ee;
+      --white: #ffffff;
+      --shadow: 0 25px 70px rgba(0,0,0,.28);
+      --radius: 24px;
+      --max: 1180px;
+    }
 
     * {
       margin: 0;
@@ -76,639 +83,848 @@
 
     body {
       font-family:
-        Arial,
-        Helvetica,
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
         sans-serif;
-      background: #f7f9fc;
-      color: #111827;
+      background:
+        radial-gradient(circle at 80% 0%, rgba(37,99,235,.16), transparent 30%),
+        var(--bg);
+      color: var(--text);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
     }
 
     img {
-      max-width: 100%;
       display: block;
+      width: 100%;
+    }
+
+    button {
+      font: inherit;
     }
 
     .container {
-      width: min(1180px, 92%);
-      margin: auto;
+      width: min(calc(100% - 40px), var(--max));
+      margin-inline: auto;
     }
-
 
     /* =========================
        HEADER
-    ========================= */
+    ========================== */
 
     header {
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 1000;
-      background: rgba(255,255,255,0.97);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid #e5e7eb;
+      background: rgba(7,17,31,.72);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
     }
 
     .nav {
-      min-height: 72px;
+      height: 78px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
     }
 
-    .logo {
-      font-size: 21px;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
       font-weight: 800;
-      color: #0f172a;
-      letter-spacing: -0.4px;
-      white-space: nowrap;
+      letter-spacing: -.4px;
     }
 
-    .logo span {
-      color: #2563eb;
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #2563eb, #22d3ee);
+      color: white;
+      font-size: 20px;
+      box-shadow: 0 10px 30px rgba(37,99,235,.3);
+    }
+
+    .brand-name {
+      font-size: 15px;
+      white-space: nowrap;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 26px;
-      list-style: none;
+      gap: 6px;
     }
 
     .nav-links a {
+      padding: 9px 12px;
+      border-radius: 10px;
+      color: #b9c6d6;
       font-size: 14px;
       font-weight: 600;
-      color: #334155;
-      transition: 0.25s;
+      transition: .25s ease;
     }
 
     .nav-links a:hover {
-      color: #2563eb;
+      color: white;
+      background: rgba(255,255,255,.06);
     }
 
-    .apply-btn {
-      background: #2563eb !important;
+    .nav-cta {
+      margin-left: 8px;
+      padding: 11px 17px !important;
       color: white !important;
-      padding: 11px 17px;
-      border-radius: 10px;
-    }
-
-    .apply-btn:hover {
-      background: #1d4ed8 !important;
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      box-shadow: 0 8px 25px rgba(37,99,235,.25);
     }
 
     .menu-btn {
       display: none;
-      border: none;
+      border: 0;
       background: transparent;
-      font-size: 28px;
+      color: white;
       cursor: pointer;
-      color: #0f172a;
+      font-size: 26px;
     }
-
 
     /* =========================
        HERO
-    ========================= */
+    ========================== */
 
     .hero {
-      background:
-        linear-gradient(
-          135deg,
-          #eff6ff 0%,
-          #ffffff 48%,
-          #eef2ff 100%
-        );
-      padding: 76px 0 70px;
-      overflow: hidden;
+      min-height: 100vh;
+      padding: 145px 0 75px;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: rgba(37,99,235,.12);
+      filter: blur(100px);
+      top: 10%;
+      right: -150px;
+      pointer-events: none;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.02fr .98fr;
+      gap: 65px;
       align-items: center;
-      gap: 55px;
     }
 
-    .hero-content {
-      max-width: 610px;
-    }
-
-    .hero-badge {
+    .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 13px;
+      padding: 7px 12px;
+      border: 1px solid rgba(96,165,250,.2);
+      background: rgba(59,130,246,.08);
+      color: #93c5fd;
       border-radius: 999px;
-      background: #dbeafe;
-      color: #1d4ed8;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
-      margin-bottom: 18px;
+      letter-spacing: .3px;
+      margin-bottom: 23px;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22d3ee;
+      box-shadow: 0 0 14px #22d3ee;
     }
 
     .hero h1 {
-      font-size: clamp(38px, 5vw, 62px);
-      line-height: 1.08;
-      letter-spacing: -1.8px;
-      color: #0f172a;
-      margin-bottom: 20px;
+      font-size: clamp(45px, 6vw, 76px);
+      line-height: .98;
+      letter-spacing: -3.5px;
+      max-width: 700px;
+      margin-bottom: 24px;
     }
 
     .hero h1 span {
-      color: #2563eb;
+      background: linear-gradient(90deg, #60a5fa, #22d3ee);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .hero-text {
-      font-size: 18px;
-      color: #475569;
-      max-width: 560px;
-      margin-bottom: 30px;
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 610px;
+      line-height: 1.8;
+      margin-bottom: 31px;
     }
 
-    .hero-buttons {
+    .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 13px;
+      gap: 12px;
+      margin-bottom: 32px;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 13px 20px;
-      border-radius: 10px;
-      font-weight: 700;
+      gap: 9px;
+      min-height: 50px;
+      padding: 0 20px;
+      border-radius: 13px;
+      font-weight: 750;
       font-size: 14px;
-      transition: 0.25s;
+      transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
     }
 
     .btn-primary {
-      background: #2563eb;
-      color: white;
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      box-shadow: 0 15px 35px rgba(37,99,235,.25);
     }
 
     .btn-primary:hover {
-      background: #1d4ed8;
-      transform: translateY(-2px);
+      box-shadow: 0 20px 40px rgba(37,99,235,.35);
     }
 
     .btn-secondary {
-      background: white;
-      color: #1e3a8a;
-      border: 1px solid #bfdbfe;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.045);
+      color: #e2e8f0;
     }
 
     .btn-secondary:hover {
-      border-color: #2563eb;
-      transform: translateY(-2px);
+      background: rgba(255,255,255,.08);
     }
 
+    .hero-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      color: #9fb0c4;
+      font-size: 13px;
+    }
+
+    .hero-point {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .check {
+      width: 19px;
+      height: 19px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(34,211,238,.12);
+      color: #67e8f9;
+      font-size: 11px;
+    }
 
     /* =========================
        HERO SLIDER
-    ========================= */
+    ========================== */
 
-    .hero-slider {
+    .visual-wrap {
       position: relative;
-      width: 100%;
-      height: 430px;
-      border-radius: 24px;
-      overflow: hidden;
-      background: #dbeafe;
-      box-shadow:
-        0 25px 60px rgba(15, 23, 42, 0.16);
     }
 
-    .hero-slide {
+    .slider {
+      position: relative;
+      aspect-ratio: 4 / 4.25;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.1);
+      background: #0d1a2b;
+      box-shadow: var(--shadow);
+    }
+
+    .slide {
       position: absolute;
       inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
       opacity: 0;
+      transition: opacity 1s ease, transform 6s ease;
       transform: scale(1.04);
-      transition:
-        opacity 0.8s ease,
-        transform 4s ease;
     }
 
-    .hero-slide.active {
+    .slide.active {
       opacity: 1;
       transform: scale(1);
     }
 
-    .slider-overlay {
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slide::after {
+      content: "";
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(
-          to top,
-          rgba(15,23,42,0.72),
-          rgba(15,23,42,0.04) 55%
-        );
-      pointer-events: none;
+        linear-gradient(to top, rgba(4,10,19,.82), transparent 55%),
+        linear-gradient(to right, rgba(4,10,19,.18), transparent);
     }
 
-    .slider-caption {
+    .slider-content {
       position: absolute;
-      left: 25px;
-      right: 25px;
-      bottom: 45px;
-      color: white;
-      z-index: 3;
+      left: 28px;
+      right: 28px;
+      bottom: 25px;
+      z-index: 5;
     }
 
-    .slider-caption small {
-      display: block;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      opacity: 0.9;
-      margin-bottom: 6px;
+    .slider-tag {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
+      backdrop-filter: blur(10px);
+      color: #dbeafe;
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 9px;
     }
 
-    .slider-caption h3 {
+    .slider-content h3 {
       font-size: 24px;
-      line-height: 1.2;
+      letter-spacing: -.6px;
+      margin-bottom: 5px;
+    }
+
+    .slider-content p {
+      color: #c1ccda;
+      font-size: 13px;
     }
 
     .slider-dots {
       position: absolute;
-      bottom: 18px;
-      left: 0;
-      right: 0;
+      z-index: 10;
+      top: 22px;
+      right: 22px;
       display: flex;
-      justify-content: center;
-      gap: 8px;
-      z-index: 5;
+      gap: 6px;
     }
 
-    .slider-dot {
-      width: 9px;
-      height: 9px;
-      border: none;
+    .dot {
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.55);
-      cursor: pointer;
-      transition: 0.3s;
+      background: rgba(255,255,255,.38);
+      transition: .3s ease;
     }
 
-    .slider-dot.active {
-      width: 25px;
-      border-radius: 20px;
+    .dot.active {
+      width: 24px;
+      border-radius: 10px;
       background: white;
     }
 
+    .floating-card {
+      position: absolute;
+      left: -28px;
+      bottom: 35px;
+      z-index: 20;
+      width: 185px;
+      padding: 15px;
+      border-radius: 17px;
+      background: rgba(10,25,42,.86);
+      border: 1px solid rgba(255,255,255,.1);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 20px 45px rgba(0,0,0,.3);
+    }
+
+    .floating-icon {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: rgba(59,130,246,.14);
+      color: #60a5fa;
+      margin-bottom: 9px;
+    }
+
+    .floating-card strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+
+    .floating-card small {
+      color: #8fa1b7;
+      font-size: 11px;
+    }
 
     /* =========================
        SECTION
-    ========================= */
+    ========================== */
 
     section {
-      padding: 78px 0;
+      padding: 105px 0;
     }
 
-    .section-heading {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 45px;
+    .section-head {
+      max-width: 690px;
+      margin-bottom: 45px;
     }
 
-    .section-heading span {
-      display: inline-block;
-      color: #2563eb;
-      font-size: 13px;
+    .section-kicker {
+      color: #60a5fa;
+      font-size: 12px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 1.4px;
-      margin-bottom: 8px;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
     }
 
-    .section-heading h2 {
-      font-size: clamp(30px, 4vw, 42px);
-      color: #0f172a;
-      margin-bottom: 12px;
+    .section-title {
+      font-size: clamp(32px, 4vw, 50px);
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 15px;
     }
 
-    .section-heading p {
-      color: #64748b;
-      font-size: 16px;
+    .section-desc {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
     }
-
 
     /* =========================
        COURSES
-    ========================= */
+    ========================== */
 
-    .courses {
-      background: white;
+    .courses-section {
+      background:
+        linear-gradient(rgba(255,255,255,.018), rgba(255,255,255,.018));
+      border-top: 1px solid rgba(255,255,255,.04);
+      border-bottom: 1px solid rgba(255,255,255,.04);
     }
 
     .course-grid {
       display: grid;
-      grid-template-columns:
-        repeat(4, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
     }
 
     .course-card {
-      background: #ffffff;
-      border: 1px solid #e5e7eb;
-      border-radius: 16px;
+      position: relative;
       padding: 25px;
-      transition: 0.3s;
+      min-height: 245px;
+      border: 1px solid var(--line);
+      border-radius: 21px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.055), rgba(255,255,255,.018));
+      transition: .3s ease;
+      overflow: hidden;
+    }
+
+    .course-card::before {
+      content: "";
+      position: absolute;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: rgba(37,99,235,.11);
+      filter: blur(40px);
+      top: -70px;
+      right: -50px;
     }
 
     .course-card:hover {
       transform: translateY(-6px);
-      border-color: #bfdbfe;
-      box-shadow:
-        0 18px 35px rgba(15,23,42,0.08);
+      border-color: rgba(96,165,250,.3);
+      box-shadow: 0 20px 50px rgba(0,0,0,.2);
+    }
+
+    .course-number {
+      color: #60758e;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 27px;
     }
 
     .course-icon {
-      width: 48px;
-      height: 48px;
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
       border-radius: 12px;
-      background: #dbeafe;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 23px;
+      background: rgba(59,130,246,.1);
+      color: #60a5fa;
+      font-size: 19px;
       margin-bottom: 18px;
     }
 
     .course-card h3 {
-      font-size: 18px;
+      font-size: 17px;
       margin-bottom: 9px;
-      color: #0f172a;
+      letter-spacing: -.3px;
     }
 
     .course-card p {
-      color: #64748b;
-      font-size: 14px;
-      margin-bottom: 13px;
+      color: #8fa1b7;
+      font-size: 12px;
+      line-height: 1.7;
     }
-
-    .course-meta {
-      font-size: 13px;
-      color: #2563eb;
-      font-weight: 700;
-    }
-
 
     /* =========================
-       WHY CHOOSE US
-    ========================= */
-
-    .why {
-      background: #f8fafc;
-    }
+       WHY US
+    ========================== */
 
     .why-grid {
       display: grid;
-      grid-template-columns:
-        repeat(3, 1fr);
-      gap: 22px;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 75px;
+      align-items: center;
     }
 
-    .why-card {
-      background: white;
-      padding: 30px;
-      border-radius: 18px;
-      border: 1px solid #e5e7eb;
+    .why-visual {
+      position: relative;
+      min-height: 470px;
+      border-radius: 28px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, #102541, #081321);
+      border: 1px solid var(--line);
     }
 
-    .why-number {
-      font-size: 14px;
-      font-weight: 800;
-      color: #2563eb;
-      margin-bottom: 14px;
+    .why-visual::before {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      background: rgba(34,211,238,.1);
+      border-radius: 50%;
+      filter: blur(80px);
+      top: 60px;
+      left: 50px;
     }
 
-    .why-card h3 {
-      font-size: 20px;
-      margin-bottom: 10px;
+    .circuit {
+      position: absolute;
+      inset: 45px;
+      border: 1px solid rgba(96,165,250,.12);
+      border-radius: 22px;
+      background:
+        linear-gradient(90deg, transparent 49%, rgba(96,165,250,.08) 50%, transparent 51%),
+        linear-gradient(transparent 49%, rgba(96,165,250,.08) 50%, transparent 51%);
+      background-size: 60px 60px;
     }
 
-    .why-card p {
-      color: #64748b;
-      font-size: 14px;
-    }
-
-
-    /* =========================
-       STATS
-    ========================= */
-
-    .stats {
-      background: #0f172a;
-      color: white;
-    }
-
-    .stats-grid {
+    .center-tech {
+      position: absolute;
+      inset: 0;
       display: grid;
-      grid-template-columns:
-        repeat(3, 1fr);
-      gap: 20px;
-      text-align: center;
+      place-items: center;
     }
 
-    .stat-box {
-      padding: 25px;
+    .tech-orb {
+      width: 165px;
+      height: 165px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle, rgba(59,130,246,.45), rgba(7,17,31,.2) 60%);
+      border: 1px solid rgba(96,165,250,.25);
+      box-shadow:
+        0 0 80px rgba(37,99,235,.18),
+        inset 0 0 50px rgba(34,211,238,.08);
     }
 
-    .stat-number {
-      font-size: 42px;
-      font-weight: 800;
-      margin-bottom: 5px;
+    .tech-orb span {
+      font-size: 48px;
+      font-weight: 900;
+      color: #e0f2fe;
     }
 
-    .stat-label {
-      color: #cbd5e1;
-      font-size: 14px;
+    .why-list {
+      display: grid;
+      gap: 13px;
     }
 
+    .why-item {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 15px;
+      padding: 19px;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: rgba(255,255,255,.025);
+      transition: .25s ease;
+    }
+
+    .why-item:hover {
+      background: rgba(255,255,255,.045);
+      transform: translateX(4px);
+    }
+
+    .why-icon {
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: rgba(59,130,246,.1);
+      color: #60a5fa;
+    }
+
+    .why-item h3 {
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .why-item p {
+      color: #8fa1b7;
+      font-size: 12px;
+      line-height: 1.7;
+    }
 
     /* =========================
-       ABOUT PREVIEW
-    ========================= */
+       ABOUT STRIP
+    ========================== */
 
-    .about-preview {
-      background: white;
+    .about-strip {
+      background: #0a1727;
+      border-block: 1px solid rgba(255,255,255,.05);
     }
 
     .about-grid {
       display: grid;
-      grid-template-columns:
-        1fr 1fr;
-      gap: 55px;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 50px;
       align-items: center;
     }
 
-    .about-box {
-      background: #eff6ff;
+    .about-copy p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.9;
+      margin-bottom: 23px;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .mini-card {
+      padding: 21px;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: rgba(255,255,255,.025);
+    }
+
+    .mini-card strong {
+      display: block;
+      font-size: 24px;
+      margin-bottom: 2px;
+    }
+
+    .mini-card span {
+      color: #899bb0;
+      font-size: 12px;
+    }
+
+    /* =========================
+       GALLERY PREVIEW
+    ========================== */
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.3fr .7fr .7fr;
+      grid-template-rows: 200px 200px;
+      gap: 14px;
+    }
+
+    .gallery-item {
+      overflow: hidden;
       border-radius: 20px;
-      padding: 40px;
+      border: 1px solid var(--line);
+      position: relative;
     }
 
-    .about-box h3 {
-      font-size: 28px;
-      margin-bottom: 15px;
-      color: #0f172a;
+    .gallery-item:first-child {
+      grid-row: 1 / 3;
     }
 
-    .about-box p {
-      color: #475569;
-      margin-bottom: 15px;
+    .gallery-item img {
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s ease;
     }
 
-    .about-list {
-      list-style: none;
-      margin-top: 20px;
+    .gallery-item:hover img {
+      transform: scale(1.06);
     }
 
-    .about-list li {
-      margin-bottom: 10px;
-      color: #334155;
-      font-weight: 600;
+    .gallery-overlay {
+      position: absolute;
+      inset: auto 0 0;
+      padding: 18px;
+      background: linear-gradient(transparent, rgba(0,0,0,.75));
+      font-size: 13px;
+      font-weight: 700;
     }
-
 
     /* =========================
        CTA
-    ========================= */
-
-    .cta {
-      padding: 75px 0;
-      background:
-        linear-gradient(
-          135deg,
-          #1d4ed8,
-          #2563eb
-        );
-      color: white;
-    }
+    ========================== */
 
     .cta-box {
-      text-align: center;
-      max-width: 750px;
-      margin: auto;
+      position: relative;
+      overflow: hidden;
+      padding: 65px;
+      border-radius: 30px;
+      border: 1px solid rgba(96,165,250,.16);
+      background:
+        radial-gradient(circle at 85% 20%, rgba(34,211,238,.16), transparent 28%),
+        radial-gradient(circle at 15% 90%, rgba(37,99,235,.22), transparent 35%),
+        #0c1b2e;
+      box-shadow: var(--shadow);
     }
 
-    .cta h2 {
-      font-size: clamp(30px, 4vw, 45px);
-      line-height: 1.15;
-      margin-bottom: 14px;
+    .cta-box h2 {
+      font-size: clamp(31px, 4vw, 48px);
+      line-height: 1.05;
+      letter-spacing: -1.8px;
+      max-width: 650px;
+      margin-bottom: 15px;
     }
 
-    .cta p {
-      color: #dbeafe;
-      margin-bottom: 25px;
+    .cta-box p {
+      color: #9eafc4;
+      max-width: 600px;
+      margin-bottom: 27px;
+      font-size: 14px;
     }
-
-    .cta .btn {
-      background: white;
-      color: #1d4ed8;
-    }
-
 
     /* =========================
        FOOTER
-    ========================= */
+    ========================== */
 
     footer {
-      background: #020617;
-      color: white;
-      padding: 55px 0 25px;
+      padding: 60px 0 25px;
+      border-top: 1px solid rgba(255,255,255,.06);
     }
 
     .footer-grid {
       display: grid;
-      grid-template-columns:
-        1.4fr 1fr 1fr;
-      gap: 40px;
-      padding-bottom: 35px;
-    }
-
-    .footer-brand h3 {
-      font-size: 21px;
-      margin-bottom: 12px;
+      grid-template-columns: 1.5fr .7fr .7fr;
+      gap: 50px;
+      padding-bottom: 45px;
     }
 
     .footer-brand p {
-      color: #94a3b8;
-      max-width: 400px;
-      font-size: 14px;
+      color: #8395aa;
+      max-width: 380px;
+      font-size: 13px;
+      line-height: 1.8;
+      margin-top: 15px;
     }
 
-    footer h4 {
-      margin-bottom: 14px;
-      font-size: 15px;
+    .footer-col h4 {
+      font-size: 13px;
+      margin-bottom: 15px;
     }
 
-    .footer-links {
-      list-style: none;
-    }
-
-    .footer-links li {
+    .footer-col a {
+      display: block;
+      color: #8395aa;
+      font-size: 12px;
       margin-bottom: 9px;
+      transition: .2s;
     }
 
-    .footer-links a {
-      color: #94a3b8;
-      font-size: 14px;
-      transition: 0.25s;
-    }
-
-    .footer-links a:hover {
+    .footer-col a:hover {
       color: white;
     }
 
     .copyright {
-      border-top: 1px solid #1e293b;
       padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,.06);
+      color: #68798e;
+      font-size: 11px;
       text-align: center;
-      color: #64748b;
-      font-size: 13px;
     }
 
+    /* =========================
+       ANIMATION
+    ========================== */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     /* =========================
        RESPONSIVE
-    ========================= */
+    ========================== */
 
-    @media (max-width: 1000px) {
-
-      .course-grid {
-        grid-template-columns:
-          repeat(2, 1fr);
+    @media (max-width: 1050px) {
+      .nav-links a {
+        padding: 8px;
+        font-size: 13px;
       }
 
       .hero-grid {
-        gap: 35px;
+        gap: 40px;
       }
 
-      .hero-slider {
-        height: 380px;
+      .course-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .why-grid {
+        gap: 45px;
       }
     }
 
-
-    @media (max-width: 780px) {
-
-      .nav {
-        min-height: 65px;
+    @media (max-width: 820px) {
+      .container {
+        width: min(calc(100% - 28px), var(--max));
       }
 
-      .logo {
-        font-size: 18px;
+      .nav {
+        height: 70px;
       }
 
       .menu-btn {
@@ -716,613 +932,477 @@
       }
 
       .nav-links {
-        display: none;
         position: absolute;
-        top: 65px;
-        left: 0;
-        right: 0;
-        background: white;
-        border-bottom: 1px solid #e5e7eb;
+        top: 70px;
+        left: 14px;
+        right: 14px;
+        padding: 12px;
+        display: none;
         flex-direction: column;
         align-items: stretch;
-        gap: 0;
-        padding: 10px 20px 20px;
+        background: rgba(8,20,35,.96);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        backdrop-filter: blur(20px);
+        box-shadow: 0 20px 50px rgba(0,0,0,.3);
       }
 
       .nav-links.show {
         display: flex;
       }
 
-      .nav-links li {
-        width: 100%;
-      }
-
       .nav-links a {
-        display: block;
-        padding: 12px 5px;
+        padding: 12px;
       }
 
-      .apply-btn {
+      .nav-cta {
+        margin-left: 0;
         text-align: center;
-        margin-top: 5px;
       }
 
       .hero {
-        padding: 50px 0;
+        padding-top: 115px;
       }
 
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-content {
-        max-width: none;
-      }
-
-      .hero h1 {
-        font-size: 42px;
-      }
-
-      .hero-slider {
-        height: 360px;
-      }
-
+      .hero-grid,
+      .why-grid,
       .about-grid {
         grid-template-columns: 1fr;
       }
 
-      .why-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .stats-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-    }
-
-
-    @media (max-width: 520px) {
-
       .hero h1 {
-        font-size: 36px;
+        letter-spacing: -2.5px;
       }
 
-      .hero-text {
-        font-size: 16px;
-      }
-
-      .hero-buttons {
-        flex-direction: column;
-      }
-
-      .hero-buttons .btn {
+      .visual-wrap {
+        max-width: 650px;
+        margin: 15px auto 0;
         width: 100%;
       }
 
-      .hero-slider {
-        height: 300px;
-        border-radius: 18px;
+      .floating-card {
+        left: 12px;
       }
 
-      .slider-caption {
-        left: 18px;
-        right: 18px;
-        bottom: 40px;
+      .why-visual {
+        min-height: 360px;
       }
 
-      .slider-caption h3 {
-        font-size: 20px;
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero {
+        padding-bottom: 55px;
+      }
+
+      .hero h1 {
+        font-size: 43px;
+      }
+
+      .hero-text {
+        font-size: 15px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .hero-points {
+        display: grid;
+        gap: 10px;
+      }
+
+      .slider {
+        aspect-ratio: 1 / 1.05;
+        border-radius: 23px;
+      }
+
+      .floating-card {
+        bottom: 18px;
+        left: 10px;
+        width: 165px;
+      }
+
+      section {
+        padding: 75px 0;
       }
 
       .course-grid {
         grid-template-columns: 1fr;
       }
 
-      section {
-        padding: 60px 0;
+      .course-card {
+        min-height: 210px;
       }
 
-      .about-box {
-        padding: 27px;
+      .why-visual {
+        min-height: 300px;
+      }
+
+      .circuit {
+        inset: 25px;
+      }
+
+      .tech-orb {
+        width: 125px;
+        height: 125px;
+      }
+
+      .tech-orb span {
+        font-size: 37px;
+      }
+
+      .mini-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 190px 140px;
+      }
+
+      .gallery-item:first-child {
+        grid-column: 1 / -1;
+        grid-row: auto;
+      }
+
+      .cta-box {
+        padding: 38px 25px;
+        border-radius: 23px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .footer-brand {
+        grid-column: auto;
       }
     }
-
   </style>
 </head>
 
-
 <body>
 
-
-  <!-- =========================
-       HEADER
-  ========================= -->
-
+  <!-- HEADER -->
   <header>
-
     <div class="container nav">
 
-      <a href="index.html" class="logo">
-        ACE TECHNICAL <span>SILIGURI</span>
+      <a href="#home" class="brand">
+        <div class="brand-mark">A</div>
+        <div class="brand-name">ACE TECHNICAL SILIGURI</div>
       </a>
 
-      <button
-        class="menu-btn"
-        id="menuBtn"
-        aria-label="Open Menu"
-      >
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">
         ☰
       </button>
 
-      <ul class="nav-links" id="navLinks">
-
-        <li>
-          <a href="index.html">Home</a>
-        </li>
-
-        <li>
-          <a href="courses.html">Courses</a>
-        </li>
-
-        <li>
-          <a href="about.html">About</a>
-        </li>
-
-        <li>
-          <a href="gallery.html">Gallery</a>
-        </li>
-
-        <li>
-          <a href="admission.html">Admission</a>
-        </li>
-
-        <li>
-          <a href="contact.html">Contact</a>
-        </li>
-
-        <li>
-          <a
-            href="admission.html"
-            class="apply-btn"
-          >
-            Apply Now
-          </a>
-        </li>
-
-      </ul>
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#courses">Courses</a>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="admission.html">Admission</a>
+        <a href="contact.html">Contact</a>
+        <a href="admission.html" class="nav-cta">Apply Now</a>
+      </nav>
 
     </div>
-
   </header>
 
 
-  <!-- =========================
-       HERO
-  ========================= -->
-
-  <main>
+  <!-- HERO -->
+  <main id="home">
 
     <section class="hero">
-
       <div class="container hero-grid">
 
-        <div class="hero-content">
+        <div class="hero-copy reveal">
 
-          <div class="hero-badge">
-            ⚡ Practical Technical Training
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            PRACTICAL TECHNICAL TRAINING · SILIGURI
           </div>
 
           <h1>
-            Build Practical Skills at
-            <span>ACE TECHNICAL SILIGURI</span>
+            Learn Skills.<br />
+            Build Your <span>Future.</span>
           </h1>
 
           <p class="hero-text">
-            Learn practical repairing and electronics skills
-            through hands-on training designed to help you
-            build real technical confidence.
+            Practical technical training designed to help students
+            understand real-world repairing and electronics skills
+            through hands-on learning.
           </p>
 
-          <div class="hero-buttons">
-
-            <a
-              href="courses.html"
-              class="btn btn-primary"
-            >
+          <div class="hero-actions">
+            <a href="#courses" class="btn btn-primary">
               Explore Courses
+              <span>→</span>
             </a>
 
-            <a
-              href="admission.html"
-              class="btn btn-secondary"
-            >
+            <a href="admission.html" class="btn btn-secondary">
               Admission Enquiry
             </a>
+          </div>
 
+          <div class="hero-points">
+            <div class="hero-point">
+              <span class="check">✓</span>
+              Hands-on learning
+            </div>
+
+            <div class="hero-point">
+              <span class="check">✓</span>
+              Practical-focused training
+            </div>
+
+            <div class="hero-point">
+              <span class="check">✓</span>
+              Siliguri
+            </div>
           </div>
 
         </div>
 
 
-        <!-- HERO SLIDESHOW -->
+        <!-- SLIDER -->
+        <div class="visual-wrap reveal">
 
-        <div class="hero-slider">
+          <div class="slider" id="slider">
 
-          <!--
-            DEMO PHOTOS
+            <div class="slide active">
+              <img
+                src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=85"
+                alt="Electronics practical training"
+              />
+            </div>
 
-            Later these image URLs will be managed
-            through the Admin Panel + Supabase.
-          -->
+            <div class="slide">
+              <img
+                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=85"
+                alt="Technical practical learning"
+              />
+            </div>
 
-          <img
-            class="hero-slide active"
-            src="https://picsum.photos/seed/ace-training-1/1200/800"
-            alt="Practical technical training at ACE TECHNICAL SILIGURI"
-          >
+            <div class="slide">
+              <img
+                src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=85"
+                alt="Modern electronics technology"
+              />
+            </div>
 
-          <img
-            class="hero-slide"
-            src="https://picsum.photos/seed/ace-electronics-2/1200/800"
-            alt="Electronics practical training"
-          >
+            <div class="slide">
+              <img
+                src="https://images.unsplash.com/photo-1593642532744-d377ab507dc8?auto=format&fit=crop&w=1200&q=85"
+                alt="Computer technical training"
+              />
+            </div>
 
-          <img
-            class="hero-slide"
-            src="https://picsum.photos/seed/ace-computer-3/1200/800"
-            alt="Computer technical training"
-          >
+            <div class="slider-dots" id="sliderDots">
+              <span class="dot active"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
 
-          <img
-            class="hero-slide"
-            src="https://picsum.photos/seed/ace-classroom-4/1200/800"
-            alt="Technical training classroom"
-          >
-
-          <div class="slider-overlay"></div>
-
-          <div class="slider-caption">
-
-            <small>
-              ACE TECHNICAL SILIGURI
-            </small>
-
-            <h3 id="sliderTitle">
-              Practical Learning
-            </h3>
+            <div class="slider-content">
+              <span class="slider-tag">HANDS-ON LEARNING</span>
+              <h3>Learn by doing.</h3>
+              <p>Build practical technical skills with focused training.</p>
+            </div>
 
           </div>
 
-          <div class="slider-dots">
-
-            <button
-              class="slider-dot active"
-              data-slide="0"
-              aria-label="Slide 1"
-            ></button>
-
-            <button
-              class="slider-dot"
-              data-slide="1"
-              aria-label="Slide 2"
-            ></button>
-
-            <button
-              class="slider-dot"
-              data-slide="2"
-              aria-label="Slide 3"
-            ></button>
-
-            <button
-              class="slider-dot"
-              data-slide="3"
-              aria-label="Slide 4"
-            ></button>
-
+          <div class="floating-card">
+            <div class="floating-icon">⚙</div>
+            <strong>Practical Skills</strong>
+            <small>Focused technical learning</small>
           </div>
 
         </div>
 
       </div>
-
     </section>
 
 
-    <!-- =========================
-         COURSES
-    ========================= -->
-
-    <section class="courses" id="courses">
+    <!-- COURSES -->
+    <section class="courses-section" id="courses">
 
       <div class="container">
 
-        <div class="section-heading">
+        <div class="section-head reveal">
+          <div class="section-kicker">Courses</div>
 
-          <span>Our Courses</span>
-
-          <h2>
-            Practical Technical Courses
+          <h2 class="section-title">
+            Skills that have<br />
+            practical value.
           </h2>
 
-          <p>
-            Build useful technical skills through
-            practical-focused learning.
+          <p class="section-desc">
+            Choose a technical course and develop practical knowledge
+            across repairing, electronics and computer technology.
           </p>
-
         </div>
 
 
         <div class="course-grid">
 
-
-          <div class="course-card">
-
-            <div class="course-icon">
-              📱
-            </div>
-
-            <h3>
-              Mobile Repairing
-            </h3>
-
+          <article class="course-card reveal">
+            <div class="course-number">01 / COURSE</div>
+            <div class="course-icon">⌁</div>
+            <h3>Mobile Repairing</h3>
             <p>
-              Learn practical mobile repairing,
-              troubleshooting and basic servicing.
+              Learn practical mobile repairing concepts,
+              components and troubleshooting.
             </p>
+          </article>
 
-            <div class="course-meta">
-              Practical Training
-            </div>
-
-          </div>
-
-
-          <div class="course-card">
-
-            <div class="course-icon">
-              🤖
-            </div>
-
-            <h3>
-              Android Repairing
-            </h3>
-
+          <article class="course-card reveal">
+            <div class="course-number">02 / COURSE</div>
+            <div class="course-icon">▣</div>
+            <h3>Android Repairing</h3>
             <p>
-              Understand Android phone hardware,
-              faults and practical repair techniques.
+              Practical learning focused on Android device
+              repair and common technical problems.
             </p>
+          </article>
 
-            <div class="course-meta">
-              Practical Training
-            </div>
-
-          </div>
-
-
-          <div class="course-card">
-
-            <div class="course-icon">
-              
-            </div>
-
-            <h3>
-              iPhone Repairing
-            </h3>
-
+          <article class="course-card reveal">
+            <div class="course-number">03 / COURSE</div>
+            <div class="course-icon"></div>
+            <h3>iPhone Repairing</h3>
             <p>
-              Learn essential iPhone hardware
-              troubleshooting and repair skills.
+              Understand iPhone hardware, components and
+              practical troubleshooting concepts.
             </p>
+          </article>
 
-            <div class="course-meta">
-              Practical Training
-            </div>
-
-          </div>
-
-
-          <div class="course-card">
-
-            <div class="course-icon">
-              💻
-            </div>
-
-            <h3>
-              Laptop Repairing
-            </h3>
-
+          <article class="course-card reveal">
+            <div class="course-number">04 / COURSE</div>
+            <div class="course-icon">▭</div>
+            <h3>Laptop Repairing</h3>
             <p>
-              Learn laptop hardware servicing,
-              troubleshooting and practical diagnosis.
+              Learn laptop components, hardware problems
+              and practical repair fundamentals.
             </p>
+          </article>
 
-            <div class="course-meta">
-              Practical Training
-            </div>
-
-          </div>
-
-
-          <div class="course-card">
-
-            <div class="course-icon">
-              🖥️
-            </div>
-
-            <h3>
-              Computer Repairing
-            </h3>
-
+          <article class="course-card reveal">
+            <div class="course-number">05 / COURSE</div>
+            <div class="course-icon">▤</div>
+            <h3>Computer Repairing</h3>
             <p>
-              Learn desktop hardware, troubleshooting
-              and practical computer servicing.
+              Build practical knowledge of desktop systems,
+              components and troubleshooting.
             </p>
+          </article>
 
-            <div class="course-meta">
-              Practical Training
-            </div>
-
-          </div>
-
-
-          <div class="course-card">
-
-            <div class="course-icon">
-              📺
-            </div>
-
-            <h3>
-              LED / LCD TV Repairing
-            </h3>
-
+          <article class="course-card reveal">
+            <div class="course-number">06 / COURSE</div>
+            <div class="course-icon">▰</div>
+            <h3>LED / LCD TV Repairing</h3>
             <p>
-              Learn TV troubleshooting and practical
-              electronics repair fundamentals.
+              Learn television electronics, components and
+              practical troubleshooting techniques.
             </p>
+          </article>
 
-            <div class="course-meta">
-              Practical Training
-            </div>
-
-          </div>
-
-
-          <div class="course-card">
-
-            <div class="course-icon">
-              🔌
-            </div>
-
-            <h3>
-              Basic Electronics
-            </h3>
-
+          <article class="course-card reveal">
+            <div class="course-number">07 / COURSE</div>
+            <div class="course-icon">⌘</div>
+            <h3>Basic Electronics</h3>
             <p>
-              Learn electronic components, circuits
-              and essential practical fundamentals.
+              Understand essential electronic components,
+              circuits and practical fundamentals.
             </p>
-
-            <div class="course-meta">
-              Practical Training
-            </div>
-
-          </div>
-
-
-          <div class="course-card">
-
-            <div class="course-icon">
-              🛠️
-            </div>
-
-            <h3>
-              More Practical Skills
-            </h3>
-
-            <p>
-              Explore additional technical skills
-              available through the institute.
-            </p>
-
-            <div class="course-meta">
-              Admission Available
-            </div>
-
-          </div>
-
+          </article>
 
         </div>
 
       </div>
-
     </section>
 
 
-    <!-- =========================
-         WHY CHOOSE US
-    ========================= -->
+    <!-- WHY ACE -->
+    <section id="about">
 
-    <section class="why">
+      <div class="container why-grid">
 
-      <div class="container">
+        <div class="why-visual reveal">
+          <div class="circuit"></div>
 
-        <div class="section-heading">
+          <div class="center-tech">
+            <div class="tech-orb">
+              <span>ACE</span>
+            </div>
+          </div>
+        </div>
 
-          <span>Why Choose Us</span>
 
-          <h2>
-            Learn by Doing
+        <div class="reveal">
+
+          <div class="section-kicker">Why ACE</div>
+
+          <h2 class="section-title">
+            More than theory.<br />
+            Learn practical skills.
           </h2>
 
-          <p>
-            Our focus is on practical learning,
-            step-by-step guidance and skill development.
+          <p class="section-desc" style="margin-bottom:28px;">
+            Our learning approach is focused on helping students
+            understand technical concepts through practical,
+            step-by-step training.
           </p>
 
-        </div>
+          <div class="why-list">
 
-
-        <div class="why-grid">
-
-
-          <div class="why-card">
-
-            <div class="why-number">
-              01
+            <div class="why-item">
+              <div class="why-icon">⚙</div>
+              <div>
+                <h3>Practical Focus</h3>
+                <p>
+                  Focus on real technical concepts and hands-on
+                  learning rather than theory alone.
+                </p>
+              </div>
             </div>
 
-            <h3>
-              Practical Focus
-            </h3>
-
-            <p>
-              Focus on hands-on technical learning
-              and practical understanding.
-            </p>
-
-          </div>
-
-
-          <div class="why-card">
-
-            <div class="why-number">
-              02
+            <div class="why-item">
+              <div class="why-icon">↗</div>
+              <div>
+                <h3>Step-by-Step Learning</h3>
+                <p>
+                  Learn technical topics progressively with
+                  a clear and practical approach.
+                </p>
+              </div>
             </div>
 
-            <h3>
-              Step-by-Step Learning
-            </h3>
-
-            <p>
-              Learn technical concepts gradually
-              with practical guidance.
-            </p>
-
-          </div>
-
-
-          <div class="why-card">
-
-            <div class="why-number">
-              03
+            <div class="why-item">
+              <div class="why-icon">◆</div>
+              <div>
+                <h3>Skill Development</h3>
+                <p>
+                  Develop useful technical knowledge that can
+                  support future career opportunities.
+                </p>
+              </div>
             </div>
 
-            <h3>
-              Skill Development
-            </h3>
-
-            <p>
-              Develop useful technical skills
-              for future opportunities.
-            </p>
-
           </div>
-
 
         </div>
 
@@ -1331,168 +1411,61 @@
     </section>
 
 
-    <!-- =========================
-         STATS
-    ========================= -->
-
-    <section class="stats">
-
-      <div class="container">
-
-        <div class="stats-grid">
-
-
-          <div class="stat-box">
-
-            <div class="stat-number">
-              7+
-            </div>
-
-            <div class="stat-label">
-              Technical Courses
-            </div>
-
-          </div>
-
-
-          <div class="stat-box">
-
-            <div class="stat-number">
-              100%
-            </div>
-
-            <div class="stat-label">
-              Practical Learning Focus
-            </div>
-
-          </div>
-
-
-          <div class="stat-box">
-
-            <div class="stat-number">
-              1
-            </div>
-
-            <div class="stat-label">
-              Student-Focused Approach
-            </div>
-
-          </div>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         ABOUT PREVIEW
-    ========================= -->
-
-    <section class="about-preview">
+    <!-- ABOUT -->
+    <section class="about-strip">
 
       <div class="container about-grid">
 
+        <div class="about-copy reveal">
 
-        <div>
+          <div class="section-kicker">About the Institute</div>
 
-          <div class="section-heading"
-               style="text-align:left; margin:0 0 25px 0;">
-
-            <span>About Us</span>
-
-            <h2>
-              Practical Technical Training in Siliguri
-            </h2>
-
-          </div>
-
-          <p style="color:#475569; margin-bottom:20px;">
-
-            ACE TECHNICAL SILIGURI is focused on
-            practical technical education and
-            hands-on skill development.
-
-          </p>
-
-          <a
-            href="about.html"
-            class="btn btn-primary"
-          >
-            Learn More About Us
-          </a>
-
-        </div>
-
-
-        <div class="about-box">
-
-          <h3>
-            Learn. Practice. Build Skills.
-          </h3>
-
-          <p>
-            Our training approach focuses on
-            practical understanding and technical
-            skill development.
-          </p>
-
-          <ul class="about-list">
-
-            <li>
-              ✓ Practical-focused training
-            </li>
-
-            <li>
-              ✓ Step-by-step learning
-            </li>
-
-            <li>
-              ✓ Technical skill development
-            </li>
-
-            <li>
-              ✓ Student-focused approach
-            </li>
-
-          </ul>
-
-        </div>
-
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         ADMISSION CTA
-    ========================= -->
-
-    <section class="cta">
-
-      <div class="container">
-
-        <div class="cta-box">
-
-          <h2>
-            Ready to Build Your Technical Skills?
+          <h2 class="section-title">
+            Technical learning,<br />
+            made practical.
           </h2>
 
           <p>
-            Explore our courses and send your
-            admission enquiry today.
+            ACE TECHNICAL SILIGURI is a practical technical training
+            institute in Siliguri focused on repairing, electronics
+            and computer-related skills.
           </p>
 
-          <a
-            href="admission.html"
-            class="btn"
-          >
-            Start Admission Enquiry
+          <p>
+            The goal is simple: provide students with structured
+            learning and practical exposure so they can understand
+            technical work with greater confidence.
+          </p>
+
+          <a href="about.html" class="btn btn-secondary">
+            Know More
+            <span>→</span>
           </a>
+
+        </div>
+
+
+        <div class="mini-grid reveal">
+
+          <div class="mini-card">
+            <strong>07</strong>
+            <span>Technical Courses</span>
+          </div>
+
+          <div class="mini-card">
+            <strong>01</strong>
+            <span>Practical Learning Focus</span>
+          </div>
+
+          <div class="mini-card">
+            <strong>∞</strong>
+            <span>Skills to Explore</span>
+          </div>
+
+          <div class="mini-card">
+            <strong>01</strong>
+            <span>Student-Focused Approach</span>
+          </div>
 
         </div>
 
@@ -1500,286 +1473,277 @@
 
     </section>
 
+
+    <!-- GALLERY PREVIEW -->
+    <section id="gallery">
+
+      <div class="container">
+
+        <div class="section-head reveal">
+          <div class="section-kicker">Gallery</div>
+
+          <h2 class="section-title">
+            See the learning<br />
+            environment.
+          </h2>
+
+          <p class="section-desc">
+            A preview of the practical and technical learning
+            environment. More photos can be managed through the
+            future Admin Panel.
+          </p>
+        </div>
+
+
+        <div class="gallery-grid">
+
+          <div class="gallery-item reveal">
+            <img
+              src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=85"
+              alt="Electronics training"
+            />
+            <div class="gallery-overlay">
+              Practical Technology
+            </div>
+          </div>
+
+          <div class="gallery-item reveal">
+            <img
+              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=900&q=85"
+              alt="Technical learning"
+            />
+            <div class="gallery-overlay">
+              Learning
+            </div>
+          </div>
+
+          <div class="gallery-item reveal">
+            <img
+              src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=900&q=85"
+              alt="Electronics technology"
+            />
+            <div class="gallery-overlay">
+              Electronics
+            </div>
+          </div>
+
+          <div class="gallery-item reveal">
+            <img
+              src="https://images.unsplash.com/photo-1593642532744-d377ab507dc8?auto=format&fit=crop&w=900&q=85"
+              alt="Computer technology"
+            />
+            <div class="gallery-overlay">
+              Computer Skills
+            </div>
+          </div>
+
+        </div>
+
+
+        <div style="text-align:center;margin-top:28px;" class="reveal">
+          <a href="gallery.html" class="btn btn-secondary">
+            View Full Gallery →
+          </a>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CTA -->
+    <section>
+
+      <div class="container">
+
+        <div class="cta-box reveal">
+
+          <div class="section-kicker">
+            Admission
+          </div>
+
+          <h2>
+            Ready to build your technical skills?
+          </h2>
+
+          <p>
+            Explore our courses and send an admission enquiry.
+            Start your practical learning journey with
+            ACE TECHNICAL SILIGURI.
+          </p>
+
+          <a href="admission.html" class="btn btn-primary">
+            Start Admission Enquiry
+            <span>→</span>
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
 
   </main>
 
 
-  <!-- =========================
-       FOOTER
-  ========================= -->
-
+  <!-- FOOTER -->
   <footer>
 
     <div class="container">
 
-
       <div class="footer-grid">
-
 
         <div class="footer-brand">
 
-          <h3>
-            ACE TECHNICAL SILIGURI
-          </h3>
+          <a href="#home" class="brand">
+            <div class="brand-mark">A</div>
+            <div class="brand-name">
+              ACE TECHNICAL SILIGURI
+            </div>
+          </a>
 
           <p>
-            Practical Technical Training Institute
-            in Siliguri focused on hands-on learning
-            and technical skill development.
+            Practical Technical Training Institute in Siliguri,
+            focused on hands-on technical learning and skill development.
           </p>
 
         </div>
 
 
-        <div>
-
-          <h4>
-            Quick Links
-          </h4>
-
-          <ul class="footer-links">
-
-            <li>
-              <a href="index.html">
-                Home
-              </a>
-            </li>
-
-            <li>
-              <a href="courses.html">
-                Courses
-              </a>
-            </li>
-
-            <li>
-              <a href="about.html">
-                About
-              </a>
-            </li>
-
-            <li>
-              <a href="gallery.html">
-                Gallery
-              </a>
-            </li>
-
-            <li>
-              <a href="contact.html">
-                Contact
-              </a>
-            </li>
-
-          </ul>
-
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="#courses">Courses</a>
+          <a href="#about">About</a>
+          <a href="#gallery">Gallery</a>
         </div>
 
 
-        <div>
-
-          <h4>
-            Admission
-          </h4>
-
-          <ul class="footer-links">
-
-            <li>
-              <a href="admission.html">
-                Admission Enquiry
-              </a>
-            </li>
-
-            <li>
-              <a href="courses.html">
-                View Courses
-              </a>
-            </li>
-
-          </ul>
-
+        <div class="footer-col">
+          <h4>Admission</h4>
+          <a href="admission.html">Apply Now</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="about.html">About Institute</a>
         </div>
-
 
       </div>
 
 
       <div class="copyright">
-
-        © <span id="year"></span>
-        ACE TECHNICAL SILIGURI.
-        All Rights Reserved.
-
+        © <span id="year"></span> ACE TECHNICAL SILIGURI. All rights reserved.
       </div>
-
 
     </div>
 
   </footer>
 
 
-  <!-- =========================
-       JAVASCRIPT
-  ========================= -->
-
   <script>
 
     /* =========================
        MOBILE MENU
-    ========================= */
+    ========================== */
 
-    const menuBtn =
-      document.getElementById("menuBtn");
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
 
-    const navLinks =
-      document.getElementById("navLinks");
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
 
-    menuBtn.addEventListener(
-      "click",
-      function () {
+      menuBtn.textContent =
+        navLinks.classList.contains("show") ? "✕" : "☰";
+    });
 
-        navLinks.classList.toggle("show");
-
-      }
-    );
-
-
-    /* Close mobile menu after clicking */
-
-    document
-      .querySelectorAll(".nav-links a")
-      .forEach(function(link) {
-
-        link.addEventListener(
-          "click",
-          function() {
-
-            navLinks.classList.remove("show");
-
-          }
-        );
-
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("show");
+        menuBtn.textContent = "☰";
       });
+    });
 
 
     /* =========================
        HERO SLIDER
-    ========================= */
+    ========================== */
 
-    const slides =
-      document.querySelectorAll(".hero-slide");
-
-    const dots =
-      document.querySelectorAll(".slider-dot");
-
-    const sliderTitle =
-      document.getElementById("sliderTitle");
-
-
-    const slideTitles = [
-
-      "Practical Learning",
-
-      "Hands-On Technical Training",
-
-      "Build Real Technical Skills",
-
-      "Learn. Practice. Build Skills."
-
-    ];
-
+    const slides = document.querySelectorAll(".slide");
+    const dots = document.querySelectorAll(".dot");
 
     let currentSlide = 0;
 
-
     function showSlide(index) {
 
-      slides.forEach(function(slide, i) {
-
-        slide.classList.toggle(
-          "active",
-          i === index
-        );
-
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
       });
 
-
-      dots.forEach(function(dot, i) {
-
-        dot.classList.toggle(
-          "active",
-          i === index
-        );
-
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === index);
       });
-
-
-      sliderTitle.textContent =
-        slideTitles[index];
-
-      currentSlide = index;
 
     }
-
 
     function nextSlide() {
 
-      let next =
-        (currentSlide + 1) % slides.length;
+      currentSlide++;
 
-      showSlide(next);
+      if (currentSlide >= slides.length) {
+        currentSlide = 0;
+      }
+
+      showSlide(currentSlide);
 
     }
 
+    setInterval(nextSlide, 4500);
 
-    /* Automatic slideshow */
+    dots.forEach((dot, index) => {
 
-    let sliderTimer =
-      setInterval(
-        nextSlide,
-        3500
-      );
-
-
-    /* Dot navigation */
-
-    dots.forEach(function(dot) {
-
-      dot.addEventListener(
-        "click",
-        function() {
-
-          const index =
-            Number(
-              dot.getAttribute("data-slide")
-            );
-
-          showSlide(index);
-
-
-          clearInterval(sliderTimer);
-
-
-          sliderTimer =
-            setInterval(
-              nextSlide,
-              3500
-            );
-
-        }
-      );
+      dot.addEventListener("click", () => {
+        currentSlide = index;
+        showSlide(currentSlide);
+      });
 
     });
 
 
     /* =========================
-       COPYRIGHT YEAR
-    ========================= */
+       SCROLL REVEAL
+    ========================== */
 
-    document.getElementById("year")
-      .textContent =
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+      entries => {
+
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.12
+      }
+    );
+
+    revealElements.forEach(element => {
+      observer.observe(element);
+    });
+
+
+    /* =========================
+       YEAR
+    ========================== */
+
+    document.getElementById("year").textContent =
       new Date().getFullYear();
 
   </script>
-
 
 </body>
 </html>
