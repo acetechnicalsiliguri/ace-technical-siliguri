@@ -3161,45 +3161,132 @@
 
     renderAds();
 
+/* =========================
+   MOBILE COURSES DROPDOWN
+========================= */
 
-    /* =========================
-       CLOSE DROPDOWN ON MOBILE
-       WHEN CLICKING OUTSIDE
-    ========================== */
+const courseDropdown =
+  document.querySelector(".dropdown");
 
-    document.addEventListener(
-      "click",
-      function(event) {
+const courseDropdownLink =
+  courseDropdown
+    ? courseDropdown.querySelector(":scope > a")
+    : null;
 
-        const dropdown =
-          document.querySelector(
-            ".dropdown"
+const courseDropdownContent =
+  courseDropdown
+    ? courseDropdown.querySelector(".dropdown-content")
+    : null;
+
+
+if (
+  courseDropdown &&
+  courseDropdownLink &&
+  courseDropdownContent
+) {
+
+  courseDropdownLink.addEventListener(
+    "click",
+    function(event) {
+
+      /*
+        Mobile-এ Courses ক্লিক করলে
+        dropdown open হবে।
+      */
+
+      if (window.innerWidth <= 600) {
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        const isOpen =
+          courseDropdownContent.classList.contains(
+            "mobile-open"
           );
 
-        if (
-          dropdown &&
-          !dropdown.contains(
-            event.target
-          )
-        ) {
+        if (isOpen) {
 
-          const content =
-            dropdown.querySelector(
-              ".dropdown-content"
-            );
+          courseDropdownContent.classList.remove(
+            "mobile-open"
+          );
 
-          if (content) {
+          courseDropdownContent.style.opacity = "0";
+          courseDropdownContent.style.visibility = "hidden";
+          courseDropdownContent.style.pointerEvents = "none";
 
-            content.style.opacity = "";
-            content.style.visibility = "";
-            content.style.pointerEvents = "";
+        } else {
 
-          }
+          courseDropdownContent.classList.add(
+            "mobile-open"
+          );
+
+          courseDropdownContent.style.opacity = "1";
+          courseDropdownContent.style.visibility = "visible";
+          courseDropdownContent.style.pointerEvents = "auto";
 
         }
 
       }
+
+    }
+  );
+
+
+  /*
+    Dropdown-এর ভিতরের course-এ click করলে
+    dropdown বন্ধ হবে।
+  */
+
+  const courseLinks =
+    courseDropdownContent.querySelectorAll("a");
+
+  courseLinks.forEach(function(link) {
+
+    link.addEventListener(
+      "click",
+      function() {
+
+        courseDropdownContent.classList.remove(
+          "mobile-open"
+        );
+
+        courseDropdownContent.style.opacity = "0";
+        courseDropdownContent.style.visibility = "hidden";
+        courseDropdownContent.style.pointerEvents = "none";
+
+      }
     );
+
+  });
+
+
+  /*
+    বাইরে click করলে dropdown বন্ধ হবে।
+  */
+
+  document.addEventListener(
+    "click",
+    function(event) {
+
+      if (
+        window.innerWidth <= 600 &&
+        !courseDropdown.contains(event.target)
+      ) {
+
+        courseDropdownContent.classList.remove(
+          "mobile-open"
+        );
+
+        courseDropdownContent.style.opacity = "0";
+        courseDropdownContent.style.visibility = "hidden";
+        courseDropdownContent.style.pointerEvents = "none";
+
+      }
+
+    }
+  );
+
+}
 
   </script>
 
