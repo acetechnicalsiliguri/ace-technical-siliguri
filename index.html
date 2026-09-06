@@ -1,1 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ACE TECHNICAL SILIGURI | Practical Technical Training Institute</title>
+
+  <meta
+    name="description"
+    content="ACE TECHNICAL SILIGURI is a practical technical training institute in Siliguri offering hands-on courses in mobile, Android, iPhone, laptop, computer, LED/LCD TV repairing and basic electronics."
+  >
+
+  <meta
+    name="keywords"
+    content="Technical Training Institute Siliguri, Mobile Repairing Course Siliguri, Laptop Repairing Course Siliguri, Computer Repairing Course Siliguri, Electronics Training Siliguri"
+  >
+
+  <meta name="author" content="ACE TECHNICAL SILIGURI">
+
+  <meta name="robots" content="index, follow">
+
+  <meta name="theme-color" content="#0b1220">
+
+  <!-- Canonical URL
+       Update this after the custom domain is connected. -->
+  <link
+    rel="canonical"
+    href="https://acetechnicalsiliguri.github.io/ace-technical-siliguri/"
+  >
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ACE TECHNICAL SILIGURI">
+  <meta
+    property="og:description"
+    content="Practical Technical Training Institute in Siliguri."
+  >
+  <meta
+    property="og:url"
+    content="https://acetechnicalsiliguri.github.io/ace-technical-siliguri/"
+  >
+  <meta property="og:site_name" content="ACE TECHNICAL SILIGURI">
+
+  <!-- Basic structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "ACE TECHNICAL SILIGURI",
+    "description": "Practical Technical Training Institute in Siliguri.",
+    "url": "https://acetechnicalsiliguri.github.io/ace-technical-siliguri/",
+    "areaServed": "Siliguri",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Siliguri",
+      "addressRegion": "West Bengal",
+      "addressCountry": "IN"
+    }
+  }
+  </script>
+
+  <style>
+    /* ================================
+       RESET
+    ================================= */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      background: #f7f9fc;
+      color: #172033;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    /* ================================
+       HEADER
+    ================================= */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid #e7ebf2;
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    /* IMPORTANT:
+       ACE TECHNICAL SILIGURI appears only once in the header. */
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .brand-name {
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+      color: #0b1220;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #4b5568;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #155eef;
+    }
+
+    .nav-cta {
+      padding: 10px 17px;
+      border-radius: 9px;
+      background: #155eef;
+      color: #fff !important;
+    }
+
+    .nav-cta:hover {
+      background: #0d4dcc;
+    }
+
+    .menu-btn {
+      display: none;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      font-size: 1.6rem;
+      color: #172033;
+    }
+
+    /* ================================
+       HERO
+    ================================= */
+    .hero {
+      padding: 88px 0 78px;
+      background:
+        radial-gradient(circle at top right, rgba(21, 94, 239, 0.10), transparent 32%),
+        linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 55px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #eaf1ff;
+      color: #155eef;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 750px;
+      font-size: clamp(2.25rem, 6vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: -2px;
+      color: #0b1220;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: #155eef;
+    }
+
+    .hero-text {
+      max-width: 650px;
+      font-size: 1.08rem;
+      color: #596579;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 21px;
+      border-radius: 9px;
+      font-weight: 750;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: #155eef;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #0d4dcc;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      border: 1px solid #d8deea;
+      background: #fff;
+      color: #172033;
+    }
+
+    .btn-secondary:hover {
+      border-color: #155eef;
+      color: #155eef;
+    }
+
+    .hero-card {
+      padding: 30px;
+      border: 1px solid #e4e9f2;
+      border-radius: 20px;
+      background: #fff;
+      box-shadow: 0 18px 55px rgba(15, 31, 56, 0.09);
+    }
+
+    .hero-card-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      color: #0b1220;
+    }
+
+    .hero-points {
+      list-style: none;
+      display: grid;
+      gap: 14px;
+    }
+
+    .hero-points li {
+      display: flex;
+      gap: 11px;
+      color: #596579;
+    }
+
+    .hero-points strong {
+      color: #172033;
+    }
+
+    .check {
+      width: 22px;
+      height: 22px;
+      flex: 0 0 22px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #eaf1ff;
+      color: #155eef;
+      font-size: 0.8rem;
+      font-weight: 900;
+      margin-top: 2px;
+    }
+
+    /* ================================
+       SECTION
+    ================================= */
+    .section {
+      padding: 82px 0;
+    }
+
+    .section-light {
+      background: #fff;
+    }
+
+    .section-heading {
+      max-width: 700px;
+      margin-bottom: 42px;
+    }
+
+    .section-heading.center {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .section-label {
+      color: #155eef;
+      font-size: 0.82rem;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1.15;
+      color: #0b1220;
+      margin-bottom: 12px;
+    }
+
+    .section-heading p {
+      color: #667085;
+    }
+
+    /* ================================
+       COURSES
+    ================================= */
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .course-card {
+      padding: 24px;
+      border: 1px solid #e4e9f2;
+      border-radius: 15px;
+      background: #fff;
+      transition: 0.2s ease;
+    }
+
+    .course-card:hover {
+      transform: translateY(-4px);
+      border-color: #cbd9f7;
+      box-shadow: 0 12px 30px rgba(15, 31, 56, 0.07);
+    }
+
+    .course-number {
+      display: inline-flex;
+      width: 35px;
+      height: 35px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9px;
+      background: #eaf1ff;
+      color: #155eef;
+      font-weight: 850;
+      margin-bottom: 17px;
+    }
+
+    .course-card h3 {
+      font-size: 1.08rem;
+      margin-bottom: 8px;
+      color: #172033;
+    }
+
+    .course-card p {
+      font-size: 0.92rem;
+      color: #697386;
+    }
+
+    .course-footer {
+      margin-top: 17px;
+      padding-top: 14px;
+      border-top: 1px solid #edf0f5;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #155eef;
+    }
+
+    /* ================================
+       WHY US
+    ================================= */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .why-card {
+      padding: 28px;
+      border-radius: 16px;
+      background: #f7f9fc;
+      border: 1px solid #e6eaf1;
+    }
+
+    .why-icon {
+      font-size: 1.8rem;
+      margin-bottom: 14px;
+    }
+
+    .why-card h3 {
+      margin-bottom: 8px;
+      color: #172033;
+    }
+
+    .why-card p {
+      color: #667085;
+      font-size: 0.94rem;
+    }
+
+    /* ================================
+       STATS
+    ================================= */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .stat {
+      padding: 28px 20px;
+      text-align: center;
+      border: 1px solid #e4e9f2;
+      border-radius: 15px;
+      background: #fff;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 2rem;
+      line-height: 1;
+      color: #155eef;
+      margin-bottom: 9px;
+    }
+
+    .stat span {
+      color: #697386;
+      font-size: 0.9rem;
+      font-weight: 650;
+    }
+
+    /* ================================
+       CTA
+    ================================= */
+    .cta {
+      padding: 68px 0;
+      background: #0b1220;
+      color: #fff;
+    }
+
+    .cta-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .cta h2 {
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    .cta p {
+      color: #b9c2d0;
+      max-width: 650px;
+    }
+
+    .cta .btn-primary {
+      flex-shrink: 0;
+      background: #fff;
+      color: #0b1220;
+    }
+
+    .cta .btn-primary:hover {
+      background: #eef2f7;
+    }
+
+    /* ================================
+       FOOTER
+    ================================= */
+    .footer {
+      background: #070c15;
+      color: #c7cfdb;
+      padding: 35px 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 35px;
+    }
+
+    .footer h3 {
+      color: #fff;
+      font-size: 1rem;
+      margin-bottom: 11px;
+    }
+
+    .footer p,
+    .footer a {
+      color: #9ca7b7;
+      font-size: 0.9rem;
+    }
+
+    .footer a:hover {
+      color: #fff;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: grid;
+      gap: 7px;
+    }
+
+    .copyright {
+      margin-top: 28px;
+      padding-top: 22px;
+      border-top: 1px solid #1e2634;
+      font-size: 0.82rem;
+      color: #7f8998;
+    }
+
+    /* ================================
+       MOBILE
+    ================================= */
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .course-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .nav {
+        min-height: 66px;
+      }
+
+      .brand-name {
+        font-size: 0.96rem;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 66px;
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 10px 4%;
+        background: #fff;
+        border-bottom: 1px solid #e7ebf2;
+        box-shadow: 0 10px 25px rgba(15, 31, 56, 0.07);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links li {
+        border-bottom: 1px solid #f0f2f6;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 13px 0;
+      }
+
+      .nav-cta {
+        display: inline-block !important;
+        width: fit-content;
+        margin: 8px 0 12px;
+        padding: 9px 15px !important;
+      }
+
+      .hero {
+        padding: 65px 0 55px;
+      }
+
+      .hero h1 {
+        letter-spacing: -1.2px;
+      }
+
+      .hero-text {
+        font-size: 1rem;
+      }
+
+      .section {
+        padding: 65px 0;
+      }
+
+      .course-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .hero-card {
+        padding: 23px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================================
+       HEADER
+  ================================= -->
+  <header class="header">
+    <div class="container nav">
+
+      <!-- Brand appears ONLY ONCE -->
+      <a href="index.html" class="brand" aria-label="ACE TECHNICAL SILIGURI Home">
+        <span class="brand-name">ACE TECHNICAL SILIGURI</span>
+      </a>
+
+      <button
+        class="menu-btn"
+        id="menuBtn"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
+      <nav aria-label="Main navigation">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="admission.html">Admission</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li>
+            <a href="admission.html" class="nav-cta">Apply Now</a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <!-- ================================
+       HERO
+  ================================= -->
+  <main>
+
+    <section class="hero">
+      <div class="container hero-grid">
+
+        <div>
+          <span class="eyebrow">Practical Technical Training</span>
+
+          <h1>
+            Build Practical Skills at
+            <span>ACE TECHNICAL SILIGURI</span>
+          </h1>
+
+          <p class="hero-text">
+            Learn technical repair skills through practical,
+            hands-on training in Siliguri. Develop useful skills
+            for real-world work and future opportunities.
+          </p>
+
+          <div class="hero-actions">
+            <a href="courses.html" class="btn btn-primary">
+              Explore Courses
+            </a>
+
+            <a href="admission.html" class="btn btn-secondary">
+              Admission Enquiry
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-card-title">
+            Practical Learning Focus
+          </div>
+
+          <ul class="hero-points">
+            <li>
+              <span class="check">✓</span>
+              <span><strong>Hands-on Training</strong><br>
+              Focus on practical learning.</span>
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              <span><strong>Multiple Technical Courses</strong><br>
+              Repairing and electronics focused training.</span>
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              <span><strong>Student Focused</strong><br>
+              Learn step by step in a practical environment.</span>
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              <span><strong>Siliguri Based</strong><br>
+              Local technical training for aspiring learners.</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ================================
+         COURSES PREVIEW
+    ================================= -->
+    <section class="section section-light" id="courses">
+      <div class="container">
+
+        <div class="section-heading center">
+          <div class="section-label">Our Courses</div>
+          <h2>Technical Skills That Matter</h2>
+          <p>
+            Explore practical technical training designed
+            around real repair and electronics skills.
+          </p>
+        </div>
+
+        <div class="course-grid">
+
+          <article class="course-card">
+            <span class="course-number">01</span>
+            <h3>Mobile Repairing</h3>
+            <p>
+              Practical training focused on mobile repair
+              fundamentals and troubleshooting.
+            </p>
+            <div class="course-footer">
+              Practical Training
+            </div>
+          </article>
+
+          <article class="course-card">
+            <span class="course-number">02</span>
+            <h3>Android Repairing</h3>
+            <p>
+              Learn practical Android device repair
+              concepts and troubleshooting.
+            </p>
+            <div class="course-footer">
+              Practical Training
+            </div>
+          </article>
+
+          <article class="course-card">
+            <span class="course-number">03</span>
+            <h3>iPhone Repairing</h3>
+            <p>
+              Practical learning focused on iPhone repair
+              and technical troubleshooting.
+            </p>
+            <div class="course-footer">
+              Practical Training
+            </div>
+          </article>
+
+          <article class="course-card">
+            <span class="course-number">04</span>
+            <h3>Laptop Repairing</h3>
+            <p>
+              Learn laptop repair fundamentals,
+              diagnosis and practical servicing.
+            </p>
+            <div class="course-footer">
+              Practical Training
+            </div>
+          </article>
+
+          <article class="course-card">
+            <span class="course-number">05</span>
+            <h3>Computer Repairing</h3>
+            <p>
+              Practical computer and desktop repair
+              fundamentals.
+            </p>
+            <div class="course-footer">
+              Practical Training
+            </div>
+          </article>
+
+          <article class="course-card">
+            <span class="course-number">06</span>
+            <h3>LED / LCD TV Repairing</h3>
+            <p>
+              Learn practical television repair and
+              electronics troubleshooting concepts.
+            </p>
+            <div class="course-footer">
+              Practical Training
+            </div>
+          </article>
+
+          <article class="course-card">
+            <span class="course-number">07</span>
+            <h3>Basic Electronics</h3>
+            <p>
+              Build a practical foundation in electronics
+              and essential components.
+            </p>
+            <div class="course-footer">
+              Practical Training
+            </div>
+          </article>
+
+          <article class="course-card">
+            <span class="course-number">08</span>
+            <h3>More Practical Skills</h3>
+            <p>
+              Additional training options can be added
+              through the future course management system.
+            </p>
+            <div class="course-footer">
+              Coming Through Admin
+            </div>
+          </article>
+
+        </div>
+
+        <div style="text-align:center; margin-top:32px;">
+          <a href="courses.html" class="btn btn-primary">
+            View All Courses
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ================================
+         ABOUT / WHY CHOOSE US
+    ================================= -->
+    <section class="section">
+      <div class="container">
+
+        <div class="section-heading center">
+          <div class="section-label">Why Choose Us</div>
+          <h2>Learn by Doing</h2>
+          <p>
+            Our training approach is built around practical
+            learning and useful technical skills.
+          </p>
+        </div>
+
+        <div class="why-grid">
+
+          <article class="why-card">
+            <div class="why-icon">🛠️</div>
+            <h3>Practical Focus</h3>
+            <p>
+              Training is designed to give learners practical
+              exposure instead of relying only on theory.
+            </p>
+          </article>
+
+          <article class="why-card">
+            <div class="why-icon">📚</div>
+            <h3>Step-by-Step Learning</h3>
+            <p>
+              Learn technical concepts progressively,
+              from fundamentals to practical applications.
+            </p>
+          </article>
+
+          <article class="why-card">
+            <div class="why-icon">🎯</div>
+            <h3>Skill Development</h3>
+            <p>
+              Develop useful repair and electronics skills
+              for real-world technical work.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ================================
+         STATS
+         These values are placeholders until
+         the Admin/Supabase system is connected.
+    ================================= -->
+    <section class="section section-light">
+      <div class="container">
+
+        <div class="section-heading center">
+          <div class="section-label">ACE TECHNICAL SILIGURI</div>
+          <h2>Our Focus</h2>
+        </div>
+
+        <div class="stats">
+
+          <div class="stat">
+            <strong>7+</strong>
+            <span>Technical Courses</span>
+          </div>
+
+          <div class="stat">
+            <strong>100%</strong>
+            <span>Practical Learning Focus</span>
+          </div>
+
+          <div class="stat">
+            <strong>1</strong>
+            <span>Student-Focused Approach</span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ================================
+         ADMISSION CTA
+    ================================= -->
+    <section class="cta">
+      <div class="container cta-inner">
+
+        <div>
+          <h2>Ready to Build Your Technical Skills?</h2>
+          <p>
+            Send an admission enquiry and get information
+            about available courses and admission.
+          </p>
+        </div>
+
+        <a href="admission.html" class="btn btn-primary">
+          Start Admission Enquiry
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ================================
+       FOOTER
+  ================================= -->
+  <footer class="footer">
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+          <h3>ACE TECHNICAL SILIGURI</h3>
+          <p>
+            Practical Technical Training Institute in Siliguri.
+          </p>
+        </div>
+
+        <div>
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Admission</h3>
+          <ul class="footer-links">
+            <li><a href="admission.html">Admission Enquiry</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="copyright">
+        © <span id="year"></span> ACE TECHNICAL SILIGURI. All rights reserved.
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ================================
+       JAVASCRIPT
+  ================================= -->
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", function () {
+      const isOpen = navLinks.classList.toggle("open");
+
+      menuBtn.setAttribute(
+        "aria-expanded",
+        isOpen ? "true" : "false"
+      );
+
+      menuBtn.textContent = isOpen ? "✕" : "☰";
+    });
+
+    document.querySelectorAll("#navLinks a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navLinks.classList.remove("open");
+        menuBtn.setAttribute("aria-expanded", "false");
+        menuBtn.textContent = "☰";
+      });
+    });
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
