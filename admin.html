@@ -1,19 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Admin Panel | ACE Technical Siliguri</title>
-
-  <meta
-    name="description"
-    content="Admin Panel for ACE Technical Siliguri"
-  >
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -31,7 +22,8 @@
     }
 
     button,
-    input{
+    input,
+    select{
       font:inherit;
     }
 
@@ -47,41 +39,34 @@
       align-items:center;
       justify-content:center;
       padding:20px;
-      background:
-        linear-gradient(
-          135deg,
-          #111433,
-          #3730a3,
-          #4f46e5,
-          #06b6d4
-        );
+      background:linear-gradient(135deg,#111433,#3730a3,#06b6d4);
     }
 
     .login-card{
       width:100%;
       max-width:430px;
       background:#fff;
-      border-radius:24px;
-      padding:35px;
-      box-shadow:0 25px 70px rgba(0,0,0,.25);
+      border-radius:22px;
+      padding:32px;
+      box-shadow:0 25px 60px rgba(0,0,0,.25);
     }
 
     .login-logo{
       text-align:center;
-      font-size:26px;
+      font-size:25px;
       font-weight:900;
-      margin-bottom:8px;
       color:#3730a3;
+      margin-bottom:8px;
     }
 
     .login-subtitle{
       text-align:center;
       color:#64748b;
-      margin-bottom:28px;
+      margin-bottom:25px;
     }
 
     .form-group{
-      margin-bottom:18px;
+      margin-bottom:16px;
     }
 
     .form-group label{
@@ -90,91 +75,105 @@
       margin-bottom:7px;
     }
 
-    .form-group input{
+    .form-group input,
+    .form-group select{
       width:100%;
       padding:13px 14px;
-      border:1px solid #dbe1ea;
-      border-radius:12px;
+      border:1px solid #dbe2ea;
+      border-radius:11px;
       outline:none;
+      background:#fff;
     }
 
-    .form-group input:focus{
+    .form-group input:focus,
+    .form-group select:focus{
       border-color:#4f46e5;
-      box-shadow:0 0 0 3px rgba(79,70,229,.12);
+      box-shadow:0 0 0 3px rgba(79,70,229,.1);
     }
 
-    .login-btn{
+    .primary-btn{
       width:100%;
       border:0;
-      padding:14px;
-      border-radius:12px;
-      background:linear-gradient(
-        135deg,
-        #4f46e5,
-        #7c3aed
-      );
+      border-radius:11px;
+      padding:13px 18px;
+      background:#4f46e5;
       color:#fff;
       font-weight:800;
       cursor:pointer;
     }
 
-    .login-btn:hover{
-      opacity:.92;
+    .primary-btn:hover{
+      background:#3730a3;
     }
 
-    .login-btn:disabled{
-      opacity:.6;
-      cursor:not-allowed;
-    }
-
-    #loginMessage{
+    .message{
       margin-top:15px;
-      text-align:center;
-      font-size:14px;
-      color:#dc2626;
-      min-height:20px;
-      line-height:1.5;
-    }
-
-    .password-info{
-      margin-top:16px;
-      padding:12px 14px;
+      padding:11px 13px;
       border-radius:10px;
-      background:#eff6ff;
-      color:#1e40af;
-      font-size:13px;
-      line-height:1.5;
+      font-size:14px;
+      display:none;
     }
 
-    /* ADMIN APP */
+    .message.error{
+      display:block;
+      background:#fee2e2;
+      color:#991b1b;
+    }
 
-    #adminApp{
+    .message.success{
+      display:block;
+      background:#dcfce7;
+      color:#166534;
+    }
+
+    /* PASSWORD SETUP */
+
+    #passwordScreen{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      background:linear-gradient(135deg,#111433,#3730a3,#06b6d4);
+    }
+
+    .password-card{
+      width:100%;
+      max-width:450px;
+      background:#fff;
+      border-radius:22px;
+      padding:32px;
+      box-shadow:0 25px 60px rgba(0,0,0,.25);
+    }
+
+    .password-card h2{
+      margin-bottom:8px;
+    }
+
+    .password-card p{
+      color:#64748b;
+      line-height:1.6;
+      margin-bottom:22px;
+    }
+
+    /* DASHBOARD */
+
+    #dashboard{
       min-height:100vh;
     }
 
-    header{
-      position:sticky;
-      top:0;
-      z-index:1000;
-      background:
-        linear-gradient(
-          135deg,
-          #111433,
-          #3730a3,
-          #4f46e5
-        );
+    .topbar{
+      background:linear-gradient(135deg,#111433,#3730a3);
       color:#fff;
-      box-shadow:0 5px 20px rgba(0,0,0,.15);
-    }
-
-    .header-inner{
-      max-width:1250px;
-      margin:auto;
-      padding:18px 22px;
+      padding:16px 22px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:20px;
+      gap:15px;
+      position:sticky;
+      top:0;
+      z-index:100;
+      box-shadow:0 5px 20px rgba(0,0,0,.18);
     }
 
     .brand{
@@ -182,49 +181,35 @@
       font-weight:900;
     }
 
-    .brand small{
-      display:block;
-      font-size:11px;
-      opacity:.75;
-      margin-top:3px;
-      font-weight:600;
-    }
-
-    .header-actions{
+    .topbar-right{
       display:flex;
       align-items:center;
       gap:12px;
     }
 
-    .admin-badge{
-      background:rgba(255,255,255,.14);
-      border:1px solid rgba(255,255,255,.2);
-      padding:8px 12px;
-      border-radius:999px;
-      font-size:13px;
-      font-weight:700;
+    .admin-name{
+      font-size:14px;
+      opacity:.9;
     }
 
     .logout-btn{
       border:1px solid rgba(255,255,255,.3);
-      background:rgba(255,255,255,.1);
+      background:rgba(255,255,255,.12);
       color:#fff;
+      border-radius:9px;
       padding:9px 14px;
-      border-radius:10px;
       cursor:pointer;
       font-weight:700;
     }
 
     .logout-btn:hover{
-      background:rgba(255,255,255,.18);
+      background:rgba(255,255,255,.2);
     }
-
-    /* CONTENT */
 
     .container{
       max-width:1250px;
       margin:auto;
-      padding:30px 22px 60px;
+      padding:28px 20px 50px;
     }
 
     .welcome{
@@ -233,240 +218,369 @@
 
     .welcome h1{
       font-size:30px;
-      margin-bottom:8px;
+      margin-bottom:7px;
     }
 
     .welcome p{
       color:#64748b;
     }
 
-    .dashboard-grid{
+    /* STAT CARDS */
+
+    .stats{
       display:grid;
-      grid-template-columns:
-        repeat(4, minmax(0,1fr));
-      gap:18px;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
       margin-bottom:28px;
     }
 
     .stat-card{
       background:#fff;
-      border:1px solid #e5e7eb;
-      border-radius:18px;
-      padding:22px;
-      box-shadow:0 8px 25px rgba(15,23,42,.06);
-    }
-
-    .stat-icon{
-      width:45px;
-      height:45px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      border-radius:12px;
-      background:#eef2ff;
-      color:#4338ca;
-      font-size:21px;
-      margin-bottom:14px;
-    }
-
-    .stat-number{
-      font-size:28px;
-      font-weight:900;
-      margin-bottom:5px;
+      border-radius:16px;
+      padding:20px;
+      border:1px solid #e5eaf0;
+      box-shadow:0 7px 20px rgba(15,23,42,.05);
     }
 
     .stat-label{
       color:#64748b;
       font-size:14px;
-      font-weight:600;
+      margin-bottom:9px;
+    }
+
+    .stat-number{
+      font-size:29px;
+      font-weight:900;
+      color:#3730a3;
     }
 
     /* MODULES */
 
     .section-title{
       font-size:22px;
-      font-weight:900;
       margin-bottom:15px;
     }
 
     .modules{
       display:grid;
-      grid-template-columns:
-        repeat(3, minmax(0,1fr));
-      gap:18px;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+      margin-bottom:30px;
     }
 
     .module-card{
       background:#fff;
-      border:1px solid #e5e7eb;
-      border-radius:18px;
-      padding:24px;
-      box-shadow:0 8px 25px rgba(15,23,42,.06);
+      border:1px solid #e5eaf0;
+      border-radius:16px;
+      padding:22px;
+      cursor:pointer;
       transition:.2s;
     }
 
     .module-card:hover{
-      transform:translateY(-3px);
-      box-shadow:0 14px 35px rgba(15,23,42,.1);
+      transform:translateY(-2px);
+      box-shadow:0 12px 30px rgba(15,23,42,.08);
     }
 
     .module-icon{
       font-size:30px;
-      margin-bottom:12px;
+      margin-bottom:10px;
     }
 
     .module-card h3{
-      margin-bottom:7px;
+      margin-bottom:6px;
     }
 
     .module-card p{
       color:#64748b;
       font-size:14px;
-      line-height:1.6;
-      margin-bottom:16px;
+      line-height:1.5;
     }
 
-    .module-btn{
-      width:100%;
-      padding:11px;
+    .module-card.disabled{
+      opacity:.55;
+      cursor:not-allowed;
+    }
+
+    /* SECURITY */
+
+    .security-box{
+      background:#ecfdf5;
+      border:1px solid #bbf7d0;
+      color:#166534;
+      border-radius:15px;
+      padding:17px 18px;
+      margin-bottom:30px;
+      line-height:1.6;
+    }
+
+    /* ADMISSIONS */
+
+    #admissionsSection{
+      background:#fff;
+      border:1px solid #e5eaf0;
+      border-radius:18px;
+      padding:22px;
+      box-shadow:0 7px 20px rgba(15,23,42,.04);
+    }
+
+    .section-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:15px;
+      margin-bottom:18px;
+      flex-wrap:wrap;
+    }
+
+    .back-btn{
       border:0;
-      border-radius:10px;
       background:#eef2ff;
       color:#3730a3;
-      font-weight:800;
+      padding:10px 14px;
+      border-radius:9px;
       cursor:pointer;
+      font-weight:700;
     }
 
-    .module-btn:hover{
+    .back-btn:hover{
       background:#e0e7ff;
     }
 
-    /* NOTICE */
-
-    .notice{
-      margin-top:28px;
-      padding:18px 20px;
-      border-radius:15px;
-      background:#fff7ed;
-      border:1px solid #fed7aa;
-      color:#9a3412;
-      font-size:14px;
-      line-height:1.6;
+    .admission-tools{
+      display:flex;
+      gap:10px;
+      margin-bottom:18px;
+      flex-wrap:wrap;
     }
 
-    /* SET PASSWORD */
-
-    .password-card{
-      width:100%;
-      max-width:430px;
-      background:#fff;
-      border-radius:24px;
-      padding:35px;
-      box-shadow:0 25px 70px rgba(0,0,0,.25);
-    }
-
-    .password-logo{
-      text-align:center;
-      font-size:25px;
-      font-weight:900;
-      color:#3730a3;
-      margin-bottom:8px;
-    }
-
-    .password-subtitle{
-      text-align:center;
-      color:#64748b;
-      margin-bottom:25px;
-      line-height:1.5;
-    }
-
-    .password-message{
-      margin-top:15px;
-      text-align:center;
-      font-size:14px;
-      min-height:20px;
-      line-height:1.5;
-    }
-
-    .password-message.error{
-      color:#dc2626;
-    }
-
-    .password-message.success{
-      color:#16a34a;
-    }
-
-    .password-rules{
-      margin-top:15px;
+    .search-box{
+      flex:1;
+      min-width:220px;
       padding:12px 14px;
+      border:1px solid #dbe2ea;
       border-radius:10px;
-      background:#f8fafc;
-      color:#64748b;
-      font-size:13px;
-      line-height:1.6;
+      outline:none;
     }
 
-    /* MOBILE */
+    .status-filter{
+      padding:12px 14px;
+      border:1px solid #dbe2ea;
+      border-radius:10px;
+      background:#fff;
+      min-width:170px;
+    }
+
+    .table-wrap{
+      overflow-x:auto;
+      border:1px solid #e5eaf0;
+      border-radius:12px;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:1000px;
+    }
+
+    th,
+    td{
+      padding:13px 12px;
+      border-bottom:1px solid #edf0f4;
+      text-align:left;
+      vertical-align:top;
+      font-size:14px;
+    }
+
+    th{
+      background:#f8fafc;
+      font-weight:800;
+      color:#334155;
+      white-space:nowrap;
+    }
+
+    tr:last-child td{
+      border-bottom:0;
+    }
+
+    .applicant-name{
+      font-weight:800;
+      color:#172033;
+    }
+
+    .small-text{
+      color:#64748b;
+      font-size:12px;
+      margin-top:4px;
+    }
+
+    .status-select{
+      padding:8px 9px;
+      border:1px solid #dbe2ea;
+      border-radius:8px;
+      background:#fff;
+      min-width:125px;
+    }
+
+    .action-btn{
+      border:0;
+      padding:8px 11px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:700;
+      margin-right:5px;
+      margin-bottom:4px;
+    }
+
+    .view-btn{
+      background:#e0e7ff;
+      color:#3730a3;
+    }
+
+    .delete-btn{
+      background:#fee2e2;
+      color:#991b1b;
+    }
+
+    .empty-state{
+      text-align:center;
+      padding:45px 20px;
+      color:#64748b;
+    }
+
+    .loading{
+      text-align:center;
+      padding:35px;
+      color:#64748b;
+    }
+
+    /* MODAL */
+
+    .modal-overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(15,23,42,.62);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      z-index:1000;
+    }
+
+    .modal{
+      width:100%;
+      max-width:650px;
+      max-height:90vh;
+      overflow-y:auto;
+      background:#fff;
+      border-radius:18px;
+      padding:25px;
+      box-shadow:0 25px 70px rgba(0,0,0,.3);
+    }
+
+    .modal-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:15px;
+      margin-bottom:20px;
+    }
+
+    .close-btn{
+      border:0;
+      background:#f1f5f9;
+      width:36px;
+      height:36px;
+      border-radius:50%;
+      cursor:pointer;
+      font-size:18px;
+    }
+
+    .detail-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:15px;
+    }
+
+    .detail-item{
+      background:#f8fafc;
+      border-radius:10px;
+      padding:12px;
+    }
+
+    .detail-item.full{
+      grid-column:1/-1;
+    }
+
+    .detail-label{
+      font-size:12px;
+      color:#64748b;
+      margin-bottom:5px;
+    }
+
+    .detail-value{
+      font-weight:700;
+      white-space:pre-wrap;
+      word-break:break-word;
+    }
 
     @media(max-width:900px){
-
-      .dashboard-grid{
-        grid-template-columns:
-          repeat(2,minmax(0,1fr));
+      .stats{
+        grid-template-columns:repeat(2,1fr);
       }
 
       .modules{
-        grid-template-columns:
-          repeat(2,minmax(0,1fr));
+        grid-template-columns:repeat(2,1fr);
       }
     }
 
     @media(max-width:600px){
-
-      .header-inner{
-        padding:15px;
+      .topbar{
+        align-items:flex-start;
+        flex-direction:column;
       }
 
-      .brand{
-        font-size:17px;
-      }
-
-      .brand small{
-        font-size:9px;
-      }
-
-      .admin-badge{
-        display:none;
+      .topbar-right{
+        width:100%;
+        justify-content:space-between;
       }
 
       .container{
-        padding:22px 15px 45px;
+        padding:22px 14px 40px;
       }
 
       .welcome h1{
         font-size:25px;
       }
 
-      .dashboard-grid{
+      .stats{
         grid-template-columns:1fr 1fr;
-        gap:12px;
+        gap:10px;
       }
 
       .stat-card{
-        padding:16px;
+        padding:15px;
       }
 
       .stat-number{
-        font-size:23px;
+        font-size:24px;
       }
 
       .modules{
         grid-template-columns:1fr;
       }
 
+      .detail-grid{
+        grid-template-columns:1fr;
+      }
+
+      .detail-item.full{
+        grid-column:auto;
+      }
+
       .login-card,
       .password-card{
-        padding:25px 20px;
+        padding:24px;
       }
     }
   </style>
@@ -474,10 +588,9 @@
 
 <body>
 
-  <!-- LOGIN SCREEN -->
+  <!-- LOGIN -->
 
   <section id="loginScreen">
-
     <div class="login-card">
 
       <div class="login-logo">
@@ -485,188 +598,130 @@
       </div>
 
       <div class="login-subtitle">
-        Admin Panel Login
+        Admin Panel
       </div>
 
       <form id="loginForm">
 
         <div class="form-group">
-
-          <label for="email">
-            Email Address
-          </label>
-
+          <label>Email Address</label>
           <input
             type="email"
-            id="email"
-            placeholder="Enter admin email"
+            id="loginEmail"
             required
-          >
-
+            autocomplete="email"
+            placeholder="admin@example.com"
+          />
         </div>
 
         <div class="form-group">
-
-          <label for="password">
-            Password
-          </label>
-
+          <label>Password</label>
           <input
             type="password"
-            id="password"
-            placeholder="Enter password"
+            id="loginPassword"
             required
-          >
-
+            autocomplete="current-password"
+            placeholder="Enter password"
+          />
         </div>
 
         <button
           type="submit"
-          class="login-btn"
-          id="loginBtn"
+          class="primary-btn"
+          id="loginButton"
         >
           Login
         </button>
 
+        <div id="loginMessage" class="message"></div>
+
       </form>
 
-      <div id="loginMessage"></div>
-
-      <div class="password-info">
-        প্রথমবার Admin হলে আপনার email-এ invitation আসবে।
-        Invitation link খুলে নিজের password সেট করতে হবে।
-      </div>
-
     </div>
-
   </section>
 
 
-  <!-- SET PASSWORD SCREEN -->
+  <!-- PASSWORD SETUP -->
 
-  <section
-    id="passwordScreen"
-    class="hidden"
-    style="
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:20px;
-      background:linear-gradient(
-        135deg,
-        #111433,
-        #3730a3,
-        #4f46e5,
-        #06b6d4
-      );
-    "
-  >
+  <section id="passwordScreen" class="hidden">
 
     <div class="password-card">
 
-      <div class="password-logo">
-        ACE TECHNICAL SILIGURI
-      </div>
+      <h2>Set Your Admin Password</h2>
 
-      <div class="password-subtitle">
-        Create Your Admin Password
-      </div>
+      <p>
+        Welcome to ACE Technical Siliguri Admin Panel.
+        Please create your own password before entering the dashboard.
+      </p>
 
       <form id="passwordForm">
 
         <div class="form-group">
-
-          <label for="newPassword">
-            New Password
-          </label>
-
+          <label>New Password</label>
           <input
             type="password"
             id="newPassword"
-            placeholder="Enter new password"
             minlength="8"
             required
-          >
-
+            autocomplete="new-password"
+            placeholder="Minimum 8 characters"
+          />
         </div>
 
         <div class="form-group">
-
-          <label for="confirmPassword">
-            Confirm Password
-          </label>
-
+          <label>Confirm Password</label>
           <input
             type="password"
             id="confirmPassword"
-            placeholder="Confirm new password"
             minlength="8"
             required
-          >
-
+            autocomplete="new-password"
+            placeholder="Confirm password"
+          />
         </div>
 
         <button
           type="submit"
-          class="login-btn"
-          id="passwordBtn"
+          class="primary-btn"
+          id="passwordButton"
         >
           Set Password
         </button>
 
+        <div id="passwordMessage" class="message"></div>
+
       </form>
-
-      <div
-        id="passwordMessage"
-        class="password-message"
-      ></div>
-
-      <div class="password-rules">
-        Password কমপক্ষে 8 characters হতে হবে।
-        Password কাউকে share করবেন না।
-      </div>
 
     </div>
 
   </section>
 
 
-  <!-- ADMIN APP -->
+  <!-- DASHBOARD -->
 
-  <section
-    id="adminApp"
-    class="hidden"
-  >
+  <section id="dashboard" class="hidden">
 
-    <header>
+    <header class="topbar">
 
-      <div class="header-inner">
+      <div class="brand">
+        ACE TECHNICAL SILIGURI
+      </div>
 
-        <div class="brand">
-          ACE TECHNICAL SILIGURI
-          <small>
-            Administration Panel
-          </small>
+      <div class="topbar-right">
+
+        <div
+          class="admin-name"
+          id="loggedAdminName"
+        >
+          Admin
         </div>
 
-        <div class="header-actions">
-
-          <div
-            class="admin-badge"
-            id="adminName"
-          >
-            Admin
-          </div>
-
-          <button
-            class="logout-btn"
-            id="logoutBtn"
-          >
-            Logout
-          </button>
-
-        </div>
+        <button
+          class="logout-btn"
+          id="logoutButton"
+        >
+          Logout
+        </button>
 
       </div>
 
@@ -677,98 +732,72 @@
 
       <div class="welcome">
 
-        <h1>
-          Admin Dashboard
-        </h1>
+        <h1>Admin Dashboard</h1>
 
         <p>
-          Manage ACE Technical Siliguri website operations.
+          Manage institute enquiries and website operations.
         </p>
 
       </div>
 
 
-      <!-- STATISTICS -->
+      <!-- STATS -->
 
-      <div class="dashboard-grid">
+      <div class="stats">
 
         <div class="stat-card">
-
-          <div class="stat-icon">
-            📩
+          <div class="stat-label">
+            Total Admissions
           </div>
 
           <div
             class="stat-number"
-            id="admissionCount"
+            id="totalAdmissions"
           >
             0
           </div>
-
-          <div class="stat-label">
-            Admission Enquiries
-          </div>
-
         </div>
 
 
         <div class="stat-card">
-
-          <div class="stat-icon">
-            👨‍🎓
+          <div class="stat-label">
+            New Enquiries
           </div>
 
           <div
             class="stat-number"
-            id="studentCount"
+            id="newAdmissions"
           >
             0
           </div>
+        </div>
 
+
+        <div class="stat-card">
           <div class="stat-label">
             Students
           </div>
 
+          <div
+            class="stat-number"
+            id="totalStudents"
+          >
+            0
+          </div>
         </div>
 
 
         <div class="stat-card">
-
-          <div class="stat-icon">
-            📚
-          </div>
-
-          <div
-            class="stat-number"
-            id="courseCount"
-          >
-            0
-          </div>
-
           <div class="stat-label">
             Courses
           </div>
 
-        </div>
-
-
-        <div class="stat-card">
-
-          <div class="stat-icon">
-            🖼️
-          </div>
-
           <div
             class="stat-number"
-            id="galleryCount"
+            id="totalCourses"
           >
             0
           </div>
-
-          <div class="stat-label">
-            Gallery Items
-          </div>
-
         </div>
 
       </div>
@@ -776,16 +805,19 @@
 
       <!-- MODULES -->
 
-      <div class="section-title">
+      <h2 class="section-title">
         Admin Modules
-      </div>
+      </h2>
 
       <div class="modules">
 
-        <div class="module-card">
+        <div
+          class="module-card"
+          id="admissionsModule"
+        >
 
           <div class="module-icon">
-            📩
+            📋
           </div>
 
           <h3>
@@ -793,20 +825,16 @@
           </h3>
 
           <p>
-            View admission enquiries and update their status.
+            View admission enquiries and update applicant status.
           </p>
-
-          <button
-            class="module-btn"
-            onclick="openModule('Admissions')"
-          >
-            Manage Admissions
-          </button>
 
         </div>
 
 
-        <div class="module-card">
+        <div
+          class="module-card disabled"
+          title="Coming next"
+        >
 
           <div class="module-icon">
             👨‍🎓
@@ -817,20 +845,16 @@
           </h3>
 
           <p>
-            Manage student records, courses and admission details.
+            Student management module.
           </p>
-
-          <button
-            class="module-btn"
-            onclick="openModule('Students')"
-          >
-            Manage Students
-          </button>
 
         </div>
 
 
-        <div class="module-card">
+        <div
+          class="module-card disabled"
+          title="Coming next"
+        >
 
           <div class="module-icon">
             📚
@@ -841,20 +865,16 @@
           </h3>
 
           <p>
-            Add, edit and manage institute courses.
+            Course management module.
           </p>
-
-          <button
-            class="module-btn"
-            onclick="openModule('Courses')"
-          >
-            Manage Courses
-          </button>
 
         </div>
 
 
-        <div class="module-card">
+        <div
+          class="module-card disabled"
+          title="Coming next"
+        >
 
           <div class="module-icon">
             🖼️
@@ -865,20 +885,16 @@
           </h3>
 
           <p>
-            Manage institute photos and gallery categories.
+            Gallery and image management.
           </p>
-
-          <button
-            class="module-btn"
-            onclick="openModule('Gallery')"
-          >
-            Manage Gallery
-          </button>
 
         </div>
 
 
-        <div class="module-card">
+        <div
+          class="module-card disabled"
+          title="Coming next"
+        >
 
           <div class="module-icon">
             📢
@@ -889,20 +905,16 @@
           </h3>
 
           <p>
-            Create and manage website notices and announcements.
+            Notice management module.
           </p>
-
-          <button
-            class="module-btn"
-            onclick="openModule('Notices')"
-          >
-            Manage Notices
-          </button>
 
         </div>
 
 
-        <div class="module-card">
+        <div
+          class="module-card disabled"
+          title="Coming next"
+        >
 
           <div class="module-icon">
             ⚙️
@@ -913,386 +925,1353 @@
           </h3>
 
           <p>
-            Manage basic website information and institute content.
+            Basic website content management.
           </p>
-
-          <button
-            class="module-btn"
-            onclick="openModule('Website Content')"
-          >
-            Manage Content
-          </button>
 
         </div>
 
       </div>
 
 
-      <div class="notice">
-        <strong>Security:</strong>
-        This panel is only for Admin users.
-        Google AdSense and Super Admin controls are intentionally
-        unavailable here.
+      <!-- SECURITY -->
+
+      <div class="security-box">
+
+        <strong>🔐 Admin Security</strong><br />
+
+        This Admin Panel does not contain Google AdSense
+        or Super Admin controls. Those controls remain
+        restricted to Super Admin.
+
       </div>
+
+
+      <!-- ADMISSIONS SECTION -->
+
+      <section
+        id="admissionsSection"
+        class="hidden"
+      >
+
+        <div class="section-header">
+
+          <div>
+
+            <h2>
+              Admission Enquiries
+            </h2>
+
+            <div class="small-text">
+              Manage incoming admission enquiries.
+            </div>
+
+          </div>
+
+          <button
+            class="back-btn"
+            id="backToDashboard"
+          >
+            ← Dashboard
+          </button>
+
+        </div>
+
+
+        <div class="admission-tools">
+
+          <input
+            type="search"
+            id="admissionSearch"
+            class="search-box"
+            placeholder="Search by name, mobile or email..."
+          />
+
+          <select
+            id="admissionStatusFilter"
+            class="status-filter"
+          >
+
+            <option value="all">
+              All Status
+            </option>
+
+            <option value="New">
+              New
+            </option>
+
+            <option value="Contacted">
+              Contacted
+            </option>
+
+            <option value="Visited">
+              Visited
+            </option>
+
+            <option value="Admitted">
+              Admitted
+            </option>
+
+            <option value="Closed">
+              Closed
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div
+          id="admissionsMessage"
+          class="message"
+        ></div>
+
+
+        <div class="table-wrap">
+
+          <table>
+
+            <thead>
+
+              <tr>
+
+                <th>
+                  Applicant
+                </th>
+
+                <th>
+                  Mobile
+                </th>
+
+                <th>
+                  Course
+                </th>
+
+                <th>
+                  Preferred Date
+                </th>
+
+                <th>
+                  Status
+                </th>
+
+                <th>
+                  Submitted
+                </th>
+
+                <th>
+                  Actions
+                </th>
+
+              </tr>
+
+            </thead>
+
+            <tbody
+              id="admissionsTableBody"
+            >
+
+              <tr>
+
+                <td
+                  colspan="7"
+                  class="loading"
+                >
+                  Loading enquiries...
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </section>
 
     </main>
 
   </section>
 
 
-  <script>
+  <!-- DETAIL MODAL -->
 
-    /* ================================
-       SUPABASE CONFIGURATION
-    ================================= */
+  <div
+    id="detailModal"
+    class="modal-overlay hidden"
+  >
 
-    const SUPABASE_URL =
-      "https://wxzqzbifcgxxtyhmctwk.supabase.co";
+    <div class="modal">
 
-    const SUPABASE_ANON_KEY =
-      "sb_publishable_XqzuYh6HGJR5YzsJivurjQ_lnTw1k2G";
+      <div class="modal-header">
 
-    const supabaseClient =
-      window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_ANON_KEY
+        <h2>
+          Admission Details
+        </h2>
+
+        <button
+          class="close-btn"
+          id="closeModal"
+        >
+          ×
+        </button>
+
+      </div>
+
+      <div
+        id="admissionDetails"
+        class="detail-grid"
+      ></div>
+
+    </div>
+
+  </div>
+
+
+<script>
+  /* ==============================
+     SUPABASE CONFIG
+  ============================== */
+
+  const SUPABASE_URL =
+    "https://wxzqzbifcgxxtyhmctwk.supabase.co";
+
+  const SUPABASE_ANON_KEY =
+    "sb_publishable_XqzuYh6HGJR5YzsJivurjQ_lnTw1k2G";
+
+  const supabaseClient =
+    window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_ANON_KEY
+    );
+
+
+  /* ==============================
+     GLOBAL STATE
+  ============================== */
+
+  let currentUser = null;
+  let currentProfile = null;
+  let currentPermissions = null;
+  let admissionsData = [];
+
+
+  /* ==============================
+     ELEMENTS
+  ============================== */
+
+  const loginScreen =
+    document.getElementById("loginScreen");
+
+  const passwordScreen =
+    document.getElementById("passwordScreen");
+
+  const dashboard =
+    document.getElementById("dashboard");
+
+  const admissionsSection =
+    document.getElementById("admissionsSection");
+
+
+  /* ==============================
+     MESSAGE HELPERS
+  ============================== */
+
+  function showMessage(
+    element,
+    text,
+    type = "error"
+  ){
+
+    element.textContent = text;
+
+    element.className =
+      "message " + type;
+  }
+
+
+  function hideMessage(element){
+
+    element.textContent = "";
+    element.className = "message";
+
+  }
+
+
+  /* ==============================
+     URL INVITATION CHECK
+  ============================== */
+
+  function isInviteOrRecovery(){
+
+    const hash =
+      window.location.hash || "";
+
+    const search =
+      window.location.search || "";
+
+    const combined =
+      hash + "&" + search;
+
+    return (
+      combined.includes("type=invite") ||
+      combined.includes("type=recovery")
+    );
+
+  }
+
+
+  /* ==============================
+     AUTH PROFILE
+  ============================== */
+
+  async function loadProfile(user){
+
+    const {
+      data,
+      error
+    } = await supabaseClient
+      .from("profiles")
+      .select(`
+        id,
+        full_name,
+        role,
+        is_active
+      `)
+      .eq("id", user.id)
+      .single();
+
+    if(error){
+
+      throw new Error(
+        "Unable to load admin profile."
       );
 
-
-    /* ================================
-       ELEMENTS
-    ================================= */
-
-    const loginScreen =
-      document.getElementById("loginScreen");
-
-    const passwordScreen =
-      document.getElementById("passwordScreen");
-
-    const adminApp =
-      document.getElementById("adminApp");
-
-    const loginForm =
-      document.getElementById("loginForm");
-
-    const passwordForm =
-      document.getElementById("passwordForm");
-
-    const loginBtn =
-      document.getElementById("loginBtn");
-
-    const passwordBtn =
-      document.getElementById("passwordBtn");
-
-    const loginMessage =
-      document.getElementById("loginMessage");
-
-    const passwordMessage =
-      document.getElementById("passwordMessage");
-
-    const logoutBtn =
-      document.getElementById("logoutBtn");
-
-    const adminName =
-      document.getElementById("adminName");
-
-
-    /* ================================
-       SHOW LOGIN
-    ================================= */
-
-    function showLogin(){
-
-      loginScreen.classList.remove("hidden");
-
-      passwordScreen.classList.add("hidden");
-
-      adminApp.classList.add("hidden");
-
     }
 
+    if(
+      !data ||
+      data.role !== "admin" ||
+      data.is_active !== true
+    ){
 
-    /* ================================
-       SHOW PASSWORD SCREEN
-    ================================= */
-
-    function showPasswordScreen(){
-
-      loginScreen.classList.add("hidden");
-
-      passwordScreen.classList.remove("hidden");
-
-      adminApp.classList.add("hidden");
-
-    }
-
-
-    /* ================================
-       SHOW ADMIN
-    ================================= */
-
-    function showAdmin(profile){
-
-      loginScreen.classList.add("hidden");
-
-      passwordScreen.classList.add("hidden");
-
-      adminApp.classList.remove("hidden");
-
-      adminName.textContent =
-        profile.full_name || "Admin";
-
-    }
-
-
-    /* ================================
-       CHECK INVITATION / RECOVERY
-    ================================= */
-
-    function isPasswordSetupLink(){
-
-      const hash =
-        window.location.hash || "";
-
-      const search =
-        window.location.search || "";
-
-      const combined =
-        hash + "&" + search;
-
-      return (
-        combined.includes("type=invite") ||
-        combined.includes("type=recovery")
+      throw new Error(
+        "Admin access is disabled or not available."
       );
 
     }
 
+    currentProfile = data;
 
-    /* ================================
-       LOAD DASHBOARD
-    ================================= */
+    const {
+      data: permissions,
+      error: permissionsError
+    } = await supabaseClient
+      .from("admin_permissions")
+      .select(`
+        manage_admissions,
+        manage_students,
+        manage_courses,
+        manage_gallery,
+        manage_notices,
+        manage_site_content
+      `)
+      .eq("admin_id", user.id)
+      .maybeSingle();
 
-    async function loadDashboard(){
+    if(permissionsError){
 
-      try{
-
-        const [
-          admissions,
-          students,
-          courses,
-          gallery
-        ] = await Promise.all([
-
-          supabaseClient
-            .from("admission_enquiries")
-            .select("*", {
-              count:"exact",
-              head:true
-            }),
-
-          supabaseClient
-            .from("students")
-            .select("*", {
-              count:"exact",
-              head:true
-            }),
-
-          supabaseClient
-            .from("courses")
-            .select("*", {
-              count:"exact",
-              head:true
-            }),
-
-          supabaseClient
-            .from("gallery")
-            .select("*", {
-              count:"exact",
-              head:true
-            })
-
-        ]);
-
-
-        document.getElementById(
-          "admissionCount"
-        ).textContent =
-          admissions.count ?? 0;
-
-
-        document.getElementById(
-          "studentCount"
-        ).textContent =
-          students.count ?? 0;
-
-
-        document.getElementById(
-          "courseCount"
-        ).textContent =
-          courses.count ?? 0;
-
-
-        document.getElementById(
-          "galleryCount"
-        ).textContent =
-          gallery.count ?? 0;
-
-
-      }catch(error){
-
-        console.error(
-          "Dashboard error:",
-          error
-        );
-
-      }
+      throw new Error(
+        "Unable to load admin permissions."
+      );
 
     }
 
-
-    /* ================================
-       GET ADMIN PROFILE
-    ================================= */
-
-    async function getAdminProfile(userId){
-
-      const {
-        data:profile,
-        error
-      } =
-        await supabaseClient
-          .from("profiles")
-          .select(
-            "id, full_name, role, is_active"
-          )
-          .eq(
-            "id",
-            userId
-          )
-          .single();
-
-
-      if(
-        error ||
-        !profile ||
-        profile.role !== "admin" ||
-        profile.is_active !== true
-      ){
-
-        return {
-          profile:null,
-          error:
-            "Admin access required."
-        };
-
-      }
-
-
-      return {
-        profile,
-        error:null
+    currentPermissions =
+      permissions || {
+        manage_admissions:false,
+        manage_students:false,
+        manage_courses:false,
+        manage_gallery:false,
+        manage_notices:false,
+        manage_site_content:false
       };
 
+  }
+
+
+  /* ==============================
+     SHOW DASHBOARD
+  ============================== */
+
+  async function showDashboard(){
+
+    loginScreen.classList.add("hidden");
+    passwordScreen.classList.add("hidden");
+    dashboard.classList.remove("hidden");
+
+    document.getElementById(
+      "loggedAdminName"
+    ).textContent =
+      currentProfile?.full_name ||
+      currentUser?.email ||
+      "Admin";
+
+    if(
+      !currentPermissions ||
+      currentPermissions.manage_admissions !== true
+    ){
+
+      document
+        .getElementById("admissionsModule")
+        .classList.add("disabled");
+
+      document
+        .getElementById("admissionsModule")
+        .title =
+        "You do not have Admissions permission.";
+
+    }
+
+    await loadDashboardCounts();
+
+  }
+
+
+  /* ==============================
+     DASHBOARD COUNTS
+  ============================== */
+
+  async function loadDashboardCounts(){
+
+    const admissionsResult =
+      await supabaseClient
+        .from("admission_enquiries")
+        .select("id,status",{
+          count:"exact"
+        });
+
+    if(!admissionsResult.error){
+
+      const rows =
+        admissionsResult.data || [];
+
+      document.getElementById(
+        "totalAdmissions"
+      ).textContent =
+        admissionsResult.count ?? rows.length;
+
+      document.getElementById(
+        "newAdmissions"
+      ).textContent =
+        rows.filter(
+          item => item.status === "New"
+        ).length;
+
     }
 
 
-    /* ================================
-       CHECK CURRENT SESSION
-    ================================= */
+    const studentsResult =
+      await supabaseClient
+        .from("students")
+        .select("id",{
+          count:"exact",
+          head:true
+        });
 
-    async function checkAdminSession(){
+    if(!studentsResult.error){
 
-      const {
-        data:{
-          session
-        }
-      } =
-        await supabaseClient.auth.getSession();
+      document.getElementById(
+        "totalStudents"
+      ).textContent =
+        studentsResult.count ?? 0;
 
-
-      if(!session){
-
-        if(isPasswordSetupLink()){
-
-          showPasswordScreen();
-
-        }else{
-
-          showLogin();
-
-        }
-
-        return;
-
-      }
+    }
 
 
-      const result =
-        await getAdminProfile(
-          session.user.id
-        );
+    const coursesResult =
+      await supabaseClient
+        .from("courses")
+        .select("id",{
+          count:"exact",
+          head:true
+        });
+
+    if(!coursesResult.error){
+
+      document.getElementById(
+        "totalCourses"
+      ).textContent =
+        coursesResult.count ?? 0;
+
+    }
+
+  }
 
 
-      if(!result.profile){
+  /* ==============================
+     LOAD ADMISSIONS
+  ============================== */
 
-        await supabaseClient.auth.signOut();
+  async function loadAdmissions(){
 
-        loginMessage.textContent =
-          result.error ||
-          "Admin access required.";
-
-        showLogin();
-
-        return;
-
-      }
-
-
-      showAdmin(
-        result.profile
+    const tbody =
+      document.getElementById(
+        "admissionsTableBody"
       );
 
-      loadDashboard();
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="7" class="loading">
+          Loading enquiries...
+        </td>
+      </tr>
+    `;
+
+
+    if(
+      !currentPermissions ||
+      currentPermissions.manage_admissions !== true
+    ){
+
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="7" class="empty-state">
+            You do not have permission to manage Admissions.
+          </td>
+        </tr>
+      `;
+
+      return;
 
     }
 
 
-    /* ================================
-       LOGIN
-    ================================= */
+    const {
+      data,
+      error
+    } = await supabaseClient
+      .from("admission_enquiries")
+      .select(`
+        id,
+        full_name,
+        mobile,
+        email,
+        date_of_birth,
+        address,
+        course_id,
+        educational_qualification,
+        preferred_admission_date,
+        message,
+        status,
+        created_at,
+        courses (
+          name
+        )
+      `)
+      .order(
+        "created_at",
+        {
+          ascending:false
+        }
+      );
 
-    loginForm.addEventListener(
+
+    if(error){
+
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="7" class="empty-state">
+            Unable to load admission enquiries.
+            <br><br>
+            ${escapeHtml(error.message)}
+          </td>
+        </tr>
+      `;
+
+      return;
+
+    }
+
+
+    admissionsData =
+      data || [];
+
+    renderAdmissions();
+
+  }
+
+
+  /* ==============================
+     RENDER ADMISSIONS
+  ============================== */
+
+  function renderAdmissions(){
+
+    const tbody =
+      document.getElementById(
+        "admissionsTableBody"
+      );
+
+    const search =
+      document
+        .getElementById("admissionSearch")
+        .value
+        .trim()
+        .toLowerCase();
+
+    const statusFilter =
+      document
+        .getElementById("admissionStatusFilter")
+        .value;
+
+
+    const filtered =
+      admissionsData.filter(
+        item => {
+
+          const searchable = [
+            item.full_name,
+            item.mobile,
+            item.email,
+            item.courses?.name
+          ]
+          .filter(Boolean)
+          .join(" ")
+          .toLowerCase();
+
+
+          const matchesSearch =
+            !search ||
+            searchable.includes(search);
+
+
+          const matchesStatus =
+            statusFilter === "all" ||
+            item.status === statusFilter;
+
+
+          return (
+            matchesSearch &&
+            matchesStatus
+          );
+
+        }
+      );
+
+
+    if(!filtered.length){
+
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="7" class="empty-state">
+            No admission enquiries found.
+          </td>
+        </tr>
+      `;
+
+      return;
+
+    }
+
+
+    tbody.innerHTML =
+      filtered.map(
+        item => {
+
+          const submitted =
+            formatDate(item.created_at);
+
+          const preferredDate =
+            item.preferred_admission_date
+              ? formatDateOnly(
+                  item.preferred_admission_date
+                )
+              : "—";
+
+
+          return `
+            <tr>
+
+              <td>
+
+                <div class="applicant-name">
+                  ${escapeHtml(
+                    item.full_name || "—"
+                  )}
+                </div>
+
+                ${
+                  item.email
+                    ? `
+                      <div class="small-text">
+                        ${escapeHtml(
+                          item.email
+                        )}
+                      </div>
+                    `
+                    : ""
+                }
+
+              </td>
+
+
+              <td>
+                ${escapeHtml(
+                  item.mobile || "—"
+                )}
+              </td>
+
+
+              <td>
+                ${escapeHtml(
+                  item.courses?.name ||
+                  "Course not found"
+                )}
+              </td>
+
+
+              <td>
+                ${preferredDate}
+              </td>
+
+
+              <td>
+
+                <select
+                  class="status-select"
+                  data-id="${item.id}"
+                  onchange="changeAdmissionStatus(
+                    '${item.id}',
+                    this.value
+                  )"
+                >
+
+                  ${statusOptions(
+                    item.status
+                  )}
+
+                </select>
+
+              </td>
+
+
+              <td>
+                ${submitted}
+              </td>
+
+
+              <td>
+
+                <button
+                  class="action-btn view-btn"
+                  onclick="viewAdmission(
+                    '${item.id}'
+                  )"
+                >
+                  View
+                </button>
+
+                <button
+                  class="action-btn delete-btn"
+                  onclick="deleteAdmission(
+                    '${item.id}'
+                  )"
+                >
+                  Delete
+                </button>
+
+              </td>
+
+            </tr>
+          `;
+
+        }
+      ).join("");
+
+  }
+
+
+  /* ==============================
+     STATUS OPTIONS
+  ============================== */
+
+  function statusOptions(current){
+
+    const statuses = [
+      "New",
+      "Contacted",
+      "Visited",
+      "Admitted",
+      "Closed"
+    ];
+
+    return statuses.map(
+      status => `
+        <option
+          value="${status}"
+          ${status === current ? "selected" : ""}
+        >
+          ${status}
+        </option>
+      `
+    ).join("");
+
+  }
+
+
+  /* ==============================
+     CHANGE STATUS
+  ============================== */
+
+  async function changeAdmissionStatus(
+    id,
+    newStatus
+  ){
+
+    if(
+      !currentPermissions ||
+      currentPermissions.manage_admissions !== true
+    ){
+
+      alert(
+        "You do not have Admissions permission."
+      );
+
+      return;
+
+    }
+
+
+    const {
+      error
+    } = await supabaseClient
+      .from("admission_enquiries")
+      .update({
+        status:newStatus
+      })
+      .eq("id",id);
+
+
+    if(error){
+
+      alert(
+        "Unable to update status: " +
+        error.message
+      );
+
+      await loadAdmissions();
+
+      return;
+
+    }
+
+
+    const item =
+      admissionsData.find(
+        row => row.id === id
+      );
+
+    if(item){
+
+      item.status =
+        newStatus;
+
+    }
+
+
+    await loadDashboardCounts();
+
+  }
+
+
+  /* ==============================
+     VIEW ADMISSION
+  ============================== */
+
+  function viewAdmission(id){
+
+    const item =
+      admissionsData.find(
+        row => row.id === id
+      );
+
+    if(!item){
+      return;
+    }
+
+
+    const details =
+      document.getElementById(
+        "admissionDetails"
+      );
+
+
+    details.innerHTML = `
+
+      ${detail(
+        "Full Name",
+        item.full_name
+      )}
+
+      ${detail(
+        "Mobile",
+        item.mobile
+      )}
+
+      ${detail(
+        "Email",
+        item.email
+      )}
+
+      ${detail(
+        "Date of Birth",
+        item.date_of_birth
+          ? formatDateOnly(
+              item.date_of_birth
+            )
+          : "—"
+      )}
+
+      ${detail(
+        "Course",
+        item.courses?.name ||
+        "Course not found"
+      )}
+
+      ${detail(
+        "Educational Qualification",
+        item.educational_qualification
+      )}
+
+      ${detail(
+        "Preferred Admission Date",
+        item.preferred_admission_date
+          ? formatDateOnly(
+              item.preferred_admission_date
+            )
+          : "—"
+      )}
+
+      ${detail(
+        "Status",
+        item.status
+      )}
+
+      ${detail(
+        "Address",
+        item.address,
+        true
+      )}
+
+      ${detail(
+        "Message",
+        item.message,
+        true
+      )}
+
+      ${detail(
+        "Submitted",
+        formatDate(item.created_at)
+      )}
+
+    `;
+
+
+    document
+      .getElementById("detailModal")
+      .classList.remove("hidden");
+
+  }
+
+
+  function detail(
+    label,
+    value,
+    full = false
+  ){
+
+    return `
+      <div
+        class="detail-item ${full ? "full" : ""}"
+      >
+
+        <div class="detail-label">
+          ${escapeHtml(label)}
+        </div>
+
+        <div class="detail-value">
+          ${escapeHtml(
+            value || "—"
+          )}
+        </div>
+
+      </div>
+    `;
+
+  }
+
+
+  /* ==============================
+     DELETE ADMISSION
+  ============================== */
+
+  async function deleteAdmission(id){
+
+    if(
+      !currentPermissions ||
+      currentPermissions.manage_admissions !== true
+    ){
+
+      alert(
+        "You do not have Admissions permission."
+      );
+
+      return;
+
+    }
+
+
+    const item =
+      admissionsData.find(
+        row => row.id === id
+      );
+
+    const name =
+      item?.full_name ||
+      "this enquiry";
+
+
+    const confirmed =
+      confirm(
+        `Delete admission enquiry from "${name}"?`
+      );
+
+
+    if(!confirmed){
+      return;
+    }
+
+
+    const {
+      error
+    } = await supabaseClient
+      .from("admission_enquiries")
+      .delete()
+      .eq("id",id);
+
+
+    if(error){
+
+      alert(
+        "Unable to delete enquiry: " +
+        error.message
+      );
+
+      return;
+
+    }
+
+
+    admissionsData =
+      admissionsData.filter(
+        row => row.id !== id
+      );
+
+
+    renderAdmissions();
+
+    await loadDashboardCounts();
+
+  }
+
+
+  /* ==============================
+     DATE HELPERS
+  ============================== */
+
+  function formatDate(value){
+
+    if(!value){
+      return "—";
+    }
+
+    const date =
+      new Date(value);
+
+    if(Number.isNaN(
+      date.getTime()
+    )){
+      return "—";
+    }
+
+    return date.toLocaleString(
+      "en-IN",
+      {
+        day:"2-digit",
+        month:"short",
+        year:"numeric",
+        hour:"2-digit",
+        minute:"2-digit"
+      }
+    );
+
+  }
+
+
+  function formatDateOnly(value){
+
+    if(!value){
+      return "—";
+    }
+
+    const date =
+      new Date(
+        value + "T00:00:00"
+      );
+
+    if(Number.isNaN(
+      date.getTime()
+    )){
+      return value;
+    }
+
+    return date.toLocaleDateString(
+      "en-IN",
+      {
+        day:"2-digit",
+        month:"short",
+        year:"numeric"
+      }
+    );
+
+  }
+
+
+  /* ==============================
+     HTML ESCAPE
+  ============================== */
+
+  function escapeHtml(value){
+
+    return String(
+      value ?? ""
+    )
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+  }
+
+
+  /* ==============================
+     OPEN ADMISSIONS
+  ============================== */
+
+  document
+    .getElementById("admissionsModule")
+    .addEventListener(
+      "click",
+      async function(){
+
+        if(
+          !currentPermissions ||
+          currentPermissions.manage_admissions !== true
+        ){
+
+          alert(
+            "You do not have Admissions permission."
+          );
+
+          return;
+
+        }
+
+
+        dashboard
+          .querySelector(".container")
+          .scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+          });
+
+
+        document
+          .querySelector(".welcome")
+          .classList.add("hidden");
+
+        document
+          .querySelector(".stats")
+          .classList.add("hidden");
+
+        document
+          .querySelector(".section-title")
+          .classList.add("hidden");
+
+        document
+          .querySelector(".modules")
+          .classList.add("hidden");
+
+        document
+          .querySelector(".security-box")
+          .classList.add("hidden");
+
+
+        admissionsSection
+          .classList.remove("hidden");
+
+
+        await loadAdmissions();
+
+      }
+    );
+
+
+  /* ==============================
+     BACK TO DASHBOARD
+  ============================== */
+
+  document
+    .getElementById("backToDashboard")
+    .addEventListener(
+      "click",
+      function(){
+
+        admissionsSection
+          .classList.add("hidden");
+
+        document
+          .querySelector(".welcome")
+          .classList.remove("hidden");
+
+        document
+          .querySelector(".stats")
+          .classList.remove("hidden");
+
+        document
+          .querySelector(".section-title")
+          .classList.remove("hidden");
+
+        document
+          .querySelector(".modules")
+          .classList.remove("hidden");
+
+        document
+          .querySelector(".security-box")
+          .classList.remove("hidden");
+
+      }
+    );
+
+
+  /* ==============================
+     SEARCH
+  ============================== */
+
+  document
+    .getElementById("admissionSearch")
+    .addEventListener(
+      "input",
+      renderAdmissions
+    );
+
+
+  document
+    .getElementById("admissionStatusFilter")
+    .addEventListener(
+      "change",
+      renderAdmissions
+    );
+
+
+  /* ==============================
+     MODAL
+  ============================== */
+
+  document
+    .getElementById("closeModal")
+    .addEventListener(
+      "click",
+      function(){
+
+        document
+          .getElementById("detailModal")
+          .classList.add("hidden");
+
+      }
+    );
+
+
+  document
+    .getElementById("detailModal")
+    .addEventListener(
+      "click",
+      function(event){
+
+        if(
+          event.target ===
+          this
+        ){
+
+          this.classList.add(
+            "hidden"
+          );
+
+        }
+
+      }
+    );
+
+
+  /* ==============================
+     LOGIN
+  ============================== */
+
+  document
+    .getElementById("loginForm")
+    .addEventListener(
       "submit",
       async function(event){
 
         event.preventDefault();
 
-        loginMessage.textContent = "";
-
-        loginBtn.disabled = true;
-
-        loginBtn.textContent =
-          "Logging in...";
-
 
         const email =
           document
-            .getElementById("email")
+            .getElementById("loginEmail")
             .value
-            .trim()
-            .toLowerCase();
-
+            .trim();
 
         const password =
           document
-            .getElementById("password")
+            .getElementById("loginPassword")
             .value;
 
 
+        const button =
+          document
+            .getElementById("loginButton");
+
+        const message =
+          document
+            .getElementById("loginMessage");
+
+
+        button.disabled = true;
+        button.textContent =
+          "Logging in...";
+
+        hideMessage(message);
+
+
         const {
+          data,
           error
-        } =
-          await supabaseClient.auth.signInWithPassword({
+        } = await supabaseClient
+          .auth
+          .signInWithPassword({
             email,
             password
           });
@@ -1300,12 +2279,14 @@
 
         if(error){
 
-          loginMessage.textContent =
-            error.message;
+          showMessage(
+            message,
+            error.message,
+            "error"
+          );
 
-          loginBtn.disabled = false;
-
-          loginBtn.textContent =
+          button.disabled = false;
+          button.textContent =
             "Login";
 
           return;
@@ -1313,44 +2294,57 @@
         }
 
 
-        await checkAdminSession();
+        try{
+
+          currentUser =
+            data.user;
+
+          await loadProfile(
+            currentUser
+          );
+
+          await showDashboard();
+
+        }catch(error){
+
+          await supabaseClient
+            .auth
+            .signOut();
+
+          showMessage(
+            message,
+            error.message,
+            "error"
+          );
+
+        }
 
 
-        loginBtn.disabled = false;
-
-        loginBtn.textContent =
+        button.disabled = false;
+        button.textContent =
           "Login";
 
       }
     );
 
 
-    /* ================================
-       SET PASSWORD
-    ================================= */
+  /* ==============================
+     PASSWORD SETUP
+  ============================== */
 
-    passwordForm.addEventListener(
+  document
+    .getElementById("passwordForm")
+    .addEventListener(
       "submit",
       async function(event){
 
         event.preventDefault();
 
-        passwordMessage.textContent = "";
 
-        passwordMessage.className =
-          "password-message";
-
-        passwordBtn.disabled = true;
-
-        passwordBtn.textContent =
-          "Saving...";
-
-
-        const newPassword =
+        const password =
           document
             .getElementById("newPassword")
             .value;
-
 
         const confirmPassword =
           document
@@ -1358,91 +2352,68 @@
             .value;
 
 
-        if(newPassword.length < 8){
+        const button =
+          document
+            .getElementById("passwordButton");
 
-          passwordMessage.textContent =
-            "Password must be at least 8 characters.";
+        const message =
+          document
+            .getElementById("passwordMessage");
 
-          passwordMessage.classList.add(
+
+        hideMessage(message);
+
+
+        if(password.length < 8){
+
+          showMessage(
+            message,
+            "Password must be at least 8 characters.",
             "error"
           );
-
-          passwordBtn.disabled = false;
-
-          passwordBtn.textContent =
-            "Set Password";
 
           return;
 
         }
 
 
-        if(newPassword !== confirmPassword){
+        if(password !== confirmPassword){
 
-          passwordMessage.textContent =
-            "Passwords do not match.";
-
-          passwordMessage.classList.add(
+          showMessage(
+            message,
+            "Passwords do not match.",
             "error"
           );
-
-          passwordBtn.disabled = false;
-
-          passwordBtn.textContent =
-            "Set Password";
 
           return;
 
         }
 
 
-        const {
-          data:{
-            session
-          }
-        } =
-          await supabaseClient.auth.getSession();
-
-
-        if(!session){
-
-          passwordMessage.textContent =
-            "Invitation session is missing or expired. Please request a new invitation.";
-
-          passwordMessage.classList.add(
-            "error"
-          );
-
-          passwordBtn.disabled = false;
-
-          passwordBtn.textContent =
-            "Set Password";
-
-          return;
-
-        }
+        button.disabled = true;
+        button.textContent =
+          "Saving...";
 
 
         const {
           error
-        } =
-          await supabaseClient.auth.updateUser({
-            password:newPassword
+        } = await supabaseClient
+          .auth
+          .updateUser({
+            password
           });
 
 
         if(error){
 
-          passwordMessage.textContent =
-            error.message;
-
-          passwordMessage.classList.add(
+          showMessage(
+            message,
+            error.message,
             "error"
           );
 
-          passwordBtn.disabled = false;
-
-          passwordBtn.textContent =
+          button.disabled = false;
+          button.textContent =
             "Set Password";
 
           return;
@@ -1450,148 +2421,176 @@
         }
 
 
-        passwordMessage.textContent =
-          "Password set successfully. Opening Admin Panel...";
+        try{
 
-        passwordMessage.classList.add(
-          "success"
-        );
+          const {
+            data
+          } = await supabaseClient
+            .auth
+            .getUser();
 
+          currentUser =
+            data.user;
 
-        window.history.replaceState(
-          {},
-          document.title,
-          window.location.pathname
-        );
+          await loadProfile(
+            currentUser
+          );
 
+          window.history.replaceState(
+            {},
+            document.title,
+            window.location.pathname
+          );
 
-        setTimeout(
-          async function(){
+          await showDashboard();
 
-            const {
-              data:{
-                currentSession
-              }
-            } =
-              await supabaseClient.auth.getSession();
+        }catch(error){
 
+          showMessage(
+            message,
+            error.message,
+            "error"
+          );
 
-            if(!currentSession){
-
-              showLogin();
-
-              return;
-
-            }
-
-
-            const result =
-              await getAdminProfile(
-                currentSession.user.id
-              );
+        }
 
 
-            if(!result.profile){
-
-              await supabaseClient.auth.signOut();
-
-              showLogin();
-
-              loginMessage.textContent =
-                result.error ||
-                "Admin access required.";
-
-              return;
-
-            }
-
-
-            showAdmin(
-              result.profile
-            );
-
-            loadDashboard();
-
-          },
-          800
-        );
+        button.disabled = false;
+        button.textContent =
+          "Set Password";
 
       }
     );
 
 
-    /* ================================
-       LOGOUT
-    ================================= */
+  /* ==============================
+     LOGOUT
+  ============================== */
 
-    logoutBtn.addEventListener(
+  document
+    .getElementById("logoutButton")
+    .addEventListener(
       "click",
       async function(){
 
-        await supabaseClient.auth.signOut();
+        await supabaseClient
+          .auth
+          .signOut();
 
-        showLogin();
+        currentUser = null;
+        currentProfile = null;
+        currentPermissions = null;
 
-      }
-    );
+        dashboard
+          .classList.add("hidden");
 
+        passwordScreen
+          .classList.add("hidden");
 
-    /* ================================
-       AUTH STATE
-    ================================= */
+        loginScreen
+          .classList.remove("hidden");
 
-    supabaseClient.auth.onAuthStateChange(
-      async function(event, session){
-
-        if(
-          event === "SIGNED_IN" &&
-          session
-        ){
-
-          if(
-            !isPasswordSetupLink()
-          ){
-
-            await checkAdminSession();
-
-          }
-
-        }
-
-
-        if(
-          event === "SIGNED_OUT"
-        ){
-
-          showLogin();
-
-        }
+        document
+          .getElementById("loginPassword")
+          .value = "";
 
       }
     );
 
 
-    /* ================================
-       MODULE PLACEHOLDER
-    ================================= */
+  /* ==============================
+     INITIAL SESSION CHECK
+  ============================== */
 
-    function openModule(moduleName){
+  async function initialize(){
 
-      alert(
-        moduleName +
-        " module will be connected next."
-      );
+    const {
+      data,
+      error
+    } = await supabaseClient
+      .auth
+      .getSession();
+
+
+    if(error){
+
+      return;
 
     }
 
 
-    /* ================================
-       INITIAL CHECK
-    ================================= */
+    const session =
+      data.session;
 
-    checkAdminSession();
 
-  </script>
+    if(!session){
+
+      loginScreen
+        .classList.remove("hidden");
+
+      return;
+
+    }
+
+
+    currentUser =
+      session.user;
+
+
+    /*
+      Invitation / recovery links
+      may arrive with an authenticated
+      session.
+    */
+
+    if(
+      isInviteOrRecovery()
+    ){
+
+      loginScreen
+        .classList.add("hidden");
+
+      passwordScreen
+        .classList.remove("hidden");
+
+      return;
+
+    }
+
+
+    try{
+
+      await loadProfile(
+        currentUser
+      );
+
+      await showDashboard();
+
+    }catch(error){
+
+      await supabaseClient
+        .auth
+        .signOut();
+
+      loginScreen
+        .classList.remove("hidden");
+
+      showMessage(
+        document.getElementById(
+          "loginMessage"
+        ),
+        error.message,
+        "error"
+      );
+
+    }
+
+  }
+
+
+  initialize();
+
+</script>
 
 </body>
 </html>
