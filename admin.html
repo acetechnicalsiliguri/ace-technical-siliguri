@@ -169,6 +169,24 @@
       line-height:1.5;
     }
 
+    .password-link{
+      display:block;
+      width:100%;
+      margin-top:14px;
+      border:0;
+      background:transparent;
+      color:#2563eb;
+      font-size:13px;
+      font-weight:700;
+      text-align:center;
+      padding:6px;
+    }
+
+    .password-link:hover{
+      color:#1d4ed8;
+      text-decoration:underline;
+    }
+
     /* =========================
        APP
     ========================= */
@@ -711,6 +729,14 @@
 
       </form>
 
+      <button
+        type="button"
+        class="password-link"
+        id="setPasswordLink"
+      >
+        🔐 Set / Reset Password
+      </button>
+
       <div
         id="loginMessage"
         class="auth-message"
@@ -1143,6 +1169,9 @@
     const passwordSetupBtn =
       document.getElementById("passwordSetupBtn");
 
+    const setPasswordLink =
+      document.getElementById("setPasswordLink");
+
     const adminEmail =
       document.getElementById("adminEmail");
 
@@ -1410,6 +1439,100 @@
 
 
     /* =========================================
+       SET / RESET PASSWORD EMAIL
+    ========================================= */
+
+    setPasswordLink.addEventListener(
+      "click",
+      async function(){
+
+        clearMessage(loginMessage);
+
+        const email =
+          document.getElementById(
+            "loginEmail"
+          ).value.trim();
+
+        if(!email){
+
+          showMessage(
+            loginMessage,
+            "Please enter your Admin email address first.",
+            "error"
+          );
+
+          document.getElementById(
+            "loginEmail"
+          ).focus();
+
+          return;
+        }
+
+
+        setPasswordLink.disabled = true;
+
+        setPasswordLink.textContent =
+          "Sending password setup link...";
+
+
+        const redirectUrl =
+          window.location.origin +
+          window.location.pathname +
+          "?setup=1";
+
+
+        const {
+          error
+        } =
+          await supabaseClient.auth
+            .resetPasswordForEmail(
+              email,
+              {
+                redirectTo:redirectUrl
+              }
+            );
+
+
+        if(error){
+
+          console.error(
+            "Password reset error:",
+            error
+          );
+
+          showMessage(
+            loginMessage,
+            error.message ||
+            "Unable to send password setup link.",
+            "error"
+          );
+
+          setPasswordLink.disabled = false;
+
+          setPasswordLink.textContent =
+            "🔐 Set / Reset Password";
+
+          return;
+        }
+
+
+        showMessage(
+          loginMessage,
+          "Password setup link has been sent to your email. Please check your inbox.",
+          "success"
+        );
+
+
+        setPasswordLink.disabled = false;
+
+        setPasswordLink.textContent =
+          "🔐 Set / Reset Password";
+
+      }
+    );
+
+
+    /* =========================================
        PASSWORD SETUP
     ========================================= */
 
@@ -1497,11 +1620,6 @@
           "success"
         );
 
-
-        /*
-          Remove invitation/recovery parameters
-          from the visible URL after successful setup.
-        */
 
         window.history.replaceState(
           {},
