@@ -366,7 +366,9 @@
       color:#64748b;
     }
 
-    /* ADMIN MODAL */
+    /* =========================
+       MODAL
+    ========================= */
 
     .modal{
       position:fixed;
@@ -481,6 +483,7 @@
       display:flex;
       gap:8px;
       margin-top:13px;
+      flex-wrap:wrap;
     }
 
     .small-btn{
@@ -505,6 +508,20 @@
     .small-btn.success{
       background:#dcfce7;
       color:#166534;
+    }
+
+    .small-btn.delete{
+      background:#991b1b;
+      color:white;
+    }
+
+    .small-btn.delete:hover{
+      background:#7f1d1d;
+    }
+
+    .small-btn:disabled{
+      opacity:.6;
+      cursor:not-allowed;
     }
 
     .empty{
@@ -558,14 +575,17 @@
       }
 
       .admin-actions{
-        flex-wrap:wrap;
+        flex-direction:column;
+      }
+
+      .small-btn{
+        width:100%;
       }
     }
   </style>
 </head>
 
 <body>
-
 
   <!-- LOGIN -->
 
@@ -653,7 +673,6 @@
 
       <div class="grid">
 
-
         <!-- ADMIN CONTROL -->
 
         <section class="card">
@@ -665,8 +684,8 @@
           <h3>Admin Control</h3>
 
           <p class="card-description">
-            Website-এর Admin account তৈরি, approve, disable
-            এবং permissions control এখান থেকে করা হবে।
+            Website-এর Admin account তৈরি, approve, disable,
+            delete এবং permissions control এখান থেকে করা হবে।
           </p>
 
           <div class="status-box">
@@ -981,16 +1000,9 @@
 
   <script>
 
-    /*
-      ==========================================
-      SUPABASE CONFIGURATION
-      ==========================================
-
-      IMPORTANT:
-      এখানে Service Role Key কখনো ব্যবহার করবে না।
-
-      তোমার বর্তমান Publishable Key এখানেই থাকবে।
-    */
+    /* ==============================
+       SUPABASE CONFIGURATION
+    ============================== */
 
     const SUPABASE_URL =
       "https://wxzqzbifcgxxtyhmctwk.supabase.co";
@@ -1127,7 +1139,6 @@
 
 
       currentUser = user;
-
 
       loadingScreen.classList.add("hidden");
 
@@ -1555,14 +1566,6 @@
 
       try{
 
-        /*
-          Secure Edge Function.
-
-          Service Role Key এখানে নেই।
-          Edge Function server-side থেকে
-          Auth user তৈরি করবে।
-        */
-
         const {
           data,
           error
@@ -1588,10 +1591,12 @@
           data &&
           data.success === false
         ){
+
           throw new Error(
             data.message ||
             "Admin creation failed."
           );
+
         }
 
 
@@ -1671,7 +1676,7 @@
       await supabaseClient
         .from("profiles")
         .select(
-          "id,full_name,role,is_active"
+          "id,full_name,role,is_active,created_at"
         )
         .eq("role","admin")
         .order(
@@ -1717,6 +1722,7 @@
             "div"
           );
 
+
         card.className =
           "admin-card";
 
@@ -1759,6 +1765,7 @@
             </span>
 
           </div>
+
 
           <div class="permission-grid">
 
@@ -1806,6 +1813,7 @@
 
           </div>
 
+
           <div class="admin-actions">
 
             <button
@@ -1813,6 +1821,7 @@
               data-action="save-permissions">
               Save Permissions
             </button>
+
 
             ${
               admin.is_active
@@ -1838,6 +1847,13 @@
               `
             }
 
+
+            <button
+              class="small-btn delete"
+              data-action="delete">
+              Delete Admin
+            </button>
+
           </div>
 
         `;
@@ -1845,6 +1861,10 @@
 
         adminsList.appendChild(card);
 
+
+        /* =========================
+           LOAD PERMISSIONS
+        ========================= */
 
         const permissionData =
           await loadAdminPermissions(
@@ -1870,6 +1890,10 @@
           }
         );
 
+
+        /* =========================
+           SAVE PERMISSIONS
+        ========================= */
 
         const saveButton =
           card.querySelector(
@@ -1906,6 +1930,10 @@
         );
 
 
+        /* =========================
+           DISABLE
+        ========================= */
+
         const disableButton =
           card.querySelector(
             '[data-action="disable"]'
@@ -1930,6 +1958,10 @@
         }
 
 
+        /* =========================
+           ENABLE
+        ========================= */
+
         const enableButton =
           card.querySelector(
             '[data-action="enable"]'
@@ -1946,6 +1978,34 @@
                 admin.id,
                 true,
                 enableButton
+              );
+
+            }
+          );
+
+        }
+
+
+        /* =========================
+           DELETE ADMIN
+        ========================= */
+
+        const deleteButton =
+          card.querySelector(
+            '[data-action="delete"]'
+          );
+
+
+        if(deleteButton){
+
+          deleteButton.addEventListener(
+            "click",
+            async function(){
+
+              await deleteAdmin(
+                admin.id,
+                admin.full_name,
+                deleteButton
               );
 
             }
@@ -1980,21 +2040,7 @@
         .maybeSingle();
 
 
-      if(error){
-
-        return {
-          manage_admissions:true,
-          manage_students:true,
-          manage_courses:true,
-          manage_gallery:true,
-          manage_notices:true,
-          manage_site_content:true
-        };
-
-      }
-
-
-      if(!data){
+      if(error || !data){
 
         return {
           manage_admissions:true,
@@ -2185,6 +2231,125 @@
       await loadAdmins();
 
       await loadAdminCount();
+
+    }
+
+
+    /* ==============================
+       DELETE ADMIN
+    ============================== */
+
+    async function deleteAdmin(
+      adminId,
+      adminName,
+      button
+    ){
+
+      const firstConfirm =
+        confirm(
+          "আপনি কি সত্যিই এই Admin account permanently delete করতে চান?\n\n" +
+          "Admin: " +
+          (adminName || "Unnamed Admin") +
+          "\n\n" +
+          "এই action undo করা যাবে না।"
+        );
+
+
+      if(!firstConfirm){
+        return;
+      }
+
+
+      const secondConfirm =
+        confirm(
+          "FINAL CONFIRMATION\n\n" +
+          "এই Admin-এর Login account এবং Admin profile permanently delete হবে।\n\n" +
+          "Delete করতে OK চাপুন।"
+        );
+
+
+      if(!secondConfirm){
+        return;
+      }
+
+
+      const originalText =
+        button.textContent;
+
+
+      button.disabled = true;
+
+      button.textContent =
+        "Deleting...";
+
+
+      try{
+
+        const {
+          data,
+          error
+        } =
+        await supabaseClient.functions
+          .invoke(
+            "delete-admin",
+            {
+              body:{
+                admin_id:adminId
+              }
+            }
+          );
+
+
+        if(error){
+          throw error;
+        }
+
+
+        if(
+          !data ||
+          data.success !== true
+        ){
+
+          throw new Error(
+            data?.error ||
+            data?.message ||
+            "Admin deletion failed."
+          );
+
+        }
+
+
+        showMessage(
+          panelMessage,
+          "Admin account permanently deleted.",
+          "success"
+        );
+
+
+        await loadAdmins();
+
+        await loadAdminCount();
+
+
+      }catch(error){
+
+        showMessage(
+          panelMessage,
+          "Admin deletion failed: " +
+          (
+            error.message ||
+            "Unknown error"
+          ),
+          "error"
+        );
+
+
+        button.disabled = false;
+
+        button.textContent =
+          originalText;
+
+      }
 
     }
 
