@@ -10,7 +10,6 @@
 
   <meta name="robots" content="noindex,nofollow">
 
-  <!-- Supabase -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
@@ -153,6 +152,7 @@
       font-weight:800;
       background:#e2e8f0;
       color:#475569;
+      white-space:nowrap;
     }
 
     .badge.approved{
@@ -186,6 +186,11 @@
       opacity:.92;
     }
 
+    .action-btn:disabled{
+      opacity:.6;
+      cursor:not-allowed;
+    }
+
     .secondary-btn{
       background:#eef2ff;
       color:#3730a3;
@@ -194,6 +199,11 @@
     .danger-btn{
       background:#fee2e2;
       color:#991b1b;
+    }
+
+    .green-btn{
+      background:#dcfce7;
+      color:#166534;
     }
 
     .ads-list{
@@ -356,7 +366,173 @@
       color:#64748b;
     }
 
+    /* ADMIN MODAL */
+
+    .modal{
+      position:fixed;
+      inset:0;
+      background:rgba(15,23,42,.65);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      z-index:5000;
+    }
+
+    .modal.show{
+      display:flex;
+    }
+
+    .modal-box{
+      width:min(650px,100%);
+      max-height:90vh;
+      overflow:auto;
+      background:white;
+      border-radius:20px;
+      padding:25px;
+      box-shadow:0 25px 70px rgba(0,0,0,.3);
+    }
+
+    .modal-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:15px;
+      margin-bottom:20px;
+    }
+
+    .modal-header h3{
+      font-size:21px;
+    }
+
+    .close-btn{
+      width:36px;
+      height:36px;
+      border:0;
+      border-radius:10px;
+      background:#f1f5f9;
+      color:#334155;
+      font-size:20px;
+      cursor:pointer;
+    }
+
+    .form-label{
+      display:block;
+      font-size:13px;
+      font-weight:800;
+      margin-bottom:6px;
+    }
+
+    .form-group{
+      margin-bottom:15px;
+    }
+
+    .admin-card{
+      border:1px solid #e5e7eb;
+      border-radius:15px;
+      padding:17px;
+      margin-bottom:13px;
+      background:#fff;
+    }
+
+    .admin-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:15px;
+      margin-bottom:13px;
+    }
+
+    .admin-name{
+      font-weight:900;
+      font-size:16px;
+    }
+
+    .admin-email{
+      color:#64748b;
+      font-size:13px;
+      margin-top:4px;
+      word-break:break-word;
+    }
+
+    .permission-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:8px;
+      margin-top:12px;
+    }
+
+    .permission-item{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 10px;
+      background:#f8fafc;
+      border-radius:9px;
+      font-size:12px;
+      color:#334155;
+    }
+
+    .permission-item input{
+      accent-color:#4f46e5;
+    }
+
+    .admin-actions{
+      display:flex;
+      gap:8px;
+      margin-top:13px;
+    }
+
+    .small-btn{
+      border:0;
+      border-radius:9px;
+      padding:9px 12px;
+      font-size:12px;
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    .small-btn.primary{
+      background:#eef2ff;
+      color:#3730a3;
+    }
+
+    .small-btn.danger{
+      background:#fee2e2;
+      color:#991b1b;
+    }
+
+    .small-btn.success{
+      background:#dcfce7;
+      color:#166534;
+    }
+
+    .empty{
+      text-align:center;
+      color:#64748b;
+      padding:25px 10px;
+    }
+
+    .spinner{
+      display:inline-block;
+      width:15px;
+      height:15px;
+      border:2px solid rgba(255,255,255,.4);
+      border-top-color:white;
+      border-radius:50%;
+      animation:spin .7s linear infinite;
+      vertical-align:middle;
+      margin-right:6px;
+    }
+
+    @keyframes spin{
+      to{
+        transform:rotate(360deg);
+      }
+    }
+
     @media(max-width:750px){
+
       .grid{
         grid-template-columns:1fr;
       }
@@ -372,13 +548,27 @@
       .welcome h2{
         font-size:23px;
       }
+
+      .permission-grid{
+        grid-template-columns:1fr;
+      }
+
+      .admin-header{
+        flex-direction:column;
+      }
+
+      .admin-actions{
+        flex-wrap:wrap;
+      }
     }
   </style>
 </head>
 
 <body>
 
+
   <!-- LOGIN -->
+
   <section id="loginScreen" class="login-screen">
 
     <div class="login-box">
@@ -421,12 +611,14 @@
 
 
   <!-- LOADING -->
+
   <section id="loadingScreen" class="loading hidden">
     Checking Super Admin access...
   </section>
 
 
   <!-- SUPER ADMIN PANEL -->
+
   <main id="adminPanel" class="hidden">
 
     <header class="topbar">
@@ -461,7 +653,9 @@
 
       <div class="grid">
 
+
         <!-- ADMIN CONTROL -->
+
         <section class="card">
 
           <div class="card-icon">
@@ -479,6 +673,7 @@
 
             <div class="status-row">
               <span class="label">Admin System</span>
+
               <span class="badge approved">
                 Protected
               </span>
@@ -486,8 +681,19 @@
 
             <div class="status-row">
               <span class="label">Super Admin</span>
+
               <span class="badge approved">
                 Active
+              </span>
+            </div>
+
+            <div class="status-row">
+              <span class="label">Total Admins</span>
+
+              <span
+                id="adminCount"
+                class="badge">
+                0
               </span>
             </div>
 
@@ -511,6 +717,7 @@
 
 
         <!-- ADSENSE -->
+
         <section class="card">
 
           <div class="card-icon">
@@ -528,13 +735,17 @@
           <div class="status-box">
 
             <div class="status-row">
-              <span class="label">AdSense Status</span>
+
+              <span class="label">
+                AdSense Status
+              </span>
 
               <span
                 id="adsenseStatus"
                 class="badge">
                 Loading...
               </span>
+
             </div>
 
           </div>
@@ -549,10 +760,13 @@
               </div>
 
               <label class="switch">
+
                 <input
                   id="masterAds"
                   type="checkbox">
+
                 <span class="slider"></span>
+
               </label>
 
             </div>
@@ -566,10 +780,13 @@
               </div>
 
               <label class="switch">
+
                 <input
                   id="homepageAds"
                   type="checkbox">
+
                 <span class="slider"></span>
+
               </label>
 
             </div>
@@ -583,10 +800,13 @@
               </div>
 
               <label class="switch">
+
                 <input
                   id="coursesAds"
                   type="checkbox">
+
                 <span class="slider"></span>
+
               </label>
 
             </div>
@@ -600,10 +820,13 @@
               </div>
 
               <label class="switch">
+
                 <input
                   id="galleryAds"
                   type="checkbox">
+
                 <span class="slider"></span>
+
               </label>
 
             </div>
@@ -617,10 +840,13 @@
               </div>
 
               <label class="switch">
+
                 <input
                   id="footerAds"
                   type="checkbox">
+
                 <span class="slider"></span>
+
               </label>
 
             </div>
@@ -646,6 +872,113 @@
   </main>
 
 
+  <!-- ADD ADMIN MODAL -->
+
+  <div
+    id="createAdminModal"
+    class="modal">
+
+    <div class="modal-box">
+
+      <div class="modal-header">
+
+        <h3>Add New Admin</h3>
+
+        <button
+          class="close-btn"
+          id="closeCreateAdmin"
+          type="button">
+          ×
+        </button>
+
+      </div>
+
+      <p class="card-description">
+        Admin-এর জন্য একটি email invitation পাঠানো হবে।
+        Password Super Admin panel-এ রাখা হবে না।
+      </p>
+
+      <div class="form-group">
+
+        <label class="form-label">
+          Full Name
+        </label>
+
+        <input
+          id="newAdminName"
+          class="input"
+          type="text"
+          placeholder="Admin full name">
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label class="form-label">
+          Email Address
+        </label>
+
+        <input
+          id="newAdminEmail"
+          class="input"
+          type="email"
+          placeholder="admin@example.com">
+
+      </div>
+
+
+      <button
+        class="action-btn"
+        id="submitCreateAdmin"
+        type="button">
+        Create Admin
+      </button>
+
+      <div
+        id="createAdminMessage"
+        class="message">
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- MANAGE ADMINS MODAL -->
+
+  <div
+    id="manageAdminsModal"
+    class="modal">
+
+    <div class="modal-box">
+
+      <div class="modal-header">
+
+        <h3>Manage Admins</h3>
+
+        <button
+          class="close-btn"
+          id="closeManageAdmins"
+          type="button">
+          ×
+        </button>
+
+      </div>
+
+      <div id="adminsList">
+
+        <div class="empty">
+          Loading admins...
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
   <script>
 
     /*
@@ -653,10 +986,10 @@
       SUPABASE CONFIGURATION
       ==========================================
 
-      এখানে পরে তোমার Supabase URL এবং
-      Publishable/Anon Key বসাতে হবে।
+      IMPORTANT:
+      এখানে Service Role Key কখনো ব্যবহার করবে না।
 
-      কখনো Service Role Key এখানে বসাবে না।
+      তোমার বর্তমান Publishable Key এখানেই থাকবে।
     */
 
     const SUPABASE_URL =
@@ -688,8 +1021,24 @@
     const panelMessage =
       document.getElementById("panelMessage");
 
+    const createAdminModal =
+      document.getElementById("createAdminModal");
 
-    function showMessage(element, text, type){
+    const manageAdminsModal =
+      document.getElementById("manageAdminsModal");
+
+    const adminsList =
+      document.getElementById("adminsList");
+
+
+    let currentUser = null;
+
+
+    /* ==============================
+       MESSAGE
+    ============================== */
+
+    function showMessage(element,text,type){
 
       element.textContent = text;
 
@@ -708,6 +1057,10 @@
     }
 
 
+    /* ==============================
+       SUPER ADMIN CHECK
+    ============================== */
+
     async function checkSuperAdmin(){
 
       loadingScreen.classList.remove("hidden");
@@ -718,10 +1071,11 @@
 
 
       const {
-        data: {
+        data:{
           user
         }
-      } = await supabaseClient.auth.getUser();
+      } =
+      await supabaseClient.auth.getUser();
 
 
       if(!user){
@@ -736,11 +1090,14 @@
 
 
       const {
-        data: profile,
+        data:profile,
         error
-      } = await supabaseClient
+      } =
+      await supabaseClient
         .from("profiles")
-        .select("id,full_name,role,is_active")
+        .select(
+          "id,full_name,role,is_active"
+        )
         .eq("id",user.id)
         .single();
 
@@ -769,25 +1126,41 @@
       }
 
 
+      currentUser = user;
+
+
       loadingScreen.classList.add("hidden");
 
       adminPanel.classList.remove("hidden");
 
-      await loadAdSenseSettings();
+
+      await Promise.all([
+        loadAdSenseSettings(),
+        loadAdminCount()
+      ]);
 
     }
 
+
+    /* ==============================
+       LOGIN
+    ============================== */
 
     async function login(){
 
       clearMessage(loginMessage);
 
+
       const email =
-        document.getElementById("loginEmail")
-          .value.trim();
+        document
+          .getElementById("loginEmail")
+          .value
+          .trim();
+
 
       const password =
-        document.getElementById("loginPassword")
+        document
+          .getElementById("loginPassword")
           .value;
 
 
@@ -807,29 +1180,35 @@
       const loginBtn =
         document.getElementById("loginBtn");
 
+
       loginBtn.disabled = true;
 
-      loginBtn.textContent = "Logging in...";
+      loginBtn.textContent =
+        "Logging in...";
 
 
       const {
         error
-      } = await supabaseClient.auth.signInWithPassword({
-        email,
-        password
-      });
+      } =
+      await supabaseClient.auth
+        .signInWithPassword({
+          email,
+          password
+        });
 
 
       loginBtn.disabled = false;
 
-      loginBtn.textContent = "Login";
+      loginBtn.textContent =
+        "Login";
 
 
       if(error){
 
         showMessage(
           loginMessage,
-          "Login failed: " + error.message,
+          "Login failed: " +
+          error.message,
           "error"
         );
 
@@ -843,12 +1222,17 @@
     }
 
 
+    /* ==============================
+       ADSENSE
+    ============================== */
+
     async function loadAdSenseSettings(){
 
       const {
         data,
         error
-      } = await supabaseClient
+      } =
+      await supabaseClient
         .from("adsense_settings")
         .select("*")
         .eq("id",1)
@@ -869,30 +1253,53 @@
       }
 
 
-      document.getElementById("masterAds").checked =
+      document.getElementById(
+        "masterAds"
+      ).checked =
         data.master_ads_enabled;
 
-      document.getElementById("homepageAds").checked =
+
+      document.getElementById(
+        "homepageAds"
+      ).checked =
         data.homepage_ads_enabled;
 
-      document.getElementById("coursesAds").checked =
+
+      document.getElementById(
+        "coursesAds"
+      ).checked =
         data.courses_ads_enabled;
 
-      document.getElementById("galleryAds").checked =
+
+      document.getElementById(
+        "galleryAds"
+      ).checked =
         data.gallery_ads_enabled;
 
-      document.getElementById("footerAds").checked =
+
+      document.getElementById(
+        "footerAds"
+      ).checked =
         data.footer_ads_enabled;
 
 
       const status =
-        document.getElementById("adsenseStatus");
+        document.getElementById(
+          "adsenseStatus"
+        );
+
 
       status.textContent =
-        formatStatus(data.adsense_status);
+        formatStatus(
+          data.adsense_status
+        );
+
 
       status.className =
-        "badge " + getStatusClass(data.adsense_status);
+        "badge " +
+        getStatusClass(
+          data.adsense_status
+        );
 
     }
 
@@ -935,33 +1342,48 @@
 
 
       const saveBtn =
-        document.getElementById("saveAdsBtn");
+        document.getElementById(
+          "saveAdsBtn"
+        );
+
 
       saveBtn.disabled = true;
 
-      saveBtn.textContent = "Saving...";
+      saveBtn.textContent =
+        "Saving...";
 
 
       const {
         error
-      } = await supabaseClient
+      } =
+      await supabaseClient
         .from("adsense_settings")
         .update({
 
           master_ads_enabled:
-            document.getElementById("masterAds").checked,
+            document.getElementById(
+              "masterAds"
+            ).checked,
 
           homepage_ads_enabled:
-            document.getElementById("homepageAds").checked,
+            document.getElementById(
+              "homepageAds"
+            ).checked,
 
           courses_ads_enabled:
-            document.getElementById("coursesAds").checked,
+            document.getElementById(
+              "coursesAds"
+            ).checked,
 
           gallery_ads_enabled:
-            document.getElementById("galleryAds").checked,
+            document.getElementById(
+              "galleryAds"
+            ).checked,
 
           footer_ads_enabled:
-            document.getElementById("footerAds").checked
+            document.getElementById(
+              "footerAds"
+            ).checked
 
         })
         .eq("id",1);
@@ -969,14 +1391,16 @@
 
       saveBtn.disabled = false;
 
-      saveBtn.textContent = "Save Ad Settings";
+      saveBtn.textContent =
+        "Save Ad Settings";
 
 
       if(error){
 
         showMessage(
           panelMessage,
-          "Save failed: " + error.message,
+          "Save failed: " +
+          error.message,
           "error"
         );
 
@@ -993,6 +1417,797 @@
 
     }
 
+
+    /* ==============================
+       ADMIN COUNT
+    ============================== */
+
+    async function loadAdminCount(){
+
+      const {
+        count,
+        error
+      } =
+      await supabaseClient
+        .from("profiles")
+        .select(
+          "id",
+          {
+            count:"exact",
+            head:true
+          }
+        )
+        .eq("role","admin");
+
+
+      if(!error){
+
+        document.getElementById(
+          "adminCount"
+        ).textContent =
+          count || 0;
+
+      }
+
+    }
+
+
+    /* ==============================
+       CREATE ADMIN MODAL
+    ============================== */
+
+    function openCreateAdmin(){
+
+      clearMessage(
+        document.getElementById(
+          "createAdminMessage"
+        )
+      );
+
+      document.getElementById(
+        "newAdminName"
+      ).value = "";
+
+      document.getElementById(
+        "newAdminEmail"
+      ).value = "";
+
+      createAdminModal.classList.add(
+        "show"
+      );
+
+    }
+
+
+    function closeCreateAdmin(){
+
+      createAdminModal.classList.remove(
+        "show"
+      );
+
+    }
+
+
+    /* ==============================
+       CREATE ADMIN
+    ============================== */
+
+    async function createAdmin(){
+
+      const name =
+        document.getElementById(
+          "newAdminName"
+        ).value.trim();
+
+
+      const email =
+        document.getElementById(
+          "newAdminEmail"
+        ).value.trim();
+
+
+      const message =
+        document.getElementById(
+          "createAdminMessage"
+        );
+
+
+      clearMessage(message);
+
+
+      if(!name){
+
+        showMessage(
+          message,
+          "Admin-এর Full Name দিন।",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      if(!email){
+
+        showMessage(
+          message,
+          "Admin-এর email address দিন।",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      const button =
+        document.getElementById(
+          "submitCreateAdmin"
+        );
+
+
+      button.disabled = true;
+
+      button.innerHTML =
+        '<span class="spinner"></span>Creating...';
+
+
+      try{
+
+        /*
+          Secure Edge Function.
+
+          Service Role Key এখানে নেই।
+          Edge Function server-side থেকে
+          Auth user তৈরি করবে।
+        */
+
+        const {
+          data,
+          error
+        } =
+        await supabaseClient.functions
+          .invoke(
+            "create-admin",
+            {
+              body:{
+                full_name:name,
+                email:email
+              }
+            }
+          );
+
+
+        if(error){
+          throw error;
+        }
+
+
+        if(
+          data &&
+          data.success === false
+        ){
+          throw new Error(
+            data.message ||
+            "Admin creation failed."
+          );
+        }
+
+
+        showMessage(
+          message,
+          "Admin successfully created. Invitation email পাঠানো হয়েছে।",
+          "success"
+        );
+
+
+        await loadAdminCount();
+
+
+        setTimeout(
+          closeCreateAdmin,
+          1800
+        );
+
+
+      }catch(error){
+
+        showMessage(
+          message,
+          "Admin creation failed: " +
+          (
+            error.message ||
+            "Unknown error"
+          ),
+          "error"
+        );
+
+      }
+
+
+      button.disabled = false;
+
+      button.textContent =
+        "Create Admin";
+
+    }
+
+
+    /* ==============================
+       MANAGE ADMINS
+    ============================== */
+
+    async function openManageAdmins(){
+
+      manageAdminsModal.classList.add(
+        "show"
+      );
+
+      await loadAdmins();
+
+    }
+
+
+    function closeManageAdmins(){
+
+      manageAdminsModal.classList.remove(
+        "show"
+      );
+
+    }
+
+
+    async function loadAdmins(){
+
+      adminsList.innerHTML =
+        '<div class="empty">Loading admins...</div>';
+
+
+      const {
+        data,
+        error
+      } =
+      await supabaseClient
+        .from("profiles")
+        .select(
+          "id,full_name,role,is_active"
+        )
+        .eq("role","admin")
+        .order(
+          "created_at",
+          {
+            ascending:false
+          }
+        );
+
+
+      if(error){
+
+        adminsList.innerHTML =
+          '<div class="empty">' +
+          "Admins load হয়নি: " +
+          escapeHtml(error.message) +
+          "</div>";
+
+        return;
+
+      }
+
+
+      if(!data || data.length === 0){
+
+        adminsList.innerHTML =
+          '<div class="empty">' +
+          "এখনো কোনো Admin তৈরি করা হয়নি।" +
+          "</div>";
+
+        return;
+
+      }
+
+
+      adminsList.innerHTML = "";
+
+
+      for(const admin of data){
+
+        const card =
+          document.createElement(
+            "div"
+          );
+
+        card.className =
+          "admin-card";
+
+
+        const statusClass =
+          admin.is_active
+            ? "approved"
+            : "disabled";
+
+
+        const statusText =
+          admin.is_active
+            ? "Active"
+            : "Disabled";
+
+
+        card.innerHTML = `
+
+          <div class="admin-header">
+
+            <div>
+
+              <div class="admin-name">
+                ${escapeHtml(
+                  admin.full_name ||
+                  "Unnamed Admin"
+                )}
+              </div>
+
+              <div class="admin-email">
+                Admin ID: ${escapeHtml(
+                  admin.id
+                )}
+              </div>
+
+            </div>
+
+            <span class="badge ${statusClass}">
+              ${statusText}
+            </span>
+
+          </div>
+
+          <div class="permission-grid">
+
+            <label class="permission-item">
+              <input
+                type="checkbox"
+                data-permission="manage_admissions">
+              Admissions
+            </label>
+
+            <label class="permission-item">
+              <input
+                type="checkbox"
+                data-permission="manage_students">
+              Students
+            </label>
+
+            <label class="permission-item">
+              <input
+                type="checkbox"
+                data-permission="manage_courses">
+              Courses
+            </label>
+
+            <label class="permission-item">
+              <input
+                type="checkbox"
+                data-permission="manage_gallery">
+              Gallery
+            </label>
+
+            <label class="permission-item">
+              <input
+                type="checkbox"
+                data-permission="manage_notices">
+              Notices
+            </label>
+
+            <label class="permission-item">
+              <input
+                type="checkbox"
+                data-permission="manage_site_content">
+              Site Content
+            </label>
+
+          </div>
+
+          <div class="admin-actions">
+
+            <button
+              class="small-btn primary"
+              data-action="save-permissions">
+              Save Permissions
+            </button>
+
+            ${
+              admin.is_active
+
+              ?
+
+              `
+              <button
+                class="small-btn danger"
+                data-action="disable">
+                Disable Admin
+              </button>
+              `
+
+              :
+
+              `
+              <button
+                class="small-btn success"
+                data-action="enable">
+                Approve / Enable
+              </button>
+              `
+            }
+
+          </div>
+
+        `;
+
+
+        adminsList.appendChild(card);
+
+
+        const permissionData =
+          await loadAdminPermissions(
+            admin.id
+          );
+
+
+        const permissionInputs =
+          card.querySelectorAll(
+            "[data-permission]"
+          );
+
+
+        permissionInputs.forEach(
+          input => {
+
+            const key =
+              input.dataset.permission;
+
+            input.checked =
+              permissionData[key] === true;
+
+          }
+        );
+
+
+        const saveButton =
+          card.querySelector(
+            '[data-action="save-permissions"]'
+          );
+
+
+        saveButton.addEventListener(
+          "click",
+          async function(){
+
+            const permissions = {};
+
+
+            permissionInputs.forEach(
+              input => {
+
+                permissions[
+                  input.dataset.permission
+                ] =
+                  input.checked;
+
+              }
+            );
+
+
+            await saveAdminPermissions(
+              admin.id,
+              permissions,
+              saveButton
+            );
+
+          }
+        );
+
+
+        const disableButton =
+          card.querySelector(
+            '[data-action="disable"]'
+          );
+
+
+        if(disableButton){
+
+          disableButton.addEventListener(
+            "click",
+            async function(){
+
+              await changeAdminStatus(
+                admin.id,
+                false,
+                disableButton
+              );
+
+            }
+          );
+
+        }
+
+
+        const enableButton =
+          card.querySelector(
+            '[data-action="enable"]'
+          );
+
+
+        if(enableButton){
+
+          enableButton.addEventListener(
+            "click",
+            async function(){
+
+              await changeAdminStatus(
+                admin.id,
+                true,
+                enableButton
+              );
+
+            }
+          );
+
+        }
+
+      }
+
+    }
+
+
+    /* ==============================
+       LOAD PERMISSIONS
+    ============================== */
+
+    async function loadAdminPermissions(
+      adminId
+    ){
+
+      const {
+        data,
+        error
+      } =
+      await supabaseClient
+        .from("admin_permissions")
+        .select("*")
+        .eq(
+          "admin_id",
+          adminId
+        )
+        .maybeSingle();
+
+
+      if(error){
+
+        return {
+          manage_admissions:true,
+          manage_students:true,
+          manage_courses:true,
+          manage_gallery:true,
+          manage_notices:true,
+          manage_site_content:true
+        };
+
+      }
+
+
+      if(!data){
+
+        return {
+          manage_admissions:true,
+          manage_students:true,
+          manage_courses:true,
+          manage_gallery:true,
+          manage_notices:true,
+          manage_site_content:true
+        };
+
+      }
+
+
+      return data;
+
+    }
+
+
+    /* ==============================
+       SAVE PERMISSIONS
+    ============================== */
+
+    async function saveAdminPermissions(
+      adminId,
+      permissions,
+      button
+    ){
+
+      const originalText =
+        button.textContent;
+
+
+      button.disabled = true;
+
+      button.textContent =
+        "Saving...";
+
+
+      const {
+        error
+      } =
+      await supabaseClient
+        .from("admin_permissions")
+        .upsert(
+          {
+            admin_id:adminId,
+
+            manage_admissions:
+              permissions.manage_admissions,
+
+            manage_students:
+              permissions.manage_students,
+
+            manage_courses:
+              permissions.manage_courses,
+
+            manage_gallery:
+              permissions.manage_gallery,
+
+            manage_notices:
+              permissions.manage_notices,
+
+            manage_site_content:
+              permissions.manage_site_content
+
+          },
+          {
+            onConflict:"admin_id"
+          }
+        );
+
+
+      button.disabled = false;
+
+      button.textContent =
+        originalText;
+
+
+      if(error){
+
+        showMessage(
+          panelMessage,
+          "Permission save failed: " +
+          error.message,
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      showMessage(
+        panelMessage,
+        "Admin permissions successfully updated.",
+        "success"
+      );
+
+    }
+
+
+    /* ==============================
+       ENABLE / DISABLE ADMIN
+    ============================== */
+
+    async function changeAdminStatus(
+      adminId,
+      active,
+      button
+    ){
+
+      const action =
+        active
+          ? "enable"
+          : "disable";
+
+
+      const confirmText =
+        active
+          ? "এই Admin-কে আবার Enable করবেন?"
+          : "এই Admin-কে Disable করবেন?";
+
+
+      if(!confirm(confirmText)){
+        return;
+      }
+
+
+      const originalText =
+        button.textContent;
+
+
+      button.disabled = true;
+
+      button.textContent =
+        "Saving...";
+
+
+      const {
+        error
+      } =
+      await supabaseClient
+        .from("profiles")
+        .update({
+          is_active:active
+        })
+        .eq(
+          "id",
+          adminId
+        )
+        .eq(
+          "role",
+          "admin"
+        );
+
+
+      button.disabled = false;
+
+      button.textContent =
+        originalText;
+
+
+      if(error){
+
+        showMessage(
+          panelMessage,
+          "Admin " +
+          action +
+          " failed: " +
+          error.message,
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      showMessage(
+        panelMessage,
+        active
+          ? "Admin successfully enabled."
+          : "Admin successfully disabled.",
+        "success"
+      );
+
+
+      await loadAdmins();
+
+      await loadAdminCount();
+
+    }
+
+
+    /* ==============================
+       ESCAPE HTML
+    ============================== */
+
+    function escapeHtml(value){
+
+      return String(value)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+
+    }
+
+
+    /* ==============================
+       EVENT LISTENERS
+    ============================== */
 
     document
       .getElementById("loginBtn")
@@ -1024,13 +2239,21 @@
 
           await supabaseClient.auth.signOut();
 
-          adminPanel.classList.add("hidden");
+          adminPanel.classList.add(
+            "hidden"
+          );
 
-          loginScreen.classList.remove("hidden");
+          loginScreen.classList.remove(
+            "hidden"
+          );
 
-          document.getElementById("loginEmail").value = "";
+          document.getElementById(
+            "loginEmail"
+          ).value = "";
 
-          document.getElementById("loginPassword").value = "";
+          document.getElementById(
+            "loginPassword"
+          ).value = "";
 
         }
       );
@@ -1045,32 +2268,96 @@
 
 
     document
-      .getElementById("manageAdminsBtn")
+      .getElementById("createAdminBtn")
       .addEventListener(
         "click",
-        function(){
-
-          alert(
-            "Admin Management module আমরা পরের ধাপে তৈরি করব।"
-          );
-
-        }
+        openCreateAdmin
       );
 
 
     document
-      .getElementById("createAdminBtn")
+      .getElementById("closeCreateAdmin")
       .addEventListener(
         "click",
-        function(){
+        closeCreateAdmin
+      );
 
-          alert(
-            "Add Admin module আমরা পরের ধাপে তৈরি করব।"
-          );
+
+    document
+      .getElementById("submitCreateAdmin")
+      .addEventListener(
+        "click",
+        createAdmin
+      );
+
+
+    document
+      .getElementById("manageAdminsBtn")
+      .addEventListener(
+        "click",
+        openManageAdmins
+      );
+
+
+    document
+      .getElementById("closeManageAdmins")
+      .addEventListener(
+        "click",
+        closeManageAdmins
+      );
+
+
+    createAdminModal.addEventListener(
+      "click",
+      function(event){
+
+        if(event.target === createAdminModal){
+          closeCreateAdmin();
+        }
+
+      }
+    );
+
+
+    manageAdminsModal.addEventListener(
+      "click",
+      function(event){
+
+        if(event.target === manageAdminsModal){
+          closeManageAdmins();
+        }
+
+      }
+    );
+
+
+    /* ==============================
+       AUTH STATE
+    ============================== */
+
+    supabaseClient.auth
+      .onAuthStateChange(
+        function(event){
+
+          if(event === "SIGNED_OUT"){
+
+            adminPanel.classList.add(
+              "hidden"
+            );
+
+            loginScreen.classList.remove(
+              "hidden"
+            );
+
+          }
 
         }
       );
 
+
+    /* ==============================
+       START
+    ============================== */
 
     checkSuperAdmin();
 
