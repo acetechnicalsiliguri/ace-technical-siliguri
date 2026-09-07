@@ -12,7 +12,7 @@
 
   <meta
     name="description"
-    content="Admin Panel for ACE Technical Siliguri"
+    content="ACE Technical Siliguri Admin Panel"
   >
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -28,20 +28,14 @@
       font-family:Arial,Helvetica,sans-serif;
       background:#f4f7fb;
       color:#172033;
-    }
-
-    button,
-    input{
-      font:inherit;
+      min-height:100vh;
     }
 
     .hidden{
       display:none !important;
     }
 
-    /* LOGIN */
-
-    #loginScreen{
+    .login-page{
       min-height:100vh;
       display:flex;
       align-items:center;
@@ -52,29 +46,28 @@
           135deg,
           #111433,
           #3730a3,
-          #4f46e5,
-          #06b6d4
+          #4f46e5
         );
     }
 
-    .login-card{
+    .login-box{
       width:100%;
       max-width:430px;
       background:#fff;
-      border-radius:24px;
+      border-radius:20px;
       padding:35px;
       box-shadow:0 25px 70px rgba(0,0,0,.25);
     }
 
-    .login-logo{
+    .logo{
       text-align:center;
-      font-size:26px;
+      font-size:28px;
       font-weight:900;
+      color:#4f46e5;
       margin-bottom:8px;
-      color:#3730a3;
     }
 
-    .login-subtitle{
+    .subtitle{
       text-align:center;
       color:#64748b;
       margin-bottom:28px;
@@ -84,139 +77,131 @@
       margin-bottom:18px;
     }
 
-    .form-group label{
+    label{
       display:block;
       font-weight:700;
       margin-bottom:7px;
     }
 
-    .form-group input{
+    input{
       width:100%;
       padding:13px 14px;
-      border:1px solid #dbe1ea;
-      border-radius:12px;
+      border:1px solid #d7dce5;
+      border-radius:10px;
+      font-size:15px;
       outline:none;
     }
 
-    .form-group input:focus{
+    input:focus{
       border-color:#4f46e5;
-      box-shadow:0 0 0 3px rgba(79,70,229,.12);
+      box-shadow:0 0 0 3px rgba(79,70,229,.1);
     }
 
-    .login-btn{
-      width:100%;
+    button{
       border:0;
-      padding:14px;
-      border-radius:12px;
-      background:linear-gradient(
-        135deg,
-        #4f46e5,
-        #7c3aed
-      );
-      color:#fff;
-      font-weight:800;
       cursor:pointer;
+      font-weight:700;
     }
 
-    .login-btn:hover{
-      opacity:.92;
+    .primary-btn{
+      width:100%;
+      padding:14px;
+      border-radius:10px;
+      background:#4f46e5;
+      color:#fff;
+      font-size:16px;
     }
 
-    #loginMessage{
+    .primary-btn:hover{
+      background:#3730a3;
+    }
+
+    .message{
       margin-top:15px;
-      text-align:center;
+      padding:12px;
+      border-radius:9px;
       font-size:14px;
-      color:#dc2626;
-      min-height:20px;
+      display:none;
     }
 
-    /* ADMIN APP */
+    .message.error{
+      display:block;
+      background:#fee2e2;
+      color:#991b1b;
+    }
 
-    #adminApp{
+    .message.success{
+      display:block;
+      background:#dcfce7;
+      color:#166534;
+    }
+
+    .password-info{
+      background:#eef2ff;
+      color:#3730a3;
+      padding:13px;
+      border-radius:10px;
+      margin-bottom:20px;
+      line-height:1.5;
+      font-size:14px;
+    }
+
+    .dashboard{
       min-height:100vh;
     }
 
-    header{
+    .topbar{
+      background:#111433;
+      color:#fff;
+      padding:16px 24px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
       position:sticky;
       top:0;
-      z-index:1000;
-      background:
-        linear-gradient(
-          135deg,
-          #111433,
-          #3730a3,
-          #4f46e5
-        );
-      color:#fff;
-      box-shadow:0 5px 20px rgba(0,0,0,.15);
+      z-index:100;
     }
 
-    .header-inner{
-      max-width:1250px;
-      margin:auto;
-      padding:18px 22px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-    }
-
-    .brand{
+    .topbar-title{
       font-size:21px;
       font-weight:900;
     }
 
-    .brand small{
-      display:block;
-      font-size:11px;
-      opacity:.75;
-      margin-top:3px;
-      font-weight:600;
-    }
-
-    .header-actions{
+    .topbar-right{
       display:flex;
       align-items:center;
-      gap:12px;
+      gap:14px;
     }
 
-    .admin-badge{
-      background:rgba(255,255,255,.14);
-      border:1px solid rgba(255,255,255,.2);
-      padding:8px 12px;
-      border-radius:999px;
-      font-size:13px;
-      font-weight:700;
+    .user-name{
+      font-size:14px;
+      opacity:.9;
     }
 
     .logout-btn{
-      border:1px solid rgba(255,255,255,.3);
-      background:rgba(255,255,255,.1);
+      background:#ef4444;
       color:#fff;
-      padding:9px 14px;
-      border-radius:10px;
-      cursor:pointer;
-      font-weight:700;
+      padding:9px 15px;
+      border-radius:8px;
     }
-
-    .logout-btn:hover{
-      background:rgba(255,255,255,.18);
-    }
-
-    /* CONTENT */
 
     .container{
-      max-width:1250px;
+      max-width:1200px;
       margin:auto;
-      padding:30px 22px 60px;
+      padding:30px 20px 50px;
     }
 
     .welcome{
+      background:#fff;
+      border-radius:18px;
+      padding:25px;
       margin-bottom:25px;
+      box-shadow:0 5px 20px rgba(15,23,42,.06);
     }
 
     .welcome h1{
-      font-size:30px;
+      font-size:28px;
       margin-bottom:8px;
     }
 
@@ -224,179 +209,128 @@
       color:#64748b;
     }
 
-    .dashboard-grid{
+    .stats{
       display:grid;
       grid-template-columns:
-        repeat(4, minmax(0,1fr));
+        repeat(4,1fr);
       gap:18px;
-      margin-bottom:28px;
+      margin-bottom:30px;
     }
 
     .stat-card{
       background:#fff;
-      border:1px solid #e5e7eb;
-      border-radius:18px;
       padding:22px;
-      box-shadow:0 8px 25px rgba(15,23,42,.06);
-    }
-
-    .stat-icon{
-      width:45px;
-      height:45px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      border-radius:12px;
-      background:#eef2ff;
-      color:#4338ca;
-      font-size:21px;
-      margin-bottom:14px;
-    }
-
-    .stat-number{
-      font-size:28px;
-      font-weight:900;
-      margin-bottom:5px;
+      border-radius:16px;
+      box-shadow:0 5px 20px rgba(15,23,42,.06);
     }
 
     .stat-label{
       color:#64748b;
       font-size:14px;
-      font-weight:600;
+      margin-bottom:8px;
     }
 
-    /* MODULES */
-
-    .section-title{
-      font-size:22px;
+    .stat-number{
+      font-size:30px;
       font-weight:900;
-      margin-bottom:15px;
+      color:#4f46e5;
     }
 
     .modules{
       display:grid;
       grid-template-columns:
-        repeat(3, minmax(0,1fr));
-      gap:18px;
+        repeat(3,1fr);
+      gap:20px;
     }
 
     .module-card{
       background:#fff;
-      border:1px solid #e5e7eb;
       border-radius:18px;
-      padding:24px;
-      box-shadow:0 8px 25px rgba(15,23,42,.06);
+      padding:25px;
+      box-shadow:0 5px 20px rgba(15,23,42,.06);
       transition:.2s;
     }
 
     .module-card:hover{
       transform:translateY(-3px);
-      box-shadow:0 14px 35px rgba(15,23,42,.1);
+      box-shadow:0 12px 30px rgba(15,23,42,.1);
     }
 
     .module-icon{
-      font-size:30px;
+      font-size:35px;
       margin-bottom:12px;
     }
 
     .module-card h3{
-      margin-bottom:7px;
+      margin-bottom:8px;
     }
 
     .module-card p{
       color:#64748b;
       font-size:14px;
-      line-height:1.6;
-      margin-bottom:16px;
+      line-height:1.5;
+      margin-bottom:18px;
     }
 
     .module-btn{
-      width:100%;
-      padding:11px;
-      border:0;
-      border-radius:10px;
       background:#eef2ff;
       color:#3730a3;
-      font-weight:800;
-      cursor:pointer;
+      padding:10px 15px;
+      border-radius:8px;
     }
 
-    .module-btn:hover{
-      background:#e0e7ff;
-    }
-
-    /* NOTICE */
-
-    .notice{
-      margin-top:28px;
-      padding:18px 20px;
+    .security{
+      margin-top:30px;
+      background:#ecfdf5;
+      border:1px solid #bbf7d0;
+      color:#166534;
       border-radius:15px;
-      background:#fff7ed;
-      border:1px solid #fed7aa;
-      color:#9a3412;
-      font-size:14px;
+      padding:18px;
       line-height:1.6;
     }
 
-    /* MOBILE */
-
-    @media(max-width:900px){
-
-      .dashboard-grid{
+    @media(max-width:850px){
+      .stats{
         grid-template-columns:
-          repeat(2,minmax(0,1fr));
+          repeat(2,1fr);
       }
 
       .modules{
         grid-template-columns:
-          repeat(2,minmax(0,1fr));
+          repeat(2,1fr);
       }
     }
 
     @media(max-width:600px){
-
-      .header-inner{
-        padding:15px;
+      .topbar{
+        padding:14px;
+        flex-direction:column;
+        align-items:flex-start;
       }
 
-      .brand{
-        font-size:17px;
-      }
-
-      .brand small{
-        font-size:9px;
-      }
-
-      .admin-badge{
-        display:none;
+      .topbar-right{
+        width:100%;
+        justify-content:space-between;
       }
 
       .container{
-        padding:22px 15px 45px;
+        padding:20px 14px 40px;
       }
 
-      .welcome h1{
-        font-size:25px;
-      }
-
-      .dashboard-grid{
+      .stats{
         grid-template-columns:1fr 1fr;
         gap:12px;
-      }
-
-      .stat-card{
-        padding:16px;
-      }
-
-      .stat-number{
-        font-size:23px;
       }
 
       .modules{
         grid-template-columns:1fr;
       }
 
-      .login-card{
+      .welcome h1{
+        font-size:23px;
+      }
+
+      .login-box{
         padding:25px 20px;
       }
     }
@@ -405,104 +339,164 @@
 
 <body>
 
-  <!-- LOGIN SCREEN -->
+  <!-- LOGIN -->
+  <section
+    id="loginPage"
+    class="login-page"
+  >
 
-  <section id="loginScreen">
+    <div class="login-box">
 
-    <div class="login-card">
-
-      <div class="login-logo">
-        ACE TECHNICAL SILIGURI
+      <div class="logo">
+        ACE TECHNICAL
       </div>
 
-      <div class="login-subtitle">
-        Admin Panel Login
+      <div class="subtitle">
+        Admin Panel
       </div>
 
-      <form id="loginForm">
+      <!-- SET PASSWORD -->
+      <div
+        id="setPasswordBox"
+        class="hidden"
+      >
 
-        <div class="form-group">
-
-          <label for="email">
-            Email Address
-          </label>
-
-          <input
-            type="email"
-            id="email"
-            placeholder="Enter admin email"
-            required
-          >
-
+        <div class="password-info">
+          🎉 আপনার Admin invitation সফলভাবে গ্রহণ হয়েছে।<br><br>
+          এখন আপনার নিজের Admin password সেট করুন।
+          এই password Super Admin দেখতে বা সংরক্ষণ করতে পারবে না।
         </div>
 
-        <div class="form-group">
+        <form id="setPasswordForm">
 
-          <label for="password">
-            Password
-          </label>
+          <div class="form-group">
+            <label for="newPassword">
+              New Password
+            </label>
 
-          <input
-            type="password"
-            id="password"
-            placeholder="Enter password"
-            required
+            <input
+              id="newPassword"
+              type="password"
+              minlength="8"
+              placeholder="কমপক্ষে 8 characters"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">
+              Confirm Password
+            </label>
+
+            <input
+              id="confirmPassword"
+              type="password"
+              minlength="8"
+              placeholder="Password আবার লিখুন"
+              required
+            >
+          </div>
+
+          <button
+            type="submit"
+            class="primary-btn"
+            id="setPasswordBtn"
           >
+            Set Password
+          </button>
 
-        </div>
+        </form>
 
-        <button
-          type="submit"
-          class="login-btn"
-          id="loginBtn"
-        >
-          Login
-        </button>
+        <div
+          id="passwordMessage"
+          class="message"
+        ></div>
 
-      </form>
+      </div>
 
-      <div id="loginMessage"></div>
+
+      <!-- NORMAL LOGIN -->
+      <div
+        id="normalLoginBox"
+      >
+
+        <form id="loginForm">
+
+          <div class="form-group">
+            <label for="email">
+              Admin Email
+            </label>
+
+            <input
+              id="email"
+              type="email"
+              placeholder="admin@example.com"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="password">
+              Password
+            </label>
+
+            <input
+              id="password"
+              type="password"
+              placeholder="Your password"
+              required
+            >
+          </div>
+
+          <button
+            type="submit"
+            class="primary-btn"
+            id="loginBtn"
+          >
+            Login
+          </button>
+
+        </form>
+
+        <div
+          id="loginMessage"
+          class="message"
+        ></div>
+
+      </div>
 
     </div>
 
   </section>
 
 
-  <!-- ADMIN APP -->
-
+  <!-- DASHBOARD -->
   <section
-    id="adminApp"
-    class="hidden"
+    id="dashboard"
+    class="dashboard hidden"
   >
 
-    <header>
+    <header class="topbar">
 
-      <div class="header-inner">
+      <div class="topbar-title">
+        ACE TECHNICAL SILIGURI
+      </div>
 
-        <div class="brand">
-          ACE TECHNICAL SILIGURI
-          <small>
-            Administration Panel
-          </small>
-        </div>
+      <div class="topbar-right">
 
-        <div class="header-actions">
+        <span
+          id="userName"
+          class="user-name"
+        >
+          Admin
+        </span>
 
-          <div
-            class="admin-badge"
-            id="adminName"
-          >
-            Admin
-          </div>
-
-          <button
-            class="logout-btn"
-            id="logoutBtn"
-          >
-            Logout
-          </button>
-
-        </div>
+        <button
+          class="logout-btn"
+          id="logoutBtn"
+        >
+          Logout
+        </button>
 
       </div>
 
@@ -518,20 +512,19 @@
         </h1>
 
         <p>
-          Manage ACE Technical Siliguri website operations.
+          Website management system
         </p>
 
       </div>
 
 
-      <!-- STATISTICS -->
-
-      <div class="dashboard-grid">
+      <!-- STATS -->
+      <div class="stats">
 
         <div class="stat-card">
 
-          <div class="stat-icon">
-            📩
+          <div class="stat-label">
+            Admissions
           </div>
 
           <div
@@ -541,17 +534,12 @@
             0
           </div>
 
-          <div class="stat-label">
-            Admission Enquiries
-          </div>
-
         </div>
-
 
         <div class="stat-card">
 
-          <div class="stat-icon">
-            👨‍🎓
+          <div class="stat-label">
+            Students
           </div>
 
           <div
@@ -561,17 +549,12 @@
             0
           </div>
 
-          <div class="stat-label">
-            Students
-          </div>
-
         </div>
-
 
         <div class="stat-card">
 
-          <div class="stat-icon">
-            📚
+          <div class="stat-label">
+            Courses
           </div>
 
           <div
@@ -581,17 +564,12 @@
             0
           </div>
 
-          <div class="stat-label">
-            Courses
-          </div>
-
         </div>
-
 
         <div class="stat-card">
 
-          <div class="stat-icon">
-            🖼️
+          <div class="stat-label">
+            Gallery
           </div>
 
           <div
@@ -601,27 +579,18 @@
             0
           </div>
 
-          <div class="stat-label">
-            Gallery Items
-          </div>
-
         </div>
 
       </div>
 
 
       <!-- MODULES -->
-
-      <div class="section-title">
-        Admin Modules
-      </div>
-
       <div class="modules">
 
         <div class="module-card">
 
           <div class="module-icon">
-            📩
+            📥
           </div>
 
           <h3>
@@ -629,14 +598,16 @@
           </h3>
 
           <p>
-            View admission enquiries and update their status.
+            Admission enquiries দেখুন,
+            status update করুন এবং
+            applicant details manage করুন।
           </p>
 
           <button
             class="module-btn"
             onclick="openModule('Admissions')"
           >
-            Manage Admissions
+            Open
           </button>
 
         </div>
@@ -653,14 +624,16 @@
           </h3>
 
           <p>
-            Manage student records, courses and admission details.
+            Student records, course,
+            admission date এবং completion
+            status manage করুন।
           </p>
 
           <button
             class="module-btn"
             onclick="openModule('Students')"
           >
-            Manage Students
+            Open
           </button>
 
         </div>
@@ -677,14 +650,16 @@
           </h3>
 
           <p>
-            Add, edit and manage institute courses.
+            Course name, description,
+            duration এবং admission status
+            manage করুন।
           </p>
 
           <button
             class="module-btn"
             onclick="openModule('Courses')"
           >
-            Manage Courses
+            Open
           </button>
 
         </div>
@@ -701,14 +676,16 @@
           </h3>
 
           <p>
-            Manage institute photos and gallery categories.
+            Institute photos upload,
+            category এবং gallery content
+            manage করুন।
           </p>
 
           <button
             class="module-btn"
             onclick="openModule('Gallery')"
           >
-            Manage Gallery
+            Open
           </button>
 
         </div>
@@ -725,14 +702,15 @@
           </h3>
 
           <p>
-            Create and manage website notices and announcements.
+            Website-এর notice publish,
+            edit এবং delete করুন।
           </p>
 
           <button
             class="module-btn"
             onclick="openModule('Notices')"
           >
-            Manage Notices
+            Open
           </button>
 
         </div>
@@ -741,7 +719,7 @@
         <div class="module-card">
 
           <div class="module-icon">
-            ⚙️
+            🌐
           </div>
 
           <h3>
@@ -749,14 +727,16 @@
           </h3>
 
           <p>
-            Manage basic website information and institute content.
+            Website-এর basic content,
+            contact information এবং
+            institute information manage করুন।
           </p>
 
           <button
             class="module-btn"
             onclick="openModule('Website Content')"
           >
-            Manage Content
+            Open
           </button>
 
         </div>
@@ -764,11 +744,16 @@
       </div>
 
 
-      <div class="notice">
-        <strong>Security:</strong>
-        This panel is only for Admin users.
-        Google AdSense and Super Admin controls are intentionally
-        unavailable here.
+      <div class="security">
+
+        🔐 <strong>Admin Security</strong><br>
+
+        এই Admin Panel-এ Google AdSense
+        অথবা Super Admin controls নেই।
+
+        এগুলো শুধুমাত্র Super Admin-এর
+        জন্য রাখা হয়েছে।
+
       </div>
 
     </main>
@@ -778,10 +763,6 @@
 
   <script>
 
-    /* ================================
-       SUPABASE CONFIGURATION
-    ================================= */
-
     const SUPABASE_URL =
       "https://wxzqzbifcgxxtyhmctwk.supabase.co";
 
@@ -789,81 +770,109 @@
       "sb_publishable_XqzuYh6HGJR5YzsJivurjQ_lnTw1k2G";
 
     const supabaseClient =
-      window.supabase.createClient(
+      supabase.createClient(
         SUPABASE_URL,
         SUPABASE_ANON_KEY
       );
 
 
-    /* ================================
-       ELEMENTS
-    ================================= */
+    const loginPage =
+      document.getElementById("loginPage");
 
-    const loginScreen =
-      document.getElementById("loginScreen");
+    const dashboard =
+      document.getElementById("dashboard");
 
-    const adminApp =
-      document.getElementById("adminApp");
+    const setPasswordBox =
+      document.getElementById("setPasswordBox");
 
-    const loginForm =
-      document.getElementById("loginForm");
-
-    const loginBtn =
-      document.getElementById("loginBtn");
-
-    const loginMessage =
-      document.getElementById("loginMessage");
-
-    const logoutBtn =
-      document.getElementById("logoutBtn");
-
-    const adminName =
-      document.getElementById("adminName");
+    const normalLoginBox =
+      document.getElementById("normalLoginBox");
 
 
-    /* ================================
-       SHOW LOGIN
-    ================================= */
+    function showMessage(
+      element,
+      text,
+      type
+    ){
 
-    function showLogin(){
+      element.textContent = text;
 
-      loginScreen.classList.remove("hidden");
-
-      adminApp.classList.add("hidden");
+      element.className =
+        "message " + type;
 
     }
 
 
-    /* ================================
-       SHOW ADMIN
-    ================================= */
+    function isInvitationLink(){
 
-    function showAdmin(profile){
+      const hash =
+        window.location.hash || "";
 
-      loginScreen.classList.add("hidden");
+      const search =
+        window.location.search || "";
 
-      adminApp.classList.remove("hidden");
+      return (
+        hash.includes("type=invite") ||
+        hash.includes("type=recovery") ||
+        search.includes("type=invite") ||
+        search.includes("type=recovery")
+      );
 
-      adminName.textContent =
+    }
+
+
+    async function checkAdminProfile(user){
+
+      if(!user){
+        return null;
+      }
+
+      const {
+        data,
+        error
+      } =
+        await supabaseClient
+          .from("profiles")
+          .select(
+            "id, full_name, role, is_active"
+          )
+          .eq("id", user.id)
+          .maybeSingle();
+
+      if(error){
+        console.error(error);
+        return null;
+      }
+
+      if(
+        !data ||
+        data.role !== "admin" ||
+        data.is_active !== true
+      ){
+        return null;
+      }
+
+      return data;
+
+    }
+
+
+    async function loadDashboard(
+      profile
+    ){
+
+      loginPage.classList.add("hidden");
+
+      dashboard.classList.remove("hidden");
+
+      document.getElementById(
+        "userName"
+      ).textContent =
         profile.full_name || "Admin";
 
-    }
 
-
-    /* ================================
-       LOAD DASHBOARD
-    ================================= */
-
-    async function loadDashboard(){
-
-      try{
-
-        const [
-          admissions,
-          students,
-          courses,
-          gallery
-        ] = await Promise.all([
+      const results =
+        await Promise.all([
 
           supabaseClient
             .from("admission_enquiries")
@@ -896,239 +905,383 @@
         ]);
 
 
-        document.getElementById(
-          "admissionCount"
-        ).textContent =
-          admissions.count ?? 0;
+      document.getElementById(
+        "admissionCount"
+      ).textContent =
+        results[0].count ?? 0;
 
+      document.getElementById(
+        "studentCount"
+      ).textContent =
+        results[1].count ?? 0;
 
-        document.getElementById(
-          "studentCount"
-        ).textContent =
-          students.count ?? 0;
+      document.getElementById(
+        "courseCount"
+      ).textContent =
+        results[2].count ?? 0;
 
-
-        document.getElementById(
-          "courseCount"
-        ).textContent =
-          courses.count ?? 0;
-
-
-        document.getElementById(
-          "galleryCount"
-        ).textContent =
-          gallery.count ?? 0;
-
-
-      }catch(error){
-
-        console.error(
-          "Dashboard error:",
-          error
-        );
-
-      }
+      document.getElementById(
+        "galleryCount"
+      ).textContent =
+        results[3].count ?? 0;
 
     }
 
 
-    /* ================================
-       CHECK ADMIN PROFILE
-    ================================= */
+    async function handleSetPassword(){
 
-    async function checkAdminSession(){
+      const newPassword =
+        document.getElementById(
+          "newPassword"
+        ).value.trim();
+
+      const confirmPassword =
+        document.getElementById(
+          "confirmPassword"
+        ).value.trim();
+
+      const message =
+        document.getElementById(
+          "passwordMessage"
+        );
+
+      const button =
+        document.getElementById(
+          "setPasswordBtn"
+        );
+
+
+      if(newPassword.length < 8){
+
+        showMessage(
+          message,
+          "Password কমপক্ষে 8 characters হতে হবে।",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      if(newPassword !== confirmPassword){
+
+        showMessage(
+          message,
+          "দুইটি password একই নয়।",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      button.disabled = true;
+
+      button.textContent =
+        "Saving...";
+
 
       const {
-        data:{
+        error
+      } =
+        await supabaseClient.auth.updateUser({
+
+          password:
+            newPassword
+
+        });
+
+
+      if(error){
+
+        showMessage(
+          message,
+          error.message,
+          "error"
+        );
+
+        button.disabled = false;
+
+        button.textContent =
+          "Set Password";
+
+        return;
+
+      }
+
+
+      showMessage(
+        message,
+        "Password successfully set হয়েছে। এখন Admin Dashboard খুলছে...",
+        "success"
+      );
+
+
+      setTimeout(
+        async () => {
+
+          const {
+            data: {
+              user
+            }
+          } =
+            await supabaseClient.auth.getUser();
+
+          const profile =
+            await checkAdminProfile(user);
+
+          if(!profile){
+
+            showMessage(
+              message,
+              "Admin profile পাওয়া যায়নি। Super Admin-এর সাথে যোগাযোগ করুন।",
+              "error"
+            );
+
+            return;
+
+          }
+
+          window.history.replaceState(
+            {},
+            document.title,
+            window.location.pathname
+          );
+
+          await loadDashboard(profile);
+
+        },
+        1200
+      );
+
+    }
+
+
+    document
+      .getElementById("setPasswordForm")
+      .addEventListener(
+        "submit",
+        function(event){
+
+          event.preventDefault();
+
+          handleSetPassword();
+
+        }
+      );
+
+
+    async function handleLogin(){
+
+      const email =
+        document.getElementById(
+          "email"
+        ).value.trim();
+
+      const password =
+        document.getElementById(
+          "password"
+        ).value;
+
+      const message =
+        document.getElementById(
+          "loginMessage"
+        );
+
+      const button =
+        document.getElementById(
+          "loginBtn"
+        );
+
+
+      button.disabled = true;
+
+      button.textContent =
+        "Logging in...";
+
+
+      const {
+        data,
+        error
+      } =
+        await supabaseClient.auth.signInWithPassword({
+
+          email,
+          password
+
+        });
+
+
+      if(error){
+
+        showMessage(
+          message,
+          error.message,
+          "error"
+        );
+
+        button.disabled = false;
+
+        button.textContent =
+          "Login";
+
+        return;
+
+      }
+
+
+      const profile =
+        await checkAdminProfile(
+          data.user
+        );
+
+
+      if(!profile){
+
+        await supabaseClient.auth.signOut();
+
+        showMessage(
+          message,
+          "এই account-এর Admin access নেই অথবা account disabled.",
+          "error"
+        );
+
+        button.disabled = false;
+
+        button.textContent =
+          "Login";
+
+        return;
+
+      }
+
+
+      await loadDashboard(profile);
+
+    }
+
+
+    document
+      .getElementById("loginForm")
+      .addEventListener(
+        "submit",
+        function(event){
+
+          event.preventDefault();
+
+          handleLogin();
+
+        }
+      );
+
+
+    async function checkSession(){
+
+      const {
+        data: {
           session
         }
       } =
         await supabaseClient.auth.getSession();
 
 
-      if(!session){
-
-        showLogin();
-
-        return;
-
-      }
-
-
-      const {
-        data:profile,
-        error
-      } =
-        await supabaseClient
-          .from("profiles")
-          .select(
-            "id, full_name, role, is_active"
-          )
-          .eq(
-            "id",
-            session.user.id
-          )
-          .single();
-
-
       if(
-        error ||
-        !profile ||
-        profile.role !== "admin" ||
-        profile.is_active !== true
+        session &&
+        isInvitationLink()
       ){
 
-        await supabaseClient.auth.signOut();
+        setPasswordBox.classList.remove(
+          "hidden"
+        );
 
-        loginMessage.textContent =
-          "Admin access required.";
-
-        showLogin();
+        normalLoginBox.classList.add(
+          "hidden"
+        );
 
         return;
 
       }
 
 
-      showAdmin(profile);
+      if(session){
 
-      loadDashboard();
+        const profile =
+          await checkAdminProfile(
+            session.user
+          );
 
-    }
+        if(profile){
 
-
-    /* ================================
-       LOGIN
-    ================================= */
-
-    loginForm.addEventListener(
-      "submit",
-      async function(event){
-
-        event.preventDefault();
-
-        loginMessage.textContent = "";
-
-        loginBtn.disabled = true;
-
-        loginBtn.textContent =
-          "Logging in...";
-
-
-        const email =
-          document
-            .getElementById("email")
-            .value
-            .trim()
-            .toLowerCase();
-
-
-        const password =
-          document
-            .getElementById("password")
-            .value;
-
-
-        const {
-          data,
-          error
-        } =
-          await supabaseClient.auth.signInWithPassword({
-            email,
-            password
-          });
-
-
-        if(error){
-
-          loginMessage.textContent =
-            error.message;
-
-          loginBtn.disabled = false;
-
-          loginBtn.textContent =
-            "Login";
+          await loadDashboard(
+            profile
+          );
 
           return;
 
         }
 
-
-        await checkAdminSession();
-
-
-        loginBtn.disabled = false;
-
-        loginBtn.textContent =
-          "Login";
-
-      }
-    );
-
-
-    /* ================================
-       LOGOUT
-    ================================= */
-
-    logoutBtn.addEventListener(
-      "click",
-      async function(){
-
         await supabaseClient.auth.signOut();
 
-        showLogin();
-
       }
-    );
 
 
-    /* ================================
-       AUTH STATE
-    ================================= */
-
-    supabaseClient.auth.onAuthStateChange(
-      async function(event, session){
-
-        if(
-          event === "SIGNED_IN" &&
-          session
-        ){
-
-          await checkAdminSession();
-
-        }
-
-        if(
-          event === "SIGNED_OUT"
-        ){
-
-          showLogin();
-
-        }
-
-      }
-    );
-
-
-    /* ================================
-       MODULE PLACEHOLDER
-    ================================= */
-
-    function openModule(moduleName){
-
-      alert(
-        moduleName +
-        " module will be connected next."
+      loginPage.classList.remove(
+        "hidden"
       );
 
     }
 
 
-    /* ================================
-       INITIAL CHECK
-    ================================= */
+    document
+      .getElementById("logoutBtn")
+      .addEventListener(
+        "click",
+        async function(){
 
-    checkAdminSession();
+          await supabaseClient.auth.signOut();
+
+          window.location.href =
+            window.location.pathname;
+
+        }
+      );
+
+
+    function openModule(name){
+
+      alert(
+        name +
+        " module এখন পরের ধাপে তৈরি করা হবে।"
+      );
+
+    }
+
+
+    supabaseClient.auth.onAuthStateChange(
+      async (event, session) => {
+
+        if(
+          event === "PASSWORD_RECOVERY" &&
+          session
+        ){
+
+          setPasswordBox.classList.remove(
+            "hidden"
+          );
+
+          normalLoginBox.classList.add(
+            "hidden"
+          );
+
+        }
+
+      }
+    );
+
+
+    checkSession();
 
   </script>
 
