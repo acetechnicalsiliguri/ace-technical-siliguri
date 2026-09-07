@@ -1774,7 +1774,10 @@
             admissionsResult.data || [];
 
           totalAdmissions.textContent =
-            rows.length;
+            rows.filter(
+              item =>
+                item.status === "Admitted"
+            ).length;
 
           newAdmissions.textContent =
             rows.filter(
