@@ -259,7 +259,6 @@ header{
 
   50%{
     color:#67e8f9;
-
     text-shadow:
       0 0 8px rgba(103,232,249,.85);
   }
@@ -278,7 +277,6 @@ header{
 
   50%{
     color:#fde047;
-
     text-shadow:
       0 0 8px rgba(253,224,71,.85);
   }
@@ -297,7 +295,6 @@ header{
 
   50%{
     color:#f9a8d4;
-
     text-shadow:
       0 0 8px rgba(249,168,212,.85);
   }
@@ -444,6 +441,7 @@ header{
   inset:-25px;
 
   width:calc(100% + 50px);
+
   height:calc(100% + 50px);
 
   object-fit:cover;
@@ -465,6 +463,7 @@ header{
   inset:0;
 
   width:100%;
+
   height:100%;
 
   object-fit:cover;
@@ -806,10 +805,12 @@ section{
 }
 
 .intro-card ul{
+
   padding-left:20px;
 }
 
 .intro-card li{
+
   margin:8px 0;
 }
 
@@ -873,7 +874,6 @@ section{
   display:flex;
 
   align-items:center;
-
   justify-content:center;
 
   border-radius:15px;
@@ -999,16 +999,14 @@ section{
 
   font-size:35px;
 
-  margin-bottom:10px;
-
-  color:var(--primary);
+  margin-bottom:12px;
 }
 
 .why-card h3{
 
   font-size:18px;
 
-  margin-bottom:8px;
+  margin-bottom:7px;
 }
 
 .why-card p{
@@ -1041,13 +1039,13 @@ section{
 
   position:relative;
 
+  height:250px;
+
   overflow:hidden;
 
   border-radius:18px;
 
-  background:#e5e7eb;
-
-  aspect-ratio:16/10;
+  background:#e2e8f0;
 }
 
 .gallery-item img{
@@ -1062,7 +1060,30 @@ section{
 }
 
 .gallery-item:hover img{
-  transform:scale(1.06);
+
+  transform:
+    scale(1.07);
+}
+
+.gallery-overlay{
+
+  position:absolute;
+
+  left:0;
+  right:0;
+  bottom:0;
+
+  padding:30px 15px 14px;
+
+  color:#fff;
+
+  background:
+    linear-gradient(
+      transparent,
+      rgba(0,0,0,.75)
+    );
+
+  font-weight:800;
 }
 
 
@@ -1081,32 +1102,36 @@ section{
   grid-template-columns:
     1fr 1fr;
 
-  gap:35px;
+  gap:30px;
 
   align-items:center;
 }
 
 .about-box{
 
-  padding:35px;
+  padding:30px;
 
-  border-radius:22px;
+  border-radius:20px;
 
   background:
     linear-gradient(
       135deg,
       #eef2ff,
-      #fdf2f8
+      #fff1f2
     );
+
+  border:
+    1px solid
+    #e5e7eb;
 }
 
 .about-box h3{
 
-  font-size:27px;
+  font-size:25px;
+
+  margin-bottom:12px;
 
   color:var(--deep);
-
-  margin-bottom:14px;
 }
 
 .about-box p{
@@ -1114,6 +1139,29 @@ section{
   color:var(--muted);
 
   margin-bottom:12px;
+}
+
+.about-list{
+
+  list-style:none;
+}
+
+.about-list li{
+
+  margin:10px 0;
+
+  font-weight:700;
+
+  color:#334155;
+}
+
+.about-list li::before{
+
+  content:"✓";
+
+  color:var(--green);
+
+  margin-right:8px;
 }
 
 
@@ -1131,9 +1179,9 @@ section{
     );
 }
 
-.admission-form{
+.form-box{
 
-  max-width:850px;
+  max-width:900px;
 
   margin:auto;
 
@@ -1144,7 +1192,7 @@ section{
   border-radius:24px;
 
   box-shadow:
-    0 18px 50px
+    0 20px 50px
     rgba(15,23,42,.10);
 }
 
@@ -1159,16 +1207,19 @@ section{
 }
 
 .form-group{
-  margin-bottom:16px;
+
+  display:flex;
+
+  flex-direction:column;
 }
 
 .form-group.full{
-  grid-column:1/-1;
+
+  grid-column:
+    1 / -1;
 }
 
 .form-group label{
-
-  display:block;
 
   font-size:14px;
 
@@ -1176,7 +1227,7 @@ section{
 
   margin-bottom:7px;
 
-  color:var(--deep);
+  color:#334155;
 }
 
 .form-group input,
@@ -1185,21 +1236,33 @@ section{
 
   width:100%;
 
-  padding:12px 13px;
-
   border:
     1px solid
-    #dbe2ea;
+    #cbd5e1;
 
   border-radius:10px;
 
-  outline:none;
+  padding:12px 13px;
 
   font-size:14px;
 
-  font-family:inherit;
+  outline:none;
 
-  transition:.2s ease;
+  background:#fff;
+
+  transition:.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+
+  border-color:
+    var(--primary);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(79,70,229,.10);
 }
 
 .form-group textarea{
@@ -1209,22 +1272,13 @@ section{
   resize:vertical;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus{
-
-  border-color:var(--primary);
-
-  box-shadow:
-    0 0 0 3px
-    rgba(79,70,229,.10);
-}
-
 .submit-btn{
 
   width:100%;
 
   border:0;
+
+  margin-top:20px;
 
   padding:14px;
 
@@ -1236,100 +1290,71 @@ section{
     linear-gradient(
       135deg,
       var(--primary),
-      var(--blue)
+      var(--blue),
+      var(--purple)
     );
 
-  font-size:15px;
+  font-size:16px;
 
   font-weight:900;
 
   cursor:pointer;
-
-  transition:.2s ease;
-}
-
-.submit-btn:hover{
-  transform:translateY(-2px);
 }
 
 .submit-btn:disabled{
 
-  opacity:.65;
+  opacity:.6;
 
   cursor:not-allowed;
-
-  transform:none;
 }
 
-.admission-message{
+.form-message{
+
+  display:none;
 
   margin-top:15px;
 
-  padding:12px 14px;
+  padding:12px;
 
   border-radius:10px;
-
-  display:none;
 
   font-size:14px;
 
   font-weight:700;
 }
 
-.admission-message.success{
-
+.form-message.show{
   display:block;
-
-  background:#ecfdf5;
-
-  color:#047857;
-
-  border:
-    1px solid
-    #a7f3d0;
 }
 
-.admission-message.error{
+.form-message.success{
 
-  display:block;
+  background:#dcfce7;
 
-  background:#fef2f2;
-
-  color:#b91c1c;
-
-  border:
-    1px solid
-    #fecaca;
+  color:#166534;
 }
 
-.admission-message.info{
+.form-message.error{
 
-  display:block;
+  background:#fee2e2;
 
-  background:#eff6ff;
+  color:#991b1b;
+}
 
-  color:#1d4ed8;
+.form-message.info{
 
-  border:
-    1px solid
-    #bfdbfe;
+  background:#dbeafe;
+
+  color:#1e40af;
 }
 
 
 /* =========================================
-   CONTACT
+   CONTACT / ENQUIRY
    ========================================= */
 
 .contact-section{
-
-  background:
-    linear-gradient(
-      135deg,
-      #111433,
-      #3730a3
-    );
-
-  color:#fff;
+  background:#fff;
 }
 
 .contact-grid{
@@ -1344,47 +1369,43 @@ section{
 
 .contact-card{
 
-  padding:28px 20px;
-
-  border-radius:20px;
-
   text-align:center;
 
-  background:
-    rgba(255,255,255,.08);
+  padding:28px 18px;
+
+  border-radius:18px;
+
+  background:#f8fafc;
 
   border:
     1px solid
-    rgba(255,255,255,.15);
+    var(--border);
 }
 
-.contact-card i{
+.contact-card .icon{
 
-  font-size:30px;
+  font-size:34px;
 
-  margin-bottom:12px;
-
-  color:#67e8f9;
+  margin-bottom:10px;
 }
 
 .contact-card h3{
 
-  font-size:18px;
-
-  margin-bottom:7px;
+  margin-bottom:6px;
 }
 
 .contact-card p{
 
-  color:#dbeafe;
+  color:var(--muted);
 
   font-size:14px;
-
-  word-break:break-word;
 }
 
 .contact-card a{
-  color:#fff;
+
+  color:var(--primary);
+
+  font-weight:800;
 }
 
 
@@ -1398,8 +1419,10 @@ section{
 
   background:
     linear-gradient(
-      135deg,
-      #4f46e5,
+      120deg,
+      #111433,
+      #3730a3,
+      #2563eb,
       #8b5cf6,
       #ec4899
     );
@@ -1412,18 +1435,18 @@ section{
 .cta h2{
 
   font-size:
-    clamp(30px,4vw,48px);
+    clamp(30px,5vw,48px);
 
   margin-bottom:12px;
 }
 
 .cta p{
 
-  max-width:700px;
+  max-width:650px;
 
-  margin:0 auto 25px;
+  margin:0 auto 24px;
 
-  color:#f3f4f6;
+  color:#e2e8f0;
 }
 
 
@@ -1437,28 +1460,29 @@ footer{
 
   color:#cbd5e1;
 
-  padding:35px 20px 25px;
+  padding:35px 20px;
 
   text-align:center;
 }
 
-.footer-title{
-
-  font-size:20px;
-
-  font-weight:900;
+footer h3{
 
   color:#fff;
 
-  margin-bottom:5px;
+  margin-bottom:8px;
 }
 
-.footer-text{
+footer p{
 
   font-size:13px;
 
-  color:#94a3b8;
+  margin:5px 0;
 }
+
+
+/* =========================================
+   SOCIAL MEDIA
+   ========================================= */
 
 .footer-social{
 
@@ -1511,38 +1535,81 @@ footer{
 
 .footer-social i{
 
-  font-size:18px;
+  font-size:17px;
 
   line-height:1;
 }
 
 
-/* =========================================
-   SOCIAL BRAND COLORS
-   ========================================= */
+/* SOCIAL BRAND COLORS */
 
-.footer-social a.youtube i{
+.footer-social a:nth-child(1) i{
   color:#ff0000;
 }
 
-.footer-social a.facebook i{
+.footer-social a:nth-child(2) i{
   color:#1877f2;
 }
 
-.footer-social a.instagram i{
+.footer-social a:nth-child(3) i{
 
   background:
     linear-gradient(
       45deg,
-      #f9ce34,
-      #ee2a7b,
-      #6228d7
+      #feda75,
+      #fa7e1e,
+      #d62976,
+      #962fbf,
+      #4f5bd5
     );
 
   -webkit-background-clip:text;
   background-clip:text;
 
   -webkit-text-fill-color:transparent;
+}
+
+.footer-copy{
+
+  margin-top:15px;
+
+  color:#94a3b8;
+}
+
+
+/* =========================================
+   WHATSAPP
+   ========================================= */
+
+.whatsapp-float{
+
+  position:fixed;
+
+  right:18px;
+
+  bottom:18px;
+
+  z-index:99998;
+
+  width:54px;
+  height:54px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  border-radius:50%;
+
+  background:#25d366;
+
+  color:#fff;
+
+  font-size:27px;
+
+  box-shadow:
+    0 10px 25px
+    rgba(0,0,0,.25);
 }
 
 
@@ -1557,12 +1624,17 @@ footer{
       repeat(2,1fr);
   }
 
-  .why-grid{
+  .contact-grid{
     grid-template-columns:
       repeat(2,1fr);
   }
 
 }
+
+
+/* =========================================
+   TABLET / MOBILE
+   ========================================= */
 
 @media(max-width:800px){
 
@@ -1613,7 +1685,6 @@ footer{
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
     color:#fff;
@@ -1708,32 +1779,122 @@ footer{
       1fr 1fr;
   }
 
-  .contact-grid{
-
-    grid-template-columns:1fr;
-  }
-
 }
+
+
+/* =========================================
+   SMALL MOBILE
+   ========================================= */
 
 @media(max-width:600px){
 
+  .header-inner{
+
+    min-height:54px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:0 8px;
+  }
+
   .logo{
+
+    display:block;
+
+    width:100%;
+
+    text-align:center;
+
     font-size:17px;
+
+    line-height:1.2;
+
+    white-space:nowrap;
   }
 
   .mobile-nav{
 
+    display:grid;
+
     grid-template-columns:
       repeat(6,minmax(0,1fr));
+
+    width:100%;
+
+    padding:
+      6px 3px 8px;
+
+    gap:2px;
+
+    overflow:visible;
   }
 
   .mobile-nav > a,
   .mobile-nav .courses-button{
 
+    width:100%;
+
+    min-width:0;
+
+    height:34px;
+
+    padding:5px 1px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
     font-size:10.5px;
 
-    padding:
-      8px 1px;
+    font-weight:800;
+
+    line-height:1;
+
+    white-space:nowrap;
+
+    border-radius:7px;
+  }
+
+  .mobile-nav .dropdown{
+
+    width:100%;
+
+    min-width:0;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    flex:none;
+  }
+
+  .dropdown-content{
+
+    position:fixed !important;
+
+    width:245px;
+
+    max-width:
+      calc(100vw - 20px);
+
+    z-index:9999999;
+
+    left:50% !important;
+  }
+
+  .dropdown-content.mobile-open{
+
+    left:50% !important;
+
+    transform:
+      translateX(-50%)
+      scale(1) !important;
   }
 
   .hero{
@@ -1744,9 +1905,11 @@ footer{
   .hero-content{
 
     min-height:500px;
+  }
 
-    padding:
-      35px 18px;
+  .hero-text h1{
+
+    font-size:40px;
   }
 
   .hero-text p{
@@ -1755,7 +1918,13 @@ footer{
   }
 
   section{
-    padding:60px 16px;
+
+    padding:60px 0;
+  }
+
+  .container{
+
+    padding:0 16px;
   }
 
   .course-grid,
@@ -1767,18 +1936,26 @@ footer{
   }
 
   .form-grid{
+
     grid-template-columns:1fr;
   }
 
   .form-group.full{
+
     grid-column:auto;
   }
 
-  .admission-form{
+  .form-box{
+
     padding:22px;
   }
 
 }
+
+
+/* =========================================
+   VERY SMALL PHONES
+   ========================================= */
 
 @media(max-width:380px){
 
@@ -1788,7 +1965,6 @@ footer{
 
   .mobile-nav > a,
   .mobile-nav .courses-button{
-
     font-size:9.5px;
   }
 
@@ -1798,52 +1974,10 @@ footer{
 
 }
 
-
-/* =========================================
-   REDUCED MOTION
-   ========================================= */
-
-@media(prefers-reduced-motion:reduce){
-
-  .logo,
-  .desktop-nav .courses-button,
-  .mobile-nav .courses-button,
-  .desktop-nav > a[href="#admission"],
-  .mobile-nav > a[href="#admission"],
-  .desktop-nav > a[href="#contact"],
-  .mobile-nav > a[href="#contact"]{
-
-    animation:none !important;
-  }
-
-}
-
-
-/* =========================================
-   SUPABASE / LOADING
-   ========================================= */
-
-.loading-text{
-
-  text-align:center;
-
-  color:var(--muted);
-
-  padding:20px;
-}
-
-
-/* =========================================
-   HIDDEN
-   ========================================= */
-
-.hidden{
-  display:none !important;
-}
-
 </style>
 
 </head>
+
 
 <body>
 
@@ -1860,13 +1994,15 @@ footer{
       ACE TECHNICAL TRAINING INSTITUTE
     </div>
 
-    <!-- DESKTOP NAV -->
+
+    <!-- DESKTOP MENU -->
 
     <nav class="desktop-nav">
 
       <a href="#home">
         Home
       </a>
+
 
       <div class="dropdown">
 
@@ -1876,6 +2012,7 @@ footer{
         >
           Courses ▾
         </button>
+
 
         <div class="dropdown-content">
 
@@ -1911,6 +2048,7 @@ footer{
 
       </div>
 
+
       <a href="#gallery">
         Gallery
       </a>
@@ -1929,17 +2067,17 @@ footer{
 
     </nav>
 
-
   </div>
 
 
-  <!-- MOBILE NAV -->
+  <!-- MOBILE MENU -->
 
   <nav class="mobile-nav">
 
     <a href="#home">
       Home
     </a>
+
 
     <div class="dropdown">
 
@@ -1950,6 +2088,7 @@ footer{
       >
         Courses ▾
       </button>
+
 
       <div
         class="dropdown-content"
@@ -1988,6 +2127,7 @@ footer{
 
     </div>
 
+
     <a href="#gallery">
       Gallery
     </a>
@@ -2009,8 +2149,9 @@ footer{
 </header>
 
 
+
 <!-- =========================================
-     HOME / HERO
+     HERO
      ========================================= -->
 
 <section
@@ -2020,41 +2161,58 @@ footer{
 
   <div class="slideshow">
 
+
+    <!-- BACKGROUND IMAGES -->
+
     <img
+      src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&q=85"
       class="slide-bg active"
-      src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80"
       alt=""
     >
 
     <img
+      src="https://images.unsplash.com/photo-1581092919535-7146ff8a9e6f?auto=format&fit=crop&w=1800&q=85"
       class="slide-bg"
-      src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80"
       alt=""
     >
 
     <img
+      src="https://images.unsplash.com/photo-1593642532400-2682810df593?auto=format&fit=crop&w=1800&q=85"
       class="slide-bg"
-      src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80"
+      alt=""
+    >
+
+    <img
+      src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1800&q=85"
+      class="slide-bg"
       alt=""
     >
 
 
+    <!-- MAIN SLIDES -->
+
     <img
+      src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&q=85"
       class="slide active"
-      src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80"
-      alt="Technical training"
+      alt="Technical Training"
     >
 
     <img
+      src="https://images.unsplash.com/photo-1581092919535-7146ff8a9e6f?auto=format&fit=crop&w=1800&q=85"
       class="slide"
-      src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80"
-      alt="Electronics training"
+      alt="Practical Technical Training"
     >
 
     <img
+      src="https://images.unsplash.com/photo-1593642532400-2682810df593?auto=format&fit=crop&w=1800&q=85"
       class="slide"
-      src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80"
-      alt="Technical institute training"
+      alt="Computer Training"
+    >
+
+    <img
+      src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1800&q=85"
+      class="slide"
+      alt="Electronics Training"
     >
 
   </div>
@@ -2065,19 +2223,22 @@ footer{
     <div class="hero-text">
 
       <div class="badge">
-        Practical Technical Training in Siliguri
+        🎓 Practical Technical Training Institute
       </div>
 
       <h1>
-        Learn Skills.
+        Learn Skills.<br>
         <span>Build Your Future.</span>
       </h1>
 
       <p>
-        ACE TECHNICAL TRAINING INSTITUTE provides practical
-        technical training for students who want to build
-        real-world repairing and technical skills.
+        Practical technical training in Mobile Phone
+        Repairing, Computer Hardware & Chip-Level
+        Repairing, Laptop Repairing, LED TV Repairing,
+        Electronics, Electrical Work and CCTV
+        Installation in Siliguri.
       </p>
+
 
       <div class="hero-buttons">
 
@@ -2104,24 +2265,30 @@ footer{
 
   <div class="slider-dots">
 
-    <div
+    <span
       class="slider-dot active"
       data-slide="0"
-    ></div>
+    ></span>
 
-    <div
+    <span
       class="slider-dot"
       data-slide="1"
-    ></div>
+    ></span>
 
-    <div
+    <span
       class="slider-dot"
       data-slide="2"
-    ></div>
+    ></span>
+
+    <span
+      class="slider-dot"
+      data-slide="3"
+    ></span>
 
   </div>
 
 </section>
+
 
 
 <!-- =========================================
@@ -2134,6 +2301,7 @@ footer{
 
     <div class="intro-grid">
 
+
       <div class="intro-box">
 
         <h2>
@@ -2141,20 +2309,27 @@ footer{
         </h2>
 
         <p>
-          ACE TECHNICAL TRAINING INSTITUTE is a practical
-          technical training institute located in Siliguri.
+          Welcome to ACE Technical Training Institute,
+          Siliguri. It gives us immense pleasure to
+          welcome students, job seekers and aspiring
+          entrepreneurs to our institute.
         </p>
 
         <p>
-          We focus on hands-on technical learning in mobile
-          repairing, computer hardware, chip-level repairing,
-          laptop repairing, LED TV repairing, electronics,
-          electrical work and CCTV installation.
+          Our mission is to provide practical,
+          industry-oriented technical training that
+          helps students develop real skills,
+          confidence and the ability to build a
+          successful career.
         </p>
 
         <p>
-          Our objective is to help students develop useful
-          technical skills through practical learning.
+          At ACE, we strongly believe in
+          <strong>“Learn Today. Work Tomorrow.”</strong>
+          Our training focuses on hands-on practical
+          learning, live equipment practice,
+          troubleshooting techniques and
+          industry-relevant skills.
         </p>
 
       </div>
@@ -2163,29 +2338,37 @@ footer{
       <div class="intro-card">
 
         <h3>
-          Practical Training
+          Our Training Focus
         </h3>
 
         <ul>
 
           <li>
-            Hands-on technical learning
+            Mobile Phone Repairing
           </li>
 
           <li>
-            Practical repairing skills
+            Computer Hardware & Chip-Level Repairing
           </li>
 
           <li>
-            Multiple technical courses
+            Laptop Repairing
           </li>
 
           <li>
-            Skill-focused training
+            LED TV Repairing
           </li>
 
           <li>
-            Siliguri-based institute
+            Electronics & Electrical Work
+          </li>
+
+          <li>
+            CCTV Installation
+          </li>
+
+          <li>
+            Practical troubleshooting skills
           </li>
 
         </ul>
@@ -2197,6 +2380,7 @@ footer{
   </div>
 
 </section>
+
 
 
 <!-- =========================================
@@ -2217,7 +2401,9 @@ footer{
       </h2>
 
       <p>
-        Choose from our practical technical training courses.
+        Practical, skill-focused technical training
+        designed to help students develop useful
+        repairing, troubleshooting and technical skills.
       </p>
 
     </div>
@@ -2225,13 +2411,16 @@ footer{
 
     <div
       class="course-grid"
-      id="courseGrid"
+      id="courseCards"
     >
 
-      <article class="course-card">
+
+      <!-- COURSE 1 -->
+
+      <div class="course-card">
 
         <div class="course-icon">
-          <i class="fa-solid fa-mobile-screen-button"></i>
+          📱
         </div>
 
         <h3>
@@ -2239,22 +2428,23 @@ footer{
         </h3>
 
         <p>
-          Practical training focused on mobile phone
-          repairing and technical troubleshooting.
+          Learn practical mobile phone repairing,
+          hardware diagnosis and troubleshooting
+          techniques.
         </p>
 
         <ul class="course-features">
 
           <li>
-            Practical repairing
+            Practical training
           </li>
 
           <li>
-            Hardware understanding
+            Hardware diagnosis
           </li>
 
           <li>
-            Troubleshooting
+            Repairing fundamentals
           </li>
 
         </ul>
@@ -2263,16 +2453,18 @@ footer{
           href="#admission"
           class="course-btn"
         >
-          Enquire Now
+          Admission Available
         </a>
 
-      </article>
+      </div>
 
 
-      <article class="course-card">
+      <!-- COURSE 2 -->
+
+      <div class="course-card">
 
         <div class="course-icon">
-          <i class="fa-solid fa-computer"></i>
+          🖥️
         </div>
 
         <h3>
@@ -2280,22 +2472,23 @@ footer{
         </h3>
 
         <p>
-          Learn computer hardware and chip-level repairing
-          through practical technical training.
+          Practical computer hardware and chip-level
+          repairing training with diagnosis and
+          troubleshooting concepts.
         </p>
 
         <ul class="course-features">
 
           <li>
-            Hardware troubleshooting
+            Hardware training
           </li>
 
           <li>
-            Chip-level repairing
+            Chip-level concepts
           </li>
 
           <li>
-            Practical diagnosis
+            Fault diagnosis
           </li>
 
         </ul>
@@ -2304,16 +2497,18 @@ footer{
           href="#admission"
           class="course-btn"
         >
-          Enquire Now
+          Admission Available
         </a>
 
-      </article>
+      </div>
 
 
-      <article class="course-card">
+      <!-- COURSE 3 -->
+
+      <div class="course-card">
 
         <div class="course-icon">
-          <i class="fa-solid fa-laptop"></i>
+          💻
         </div>
 
         <h3>
@@ -2321,22 +2516,22 @@ footer{
         </h3>
 
         <p>
-          Practical laptop repairing and troubleshooting
-          training.
+          Learn laptop hardware diagnosis,
+          repairing and practical troubleshooting.
         </p>
 
         <ul class="course-features">
 
           <li>
-            Laptop hardware
+            Practical training
           </li>
 
           <li>
-            Fault diagnosis
+            Hardware troubleshooting
           </li>
 
           <li>
-            Practical repairing
+            Repairing basics
           </li>
 
         </ul>
@@ -2345,16 +2540,18 @@ footer{
           href="#admission"
           class="course-btn"
         >
-          Enquire Now
+          Admission Available
         </a>
 
-      </article>
+      </div>
 
 
-      <article class="course-card">
+      <!-- COURSE 4 -->
+
+      <div class="course-card">
 
         <div class="course-icon">
-          <i class="fa-solid fa-tv"></i>
+          📺
         </div>
 
         <h3>
@@ -2362,22 +2559,22 @@ footer{
         </h3>
 
         <p>
-          Learn practical LED TV repairing and
-          troubleshooting skills.
+          Learn practical LED TV diagnosis,
+          troubleshooting and repairing concepts.
         </p>
 
         <ul class="course-features">
 
           <li>
-            TV hardware
+            Practical training
           </li>
 
           <li>
-            Fault diagnosis
+            TV fault diagnosis
           </li>
 
           <li>
-            Practical repairing
+            Repairing concepts
           </li>
 
         </ul>
@@ -2386,16 +2583,18 @@ footer{
           href="#admission"
           class="course-btn"
         >
-          Enquire Now
+          Admission Available
         </a>
 
-      </article>
+      </div>
 
 
-      <article class="course-card">
+      <!-- COURSE 5 -->
+
+      <div class="course-card">
 
         <div class="course-icon">
-          <i class="fa-solid fa-microchip"></i>
+          ⚡
         </div>
 
         <h3>
@@ -2403,18 +2602,104 @@ footer{
         </h3>
 
         <p>
-          Practical electronics training for understanding
-          electronic components and systems.
+          Build practical knowledge of electronics,
+          components, circuits and troubleshooting.
         </p>
 
         <ul class="course-features">
 
           <li>
-            Electronic components
+            Electronics fundamentals
           </li>
 
           <li>
-            Practical circuits
+            Components knowledge
+          </li>
+
+          <li>
+            Practical learning
+          </li>
+
+        </ul>
+
+        <a
+          href="#admission"
+          class="course-btn"
+        >
+          Admission Available
+        </a>
+
+      </div>
+
+
+      <!-- COURSE 6 -->
+
+      <div class="course-card">
+
+        <div class="course-icon">
+          🔌
+        </div>
+
+        <h3>
+          Electrical Work
+        </h3>
+
+        <p>
+          Develop practical knowledge of electrical
+          work, basic systems and troubleshooting.
+        </p>
+
+        <ul class="course-features">
+
+          <li>
+            Practical learning
+          </li>
+
+          <li>
+            Electrical fundamentals
+          </li>
+
+          <li>
+            Troubleshooting concepts
+          </li>
+
+        </ul>
+
+        <a
+          href="#admission"
+          class="course-btn"
+        >
+          Admission Available
+        </a>
+
+      </div>
+
+
+      <!-- COURSE 7 -->
+
+      <div class="course-card">
+
+        <div class="course-icon">
+          📹
+        </div>
+
+        <h3>
+          CCTV Installation
+        </h3>
+
+        <p>
+          Learn practical CCTV installation,
+          setup concepts and troubleshooting.
+        </p>
+
+        <ul class="course-features">
+
+          <li>
+            Practical installation
+          </li>
+
+          <li>
+            CCTV setup concepts
           </li>
 
           <li>
@@ -2427,98 +2712,17 @@ footer{
           href="#admission"
           class="course-btn"
         >
-          Enquire Now
+          Admission Available
         </a>
 
-      </article>
-
-
-      <article class="course-card">
-
-        <div class="course-icon">
-          <i class="fa-solid fa-bolt"></i>
-        </div>
-
-        <h3>
-          Electrical Work
-        </h3>
-
-        <p>
-          Practical technical training related to electrical
-          work and troubleshooting.
-        </p>
-
-        <ul class="course-features">
-
-          <li>
-            Electrical basics
-          </li>
-
-          <li>
-            Practical work
-          </li>
-
-          <li>
-            Fault identification
-          </li>
-
-        </ul>
-
-        <a
-          href="#admission"
-          class="course-btn"
-        >
-          Enquire Now
-        </a>
-
-      </article>
-
-
-      <article class="course-card">
-
-        <div class="course-icon">
-          <i class="fa-solid fa-video"></i>
-        </div>
-
-        <h3>
-          CCTV Installation
-        </h3>
-
-        <p>
-          Practical CCTV installation and basic
-          surveillance system training.
-        </p>
-
-        <ul class="course-features">
-
-          <li>
-            CCTV installation
-          </li>
-
-          <li>
-            Camera setup
-          </li>
-
-          <li>
-            Practical troubleshooting
-          </li>
-
-        </ul>
-
-        <a
-          href="#admission"
-          class="course-btn"
-        >
-          Enquire Now
-        </a>
-
-      </article>
+      </div>
 
     </div>
 
   </div>
 
 </section>
+
 
 
 <!-- =========================================
@@ -2536,8 +2740,8 @@ footer{
       </h2>
 
       <p>
-        Practical learning designed to develop useful
-        technical skills.
+        Our focus is on practical learning,
+        technical skills and confidence building.
       </p>
 
     </div>
@@ -2548,7 +2752,7 @@ footer{
       <div class="why-card">
 
         <div class="why-icon">
-          <i class="fa-solid fa-screwdriver-wrench"></i>
+          🔧
         </div>
 
         <h3>
@@ -2556,7 +2760,8 @@ footer{
         </h3>
 
         <p>
-          Focus on practical technical learning.
+          Learn through practical technical concepts,
+          live equipment practice and hands-on learning.
         </p>
 
       </div>
@@ -2565,15 +2770,16 @@ footer{
       <div class="why-card">
 
         <div class="why-icon">
-          <i class="fa-solid fa-graduation-cap"></i>
+          🎯
         </div>
 
         <h3>
-          Skill Development
+          Skill Focused
         </h3>
 
         <p>
-          Build useful technical and repairing skills.
+          Training focuses on useful technical
+          knowledge, repairing and troubleshooting.
         </p>
 
       </div>
@@ -2582,15 +2788,16 @@ footer{
       <div class="why-card">
 
         <div class="why-icon">
-          <i class="fa-solid fa-gears"></i>
+          👨‍🏫
         </div>
 
         <h3>
-          Technical Courses
+          Student Focused
         </h3>
 
         <p>
-          Multiple technical fields under one institute.
+          Simple and practical approach to
+          technical learning and skill development.
         </p>
 
       </div>
@@ -2599,15 +2806,16 @@ footer{
       <div class="why-card">
 
         <div class="why-icon">
-          <i class="fa-solid fa-location-dot"></i>
+          🛠️
         </div>
 
         <h3>
-          Siliguri
+          Career Skills
         </h3>
 
         <p>
-          Conveniently located in Siliguri.
+          Build technical skills that can support
+          future work and self-employment opportunities.
         </p>
 
       </div>
@@ -2617,6 +2825,7 @@ footer{
   </div>
 
 </section>
+
 
 
 <!-- =========================================
@@ -2637,7 +2846,9 @@ footer{
       </h2>
 
       <p>
-        A glimpse of our institute and technical training.
+        Training environment and practical
+        learning moments at ACE Technical
+        Training Institute.
       </p>
 
     </div>
@@ -2645,24 +2856,18 @@ footer{
 
     <div class="gallery-grid">
 
-      <div class="gallery-item">
-
-        <img
-          src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=80"
-          alt="Technical training"
-          loading="lazy"
-        >
-
-      </div>
-
 
       <div class="gallery-item">
 
         <img
           src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80"
-          alt="Electronics training"
+          alt="Electronics Training"
           loading="lazy"
         >
+
+        <div class="gallery-overlay">
+          Practical Electronics
+        </div>
 
       </div>
 
@@ -2670,10 +2875,74 @@ footer{
       <div class="gallery-item">
 
         <img
-          src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1000&q=80"
-          alt="Technical work"
+          src="https://images.unsplash.com/photo-1581092919535-7146ff8a9e6f?auto=format&fit=crop&w=1000&q=80"
+          alt="Technical Training"
           loading="lazy"
         >
+
+        <div class="gallery-overlay">
+          Technical Training
+        </div>
+
+      </div>
+
+
+      <div class="gallery-item">
+
+        <img
+          src="https://images.unsplash.com/photo-1593642532400-2682810df593?auto=format&fit=crop&w=1000&q=80"
+          alt="Computer Training"
+          loading="lazy"
+        >
+
+        <div class="gallery-overlay">
+          Computer Training
+        </div>
+
+      </div>
+
+
+      <div class="gallery-item">
+
+        <img
+          src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1000&q=80"
+          alt="Technology Training"
+          loading="lazy"
+        >
+
+        <div class="gallery-overlay">
+          Technology Learning
+        </div>
+
+      </div>
+
+
+      <div class="gallery-item">
+
+        <img
+          src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1000&q=80"
+          alt="Students Learning"
+          loading="lazy"
+        >
+
+        <div class="gallery-overlay">
+          Learning Environment
+        </div>
+
+      </div>
+
+
+      <div class="gallery-item">
+
+        <img
+          src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1000&q=80"
+          alt="Training Session"
+          loading="lazy"
+        >
+
+        <div class="gallery-overlay">
+          Training Session
+        </div>
 
       </div>
 
@@ -2682,6 +2951,7 @@ footer{
   </div>
 
 </section>
+
 
 
 <!-- =========================================
@@ -2698,11 +2968,12 @@ footer{
     <div class="section-heading">
 
       <h2>
-        About Us
+        About ACE TECHNICAL TRAINING INSTITUTE
       </h2>
 
       <p>
-        Learn more about ACE TECHNICAL TRAINING INSTITUTE.
+        Practical technical education for
+        skill development and career growth.
       </p>
 
     </div>
@@ -2710,23 +2981,32 @@ footer{
 
     <div class="about-grid">
 
+
       <div class="about-box">
 
         <h3>
-          Our Institute
+          Our Mission
         </h3>
 
         <p>
-          ACE TECHNICAL TRAINING INSTITUTE is a technical
-          training institute in Siliguri focused on practical
-          skill development.
+          Welcome to ACE Technical Training Institute,
+          Siliguri. Our mission is to provide practical,
+          industry-oriented technical training that helps
+          students develop real skills, confidence and
+          the ability to build a successful career.
         </p>
 
         <p>
-          We provide training in Mobile Phone Repairing,
-          Computer Hardware & Chip-Level Repairing,
-          Laptop Repairing, LED TV Repairing, Electronics,
-          Electrical Work and CCTV Installation.
+          In today's rapidly changing technological world,
+          theoretical knowledge alone is not enough. At ACE,
+          we strongly believe in
+          <strong>“Learn Today. Work Tomorrow.”</strong>
+        </p>
+
+        <p>
+          Our training focuses on hands-on practical learning,
+          live equipment practice, troubleshooting techniques
+          and industry-relevant skills.
         </p>
 
       </div>
@@ -2735,27 +3015,95 @@ footer{
       <div class="about-box">
 
         <h3>
-          Our Approach
+          Our Training Focus
         </h3>
 
-        <p>
-          Our training approach focuses on practical
-          understanding, technical troubleshooting and
-          developing useful repairing skills.
-        </p>
+        <ul class="about-list">
 
-        <p>
-          Students can enquire about admission directly
-          through the website.
-        </p>
+          <li>
+            Mobile Phone Repairing
+          </li>
+
+          <li>
+            Computer Hardware & Chip-Level Repairing
+          </li>
+
+          <li>
+            Laptop Repairing
+          </li>
+
+          <li>
+            LED TV Repairing
+          </li>
+
+          <li>
+            Electronics
+          </li>
+
+          <li>
+            Electrical Work
+          </li>
+
+          <li>
+            CCTV Installation
+          </li>
+
+        </ul>
 
       </div>
+
+    </div>
+
+
+    <div
+      class="about-box"
+      style="margin-top:30px;"
+    >
+
+      <h3>
+        A Message from the Director
+      </h3>
+
+      <p>
+        We provide training with special emphasis
+        on practical knowledge. Our goal is not simply
+        to issue certificates. We want every student
+        to become a skilled technician, confident
+        professional or successful self-employed
+        entrepreneur.
+      </p>
+
+      <p>
+        We also guide our students with technical
+        support and career-oriented advice after
+        completing their training.
+      </p>
+
+      <p>
+        I sincerely invite students, job seekers and
+        aspiring entrepreneurs to join ACE Technical
+        Training Institute and take the first step
+        towards a skill-based career.
+      </p>
+
+      <p>
+        <strong>
+          Learn Skills. Build Confidence. Create Your Future.
+        </strong>
+      </p>
+
+      <p>
+        — Director<br>
+        ACE Technical Training Institute<br>
+        Siliguri
+      </p>
 
     </div>
 
   </div>
 
 </section>
+
 
 
 <!-- =========================================
@@ -2772,184 +3120,191 @@ footer{
     <div class="section-heading">
 
       <h2>
-        Admission Enquiry
+        Admission Form
       </h2>
 
       <p>
-        Fill in your details and submit an admission enquiry.
+        Submit your admission enquiry.
+        Our team can contact you regarding
+        the selected course.
       </p>
 
     </div>
 
 
-    <form
-      class="admission-form"
-      id="admissionForm"
-    >
+    <div class="form-box">
 
-      <div class="form-grid">
+      <form id="admissionForm">
 
 
-        <div class="form-group">
-
-          <label for="fullName">
-            Full Name *
-          </label>
-
-          <input
-            type="text"
-            id="fullName"
-            name="fullName"
-            placeholder="Enter your full name"
-            required
-          >
-
-        </div>
+        <div class="form-grid">
 
 
-        <div class="form-group">
+          <div class="form-group">
 
-          <label for="mobile">
-            Mobile Number *
-          </label>
+            <label for="fullName">
+              Full Name *
+            </label>
 
-          <input
-            type="tel"
-            id="mobile"
-            name="mobile"
-            placeholder="Enter mobile number"
-            required
-          >
+            <input
+              type="text"
+              id="fullName"
+              name="full_name"
+              placeholder="Enter your full name"
+              required
+            >
 
-        </div>
-
-
-        <div class="form-group">
-
-          <label for="email">
-            Email
-          </label>
-
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Enter email address"
-          >
-
-        </div>
+          </div>
 
 
-        <div class="form-group">
+          <div class="form-group">
 
-          <label for="dob">
-            Date of Birth
-          </label>
+            <label for="mobile">
+              Mobile Number *
+            </label>
 
-          <input
-            type="date"
-            id="dob"
-            name="dob"
-          >
+            <input
+              type="tel"
+              id="mobile"
+              name="mobile"
+              placeholder="Enter mobile number"
+              required
+              maxlength="15"
+            >
 
-        </div>
-
-
-        <div class="form-group">
-
-          <label for="courseSelect">
-            Select Course *
-          </label>
-
-          <select
-            id="courseSelect"
-            name="course"
-            required
-          >
-
-            <option value="">
-              Select a course
-            </option>
-
-          </select>
-
-        </div>
+          </div>
 
 
-        <div class="form-group">
+          <div class="form-group">
 
-          <label for="qualification">
-            Educational Qualification
-          </label>
+            <label for="email">
+              Email
+            </label>
 
-          <input
-            type="text"
-            id="qualification"
-            name="qualification"
-            placeholder="Enter qualification"
-          >
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter email address"
+            >
 
-        </div>
-
-
-        <div class="form-group">
-
-          <label for="admissionDate">
-            Preferred Admission Date
-          </label>
-
-          <input
-            type="date"
-            id="admissionDate"
-            name="admissionDate"
-          >
-
-        </div>
+          </div>
 
 
-        <div class="form-group full">
+          <div class="form-group">
 
-          <label for="message">
-            Message
-          </label>
+            <label for="dob">
+              Date of Birth
+            </label>
 
-          <textarea
-            id="message"
-            name="message"
-            placeholder="Write your message..."
-          ></textarea>
+            <input
+              type="date"
+              id="dob"
+              name="date_of_birth"
+            >
 
-        </div>
+          </div>
 
 
-        <div class="form-group full">
+          <div class="form-group">
 
-          <button
-            type="submit"
-            class="submit-btn"
-            id="submitAdmissionBtn"
-          >
-            Submit Admission Enquiry
-          </button>
+            <label for="courseSelect">
+              Select Course *
+            </label>
 
-          <div
-            id="admissionMessage"
-            class="admission-message"
-          ></div>
+            <select
+              name="course"
+              id="courseSelect"
+              required
+            >
+
+              <option value="">
+                Loading courses...
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="qualification">
+              Educational Qualification
+            </label>
+
+            <input
+              type="text"
+              id="qualification"
+              name="educational_qualification"
+              placeholder="Example: Madhyamik / HS / Graduate"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="admissionDate">
+              Preferred Admission Date
+            </label>
+
+            <input
+              type="date"
+              id="admissionDate"
+              name="preferred_admission_date"
+            >
+
+          </div>
+
+
+          <div class="form-group full">
+
+            <label for="message">
+              Message
+            </label>
+
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Write your enquiry or message"
+            ></textarea>
+
+          </div>
+
 
         </div>
 
-      </div>
 
-    </form>
+        <button
+          type="submit"
+          class="submit-btn"
+          id="submitAdmissionBtn"
+          disabled
+        >
+          Loading Courses...
+        </button>
+
+
+        <div
+          id="admissionMessage"
+          class="form-message"
+          aria-live="polite"
+        ></div>
+
+
+      </form>
+
+    </div>
 
   </div>
 
 </section>
 
 
+
 <!-- =========================================
-     CONTACT
+     CONTACT / ENQUIRY
      ========================================= -->
 
 <section
@@ -2961,13 +3316,13 @@ footer{
 
     <div class="section-heading">
 
-      <h2 style="color:#fff;">
-        Contact & Enquiry
+      <h2>
+        Enquiry
       </h2>
 
-      <p style="color:#cbd5e1;">
-        Contact ACE TECHNICAL TRAINING INSTITUTE for
-        course and admission enquiries.
+      <p>
+        Contact ACE TECHNICAL TRAINING INSTITUTE
+        for course and admission information.
       </p>
 
     </div>
@@ -2978,73 +3333,100 @@ footer{
 
       <div class="contact-card">
 
-        <i class="fa-solid fa-phone"></i>
+        <div class="icon">
+          📞
+        </div>
 
         <h3>
-          Phone
+          Call
         </h3>
 
         <p>
-          <a href="tel:9832316450">
-            98323-16450
-          </a>
+          98323-16450
         </p>
+
+        <p>
+          Contact us for course information.
+        </p>
+
+        <a href="tel:+919832316450">
+          Call Now
+        </a>
 
       </div>
 
 
       <div class="contact-card">
 
-        <i class="fa-brands fa-whatsapp"></i>
+        <div class="icon">
+          💬
+        </div>
 
         <h3>
           WhatsApp
         </h3>
 
         <p>
-          <a
-            href="https://wa.me/919832316450"
-            target="_blank"
-            rel="noopener"
-          >
-            9832316450
-          </a>
+          +91 98323 16450
         </p>
+
+        <p>
+          Send us your admission enquiry.
+        </p>
+
+        <a
+          href="https://wa.me/919832316450"
+          target="_blank"
+          rel="noopener"
+        >
+          WhatsApp Us
+        </a>
 
       </div>
 
 
       <div class="contact-card">
 
-        <i class="fa-solid fa-envelope"></i>
+        <div class="icon">
+          📧
+        </div>
 
         <h3>
           Email
         </h3>
 
         <p>
-          <a href="mailto:aceinstitutesiliguri@gmail.com">
-            aceinstitutesiliguri@gmail.com
-          </a>
+          aceinstitutesiliguri@gmail.com
         </p>
-
-      </div>
-
-
-      <div class="contact-card">
-
-        <i class="fa-solid fa-location-dot"></i>
-
-        <h3>
-          Address
-        </h3>
 
         <p>
-          M.N Saha Sarani, Pradhan Nagar,
-          Beside Nivedita Nursing Home, Siliguri
+          Send us an email for enquiries.
         </p>
 
+        <a href="mailto:aceinstitutesiliguri@gmail.com">
+          Email Us
+        </a>
+
       </div>
+
+
+    </div>
+
+
+    <div
+      class="about-box"
+      style="margin-top:25px;text-align:center;"
+    >
+
+      <h3>
+        Institute Address
+      </h3>
+
+      <p>
+        M.N Saha Sarani, Pradhan Nagar,
+        Beside Nivedita Nursing Home,
+        Siliguri
+      </p>
 
     </div>
 
@@ -3053,33 +3435,31 @@ footer{
 </section>
 
 
+
 <!-- =========================================
      CTA
      ========================================= -->
 
 <section class="cta">
 
-  <div class="container">
+  <h2>
+    Start Learning Practical Skills
+  </h2>
 
-    <h2>
-      Start Your Technical Journey
-    </h2>
+  <p>
+    Choose your technical course and
+    submit your admission enquiry today.
+  </p>
 
-    <p>
-      Explore our courses and submit an admission enquiry
-      today.
-    </p>
-
-    <a
-      href="#admission"
-      class="btn"
-    >
-      Apply for Admission
-    </a>
-
-  </div>
+  <a
+    href="#admission"
+    class="btn"
+  >
+    Apply for Admission
+  </a>
 
 </section>
+
 
 
 <!-- =========================================
@@ -3088,84 +3468,93 @@ footer{
 
 <footer>
 
-  <div class="footer-title">
+  <h3>
     ACE TECHNICAL TRAINING INSTITUTE
-  </div>
+  </h3>
 
-  <div class="footer-text">
-    M.N Saha Sarani, Pradhan Nagar, Beside Nivedita Nursing Home, Siliguri
-  </div>
+  <p>
+    Practical Technical Training Institute
+  </p>
 
-  <div class="footer-text">
-    Phone: 98323-16450 |
-    Email: aceinstitutesiliguri@gmail.com
-  </div>
+  <p>
+    M.N Saha Sarani, Pradhan Nagar,
+    Beside Nivedita Nursing Home, Siliguri
+  </p>
+
+  <p>
+    📞 98323-16450
+  </p>
+
+  <p>
+    📧 aceinstitutesiliguri@gmail.com
+  </p>
 
 
   <div class="footer-social">
 
     <a
-      class="youtube"
       href="https://www.youtube.com/@acetechnical.youtube"
       target="_blank"
       rel="noopener"
       aria-label="YouTube"
     >
-
       <i class="fa-brands fa-youtube"></i>
-
-      <span>
-        YouTube
-      </span>
-
+      <span>YouTube</span>
     </a>
 
 
     <a
-      class="facebook"
       href="https://www.facebook.com/share/1BY4vyLzV8/"
       target="_blank"
       rel="noopener"
       aria-label="Facebook"
     >
-
       <i class="fa-brands fa-facebook-f"></i>
-
-      <span>
-        Facebook
-      </span>
-
+      <span>Facebook</span>
     </a>
 
 
     <a
-      class="instagram"
       href="https://www.instagram.com/acetechnicaltrainer?stkn=MTZtMmtncWdnYm0zOQ=="
       target="_blank"
       rel="noopener"
       aria-label="Instagram"
     >
-
       <i class="fa-brands fa-instagram"></i>
-
-      <span>
-        Instagram
-      </span>
-
+      <span>Instagram</span>
     </a>
 
   </div>
 
 
-  <div
-    class="footer-text"
-    style="margin-top:18px;"
-  >
-    © 2026 ACE TECHNICAL TRAINING INSTITUTE. All Rights Reserved.
-  </div>
+  <p class="footer-copy">
+    © 2026 ACE TECHNICAL TRAINING INSTITUTE.
+    All Rights Reserved.
+  </p>
 
 </footer>
 
+
+
+<!-- =========================================
+     WHATSAPP
+     ========================================= -->
+
+<a
+  href="https://wa.me/919832316450"
+  class="whatsapp-float"
+  target="_blank"
+  rel="noopener"
+  aria-label="WhatsApp"
+>
+  💬
+</a>
+
+
+
+<!-- =========================================
+     JAVASCRIPT
+     ========================================= -->
 
 <script>
 
@@ -3187,169 +3576,208 @@ const supabaseClient =
 
 
 /* =========================================
-   MOBILE COURSE MENU
+   MOBILE COURSES MENU
    ========================================= */
 
 const coursesMenu =
-  document.getElementById(
-    "coursesMenu"
-  );
+  document.getElementById("coursesMenu");
 
 const mobileCoursesDropdown =
   document.getElementById(
     "mobileCoursesDropdown"
   );
 
-if(
-  coursesMenu &&
-  mobileCoursesDropdown
-){
 
-  coursesMenu.addEventListener(
-    "click",
-    function(event){
+function openMobileCourses(){
 
-      event.stopPropagation();
+  if(window.innerWidth > 800){
+    return;
+  }
 
-      mobileCoursesDropdown
-        .classList
-        .toggle("mobile-open");
+  const rect =
+    coursesMenu.getBoundingClientRect();
 
-    }
+  mobileCoursesDropdown.style.top =
+    (rect.bottom + 8) + "px";
+
+  mobileCoursesDropdown.classList.add(
+    "mobile-open"
   );
-
-
-  document.addEventListener(
-    "click",
-    function(){
-
-      mobileCoursesDropdown
-        .classList
-        .remove("mobile-open");
-
-    }
-  );
-
-
-  mobileCoursesDropdown
-    .addEventListener(
-      "click",
-      function(event){
-
-        event.stopPropagation();
-
-      }
-    );
 
 }
 
 
+function closeMobileCourses(){
+
+  mobileCoursesDropdown.classList.remove(
+    "mobile-open"
+  );
+
+}
+
+
+coursesMenu.addEventListener(
+  "click",
+  function(event){
+
+    event.stopPropagation();
+
+    if(
+      mobileCoursesDropdown.classList.contains(
+        "mobile-open"
+      )
+    ){
+
+      closeMobileCourses();
+
+    }else{
+
+      openMobileCourses();
+
+    }
+
+  }
+);
+
+
+mobileCoursesDropdown
+  .querySelectorAll("a")
+  .forEach(function(link){
+
+    link.addEventListener(
+      "click",
+      function(){
+
+        closeMobileCourses();
+
+      }
+    );
+
+  });
+
+
+document.addEventListener(
+  "click",
+  function(event){
+
+    if(
+      !coursesMenu.contains(event.target) &&
+      !mobileCoursesDropdown.contains(event.target)
+    ){
+
+      closeMobileCourses();
+
+    }
+
+  }
+);
+
+
+window.addEventListener(
+  "resize",
+  function(){
+
+    closeMobileCourses();
+
+  }
+);
+
+
 /* =========================================
-   HERO SLIDER
+   SLIDESHOW
    ========================================= */
 
 const slides =
-  document.querySelectorAll(
-    ".slide"
-  );
+  document.querySelectorAll(".slide");
 
-const slideBackgrounds =
-  document.querySelectorAll(
-    ".slide-bg"
-  );
+const backgroundSlides =
+  document.querySelectorAll(".slide-bg");
 
-const sliderDots =
-  document.querySelectorAll(
-    ".slider-dot"
-  );
+const dots =
+  document.querySelectorAll(".slider-dot");
 
 let currentSlide = 0;
 
+
 function showSlide(index){
 
-  slides.forEach(
-    function(slide,i){
+  slides.forEach(function(slide){
 
-      slide.classList.toggle(
-        "active",
-        i === index
-      );
+    slide.classList.remove("active");
 
-    }
-  );
+  });
 
 
-  slideBackgrounds.forEach(
-    function(slide,i){
+  backgroundSlides.forEach(function(slide){
 
-      slide.classList.toggle(
-        "active",
-        i === index
-      );
+    slide.classList.remove("active");
 
-    }
-  );
+  });
 
 
-  sliderDots.forEach(
-    function(dot,i){
+  dots.forEach(function(dot){
 
-      dot.classList.toggle(
-        "active",
-        i === index
-      );
+    dot.classList.remove("active");
 
-    }
-  );
+  });
+
+
+  slides[index].classList.add("active");
+
+  backgroundSlides[index]
+    .classList.add("active");
+
+  dots[index].classList.add("active");
 
   currentSlide = index;
 
 }
 
 
-sliderDots.forEach(
-  function(dot,index){
+function nextSlide(){
 
-    dot.addEventListener(
-      "click",
-      function(){
+  let next =
+    currentSlide + 1;
 
-        showSlide(index);
+  if(next >= slides.length){
 
-      }
-    );
+    next = 0;
 
   }
-);
+
+  showSlide(next);
+
+}
 
 
 setInterval(
-  function(){
-
-    let next =
-      currentSlide + 1;
-
-    if(
-      next >= slides.length
-    ){
-      next = 0;
-    }
-
-    showSlide(next);
-
-  },
+  nextSlide,
   5000
 );
 
 
-/* =========================================
-   ADMISSION ELEMENTS
-   ========================================= */
+dots.forEach(function(dot){
 
-const admissionForm =
-  document.getElementById(
-    "admissionForm"
+  dot.addEventListener(
+    "click",
+    function(){
+
+      const index =
+        Number(
+          dot.dataset.slide
+        );
+
+      showSlide(index);
+
+    }
   );
+
+});
+
+
+/* =========================================
+   ADMISSION COURSE LOADING
+   ========================================= */
 
 const courseSelect =
   document.getElementById(
@@ -3367,42 +3795,38 @@ const admissionMessage =
   );
 
 
-/* =========================================
-   ADMISSION MESSAGE
-   ========================================= */
+let courseMap = {};
+
 
 function showAdmissionMessage(
   message,
   type
 ){
 
-  if(
-    !admissionMessage
-  ){
-    return;
-  }
-
   admissionMessage.textContent =
     message;
 
   admissionMessage.className =
-    "admission-message " +
-    type;
+    "form-message show " + type;
 
 }
 
 
-/* =========================================
-   LOAD ACTIVE COURSES
-   ========================================= */
-
 async function loadAdmissionCourses(){
 
-  if(
-    !courseSelect
-  ){
-    return;
-  }
+  courseSelect.innerHTML =
+    `
+      <option value="">
+        Loading courses...
+      </option>
+    `;
+
+  submitAdmissionBtn.disabled =
+    true;
+
+  submitAdmissionBtn.textContent =
+    "Loading Courses...";
+
 
   try{
 
@@ -3412,7 +3836,9 @@ async function loadAdmissionCourses(){
     } =
       await supabaseClient
         .from("courses")
-        .select("id,name")
+        .select(
+          "id,name"
+        )
         .eq(
           "is_active",
           true
@@ -3436,44 +3862,102 @@ async function loadAdmissionCourses(){
         error
       );
 
-      return;
+      courseSelect.innerHTML =
+        `
+          <option value="">
+            Unable to load courses
+          </option>
+        `;
 
+      submitAdmissionBtn.disabled =
+        true;
+
+      submitAdmissionBtn.textContent =
+        "Courses Unavailable";
+
+      showAdmissionMessage(
+        "Courses could not be loaded right now. Please try again later.",
+        "error"
+      );
+
+      return;
     }
 
 
     if(
       !data ||
-      !data.length
+      data.length === 0
     ){
+
+      courseSelect.innerHTML =
+        `
+          <option value="">
+            No admission courses available
+          </option>
+        `;
+
+      submitAdmissionBtn.disabled =
+        true;
+
+      submitAdmissionBtn.textContent =
+        "Admission Currently Unavailable";
+
+      showAdmissionMessage(
+        "No active admission courses are available right now.",
+        "info"
+      );
+
       return;
     }
 
 
+    courseMap = {};
+
+
     courseSelect.innerHTML =
-      '<option value="">Select a course</option>';
+      `
+        <option value="">
+          Select a course
+        </option>
+      `;
 
 
-    data.forEach(
-      function(course){
+    data.forEach(function(course){
 
-        const option =
-          document.createElement(
-            "option"
-          );
+      courseMap[course.id] =
+        course.name;
 
-        option.value =
-          course.id;
 
-        option.textContent =
-          course.name;
-
-        courseSelect.appendChild(
-          option
+      const option =
+        document.createElement(
+          "option"
         );
 
-      }
-    );
+      option.value =
+        course.id;
 
+      option.textContent =
+        course.name;
+
+      courseSelect.appendChild(
+        option
+      );
+
+    });
+
+
+    submitAdmissionBtn.disabled =
+      false;
+
+    submitAdmissionBtn.textContent =
+      "Submit Admission Enquiry";
+
+
+    admissionMessage.className =
+      "form-message";
+
+    admissionMessage.textContent =
+      "";
 
   }catch(error){
 
@@ -3482,253 +3966,239 @@ async function loadAdmissionCourses(){
       error
     );
 
+    courseSelect.innerHTML =
+      `
+        <option value="">
+          Unable to load courses
+        </option>
+      `;
+
+    submitAdmissionBtn.disabled =
+      true;
+
+    submitAdmissionBtn.textContent =
+      "Courses Unavailable";
+
+    showAdmissionMessage(
+      "Connection error while loading courses.",
+      "error"
+    );
+
   }
 
 }
 
 
-/* =========================================
-   LOAD COURSES
-   ========================================= */
-
 loadAdmissionCourses();
 
 
 /* =========================================
-   ADMISSION SUBMIT
+   ADMISSION FORM SUBMIT
    ========================================= */
 
-if(admissionForm){
-
-  admissionForm.addEventListener(
-    "submit",
-    async function(event){
-
-      event.preventDefault();
+const admissionForm =
+  document.getElementById(
+    "admissionForm"
+  );
 
 
-      const fullName =
-        document
-          .getElementById(
-            "fullName"
+admissionForm.addEventListener(
+  "submit",
+  async function(event){
+
+    event.preventDefault();
+
+
+    const fullName =
+      document
+        .getElementById("fullName")
+        .value
+        .trim();
+
+
+    const mobile =
+      document
+        .getElementById("mobile")
+        .value
+        .trim();
+
+
+    const email =
+      document
+        .getElementById("email")
+        .value
+        .trim();
+
+
+    const dob =
+      document
+        .getElementById("dob")
+        .value;
+
+
+    const selectedCourseId =
+      courseSelect.value;
+
+
+    const qualification =
+      document
+        .getElementById("qualification")
+        .value
+        .trim();
+
+
+    const admissionDate =
+      document
+        .getElementById("admissionDate")
+        .value;
+
+
+    const message =
+      document
+        .getElementById("message")
+        .value
+        .trim();
+
+
+    if(
+      !fullName ||
+      !mobile ||
+      !selectedCourseId
+    ){
+
+      showAdmissionMessage(
+        "Please fill all required fields.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    submitAdmissionBtn.disabled =
+      true;
+
+    submitAdmissionBtn.textContent =
+      "Submitting...";
+
+
+    showAdmissionMessage(
+      "Submitting your admission enquiry...",
+      "info"
+    );
+
+
+    try{
+
+      const {
+        error
+      } =
+        await supabaseClient
+          .from(
+            "admission_enquiries"
           )
-          .value
-          .trim();
+          .insert({
+
+            full_name:
+              fullName,
+
+            mobile:
+              mobile,
+
+            email:
+              email || null,
+
+            date_of_birth:
+              dob || null,
+
+            address:
+              null,
+
+            course_id:
+              selectedCourseId,
+
+            educational_qualification:
+              qualification || null,
+
+            preferred_admission_date:
+              admissionDate || null,
+
+            message:
+              message || null,
+
+            status:
+              "New"
+
+          });
 
 
-      const mobile =
-        document
-          .getElementById(
-            "mobile"
-          )
-          .value
-          .trim();
+      if(error){
 
-
-      const email =
-        document
-          .getElementById(
-            "email"
-          )
-          .value
-          .trim();
-
-
-      const dob =
-        document
-          .getElementById(
-            "dob"
-          )
-          .value;
-
-
-      const selectedCourseId =
-        courseSelect.value;
-
-
-      const qualification =
-        document
-          .getElementById(
-            "qualification"
-          )
-          .value
-          .trim();
-
-
-      const admissionDate =
-        document
-          .getElementById(
-            "admissionDate"
-          )
-          .value;
-
-
-      const message =
-        document
-          .getElementById(
-            "message"
-          )
-          .value
-          .trim();
-
-
-      if(
-        !fullName ||
-        !mobile ||
-        !selectedCourseId
-      ){
+        console.error(
+          "ADMISSION SUBMIT ERROR:",
+          error
+        );
 
         showAdmissionMessage(
-          "Please fill all required fields.",
+          "Sorry! Your enquiry could not be submitted right now. Please try again or contact us directly.",
           "error"
         );
+
+        submitAdmissionBtn.disabled =
+          false;
+
+        submitAdmissionBtn.textContent =
+          "Submit Admission Enquiry";
 
         return;
 
       }
 
 
-      submitAdmissionBtn.disabled =
-        true;
-
-      submitAdmissionBtn.textContent =
-        "Submitting...";
-
 
       showAdmissionMessage(
-        "Submitting your admission enquiry...",
-        "info"
+        "✅ Your admission enquiry has been submitted successfully. We will contact you soon.",
+        "success"
       );
 
 
-      try{
-
-        /*
-         * IMPORTANT:
-         * Only INSERT is used here.
-         *
-         * .select("id").single() has intentionally
-         * been removed because public anonymous users
-         * are allowed to INSERT but are not allowed
-         * to SELECT admission enquiries.
-         */
-
-        const {
-          error
-        } =
-          await supabaseClient
-            .from(
-              "admission_enquiries"
-            )
-            .insert({
-
-              full_name:
-                fullName,
-
-              mobile:
-                mobile,
-
-              email:
-                email || null,
-
-              date_of_birth:
-                dob || null,
-
-              address:
-                null,
-
-              course_id:
-                selectedCourseId,
-
-              educational_qualification:
-                qualification || null,
-
-              preferred_admission_date:
-                admissionDate || null,
-
-              message:
-                message || null,
-
-              status:
-                "New"
-
-            });
+      admissionForm.reset();
 
 
-        if(error){
-
-          console.error(
-            "ADMISSION SUBMIT ERROR:",
-            error
-          );
+      courseSelect.value =
+        "";
 
 
-          showAdmissionMessage(
-            "Sorry! Your enquiry could not be submitted right now. Please try again or contact us directly.",
-            "error"
-          );
+      submitAdmissionBtn.disabled =
+        false;
+
+      submitAdmissionBtn.textContent =
+        "Submit Admission Enquiry";
 
 
-          submitAdmissionBtn.disabled =
-            false;
+    }catch(error){
 
-          submitAdmissionBtn.textContent =
-            "Submit Admission Enquiry";
+      console.error(
+        "ADMISSION SUBMIT EXCEPTION:",
+        error
+      );
 
+      showAdmissionMessage(
+        "Connection error. Please try again later.",
+        "error"
+      );
 
-          return;
+      submitAdmissionBtn.disabled =
+        false;
 
-        }
-
-
-        showAdmissionMessage(
-          "✅ Your admission enquiry has been submitted successfully. We will contact you soon.",
-          "success"
-        );
-
-
-        admissionForm.reset();
-
-
-        courseSelect.value =
-          "";
-
-
-        submitAdmissionBtn.disabled =
-          false;
-
-
-        submitAdmissionBtn.textContent =
-          "Submit Admission Enquiry";
-
-
-      }catch(error){
-
-        console.error(
-          "ADMISSION SUBMIT EXCEPTION:",
-          error
-        );
-
-
-        showAdmissionMessage(
-          "Connection error. Please try again later.",
-          "error"
-        );
-
-
-        submitAdmissionBtn.disabled =
-          false;
-
-
-        submitAdmissionBtn.textContent =
-          "Submit Admission Enquiry";
-
-      }
+      submitAdmissionBtn.textContent =
+        "Submit Admission Enquiry";
 
     }
-  );
 
-}
+  }
+);
 
 </script>
 
