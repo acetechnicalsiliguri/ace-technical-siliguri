@@ -226,6 +226,83 @@ header{
 
 
 /* =========================================
+   IMPORTANT MENU ATTENTION
+   ========================================= */
+
+.desktop-nav .courses-button,
+.mobile-nav .courses-button{
+  animation:
+    coursesMenuAttention 3.2s ease-in-out infinite;
+}
+
+.desktop-nav > a[href="#admission"],
+.mobile-nav > a[href="#admission"]{
+  animation:
+    admissionMenuAttention 3.2s ease-in-out infinite;
+}
+
+.desktop-nav > a[href="#contact"],
+.mobile-nav > a[href="#contact"]{
+  animation:
+    enquiryMenuAttention 3.2s ease-in-out infinite;
+}
+
+
+/* COURSES */
+
+@keyframes coursesMenuAttention{
+
+  0%,100%{
+    color:#ffffff;
+    text-shadow:0 0 0 transparent;
+  }
+
+  50%{
+    color:#67e8f9;
+    text-shadow:
+      0 0 8px rgba(103,232,249,.85);
+  }
+
+}
+
+
+/* ADMISSION */
+
+@keyframes admissionMenuAttention{
+
+  0%,100%{
+    color:#ffffff;
+    text-shadow:0 0 0 transparent;
+  }
+
+  50%{
+    color:#fde047;
+    text-shadow:
+      0 0 8px rgba(253,224,71,.85);
+  }
+
+}
+
+
+/* ENQUIRY */
+
+@keyframes enquiryMenuAttention{
+
+  0%,100%{
+    color:#ffffff;
+    text-shadow:0 0 0 transparent;
+  }
+
+  50%{
+    color:#f9a8d4;
+    text-shadow:
+      0 0 8px rgba(249,168,212,.85);
+  }
+
+}
+
+
+/* =========================================
    COURSES DROPDOWN
    ========================================= */
 
@@ -1461,6 +1538,35 @@ footer p{
   font-size:17px;
 
   line-height:1;
+}
+
+
+/* SOCIAL BRAND COLORS */
+
+.footer-social a:nth-child(1) i{
+  color:#ff0000;
+}
+
+.footer-social a:nth-child(2) i{
+  color:#1877f2;
+}
+
+.footer-social a:nth-child(3) i{
+
+  background:
+    linear-gradient(
+      45deg,
+      #feda75,
+      #fa7e1e,
+      #d62976,
+      #962fbf,
+      #4f5bd5
+    );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+
+  -webkit-text-fill-color:transparent;
 }
 
 .footer-copy{
