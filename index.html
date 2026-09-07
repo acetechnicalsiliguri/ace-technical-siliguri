@@ -3687,6 +3687,65 @@ window.addEventListener(
    SLIDESHOW
    ========================================= */
 
+async function loadManagedPhotos(){
+
+  try{
+
+    const {data:heroData,error:heroError}=await supabaseClient
+      .from("hero_slides")
+      .select("title,subtitle,image_url,is_active,sort_order")
+      .eq("is_active",true)
+      .order("sort_order",{ascending:true});
+
+    if(!heroError && heroData && heroData.length){
+      const validHeroes=heroData.filter(x=>x.image_url);
+      if(validHeroes.length){
+        const slideshow=document.querySelector(".slideshow");
+        if(slideshow){
+          slideshow.innerHTML=validHeroes.map((x,i)=>`<img src="${x.image_url}" class="slide-bg${i===0?' active':''}" alt="">`).join('')+
+            validHeroes.map((x,i)=>`<img src="${x.image_url}" class="slide${i===0?' active':''}" alt="${x.title||'Technical Training'}">`).join('');
+        }
+        const heroText=document.querySelector(".hero-text");
+        if(heroText){
+          const x=validHeroes[0];
+          const badge=heroText.querySelector(".badge");
+          const heading=heroText.querySelector("h1");
+          const para=heroText.querySelector("p");
+          const button=heroText.querySelector(".hero-buttons a, .hero-buttons button, .hero-buttons .btn");
+          if(badge) badge.textContent=x.title||"Technical Training";
+          if(heading) heading.textContent=x.title||"ACE Technical Training Institute";
+          if(para) para.textContent=x.subtitle||"Practical technical training for a better career.";
+          if(button){ button.textContent=(x.button_text||"View Courses")+" →"; button.setAttribute("href",x.button_url||"#courses"); }
+        }
+        const dotsWrap=document.querySelector(".slider-dots");
+        if(dotsWrap){
+          dotsWrap.innerHTML=validHeroes.map((x,i)=>`<span class="slider-dot${i===0?' active':''}" data-slide="${i}"></span>`).join('');
+        }
+      }
+    }
+
+    const {data:galleryData,error:galleryError}=await supabaseClient
+      .from("gallery")
+      .select("title,category,image_url,is_active,sort_order")
+      .eq("is_active",true)
+      .order("sort_order",{ascending:true});
+
+    if(!galleryError && galleryData && galleryData.length){
+      const validGallery=galleryData.filter(x=>x.image_url);
+      const galleryGrid=document.querySelector(".gallery-grid");
+      if(galleryGrid && validGallery.length){
+        galleryGrid.innerHTML=validGallery.map(x=>`<div class="gallery-item"><img src="${x.image_url}" alt="${x.title||x.category||'Gallery'}" loading="lazy"><div class="gallery-overlay">${x.title||x.category||'Gallery'}</div></div>`).join('');
+      }
+    }
+
+  }catch(error){
+    console.error("MANAGED PHOTO LOAD ERROR:",error);
+  }
+}
+
+loadManagedPhotos();
+
+
 const slides =
   document.querySelectorAll(".slide");
 
