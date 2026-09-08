@@ -3894,30 +3894,20 @@ async function loadManagedPhotos(){
 
     const {data:heroData,error:heroError}=await supabaseClient
       .from("hero_slides")
-      .select("title,subtitle,image_url,is_active,sort_order")
+      .select("title,subtitle,image_url,button_text,button_url,is_active,sort_order")
       .eq("is_active",true)
       .order("sort_order",{ascending:true});
 
     if(!heroError && heroData && heroData.length){
       const validHeroes=heroData.filter(x=>x.image_url);
+      heroSlidesData=validHeroes;
       if(validHeroes.length){
         const slideshow=document.querySelector(".slideshow");
         if(slideshow){
           slideshow.innerHTML=validHeroes.map((x,i)=>`<img src="${x.image_url}" class="slide-bg${i===0?' active':''}" alt="">`).join('')+
             validHeroes.map((x,i)=>`<img src="${x.image_url}" class="slide${i===0?' active':''}" alt="${x.title||'Technical Training'}">`).join('');
         }
-        const heroText=document.querySelector(".hero-text");
-        if(heroText){
-          const x=validHeroes[0];
-          const badge=heroText.querySelector(".badge");
-          const heading=heroText.querySelector("h1");
-          const para=heroText.querySelector("p");
-          const button=heroText.querySelector(".hero-buttons a, .hero-buttons button, .hero-buttons .btn");
-          if(badge) badge.textContent=x.title||"Technical Training";
-          if(heading) heading.textContent=x.title||"ACE Technical Training Institute";
-          if(para) para.textContent=x.subtitle||"Practical technical training for a better career.";
-          if(button){ button.textContent=(x.button_text||"View Courses")+" →"; button.setAttribute("href",x.button_url||"#courses"); }
-        }
+        updateHeroText(0);
         const dotsWrap=document.querySelector(".slider-dots");
         if(dotsWrap){
           dotsWrap.innerHTML=validHeroes.map((x,i)=>`<span class="slider-dot${i===0?' active':''}" data-slide="${i}"></span>`).join('');
@@ -4020,6 +4010,7 @@ loadPublishedNotices();
    SLIDESHOW CONTROLS
    ========================================= */
 
+let heroSlidesData = [];
 let currentSlide = 0;
 let slideTimer = null;
 let dragStartX = 0;
@@ -4040,6 +4031,39 @@ function getBackgroundSlides(){
 
 function getDots(){
   return document.querySelectorAll(".slider-dot");
+}
+
+
+function updateHeroText(index){
+
+  const heroText=document.querySelector(".hero-text");
+
+  if(!heroText || !heroSlidesData[index]){
+    return;
+  }
+
+  const x=heroSlidesData[index];
+  const badge=heroText.querySelector(".badge");
+  const heading=heroText.querySelector("h1");
+  const para=heroText.querySelector("p");
+  const button=heroText.querySelector(".hero-buttons a, .hero-buttons button, .hero-buttons .btn");
+
+  if(badge){
+    badge.textContent=x.title || "Technical Training";
+  }
+
+  if(heading){
+    heading.textContent=x.title || "ACE Technical Training Institute";
+  }
+
+  if(para){
+    para.textContent=x.subtitle || "Practical technical training for a better career.";
+  }
+
+  if(button){
+    button.textContent=(x.button_text || "View Courses") + " →";
+    button.setAttribute("href",x.button_url || "#courses");
+  }
 }
 
 
@@ -4084,6 +4108,7 @@ function showSlide(index){
   }
 
   currentSlide = index;
+  updateHeroText(index);
 }
 
 
