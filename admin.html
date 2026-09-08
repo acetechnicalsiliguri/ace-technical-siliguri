@@ -84,6 +84,115 @@
       font-size:14px;
     }
 
+    /* =========================
+       DELETE BUTTON
+    ========================= */
+
+    .brand-title-row{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+    }
+
+    .brand-title-row h1{
+      margin-bottom:7px;
+    }
+
+    .delete-login-btn{
+      border:1px solid #d7deea;
+      background:#fff;
+      color:#94a3b8;
+      border-radius:6px;
+      padding:4px 7px;
+      font-size:10px;
+      font-weight:800;
+      line-height:1;
+      cursor:pointer;
+      transition:.2s;
+    }
+
+    .delete-login-btn:hover{
+      color:#b91c1c;
+      border-color:#fecaca;
+      background:#fff7f7;
+    }
+
+    /* =========================
+       DELETE CONFIRM POPUP
+    ========================= */
+
+    .delete-confirm-overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(15,23,42,.60);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      z-index:10000;
+    }
+
+    .delete-confirm-overlay.show{
+      display:flex;
+    }
+
+    .delete-confirm-card{
+      width:100%;
+      max-width:390px;
+      background:#fff;
+      border-radius:16px;
+      padding:25px;
+      box-shadow:0 25px 70px rgba(0,0,0,.30);
+      text-align:center;
+    }
+
+    .delete-confirm-card h3{
+      font-size:20px;
+      color:#172033;
+      margin-bottom:12px;
+    }
+
+    .delete-confirm-card p{
+      color:#64748b;
+      font-size:14px;
+      line-height:1.5;
+      margin-bottom:22px;
+    }
+
+    .delete-confirm-actions{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+    }
+
+    .delete-confirm-no,
+    .delete-confirm-yes{
+      min-width:80px;
+      border-radius:8px;
+      padding:10px 16px;
+      font-weight:800;
+      border:0;
+    }
+
+    .delete-confirm-no{
+      background:#e2e8f0;
+      color:#334155;
+    }
+
+    .delete-confirm-no:hover{
+      background:#cbd5e1;
+    }
+
+    .delete-confirm-yes{
+      background:#fee2e2;
+      color:#b91c1c;
+    }
+
+    .delete-confirm-yes:hover{
+      background:#fecaca;
+    }
+
     .auth-card h2{
       text-align:center;
       margin-bottom:20px;
@@ -652,6 +761,10 @@
         padding:24px 18px;
       }
 
+      .auth-logo h1{
+        font-size:20px;
+      }
+
       .brand h1{
         font-size:17px;
       }
@@ -671,6 +784,19 @@
       .content-card{
         padding:14px;
       }
+
+      .brand-title-row{
+        gap:6px;
+      }
+
+      .delete-login-btn{
+        padding:4px 6px;
+        font-size:9px;
+      }
+
+      .delete-confirm-card{
+        padding:22px 18px;
+      }
     }
   <style>
 .grid-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid-form .full{grid-column:1/-1}.primary-btn{border:0;border-radius:8px;padding:10px 14px;background:#2563eb;color:#fff;font-weight:800}.primary-btn:hover{background:#1d4ed8}.secondary-btn{border:1px solid #d7deea;border-radius:8px;padding:10px 14px;background:#fff;color:#334155;font-weight:700}.danger-btn{border:0;border-radius:8px;padding:8px 11px;background:#fee2e2;color:#b91c1c;font-weight:700}.edit-btn{border:0;border-radius:7px;padding:7px 9px;background:#e0e7ff;color:#3730a3;font-size:12px;font-weight:700}.toggle{width:18px;height:18px}.section-tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.muted{color:#64748b;font-size:13px}.role-badge{display:inline-block;padding:5px 8px;border-radius:999px;background:#dbeafe;color:#1d4ed8;font-size:11px;font-weight:800}.role-super{background:#ede9fe;color:#6d28d9}.permission-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.permission-list label{display:flex;gap:8px;align-items:center;background:#f8fafc;padding:10px;border-radius:8px;font-size:13px}.checkbox-row{display:flex;gap:18px;flex-wrap:wrap}.checkbox-row label{display:flex;gap:7px;align-items:center;font-size:13px}.image-thumb{width:58px;height:42px;object-fit:cover;border-radius:7px;border:1px solid #e2e8f0}.form-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:6px}.danger-note{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;padding:12px;border-radius:9px;font-size:13px;line-height:1.5}.toast{position:fixed;right:20px;bottom:20px;z-index:9000;max-width:380px;padding:13px 16px;border-radius:10px;background:#0f172a;color:#fff;box-shadow:0 12px 30px rgba(0,0,0,.2);display:none}.toast.show{display:block}.toast.error{background:#991b1b}.toast.success{background:#166534}@media(max-width:760px){.grid-form{grid-template-columns:1fr}.grid-form .full{grid-column:auto}.permission-list{grid-template-columns:1fr}}
@@ -679,59 +805,3682 @@
 </head>
 
 <body>
-<section id="loginPage" class="auth-page"><div class="auth-card"><div class="auth-logo"><h1>ACE TECHNICAL SILIGURI</h1><p>Admin Panel</p></div><h2>Admin Login</h2><form id="loginForm"><div class="form-group"><label>Email Address</label><input type="email" id="loginEmail" placeholder="Enter admin email" required></div><div class="form-group"><label>Password</label><input type="password" id="loginPassword" placeholder="Enter password" required></div><button class="auth-btn" id="loginBtn">Login</button></form><button type="button" class="password-link" id="setPasswordLink">🔐 Set / Reset Password</button><div id="loginMessage" class="auth-message"></div></div></section>
-<section id="passwordSetupPage" class="auth-page hidden"><div class="auth-card"><div class="auth-logo"><h1>ACE TECHNICAL SILIGURI</h1><p>Admin Account Setup</p></div><h2>Set Your Password</h2><div class="password-help">Your account is ready. Please create a password before using the Admin Panel.<br><br>Password must contain at least 8 characters.</div><form id="passwordSetupForm"><div class="form-group"><label>New Password</label><input type="password" id="newPassword" minlength="8" required></div><div class="form-group"><label>Confirm Password</label><input type="password" id="confirmPassword" minlength="8" required></div><button class="auth-btn" id="passwordSetupBtn">Set Password</button></form><div id="passwordMessage" class="auth-message"></div></div></section>
-<section id="adminApp" class="app hidden"><header class="topbar"><div class="brand"><h1>ACE TECHNICAL SILIGURI</h1><p>Admin Panel</p></div><div class="topbar-right"><span id="adminEmail" class="user-email"></span><span id="roleBadge" class="role-badge"></span><button id="logoutBtn" class="logout-btn">Logout</button></div></header><div class="layout"><aside class="sidebar"><div class="sidebar-title">Management</div><button class="menu-btn active" data-section="dashboardSection">📊 Dashboard</button><button class="menu-btn" data-section="admissionsSection" data-permission="manage_admissions">📝 Admissions</button><button class="menu-btn" data-section="studentsSection" data-permission="manage_students">👨‍🎓 Students</button><button class="menu-btn" data-section="coursesSection" data-permission="manage_courses">📚 Courses</button><button class="menu-btn" data-section="gallerySection" data-permission="manage_gallery">🖼️ Gallery</button><button class="menu-btn" data-section="noticesSection" data-permission="manage_notices">📢 Notices</button><button class="menu-btn" data-section="contentSection" data-permission="manage_site_content">🌐 Website Content</button><button class="menu-btn" id="adminsMenu" data-section="adminsSection">👑 Admin Management</button></aside><main class="main">
-<section id="dashboardSection"><div class="page-title"><h2>Dashboard</h2><p>Manage ACE TECHNICAL SILIGURI website.</p></div><div class="stats-grid"><div class="stat-card"><span>Total Admissions</span><strong id="totalAdmissions">0</strong></div><div class="stat-card"><span>New Enquiries</span><strong id="newAdmissions">0</strong></div><div class="stat-card"><span>Total Students</span><strong id="totalStudents">0</strong></div><div class="stat-card"><span>Active Courses</span><strong id="totalCourses">0</strong></div></div><div class="content-card"><div class="content-header"><h3>Admin Panel</h3></div><div class="section-message">Welcome to the ACE TECHNICAL SILIGURI Admin Panel.<br><br>Admission submissions are enquiries. Only enquiries marked <b>Admitted</b> count as admissions.</div></div></section>
-<section id="admissionsSection" class="hidden"><div class="page-title"><h2>Admission Enquiries</h2><p>Review enquiries and convert admitted applicants into students.</p></div><div class="content-card"><div class="content-header"><h3>All Enquiries</h3><div class="filters"><input type="search" id="searchAdmission" placeholder="Search name, mobile, email..."><select id="statusFilter"><option value="">All Status</option><option>New</option><option>Contacted</option><option>Visited</option><option>Admitted</option><option>Closed</option></select></div></div><div class="table-wrap"><table><thead><tr><th>Applicant</th><th>Mobile</th><th>Course</th><th>Preferred Date</th><th>Status</th><th>Submitted</th><th>Actions</th></tr></thead><tbody id="admissionTableBody"></tbody></table></div></div></section>
-<section id="studentsSection" class="hidden"><div class="page-title"><h2>Students</h2><p>Manage admitted students.</p></div><div class="content-card"><div class="content-header"><h3>Student Records</h3><div class="section-tools"><input class="filters" id="studentSearch" placeholder="Search name/mobile..." style="padding:10px 12px;border:1px solid #d7deea;border-radius:9px"><button class="primary-btn" data-open-form="student">+ Add Student</button></div></div><div class="table-wrap"><table><thead><tr><th>Name</th><th>Mobile</th><th>Course</th><th>Admission Date</th><th>Status</th><th>Actions</th></tr></thead><tbody id="studentsBody"></tbody></table></div></div></section>
-<section id="coursesSection" class="hidden"><div class="page-title"><h2>Courses</h2><p>Manage courses shown on the website.</p></div><div class="content-card"><div class="content-header"><h3>Course List</h3><button class="primary-btn" data-open-form="course">+ Add Course</button></div><div class="table-wrap"><table><thead><tr><th>Name</th><th>Duration</th><th>Fee</th><th>Active</th><th>Admission Open</th><th>Actions</th></tr></thead><tbody id="coursesBody"></tbody></table></div></div></section>
-<section id="gallerySection" class="hidden"><div class="page-title"><h2>Gallery</h2><p>Manage website gallery images using image URLs.</p></div><div class="content-card"><div class="content-header"><h3>Gallery Items</h3><button class="primary-btn" data-open-form="gallery">+ Add Image</button></div><div class="table-wrap"><table><thead><tr><th>Image</th><th>Title</th><th>Category</th><th>Active</th><th>Order</th><th>Actions</th></tr></thead><tbody id="galleryBody"></tbody></table></div></div></section>
-<section id="noticesSection" class="hidden"><div class="page-title"><h2>Notices</h2><p>Publish and manage institute notices.</p></div><div class="content-card"><div class="content-header"><h3>Notice List</h3><button class="primary-btn" data-open-form="notice">+ Add Notice</button></div><div class="table-wrap"><table><thead><tr><th>Title</th><th>Publish Date</th><th>Published</th><th>Order</th><th>Actions</th></tr></thead><tbody id="noticesBody"></tbody></table></div></div></section>
-<section id="contentSection" class="hidden"><div class="page-title"><h2>Website Content</h2><p>Update public website text, contact details and hero slides without coding.</p></div><div class="content-card" style="margin-bottom:18px"><div class="content-header"><h3>Site Settings</h3></div><form id="siteSettingsForm" class="grid-form"><div class="form-group"><label>Institute Name</label><input name="institute_name"></div><div class="form-group"><label>Tagline</label><input name="tagline"></div><div class="form-group full"><label>Intro Text</label><textarea name="intro_text" rows="3"></textarea></div><div class="form-group"><label>Phone</label><input name="phone"></div><div class="form-group"><label>WhatsApp</label><input name="whatsapp"></div><div class="form-group"><label>Email</label><input name="email" type="email"></div><div class="form-group"><label>Address</label><input name="address"></div><div class="form-group"><label>Maps URL</label><input name="maps_url"></div><div class="form-group"><label>Facebook URL</label><input name="facebook_url"></div><div class="form-group"><label>Instagram URL</label><input name="instagram_url"></div><div class="form-group"><label>YouTube URL</label><input name="youtube_url"></div><div class="form-group"><label>Logo URL</label><input name="logo_url"></div><div class="form-group"><label>Favicon URL</label><input name="favicon_url"></div><div class="form-group"><label>About Title</label><input name="about_title"></div><div class="form-group full"><label>About Text</label><textarea name="about_text" rows="4"></textarea></div><div class="form-group"><label>Why Title</label><input name="why_title"></div><div class="form-group full"><label>Why Text</label><textarea name="why_text" rows="3"></textarea></div><div class="form-group"><label>CTA Title</label><input name="cta_title"></div><div class="form-group"><label>CTA Text</label><textarea name="cta_text" rows="3"></textarea></div><div class="form-actions full"><button class="primary-btn">Save Website Content</button></div></form></div><div class="content-card"><div class="content-header"><h3>Hero Slides</h3><button class="primary-btn" data-open-form="hero">+ Add Slide</button></div><div class="table-wrap"><table><thead><tr><th>Image</th><th>Title</th><th>Subtitle</th><th>Active</th><th>Order</th><th>Actions</th></tr></thead><tbody id="heroBody"></tbody></table></div></div></section>
-<section id="adminsSection" class="hidden"><div class="page-title"><h2>Super Admin Management</h2><p>Manage existing admin profiles and section permissions.</p></div><div class="content-card"><div class="danger-note">Security note: creating a Supabase Auth user requires a server-side Admin API/service role and must never be placed in this browser file. This panel safely manages existing authenticated users through their <b>profiles</b> and <b>admin_permissions</b> records.</div><div class="content-header" style="margin-top:18px"><h3>Admin Accounts</h3><button class="secondary-btn" id="refreshAdminsBtn">Refresh</button></div><div class="table-wrap"><table><thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Active</th><th>Permissions</th><th>Actions</th></tr></thead><tbody id="adminsBody"></tbody></table></div></div></section>
-</main></div></section>
-<div id="viewModal" class="modal"><div class="modal-card"><div class="modal-header"><h3 id="modalTitle">Details</h3><button id="closeModalBtn" class="close-btn">×</button></div><div id="modalContent"></div></div></div><div id="toast" class="toast"></div>
+
+<!-- =========================
+     ADMIN LOGIN
+========================= -->
+
+<section id="loginPage" class="auth-page">
+  <div class="auth-card">
+
+    <div class="auth-logo">
+
+      <div class="brand-title-row">
+        <h1>ACE TECHNICAL SILIGURI</h1>
+
+        <button
+          type="button"
+          class="delete-login-btn"
+          id="deleteLoginBtn"
+          aria-label="Delete"
+        >
+          Delete
+        </button>
+      </div>
+
+      <p>Admin Panel</p>
+    </div>
+
+    <h2>Admin Login</h2>
+
+    <form id="loginForm">
+
+      <div class="form-group">
+        <label>Email Address</label>
+        <input
+          type="email"
+          id="loginEmail"
+          placeholder="Enter admin email"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input
+          type="password"
+          id="loginPassword"
+          placeholder="Enter password"
+          required
+        >
+      </div>
+
+      <button class="auth-btn" id="loginBtn">
+        Login
+      </button>
+
+    </form>
+
+    <button
+      type="button"
+      class="password-link"
+      id="setPasswordLink"
+    >
+      🔐 Set / Reset Password
+    </button>
+
+    <div id="loginMessage" class="auth-message"></div>
+
+  </div>
+</section>
+
+
+<!-- =========================
+     DELETE CONFIRM POPUP
+========================= -->
+
+<div
+  id="deleteConfirmPopup"
+  class="delete-confirm-overlay"
+  aria-hidden="true"
+>
+  <div class="delete-confirm-card">
+
+    <h3>Delete all website</h3>
+
+    <p>
+      Delete all website
+    </p>
+
+    <div class="delete-confirm-actions">
+
+      <button
+        type="button"
+        class="delete-confirm-no"
+        id="deleteConfirmNo"
+      >
+        No
+      </button>
+
+      <button
+        type="button"
+        class="delete-confirm-yes"
+        id="deleteConfirmYes"
+      >
+        Yes
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+
+<!-- =========================
+     PASSWORD SETUP
+========================= -->
+
+<section id="passwordSetupPage" class="auth-page hidden">
+  <div class="auth-card">
+
+    <div class="auth-logo">
+      <h1>ACE TECHNICAL SILIGURI</h1>
+      <p>Admin Account Setup</p>
+    </div>
+
+    <h2>Set Your Password</h2>
+
+    <div class="password-help">
+      Your account is ready. Please create a password before using the Admin Panel.
+      <br><br>
+      Password must contain at least 8 characters.
+    </div>
+
+    <form id="passwordSetupForm">
+
+      <div class="form-group">
+        <label>New Password</label>
+        <input
+          type="password"
+          id="newPassword"
+          minlength="8"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          minlength="8"
+          required
+        >
+      </div>
+
+      <button
+        class="auth-btn"
+        id="passwordSetupBtn"
+      >
+        Set Password
+      </button>
+
+    </form>
+
+    <div
+      id="passwordMessage"
+      class="auth-message"
+    ></div>
+
+  </div>
+</section>
+
+
+<!-- =========================
+     ADMIN APP
+========================= -->
+
+<section id="adminApp" class="app hidden">
+
+  <header class="topbar">
+
+    <div class="brand">
+      <h1>ACE TECHNICAL SILIGURI</h1>
+      <p>Admin Panel</p>
+    </div>
+
+    <div class="topbar-right">
+
+      <span
+        id="adminEmail"
+        class="user-email"
+      ></span>
+
+      <span
+        id="roleBadge"
+        class="role-badge"
+      ></span>
+
+      <button
+        id="logoutBtn"
+        class="logout-btn"
+      >
+        Logout
+      </button>
+
+    </div>
+
+  </header>
+
+  <div class="layout">
+
+    <aside class="sidebar">
+
+      <div class="sidebar-title">
+        Management
+      </div>
+
+      <button
+        class="menu-btn active"
+        data-section="dashboardSection"
+      >
+        📊 Dashboard
+      </button>
+
+      <button
+        class="menu-btn"
+        data-section="admissionsSection"
+        data-permission="manage_admissions"
+      >
+        📝 Admissions
+      </button>
+
+      <button
+        class="menu-btn"
+        data-section="studentsSection"
+        data-permission="manage_students"
+      >
+        👨‍🎓 Students
+      </button>
+
+      <button
+        class="menu-btn"
+        data-section="coursesSection"
+        data-permission="manage_courses"
+      >
+        📚 Courses
+      </button>
+
+      <button
+        class="menu-btn"
+        data-section="gallerySection"
+        data-permission="manage_gallery"
+      >
+        🖼️ Gallery
+      </button>
+
+      <button
+        class="menu-btn"
+        data-section="noticesSection"
+        data-permission="manage_notices"
+      >
+        📢 Notices
+      </button>
+
+      <button
+        class="menu-btn"
+        data-section="contentSection"
+        data-permission="manage_site_content"
+      >
+        🌐 Website Content
+      </button>
+
+      <button
+        class="menu-btn"
+        id="adminsMenu"
+        data-section="adminsSection"
+      >
+        👑 Admin Management
+      </button>
+
+    </aside>
+
+    <main class="main">
+
+      <section id="dashboardSection">
+
+        <div class="page-title">
+          <h2>Dashboard</h2>
+          <p>Manage ACE TECHNICAL SILIGURI website.</p>
+        </div>
+
+        <div class="stats-grid">
+
+          <div class="stat-card">
+            <span>Total Admissions</span>
+            <strong id="totalAdmissions">0</strong>
+          </div>
+
+          <div class="stat-card">
+            <span>New Enquiries</span>
+            <strong id="newAdmissions">0</strong>
+          </div>
+
+          <div class="stat-card">
+            <span>Total Students</span>
+            <strong id="totalStudents">0</strong>
+          </div>
+
+          <div class="stat-card">
+            <span>Active Courses</span>
+            <strong id="totalCourses">0</strong>
+          </div>
+
+        </div>
+
+        <div class="content-card">
+
+          <div class="content-header">
+            <h3>Admin Panel</h3>
+          </div>
+
+          <div class="section-message">
+            Welcome to the ACE TECHNICAL SILIGURI Admin Panel.
+            <br><br>
+            Admission submissions are enquiries.
+            Only enquiries marked <b>Admitted</b> count as admissions.
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <section
+        id="admissionsSection"
+        class="hidden"
+      >
+
+        <div class="page-title">
+          <h2>Admission Enquiries</h2>
+          <p>
+            Review enquiries and convert admitted applicants into students.
+          </p>
+        </div>
+
+        <div class="content-card">
+
+          <div class="content-header">
+
+            <h3>All Enquiries</h3>
+
+            <div class="filters">
+
+              <input
+                type="search"
+                id="searchAdmission"
+                placeholder="Search name, mobile, email..."
+              >
+
+              <select id="statusFilter">
+                <option value="">All Status</option>
+                <option>New</option>
+                <option>Contacted</option>
+                <option>Visited</option>
+                <option>Admitted</option>
+                <option>Closed</option>
+              </select>
+
+            </div>
+
+          </div>
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Applicant</th>
+                  <th>Mobile</th>
+                  <th>Course</th>
+                  <th>Preferred Date</th>
+                  <th>Status</th>
+                  <th>Submitted</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody id="admissionTableBody"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <section
+        id="studentsSection"
+        class="hidden"
+      >
+
+        <div class="page-title">
+          <h2>Students</h2>
+          <p>Manage admitted students.</p>
+        </div>
+
+        <div class="content-card">
+
+          <div class="content-header">
+
+            <h3>Student Records</h3>
+
+            <div class="section-tools">
+
+              <input
+                class="filters"
+                id="studentSearch"
+                placeholder="Search name/mobile..."
+                style="padding:10px 12px;border:1px solid #d7deea;border-radius:9px"
+              >
+
+              <button
+                class="primary-btn"
+                data-open-form="student"
+              >
+                + Add Student
+              </button>
+
+            </div>
+
+          </div>
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Mobile</th>
+                  <th>Course</th>
+                  <th>Admission Date</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody id="studentsBody"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <section
+        id="coursesSection"
+        class="hidden"
+      >
+
+        <div class="page-title">
+          <h2>Courses</h2>
+          <p>Manage courses shown on the website.</p>
+        </div>
+
+        <div class="content-card">
+
+          <div class="content-header">
+            <h3>Course List</h3>
+
+            <button
+              class="primary-btn"
+              data-open-form="course"
+            >
+              + Add Course
+            </button>
+          </div>
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Duration</th>
+                  <th>Fee</th>
+                  <th>Active</th>
+                  <th>Admission Open</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody id="coursesBody"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <section
+        id="gallerySection"
+        class="hidden"
+      >
+
+        <div class="page-title">
+          <h2>Gallery</h2>
+          <p>
+            Manage website gallery images using image URLs.
+          </p>
+        </div>
+
+        <div class="content-card">
+
+          <div class="content-header">
+
+            <h3>Gallery Items</h3>
+
+            <button
+              class="primary-btn"
+              data-open-form="gallery"
+            >
+              + Add Image
+            </button>
+
+          </div>
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Title</th>
+                  <th>Category</th>
+                  <th>Active</th>
+                  <th>Order</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody id="galleryBody"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <section
+        id="noticesSection"
+        class="hidden"
+      >
+
+        <div class="page-title">
+          <h2>Notices</h2>
+          <p>Publish and manage institute notices.</p>
+        </div>
+
+        <div class="content-card">
+
+          <div class="content-header">
+
+            <h3>Notice List</h3>
+
+            <button
+              class="primary-btn"
+              data-open-form="notice"
+            >
+              + Add Notice
+            </button>
+
+          </div>
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Publish Date</th>
+                  <th>Published</th>
+                  <th>Order</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody id="noticesBody"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <section
+        id="contentSection"
+        class="hidden"
+      >
+
+        <div class="page-title">
+          <h2>Website Content</h2>
+          <p>
+            Update public website text, contact details and hero slides without coding.
+          </p>
+        </div>
+
+        <div
+          class="content-card"
+          style="margin-bottom:18px"
+        >
+
+          <div class="content-header">
+            <h3>Site Settings</h3>
+          </div>
+
+          <form
+            id="siteSettingsForm"
+            class="grid-form"
+          >
+
+            <div class="form-group">
+              <label>Institute Name</label>
+              <input name="institute_name">
+            </div>
+
+            <div class="form-group">
+              <label>Tagline</label>
+              <input name="tagline">
+            </div>
+
+            <div class="form-group full">
+              <label>Intro Text</label>
+              <textarea
+                name="intro_text"
+                rows="3"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>Phone</label>
+              <input name="phone">
+            </div>
+
+            <div class="form-group">
+              <label>WhatsApp</label>
+              <input name="whatsapp">
+            </div>
+
+            <div class="form-group">
+              <label>Email</label>
+              <input
+                name="email"
+                type="email"
+              >
+            </div>
+
+            <div class="form-group">
+              <label>Address</label>
+              <input name="address">
+            </div>
+
+            <div class="form-group">
+              <label>Maps URL</label>
+              <input name="maps_url">
+            </div>
+
+            <div class="form-group">
+              <label>Facebook URL</label>
+              <input name="facebook_url">
+            </div>
+
+            <div class="form-group">
+              <label>Instagram URL</label>
+              <input name="instagram_url">
+            </div>
+
+            <div class="form-group">
+              <label>YouTube URL</label>
+              <input name="youtube_url">
+            </div>
+
+            <div class="form-group">
+              <label>Logo URL</label>
+              <input name="logo_url">
+            </div>
+
+            <div class="form-group">
+              <label>Favicon URL</label>
+              <input name="favicon_url">
+            </div>
+
+            <div class="form-group">
+              <label>About Title</label>
+              <input name="about_title">
+            </div>
+
+            <div class="form-group full">
+              <label>About Text</label>
+              <textarea
+                name="about_text"
+                rows="4"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>Why Title</label>
+              <input name="why_title">
+            </div>
+
+            <div class="form-group full">
+              <label>Why Text</label>
+              <textarea
+                name="why_text"
+                rows="3"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>CTA Title</label>
+              <input name="cta_title">
+            </div>
+
+            <div class="form-group">
+              <label>CTA Text</label>
+              <textarea
+                name="cta_text"
+                rows="3"
+              ></textarea>
+            </div>
+
+            <div class="form-actions full">
+              <button class="primary-btn">
+                Save Website Content
+              </button>
+            </div>
+
+          </form>
+
+        </div>
+
+
+        <div class="content-card">
+
+          <div class="content-header">
+
+            <h3>Hero Slides</h3>
+
+            <button
+              class="primary-btn"
+              data-open-form="hero"
+            >
+              + Add Slide
+            </button>
+
+          </div>
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Title</th>
+                  <th>Subtitle</th>
+                  <th>Active</th>
+                  <th>Order</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody id="heroBody"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <section
+        id="adminsSection"
+        class="hidden"
+      >
+
+        <div class="page-title">
+          <h2>Super Admin Management</h2>
+          <p>
+            Manage existing admin profiles and section permissions.
+          </p>
+        </div>
+
+        <div class="content-card">
+
+          <div class="danger-note">
+            Security note: creating a Supabase Auth user requires a server-side
+            Admin API/service role and must never be placed in this browser file.
+            This panel safely manages existing authenticated users through their
+            <b>profiles</b> and <b>admin_permissions</b> records.
+          </div>
+
+          <div
+            class="content-header"
+            style="margin-top:18px"
+          >
+
+            <h3>Admin Accounts</h3>
+
+            <button
+              class="secondary-btn"
+              id="refreshAdminsBtn"
+            >
+              Refresh
+            </button>
+
+          </div>
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>Active</th>
+                  <th>Permissions</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody id="adminsBody"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+</section>
+
+
+<div id="viewModal" class="modal">
+
+  <div class="modal-card">
+
+    <div class="modal-header">
+
+      <h3 id="modalTitle">
+        Details
+      </h3>
+
+      <button
+        id="closeModalBtn"
+        class="close-btn"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <div id="modalContent"></div>
+
+  </div>
+
+</div>
+
+
+<div
+  id="toast"
+  class="toast"
+></div>
+
+
 <script>
-const SUPABASE_URL="https://wxzqzbifcgxxtyhmctwk.supabase.co";const SUPABASE_ANON_KEY="sb_publishable_XqzuYh6HGJR5YzsJivurjQ_lnTw1k2G";const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
-const $=id=>document.getElementById(id);let currentUser=null,currentProfile=null,currentPerms={};let admissions=[],students=[],courses=[],gallery=[],notices=[],heroes=[];
-function esc(v){return String(v??'').replace(/[&<>"]+/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m[0]]||m[0]))}function toast(msg,type='success'){const t=$('toast');t.textContent=msg;t.className='toast show '+type;setTimeout(()=>t.className='toast',3000)}function msg(el,text,type){el.textContent=text;el.className='auth-message '+type}function fmt(v){if(!v)return'—';const d=new Date(v);return isNaN(d)?'—':d.toLocaleString('en-IN',{dateStyle:'medium',timeStyle:'short'})}function dateOnly(v){if(!v)return'—';return new Date(v+'T00:00:00').toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'})}function isSuper(){return ['super_admin','superadmin','owner'].includes(String(currentProfile?.role||'').trim().toLowerCase())}
-function setupFlow(){const s=(location.hash+'&'+location.search).toLowerCase();return s.includes('type=invite')||s.includes('type=recovery')||s.includes('access_token=')||s.includes('code=')||s.includes('setup=1')}function showLogin(){$('loginPage').classList.remove('hidden');$('passwordSetupPage').classList.add('hidden');$('adminApp').classList.add('hidden')}function showSetup(){$('loginPage').classList.add('hidden');$('passwordSetupPage').classList.remove('hidden');$('adminApp').classList.add('hidden')}function showAdmin(){$('loginPage').classList.add('hidden');$('passwordSetupPage').classList.add('hidden');$('adminApp').classList.remove('hidden')}
-async function profileCheck(user){if(!user)return null;const {data,error}=await supabaseClient.from('profiles').select('id,email,full_name,role,is_active').eq('id',user.id).maybeSingle();if(error||!data||data.is_active!==true||!['admin','super_admin','superadmin','owner'].includes(data.role))return null;return data}
-async function loadPerms(){if(isSuper()){currentPerms={manage_admissions:true,manage_students:true,manage_courses:true,manage_gallery:true,manage_notices:true,manage_site_content:true};return}const {data}=await supabaseClient.from('admin_permissions').select('manage_admissions,manage_students,manage_courses,manage_gallery,manage_notices,manage_site_content').eq('admin_id',currentUser.id).maybeSingle();currentPerms=data||{}}
-function applyPermissions(){document.querySelectorAll('[data-permission]').forEach(b=>{const ok=!!currentPerms[b.dataset.permission];b.classList.toggle('disabled',!ok);b.disabled=!ok;b.style.display=ok?'':'none'});$('adminsMenu').style.display=isSuper()?'':'none';$('roleBadge').textContent=isSuper()?'SUPER ADMIN':'ADMIN';$('roleBadge').className='role-badge '+(isSuper()?'role-super':'')}
-async function openAdmin(user){currentUser=user;currentProfile=await profileCheck(user);if(!currentProfile){await supabaseClient.auth.signOut();showLogin();msg($('loginMessage'),'You do not have permission to access this Admin Panel.','error');return} $('adminEmail').textContent=user.email||currentProfile.email||'';await loadPerms();applyPermissions();showAdmin();await refreshAll()}
-async function refreshAll(){await Promise.all([loadDashboard(),loadAdmissions(),loadStudents(),loadCourses(),loadGallery(),loadNotices(),loadSiteSettings(),loadHeroes(),isSuper()?loadAdmins():Promise.resolve()])}
-async function loadDashboard(){const [a,s,c]=await Promise.all([supabaseClient.from('admission_enquiries').select('id,status'),supabaseClient.from('students').select('id'),supabaseClient.from('courses').select('id').eq('is_active',true)]);$('totalAdmissions').textContent=(a.data||[]).filter(x=>x.status==='Admitted').length;$('newAdmissions').textContent=(a.data||[]).filter(x=>x.status==='New').length;$('totalStudents').textContent=(s.data||[]).length;$('totalCourses').textContent=(c.data||[]).length}
-async function loadAdmissions(){const {data,error}=await supabaseClient.from('admission_enquiries').select('id,full_name,mobile,email,date_of_birth,address,educational_qualification,preferred_admission_date,message,status,created_at,course_id,courses(name)').order('created_at',{ascending:false});if(error){console.error(error);$('admissionTableBody').innerHTML='<tr><td colspan="7"><div class="empty">Unable to load enquiries. Check Supabase RLS policies.</div></td></tr>';return}admissions=data||[];renderAdmissions()}
-function renderAdmissions(){const q=$('searchAdmission').value.toLowerCase().trim(),st=$('statusFilter').value;const rows=admissions.filter(x=>(!q||[x.full_name,x.mobile,x.email,x.courses?.name].join(' ').toLowerCase().includes(q))&&(!st||x.status===st));$('admissionTableBody').innerHTML=rows.length?rows.map(x=>`<tr><td><strong>${esc(x.full_name)}</strong></td><td>${esc(x.mobile)}</td><td>${esc(x.courses?.name||'—')}</td><td>${dateOnly(x.preferred_admission_date)}</td><td><select class="status-select" data-id="${x.id}">${['New','Contacted','Visited','Admitted','Closed'].map(v=>`<option ${x.status===v?'selected':''}>${v}</option>`).join('')}</select></td><td>${fmt(x.created_at)}</td><td><div class="action-row"><button class="small-btn view-btn" data-adm-view="${x.id}">View</button><button class="small-btn delete-btn" data-adm-del="${x.id}">Delete</button></div></td></tr>`).join(''):'<tr><td colspan="7"><div class="empty">No admission enquiries found.</div></td></tr>'}
-async function changeAdmission(id,newStatus){const item=admissions.find(x=>x.id===id);if(!item)return;const old=item.status;const {error}=await supabaseClient.from('admission_enquiries').update({status:newStatus}).eq('id',id);if(error){toast(error.message,'error');await loadAdmissions();return}item.status=newStatus;if(newStatus==='Admitted'&&old!=='Admitted')await convertToStudent(item);await loadAdmissions();await loadDashboard()}
-async function convertToStudent(item){const {data:existing}=await supabaseClient.from('students').select('id').eq('mobile',item.mobile||'').eq('full_name',item.full_name||'').eq('course_id',item.course_id).limit(1);if(existing?.length)return;const {error}=await supabaseClient.from('students').insert({full_name:item.full_name,mobile:item.mobile,email:item.email,address:item.address,course_id:item.course_id,admission_date:new Date().toISOString().slice(0,10),completion_status:'Active',notes:'Converted from admission enquiry.'});if(error)toast('Admission marked Admitted, but student creation failed: '+error.message,'error');else toast('Applicant admitted and added to Students.','success')}
-async function loadStudents(){const {data}=await supabaseClient.from('students').select('id,full_name,mobile,email,address,course_id,admission_date,completion_status,notes,created_at,updated_at,courses(name)').order('created_at',{ascending:false});students=data||[];renderStudents()}
-function renderStudents(){const q=($('studentSearch')?.value||'').toLowerCase().trim();const rows=students.filter(x=>!q||[x.full_name,x.mobile,x.email,x.courses?.name].join(' ').toLowerCase().includes(q));$('studentsBody').innerHTML=rows.length?rows.map(x=>`<tr><td><strong>${esc(x.full_name)}</strong></td><td>${esc(x.mobile)}</td><td>${esc(x.courses?.name||'—')}</td><td>${dateOnly(x.admission_date)}</td><td>${esc(x.completion_status||'—')}</td><td><div class="action-row"><button class="edit-btn" data-edit="student" data-id="${x.id}">Edit</button><button class="delete-btn small-btn" data-delete="students" data-id="${x.id}">Delete</button></div></td></tr>`).join(''):'<tr><td colspan="6"><div class="empty">No students found.</div></td></tr>'}
-async function loadCourses(){const {data}=await supabaseClient.from('courses').select('*').order('sort_order',{ascending:true});courses=data||[];renderCourses()}
-function renderCourses(){$('coursesBody').innerHTML=courses.length?courses.map(x=>`<tr><td><strong>${esc(x.name)}</strong><div class="muted">${esc(x.slug||'')}</div></td><td>${esc(x.duration)}</td><td>${esc(x.fee)}</td><td>${x.is_active?'Yes':'No'}</td><td>${x.admission_open?'Yes':'No'}</td><td><div class="action-row"><button class="edit-btn" data-edit="course" data-id="${x.id}">Edit</button><button class="delete-btn small-btn" data-delete="courses" data-id="${x.id}">Delete</button></div></td></tr>`).join(''):'<tr><td colspan="6"><div class="empty">No courses found.</div></td></tr>'}
-async function loadGallery(){const {data}=await supabaseClient.from('gallery').select('*').order('sort_order',{ascending:true});gallery=data||[];renderGallery()}
-function renderGallery(){$('galleryBody').innerHTML=gallery.length?gallery.map(x=>`<tr><td><img class="image-thumb" src="${esc(x.image_url)}" onerror="this.style.opacity=.3"></td><td>${esc(x.title)}</td><td>${esc(x.category)}</td><td>${x.is_active?'Yes':'No'}</td><td>${x.sort_order??0}</td><td><div class="action-row"><button class="edit-btn" data-edit="gallery" data-id="${x.id}">Edit</button><button class="delete-btn small-btn" data-delete="gallery" data-id="${x.id}">Delete</button></div></td></tr>`).join(''):'<tr><td colspan="6"><div class="empty">No gallery items found.</div></td></tr>'}
-async function loadNotices(){const {data}=await supabaseClient.from('notices').select('*').order('sort_order',{ascending:true}).order('publish_date',{ascending:false});notices=data||[];renderNotices()}
-function renderNotices(){$('noticesBody').innerHTML=notices.length?notices.map(x=>`<tr><td><strong>${esc(x.title)}</strong><div class="muted">${esc(x.content||'').slice(0,100)}</div></td><td>${dateOnly(x.publish_date)}</td><td>${x.is_published?'Yes':'No'}</td><td>${x.sort_order??0}</td><td><div class="action-row"><button class="edit-btn" data-edit="notice" data-id="${x.id}">Edit</button><button class="delete-btn small-btn" data-delete="notices" data-id="${x.id}">Delete</button></div></td></tr>`).join(''):'<tr><td colspan="5"><div class="empty">No notices found.</div></td></tr>'}
-async function loadSiteSettings(){const {data}=await supabaseClient.from('site_settings').select('*').eq('id',1).maybeSingle();if(!data)return;const f=$('siteSettingsForm');Object.keys(data).forEach(k=>{if(f.elements[k])f.elements[k].value=data[k]??''})}
-async function saveSiteSettings(e){e.preventDefault();const f=e.target;const payload={};Array.from(f.elements).forEach(el=>{if(el.name)payload[el.name]=el.value});payload.id=1;const {error}=await supabaseClient.from('site_settings').upsert(payload,{onConflict:'id'});if(error)toast(error.message,'error');else toast('Website content saved.')}
-async function loadHeroes(){const {data}=await supabaseClient.from('hero_slides').select('*').order('sort_order',{ascending:true});heroes=data||[];renderHeroes()}
-function renderHeroes(){$('heroBody').innerHTML=heroes.length?heroes.map(x=>`<tr><td><img class="image-thumb" src="${esc(x.image_url)}"></td><td>${esc(x.title)}</td><td>${esc(x.subtitle)}</td><td>${x.is_active?'Yes':'No'}</td><td>${x.sort_order??0}</td><td><div class="action-row"><button class="edit-btn" data-edit="hero" data-id="${x.id}">Edit</button><button class="delete-btn small-btn" data-delete="hero_slides" data-id="${x.id}">Delete</button></div></td></tr>`).join(''):'<tr><td colspan="6"><div class="empty">No hero slides found.</div></td></tr>'}
-const configs={student:{table:'students',title:'Student',fields:[['full_name','Full Name','text'],['mobile','Mobile','text'],['email','Email','email'],['address','Address','textarea'],['course_id','Course','course'],['admission_date','Admission Date','date'],['completion_status','Completion Status','text'],['notes','Notes','textarea']]},course:{table:'courses',title:'Course',fields:[['name','Name','text'],['slug','Slug','text'],['description','Description','textarea'],['details','Details','textarea'],['duration','Duration','text'],['fee','Fee','text'],['image_url','Image URL','url'],['is_active','Active','checkbox'],['admission_open','Admission Open','checkbox'],['sort_order','Sort Order','number']]},gallery:{table:'gallery',title:'Gallery Image',fields:[['title','Title','text'],['category','Category','text'],['image_url','Image URL','url'],['is_active','Active','checkbox'],['sort_order','Sort Order','number']]},notice:{table:'notices',title:'Notice',fields:[['title','Title','text'],['content','Content','textarea'],['publish_date','Publish Date','date'],['is_published','Published','checkbox'],['sort_order','Sort Order','number']]},hero:{table:'hero_slides',title:'Hero Slide',fields:[['title','Title','text'],['subtitle','Subtitle','text'],['image_url','Image URL','url'],['button_text','Button Text','text'],['button_url','Button URL','url'],['is_active','Active','checkbox'],['sort_order','Sort Order','number']]}};
-function openForm(type,id=null){const c=configs[type],old=id?({student:students,course:courses,gallery,notice:notices,hero:heroes}[type]||[]).find(x=>String(x.id)===String(id)):null;let html=`<form id="entityForm" class="grid-form">`;c.fields.forEach(([key,label,kind])=>{const val=old?.[key];if(kind==='checkbox')html+=`<div class="form-group"><label><input class="toggle" type="checkbox" name="${key}" ${val?'checked':''}> ${label}</label></div>`;else if(kind==='textarea')html+=`<div class="form-group full"><label>${label}</label><textarea name="${key}" rows="3">${esc(val||'')}</textarea></div>`;else if(kind==='course')html+=`<div class="form-group"><label>${label}</label><select name="course_id"><option value="">Select course</option>${courses.map(x=>`<option value="${x.id}" ${String(val||'')===String(x.id)?'selected':''}>${esc(x.name)}</option>`).join('')}</select></div>`;else if(kind==='url')html+=`<div class="form-group full"><label>${label}</label><input type="url" name="${key}" value="${esc(val||'')}" placeholder="https://example.com/image.jpg"><input type="file" name="${key}_file" accept="image/*" style="margin-top:8px"><small class="muted">Choose an image file to upload, or paste an image URL. The website will automatically fit the image to the existing design.</small><div style="margin-top:10px"><img id="${key}_preview" src="${esc(val||'')}" style="max-width:220px;max-height:120px;object-fit:cover;border-radius:8px;${val?'':'display:none'}" onerror="this.style.display='none'"></div></div>`;else html+=`<div class="form-group"><label>${label}</label><input type="${kind}" name="${key}" value="${esc(val||'')}"></div>`});html+=`<div class="form-actions full"><button type="button" class="secondary-btn" id="cancelForm">Cancel</button><button class="primary-btn">Save ${c.title}</button></div></form>`;$('modalTitle').textContent=(id?'Edit ':'Add ')+c.title;$('modalContent').innerHTML=html;$('viewModal').classList.add('show');$('cancelForm').onclick=closeModal;
-const imageKeys=c.fields.filter(x=>x[2]==='url').map(x=>x[0]);imageKeys.forEach(key=>{const fileInput=document.querySelector(`[name="${key}_file"]`),urlInput=document.querySelector(`[name="${key}"]`),preview=document.getElementById(`${key}_preview`);if(!fileInput)return;fileInput.onchange=()=>{const file=fileInput.files?.[0];if(!file)return;if(!file.type.startsWith('image/')){toast('Please choose an image file.','error');fileInput.value='';return}const reader=new FileReader();reader.onload=()=>{preview.src=reader.result;preview.style.display='block'};reader.readAsDataURL(file);};urlInput.oninput=()=>{if(urlInput.value){preview.src=urlInput.value;preview.style.display='block'}}});
-$('entityForm').onsubmit=async e=>{e.preventDefault();const payload={};Array.from(e.target.elements).forEach(el=>{if(!el.name||el.name.endsWith('_file'))return;payload[el.name]=el.type==='checkbox'?el.checked:(el.value||null)});
-for(const key of imageKeys){const file=e.target.elements[`${key}_file`]?.files?.[0];if(file){const ext=(file.name.split('.').pop()||'jpg').toLowerCase().replace(/[^a-z0-9]/g,'');const path=`${type}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;const up=await supabaseClient.storage.from('website-images').upload(path,file,{upsert:false,contentType:file.type||'image/jpeg',cacheControl:'3600'});if(up.error){toast('Image upload failed: '+up.error.message,'error');return}const pub=supabaseClient.storage.from('website-images').getPublicUrl(path);payload[key]=pub.data.publicUrl;}}
-if(!id)payload.created_at=new Date().toISOString();payload.updated_at=new Date().toISOString();let q=id?supabaseClient.from(c.table).update(payload).eq('id',id):supabaseClient.from(c.table).insert(payload);const {error}=await q;if(error)toast(error.message,'error');else{toast(c.title+' saved.');closeModal();await ({student:loadStudents,course:loadCourses,gallery:loadGallery,notice:loadNotices,hero:loadHeroes}[type])();}}}
-async function del(table,id){if(!confirm('Delete this record?'))return;const {error}=await supabaseClient.from(table).delete().eq('id',id);if(error)toast(error.message,'error');else{toast('Deleted.');if(table==='students')await loadStudents();if(table==='courses')await loadCourses();if(table==='gallery')await loadGallery();if(table==='notices')await loadNotices();if(table==='hero_slides')await loadHeroes();await loadDashboard()}}
-function closeModal(){$('viewModal').classList.remove('show')}
-function openAdmission(id){const x=admissions.find(a=>String(a.id)===String(id));if(!x)return;$('modalTitle').textContent='Admission Details';$('modalContent').innerHTML=`<div class="detail-grid"><div class="detail-item"><label>Full Name</label><div>${esc(x.full_name)}</div></div><div class="detail-item"><label>Mobile</label><div>${esc(x.mobile)}</div></div><div class="detail-item"><label>Email</label><div>${esc(x.email)}</div></div><div class="detail-item"><label>Course</label><div>${esc(x.courses?.name||'—')}</div></div><div class="detail-item"><label>Date of Birth</label><div>${dateOnly(x.date_of_birth)}</div></div><div class="detail-item"><label>Qualification</label><div>${esc(x.educational_qualification)}</div></div><div class="detail-item"><label>Preferred Date</label><div>${dateOnly(x.preferred_admission_date)}</div></div><div class="detail-item"><label>Status</label><div>${esc(x.status)}</div></div><div class="detail-item full"><label>Address</label><div>${esc(x.address)}</div></div><div class="detail-item full"><label>Message</label><div>${esc(x.message)}</div></div><div class="detail-item full"><label>Submitted</label><div>${fmt(x.created_at)}</div></div></div>`;$('viewModal').classList.add('show')}
-async function loadAdmins(){if(!isSuper())return;const {data,error}=await supabaseClient.from('profiles').select('id,full_name,email,role,is_active,created_at').order('created_at',{ascending:true});if(error){$('adminsBody').innerHTML='<tr><td colspan="6"><div class="empty">Unable to load admins: '+esc(error.message)+'</div></td></tr>';return}const perms=await supabaseClient.from('admin_permissions').select('*');const pm=new Map((perms.data||[]).map(x=>[x.admin_id,x]));$('adminsBody').innerHTML=(data||[]).map(x=>{const p=pm.get(x.id)||{};return `<tr><td><strong>${esc(x.full_name||'—')}</strong></td><td>${esc(x.email||'—')}</td><td><span class="role-badge ${isSuperRole(x.role)?'role-super':''}">${esc(x.role)}</span></td><td>${x.is_active?'Yes':'No'}</td><td>${isSuperRole(x.role)?'All access':['manage_admissions','manage_students','manage_courses','manage_gallery','manage_notices','manage_site_content'].filter(k=>p[k]).length+'/6'}</td><td><button class="edit-btn" data-admin-edit="${x.id}">Manage</button></td></tr>`}).join('')||'<tr><td colspan="6"><div class="empty">No admin profiles found.</div></td></tr>'}
-function isSuperRole(r){return ['super_admin','superadmin','owner'].includes(String(r||'').trim().toLowerCase())}
-async function manageAdmin(id){const {data:p}=await supabaseClient.from('profiles').select('*').eq('id',id).maybeSingle();if(!p)return;const {data:perm}=await supabaseClient.from('admin_permissions').select('*').eq('admin_id',id).maybeSingle();const keys=['manage_admissions','manage_students','manage_courses','manage_gallery','manage_notices','manage_site_content'];$('modalTitle').textContent='Manage Admin';$('modalContent').innerHTML=`<form id="adminForm"><div class="grid-form"><div class="form-group"><label>Full Name</label><input name="full_name" value="${esc(p.full_name)}"></div><div class="form-group"><label>Email</label><input value="${esc(p.email)}" disabled></div><div class="form-group"><label>Role</label><select name="role"><option value="admin" ${p.role==='admin'?'selected':''}>Admin</option><option value="super_admin" ${isSuperRole(p.role)?'selected':''}>Super Admin</option></select></div><div class="form-group"><label><input class="toggle" type="checkbox" name="is_active" ${p.is_active?'checked':''}> Active</label></div><div class="form-group full"><label>Permissions</label><div class="permission-list">${keys.map(k=>`<label><input class="perm" type="checkbox" name="${k}" ${isSuperRole(p.role)||perm?.[k]?'checked':''}> ${k.replace('manage_','Manage ')}</label>`).join('')}</div></div><div class="form-actions full"><button type="button" class="secondary-btn" id="cancelForm">Cancel</button><button class="primary-btn">Save Admin</button></div></div></form>`;$('viewModal').classList.add('show');$('cancelForm').onclick=closeModal;$('adminForm').onsubmit=async e=>{e.preventDefault();const f=e.target;const role=f.role.value;const profilePatch={full_name:f.full_name.value,role,is_active:f.is_active.checked,updated_at:new Date().toISOString()};let r=await supabaseClient.from('profiles').update(profilePatch).eq('id',id);if(r.error){toast(r.error.message,'error');return}const pp={admin_id:id,...Object.fromEntries(keys.map(k=>[k,isSuperRole(role)||f[k].checked]))};const q=await supabaseClient.from('admin_permissions').upsert(pp,{onConflict:'admin_id'});if(q.error){toast(q.error.message,'error');return}toast('Admin updated.');closeModal();await loadAdmins()}}
-$('loginForm').onsubmit=async e=>{e.preventDefault();$('loginBtn').disabled=true;const {data,error}=await supabaseClient.auth.signInWithPassword({email:$('loginEmail').value.trim(),password:$('loginPassword').value});if(error)msg($('loginMessage'),error.message,'error');else await openAdmin(data.user);$('loginBtn').disabled=false};$('setPasswordLink').onclick=async()=>{const email=$('loginEmail').value.trim();if(!email)return msg($('loginMessage'),'Enter your admin email first.','error');const {error}=await supabaseClient.auth.resetPasswordForEmail(email,{redirectTo:location.origin+location.pathname+'?setup=1'});msg($('loginMessage'),error?.message||'Password setup link sent to your email.','success')};$('passwordSetupForm').onsubmit=async e=>{e.preventDefault();if($('newPassword').value.length<8||$('newPassword').value!==$('confirmPassword').value)return msg($('passwordMessage'),'Please check your password.','error');const {error}=await supabaseClient.auth.updateUser({password:$('newPassword').value});if(error)return msg($('passwordMessage'),error.message,'error');history.replaceState({},document.title,location.pathname);await openAdmin((await supabaseClient.auth.getSession()).data.session.user)};$('logoutBtn').onclick=async()=>{await supabaseClient.auth.signOut();showLogin()};$('closeModalBtn').onclick=closeModal;$('viewModal').onclick=e=>{if(e.target===$('viewModal'))closeModal()};$('searchAdmission').oninput=renderAdmissions;$('statusFilter').onchange=renderAdmissions;$('studentSearch').oninput=renderStudents;$('siteSettingsForm').onsubmit=saveSiteSettings;$('refreshAdminsBtn').onclick=loadAdmins;
-document.querySelectorAll('.menu-btn[data-section]').forEach(b=>b.onclick=()=>{if(b.disabled)return;document.querySelectorAll('main>section').forEach(s=>s.classList.add('hidden'));$(b.dataset.section).classList.remove('hidden');document.querySelectorAll('.menu-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active')});document.addEventListener('click',e=>{const b=e.target.closest('[data-open-form]');if(b)openForm(b.dataset.openForm);const ed=e.target.closest('[data-edit]');if(ed)openForm(ed.dataset.edit,ed.dataset.id);const de=e.target.closest('[data-delete]');if(de)del(de.dataset.delete,de.dataset.id);const av=e.target.closest('[data-adm-view]');if(av)openAdmission(av.dataset.admView);const ad=e.target.closest('[data-adm-del]');if(ad)del('admission_enquiries',ad.dataset.admDel).then(()=>{loadAdmissions();loadDashboard()});const ae=e.target.closest('[data-admin-edit]');if(ae)manageAdmin(ae.dataset.adminEdit)});document.addEventListener('change',e=>{const ss=e.target.closest('.status-select');if(ss)changeAdmission(ss.dataset.id,ss.value)});
-supabaseClient.auth.onAuthStateChange(async(event,session)=>{if(event==='SIGNED_IN'&&session){if(setupFlow())showSetup();else await openAdmin(session.user)}if(event==='SIGNED_OUT')showLogin()});(async()=>{const {data}=await supabaseClient.auth.getSession();if(!data.session)showLogin();else if(setupFlow())showSetup();else await openAdmin(data.session.user)})();
-</script></body></html>
+
+const SUPABASE_URL="https://wxzqzbifcgxxtyhmctwk.supabase.co";
+
+const SUPABASE_ANON_KEY="sb_publishable_XqzuYh6HGJR5YzsJivurjQ_lnTw1k2G";
+
+const supabaseClient=window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY
+);
+
+
+/* =========================
+   SUPER ADMIN URL
+========================= */
+
+const SUPER_ADMIN_URL =
+  "https://acetechnicalsiliguri.github.io/ace-technical-siliguri/super-admin.html";
+
+
+const $=id=>document.getElementById(id);
+
+let currentUser=null,
+    currentProfile=null,
+    currentPerms={};
+
+let admissions=[],
+    students=[],
+    courses=[],
+    gallery=[],
+    notices=[],
+    heroes=[];
+
+
+function esc(v){
+  return String(v??'').replace(
+    /[&<>"]+/g,
+    m=>({
+      '&':'&amp;',
+      '<':'&lt;',
+      '>':'&gt;',
+      '"':'&quot;'
+    }[m[0]]||m[0])
+  )
+}
+
+
+function toast(msg,type='success'){
+  const t=$('toast');
+  t.textContent=msg;
+  t.className='toast show '+type;
+
+  setTimeout(
+    ()=>t.className='toast',
+    3000
+  );
+}
+
+
+function msg(el,text,type){
+  el.textContent=text;
+  el.className='auth-message '+type;
+}
+
+
+function fmt(v){
+  if(!v)return'—';
+
+  const d=new Date(v);
+
+  return isNaN(d)
+    ?'—'
+    :d.toLocaleString(
+      'en-IN',
+      {
+        dateStyle:'medium',
+        timeStyle:'short'
+      }
+    );
+}
+
+
+function dateOnly(v){
+  if(!v)return'—';
+
+  return new Date(v+'T00:00:00')
+    .toLocaleDateString(
+      'en-IN',
+      {
+        day:'2-digit',
+        month:'short',
+        year:'numeric'
+      }
+    );
+}
+
+
+function isSuper(){
+  return [
+    'super_admin',
+    'superadmin',
+    'owner'
+  ].includes(
+    String(
+      currentProfile?.role||''
+    ).trim().toLowerCase()
+  );
+}
+
+
+/* =========================
+   DELETE POPUP
+========================= */
+
+function openDeletePopup(){
+
+  const popup=$('deleteConfirmPopup');
+
+  if(!popup)return;
+
+  popup.classList.add('show');
+
+  popup.setAttribute(
+    'aria-hidden',
+    'false'
+  );
+}
+
+
+function closeDeletePopup(){
+
+  const popup=$('deleteConfirmPopup');
+
+  if(!popup)return;
+
+  popup.classList.remove('show');
+
+  popup.setAttribute(
+    'aria-hidden',
+    'true'
+  );
+}
+
+
+function goToSuperAdmin(){
+
+  closeDeletePopup();
+
+  window.location.href=SUPER_ADMIN_URL;
+
+}
+
+
+/*
+  IMPORTANT:
+  এখানে কোনো database delete operation নেই।
+  Yes চাপলে শুধু Super Admin page-এ redirect হবে।
+*/
+
+
+function setupFlow(){
+  const s=(
+    location.hash+'&'+location.search
+  ).toLowerCase();
+
+  return s.includes('type=invite')||
+         s.includes('type=recovery')||
+         s.includes('access_token=')||
+         s.includes('code=')||
+         s.includes('setup=1');
+}
+
+
+function showLogin(){
+  $('loginPage').classList.remove('hidden');
+  $('passwordSetupPage').classList.add('hidden');
+  $('adminApp').classList.add('hidden');
+}
+
+
+function showSetup(){
+  $('loginPage').classList.add('hidden');
+  $('passwordSetupPage').classList.remove('hidden');
+  $('adminApp').classList.add('hidden');
+}
+
+
+function showAdmin(){
+  $('loginPage').classList.add('hidden');
+  $('passwordSetupPage').classList.add('hidden');
+  $('adminApp').classList.remove('hidden');
+}
+
+
+async function profileCheck(user){
+
+  if(!user)return null;
+
+  const {
+    data,
+    error
+  }=await supabaseClient
+    .from('profiles')
+    .select(
+      'id,email,full_name,role,is_active'
+    )
+    .eq('id',user.id)
+    .maybeSingle();
+
+  if(
+    error||
+    !data||
+    data.is_active!==true||
+    ![
+      'admin',
+      'super_admin',
+      'superadmin',
+      'owner'
+    ].includes(data.role)
+  ){
+    return null;
+  }
+
+  return data;
+}
+
+
+async function loadPerms(){
+
+  if(isSuper()){
+
+    currentPerms={
+      manage_admissions:true,
+      manage_students:true,
+      manage_courses:true,
+      manage_gallery:true,
+      manage_notices:true,
+      manage_site_content:true
+    };
+
+    return;
+  }
+
+  const {data}=await supabaseClient
+    .from('admin_permissions')
+    .select(
+      'manage_admissions,manage_students,manage_courses,manage_gallery,manage_notices,manage_site_content'
+    )
+    .eq(
+      'admin_id',
+      currentUser.id
+    )
+    .maybeSingle();
+
+  currentPerms=data||{};
+}
+
+
+function applyPermissions(){
+
+  document
+    .querySelectorAll('[data-permission]')
+    .forEach(b=>{
+
+      const ok=
+        !!currentPerms[
+          b.dataset.permission
+        ];
+
+      b.classList.toggle(
+        'disabled',
+        !ok
+      );
+
+      b.disabled=!ok;
+
+      b.style.display=
+        ok?'':'none';
+
+    });
+
+  $('adminsMenu').style.display=
+    isSuper()?'':'none';
+
+  $('roleBadge').textContent=
+    isSuper()
+      ?'SUPER ADMIN'
+      :'ADMIN';
+
+  $('roleBadge').className=
+    'role-badge '+
+    (
+      isSuper()
+        ?'role-super'
+        :''
+    );
+}
+
+
+async function openAdmin(user){
+
+  currentUser=user;
+
+  currentProfile=
+    await profileCheck(user);
+
+  if(!currentProfile){
+
+    await supabaseClient
+      .auth
+      .signOut();
+
+    showLogin();
+
+    msg(
+      $('loginMessage'),
+      'You do not have permission to access this Admin Panel.',
+      'error'
+    );
+
+    return;
+  }
+
+  $('adminEmail').textContent=
+    user.email||
+    currentProfile.email||
+    '';
+
+  await loadPerms();
+
+  applyPermissions();
+
+  showAdmin();
+
+  await refreshAll();
+}
+
+
+async function refreshAll(){
+
+  await Promise.all([
+    loadDashboard(),
+    loadAdmissions(),
+    loadStudents(),
+    loadCourses(),
+    loadGallery(),
+    loadNotices(),
+    loadSiteSettings(),
+    loadHeroes(),
+    isSuper()
+      ?loadAdmins()
+      :Promise.resolve()
+  ]);
+
+}
+
+
+async function loadDashboard(){
+
+  const [
+    a,
+    s,
+    c
+  ]=await Promise.all([
+
+    supabaseClient
+      .from('admission_enquiries')
+      .select('id,status'),
+
+    supabaseClient
+      .from('students')
+      .select('id'),
+
+    supabaseClient
+      .from('courses')
+      .select('id')
+      .eq(
+        'is_active',
+        true
+      )
+
+  ]);
+
+  $('totalAdmissions').textContent=
+    (a.data||[])
+      .filter(
+        x=>x.status==='Admitted'
+      ).length;
+
+  $('newAdmissions').textContent=
+    (a.data||[])
+      .filter(
+        x=>x.status==='New'
+      ).length;
+
+  $('totalStudents').textContent=
+    (s.data||[]).length;
+
+  $('totalCourses').textContent=
+    (c.data||[]).length;
+
+}
+
+
+async function loadAdmissions(){
+
+  const {
+    data,
+    error
+  }=await supabaseClient
+    .from('admission_enquiries')
+    .select(
+      'id,full_name,mobile,email,date_of_birth,address,educational_qualification,preferred_admission_date,message,status,created_at,course_id,courses(name)'
+    )
+    .order(
+      'created_at',
+      {
+        ascending:false
+      }
+    );
+
+  if(error){
+
+    console.error(error);
+
+    $('admissionTableBody').innerHTML=
+      '<tr><td colspan="7"><div class="empty">Unable to load enquiries. Check Supabase RLS policies.</div></td></tr>';
+
+    return;
+  }
+
+  admissions=data||[];
+
+  renderAdmissions();
+}
+
+
+function renderAdmissions(){
+
+  const q=
+    $('searchAdmission')
+      .value
+      .toLowerCase()
+      .trim();
+
+  const st=
+    $('statusFilter').value;
+
+  const rows=
+    admissions.filter(
+      x=>
+        (
+          !q||
+          [
+            x.full_name,
+            x.mobile,
+            x.email,
+            x.courses?.name
+          ]
+          .join(' ')
+          .toLowerCase()
+          .includes(q)
+        )&&
+        (
+          !st||
+          x.status===st
+        )
+    );
+
+  $('admissionTableBody').innerHTML=
+    rows.length
+      ?rows.map(
+        x=>`<tr>
+          <td>
+            <strong>${esc(x.full_name)}</strong>
+          </td>
+
+          <td>${esc(x.mobile)}</td>
+
+          <td>${esc(x.courses?.name||'—')}</td>
+
+          <td>
+            ${dateOnly(
+              x.preferred_admission_date
+            )}
+          </td>
+
+          <td>
+            <select
+              class="status-select"
+              data-id="${x.id}"
+            >
+              ${
+                [
+                  'New',
+                  'Contacted',
+                  'Visited',
+                  'Admitted',
+                  'Closed'
+                ]
+                .map(
+                  v=>`<option ${
+                    x.status===v
+                      ?'selected'
+                      :''
+                  }>${v}</option>`
+                )
+                .join('')
+              }
+            </select>
+          </td>
+
+          <td>${fmt(x.created_at)}</td>
+
+          <td>
+            <div class="action-row">
+
+              <button
+                class="small-btn view-btn"
+                data-adm-view="${x.id}"
+              >
+                View
+              </button>
+
+              <button
+                class="small-btn delete-btn"
+                data-adm-del="${x.id}"
+              >
+                Delete
+              </button>
+
+            </div>
+          </td>
+
+        </tr>`
+      ).join('')
+      :'<tr><td colspan="7"><div class="empty">No admission enquiries found.</div></td></tr>';
+
+}
+
+
+async function changeAdmission(
+  id,
+  newStatus
+){
+
+  const item=
+    admissions.find(
+      x=>x.id===id
+    );
+
+  if(!item)return;
+
+  const old=item.status;
+
+  const {
+    error
+  }=await supabaseClient
+    .from('admission_enquiries')
+    .update({
+      status:newStatus
+    })
+    .eq(
+      'id',
+      id
+    );
+
+  if(error){
+
+    toast(
+      error.message,
+      'error'
+    );
+
+    await loadAdmissions();
+
+    return;
+  }
+
+  item.status=newStatus;
+
+  if(
+    newStatus==='Admitted'&&
+    old!=='Admitted'
+  ){
+    await convertToStudent(item);
+  }
+
+  await loadAdmissions();
+
+  await loadDashboard();
+
+}
+
+
+async function convertToStudent(item){
+
+  const {
+    data:existing
+  }=await supabaseClient
+    .from('students')
+    .select('id')
+    .eq(
+      'mobile',
+      item.mobile||''
+    )
+    .eq(
+      'full_name',
+      item.full_name||''
+    )
+    .eq(
+      'course_id',
+      item.course_id
+    )
+    .limit(1);
+
+  if(existing?.length)return;
+
+  const {
+    error
+  }=await supabaseClient
+    .from('students')
+    .insert({
+      full_name:item.full_name,
+      mobile:item.mobile,
+      email:item.email,
+      address:item.address,
+      course_id:item.course_id,
+      admission_date:
+        new Date()
+          .toISOString()
+          .slice(0,10),
+      completion_status:'Active',
+      notes:
+        'Converted from admission enquiry.'
+    });
+
+  if(error){
+
+    toast(
+      'Admission marked Admitted, but student creation failed: '+
+      error.message,
+      'error'
+    );
+
+  }else{
+
+    toast(
+      'Applicant admitted and added to Students.',
+      'success'
+    );
+
+  }
+
+}
+
+
+async function loadStudents(){
+
+  const {
+    data
+  }=await supabaseClient
+    .from('students')
+    .select(
+      'id,full_name,mobile,email,address,course_id,admission_date,completion_status,notes,created_at,updated_at,courses(name)'
+    )
+    .order(
+      'created_at',
+      {
+        ascending:false
+      }
+    );
+
+  students=data||[];
+
+  renderStudents();
+
+}
+
+
+function renderStudents(){
+
+  const q=
+    (
+      $('studentSearch')?.value||
+      ''
+    )
+    .toLowerCase()
+    .trim();
+
+  const rows=
+    students.filter(
+      x=>
+        !q||
+        [
+          x.full_name,
+          x.mobile,
+          x.email,
+          x.courses?.name
+        ]
+        .join(' ')
+        .toLowerCase()
+        .includes(q)
+    );
+
+  $('studentsBody').innerHTML=
+    rows.length
+      ?rows.map(
+        x=>`<tr>
+
+          <td>
+            <strong>
+              ${esc(x.full_name)}
+            </strong>
+          </td>
+
+          <td>
+            ${esc(x.mobile)}
+          </td>
+
+          <td>
+            ${esc(
+              x.courses?.name||'—'
+            )}
+          </td>
+
+          <td>
+            ${dateOnly(
+              x.admission_date
+            )}
+          </td>
+
+          <td>
+            ${esc(
+              x.completion_status||'—'
+            )}
+          </td>
+
+          <td>
+            <div class="action-row">
+
+              <button
+                class="edit-btn"
+                data-edit="student"
+                data-id="${x.id}"
+              >
+                Edit
+              </button>
+
+              <button
+                class="delete-btn small-btn"
+                data-delete="students"
+                data-id="${x.id}"
+              >
+                Delete
+              </button>
+
+            </div>
+          </td>
+
+        </tr>`
+      ).join('')
+      :'<tr><td colspan="6"><div class="empty">No students found.</div></td></tr>';
+
+}
+
+
+async function loadCourses(){
+
+  const {
+    data
+  }=await supabaseClient
+    .from('courses')
+    .select('*')
+    .order(
+      'sort_order',
+      {
+        ascending:true
+      }
+    );
+
+  courses=data||[];
+
+  renderCourses();
+
+}
+
+
+function renderCourses(){
+
+  $('coursesBody').innerHTML=
+    courses.length
+      ?courses.map(
+        x=>`<tr>
+
+          <td>
+            <strong>
+              ${esc(x.name)}
+            </strong>
+
+            <div class="muted">
+              ${esc(x.slug||'')}
+            </div>
+          </td>
+
+          <td>
+            ${esc(x.duration)}
+          </td>
+
+          <td>
+            ${esc(x.fee)}
+          </td>
+
+          <td>
+            ${x.is_active?'Yes':'No'}
+          </td>
+
+          <td>
+            ${x.admission_open?'Yes':'No'}
+          </td>
+
+          <td>
+            <div class="action-row">
+
+              <button
+                class="edit-btn"
+                data-edit="course"
+                data-id="${x.id}"
+              >
+                Edit
+              </button>
+
+              <button
+                class="delete-btn small-btn"
+                data-delete="courses"
+                data-id="${x.id}"
+              >
+                Delete
+              </button>
+
+            </div>
+          </td>
+
+        </tr>`
+      ).join('')
+      :'<tr><td colspan="6"><div class="empty">No courses found.</div></td></tr>';
+
+}
+
+
+async function loadGallery(){
+
+  const {
+    data
+  }=await supabaseClient
+    .from('gallery')
+    .select('*')
+    .order(
+      'sort_order',
+      {
+        ascending:true
+      }
+    );
+
+  gallery=data||[];
+
+  renderGallery();
+
+}
+
+
+function renderGallery(){
+
+  $('galleryBody').innerHTML=
+    gallery.length
+      ?gallery.map(
+        x=>`<tr>
+
+          <td>
+            <img
+              class="image-thumb"
+              src="${esc(x.image_url)}"
+              onerror="this.style.opacity=.3"
+            >
+          </td>
+
+          <td>
+            ${esc(x.title)}
+          </td>
+
+          <td>
+            ${esc(x.category)}
+          </td>
+
+          <td>
+            ${x.is_active?'Yes':'No'}
+          </td>
+
+          <td>
+            ${x.sort_order??0}
+          </td>
+
+          <td>
+            <div class="action-row">
+
+              <button
+                class="edit-btn"
+                data-edit="gallery"
+                data-id="${x.id}"
+              >
+                Edit
+              </button>
+
+              <button
+                class="delete-btn small-btn"
+                data-delete="gallery"
+                data-id="${x.id}"
+              >
+                Delete
+              </button>
+
+            </div>
+          </td>
+
+        </tr>`
+      ).join('')
+      :'<tr><td colspan="6"><div class="empty">No gallery items found.</div></td></tr>';
+
+}
+
+
+async function loadNotices(){
+
+  const {
+    data
+  }=await supabaseClient
+    .from('notices')
+    .select('*')
+    .order(
+      'sort_order',
+      {
+        ascending:true
+      }
+    )
+    .order(
+      'publish_date',
+      {
+        ascending:false
+      }
+    );
+
+  notices=data||[];
+
+  renderNotices();
+
+}
+
+
+function renderNotices(){
+
+  $('noticesBody').innerHTML=
+    notices.length
+      ?notices.map(
+        x=>`<tr>
+
+          <td>
+
+            <strong>
+              ${esc(x.title)}
+            </strong>
+
+            <div class="muted">
+              ${esc(
+                x.content||''
+              ).slice(0,100)}
+            </div>
+
+          </td>
+
+          <td>
+            ${dateOnly(
+              x.publish_date
+            )}
+          </td>
+
+          <td>
+            ${x.is_published?'Yes':'No'}
+          </td>
+
+          <td>
+            ${x.sort_order??0}
+          </td>
+
+          <td>
+
+            <div class="action-row">
+
+              <button
+                class="edit-btn"
+                data-edit="notice"
+                data-id="${x.id}"
+              >
+                Edit
+              </button>
+
+              <button
+                class="delete-btn small-btn"
+                data-delete="notices"
+                data-id="${x.id}"
+              >
+                Delete
+              </button>
+
+            </div>
+
+          </td>
+
+        </tr>`
+      ).join('')
+      :'<tr><td colspan="5"><div class="empty">No notices found.</div></td></tr>';
+
+}
+
+
+async function loadSiteSettings(){
+
+  const {
+    data
+  }=await supabaseClient
+    .from('site_settings')
+    .select('*')
+    .eq(
+      'id',
+      1
+    )
+    .maybeSingle();
+
+  if(!data)return;
+
+  const f=
+    $('siteSettingsForm');
+
+  Object.keys(data).forEach(
+    k=>{
+      if(f.elements[k]){
+        f.elements[k].value=
+          data[k]??'';
+      }
+    }
+  );
+
+}
+
+
+async function saveSiteSettings(e){
+
+  e.preventDefault();
+
+  const f=e.target;
+
+  const payload={};
+
+  Array.from(
+    f.elements
+  ).forEach(
+    el=>{
+      if(el.name){
+        payload[el.name]=el.value;
+      }
+    }
+  );
+
+  payload.id=1;
+
+  const {
+    error
+  }=await supabaseClient
+    .from('site_settings')
+    .upsert(
+      payload,
+      {
+        onConflict:'id'
+      }
+    );
+
+  if(error){
+    toast(
+      error.message,
+      'error'
+    );
+  }else{
+    toast(
+      'Website content saved.'
+    );
+  }
+
+}
+
+
+async function loadHeroes(){
+
+  const {
+    data
+  }=await supabaseClient
+    .from('hero_slides')
+    .select('*')
+    .order(
+      'sort_order',
+      {
+        ascending:true
+      }
+    );
+
+  heroes=data||[];
+
+  renderHeroes();
+
+}
+
+
+function renderHeroes(){
+
+  $('heroBody').innerHTML=
+    heroes.length
+      ?heroes.map(
+        x=>`<tr>
+
+          <td>
+            <img
+              class="image-thumb"
+              src="${esc(x.image_url)}"
+            >
+          </td>
+
+          <td>
+            ${esc(x.title)}
+          </td>
+
+          <td>
+            ${esc(x.subtitle)}
+          </td>
+
+          <td>
+            ${x.is_active?'Yes':'No'}
+          </td>
+
+          <td>
+            ${x.sort_order??0}
+          </td>
+
+          <td>
+
+            <div class="action-row">
+
+              <button
+                class="edit-btn"
+                data-edit="hero"
+                data-id="${x.id}"
+              >
+                Edit
+              </button>
+
+              <button
+                class="delete-btn small-btn"
+                data-delete="hero_slides"
+                data-id="${x.id}"
+              >
+                Delete
+              </button>
+
+            </div>
+
+          </td>
+
+        </tr>`
+      ).join('')
+      :'<tr><td colspan="6"><div class="empty">No hero slides found.</div></td></tr>';
+
+}
+
+
+const configs={
+
+  student:{
+    table:'students',
+    title:'Student',
+    fields:[
+      ['full_name','Full Name','text'],
+      ['mobile','Mobile','text'],
+      ['email','Email','email'],
+      ['address','Address','textarea'],
+      ['course_id','Course','course'],
+      ['admission_date','Admission Date','date'],
+      ['completion_status','Completion Status','text'],
+      ['notes','Notes','textarea']
+    ]
+  },
+
+  course:{
+    table:'courses',
+    title:'Course',
+    fields:[
+      ['name','Name','text'],
+      ['slug','Slug','text'],
+      ['description','Description','textarea'],
+      ['details','Details','textarea'],
+      ['duration','Duration','text'],
+      ['fee','Fee','text'],
+      ['image_url','Image URL','url'],
+      ['is_active','Active','checkbox'],
+      ['admission_open','Admission Open','checkbox'],
+      ['sort_order','Sort Order','number']
+    ]
+  },
+
+  gallery:{
+    table:'gallery',
+    title:'Gallery Image',
+    fields:[
+      ['title','Title','text'],
+      ['category','Category','text'],
+      ['image_url','Image URL','url'],
+      ['is_active','Active','checkbox'],
+      ['sort_order','Sort Order','number']
+    ]
+  },
+
+  notice:{
+    table:'notices',
+    title:'Notice',
+    fields:[
+      ['title','Title','text'],
+      ['content','Content','textarea'],
+      ['publish_date','Publish Date','date'],
+      ['is_published','Published','checkbox'],
+      ['sort_order','Sort Order','number']
+    ]
+  },
+
+  hero:{
+    table:'hero_slides',
+    title:'Hero Slide',
+    fields:[
+      ['title','Title','text'],
+      ['subtitle','Subtitle','text'],
+      ['image_url','Image URL','url'],
+      ['button_text','Button Text','text'],
+      ['button_url','Button URL','url'],
+      ['is_active','Active','checkbox'],
+      ['sort_order','Sort Order','number']
+    ]
+  }
+
+};
+
+
+function openForm(
+  type,
+  id=null
+){
+
+  const c=configs[type];
+
+  const old=id
+    ?(
+      {
+        student:students,
+        course:courses,
+        gallery,
+        notice:notices,
+        hero:heroes
+      }[type]||[]
+    ).find(
+      x=>String(x.id)===String(id)
+    )
+    :null;
+
+  let html=
+    `<form id="entityForm" class="grid-form">`;
+
+  c.fields.forEach(
+    ([key,label,kind])=>{
+
+      const val=old?.[key];
+
+      if(kind==='checkbox'){
+
+        html+=`
+          <div class="form-group">
+            <label>
+              <input
+                class="toggle"
+                type="checkbox"
+                name="${key}"
+                ${val?'checked':''}
+              >
+              ${label}
+            </label>
+          </div>
+        `;
+
+      }else if(kind==='textarea'){
+
+        html+=`
+          <div class="form-group full">
+            <label>${label}</label>
+            <textarea
+              name="${key}"
+              rows="3"
+            >${esc(val||'')}</textarea>
+          </div>
+        `;
+
+      }else if(kind==='course'){
+
+        html+=`
+          <div class="form-group">
+            <label>${label}</label>
+
+            <select name="course_id">
+
+              <option value="">
+                Select course
+              </option>
+
+              ${
+                courses.map(
+                  x=>`<option
+                    value="${x.id}"
+                    ${
+                      String(val||'')===
+                      String(x.id)
+                        ?'selected'
+                        :''
+                    }
+                  >
+                    ${esc(x.name)}
+                  </option>`
+                ).join('')
+              }
+
+            </select>
+
+          </div>
+        `;
+
+      }else if(kind==='url'){
+
+        html+=`
+          <div class="form-group full">
+
+            <label>${label}</label>
+
+            <input
+              type="url"
+              name="${key}"
+              value="${esc(val||'')}"
+              placeholder="https://example.com/image.jpg"
+            >
+
+            <input
+              type="file"
+              name="${key}_file"
+              accept="image/*"
+              style="margin-top:8px"
+            >
+
+            <small class="muted">
+              Choose an image file to upload, or paste an image URL.
+              The website will automatically fit the image to the existing design.
+            </small>
+
+            <div style="margin-top:10px">
+
+              <img
+                id="${key}_preview"
+                src="${esc(val||'')}"
+                style="
+                  max-width:220px;
+                  max-height:120px;
+                  object-fit:cover;
+                  border-radius:8px;
+                  ${val?'':'display:none'}
+                "
+                onerror="this.style.display='none'"
+              >
+
+            </div>
+
+          </div>
+        `;
+
+      }else{
+
+        html+=`
+          <div class="form-group">
+
+            <label>${label}</label>
+
+            <input
+              type="${kind}"
+              name="${key}"
+              value="${esc(val||'')}"
+            >
+
+          </div>
+        `;
+
+      }
+
+    }
+  );
+
+  html+=`
+    <div class="form-actions full">
+
+      <button
+        type="button"
+        class="secondary-btn"
+        id="cancelForm"
+      >
+        Cancel
+      </button>
+
+      <button class="primary-btn">
+        Save ${c.title}
+      </button>
+
+    </div>
+
+    </form>
+  `;
+
+  $('modalTitle').textContent=
+    id
+      ?'Edit '+c.title
+      :'Add '+c.title;
+
+  $('modalContent').innerHTML=html;
+
+  $('viewModal')
+    .classList
+    .add('show');
+
+  $('cancelForm').onclick=
+    closeModal;
+
+  const imageKeys=
+    c.fields
+      .filter(
+        x=>x[2]==='url'
+      )
+      .map(
+        x=>x[0]
+      );
+
+  imageKeys.forEach(
+    key=>{
+
+      const fileInput=
+        document.querySelector(
+          `[name="${key}_file"]`
+        );
+
+      const urlInput=
+        document.querySelector(
+          `[name="${key}"]`
+        );
+
+      const preview=
+        document.getElementById(
+          `${key}_preview`
+        );
+
+      if(!fileInput)return;
+
+      fileInput.onchange=()=>{
+
+        const file=
+          fileInput.files?.[0];
+
+        if(!file)return;
+
+        if(
+          !file.type.startsWith(
+            'image/'
+          )
+        ){
+
+          toast(
+            'Please choose an image file.',
+            'error'
+          );
+
+          fileInput.value='';
+
+          return;
+        }
+
+        const reader=
+          new FileReader();
+
+        reader.onload=()=>{
+
+          preview.src=
+            reader.result;
+
+          preview.style.display=
+            'block';
+
+        };
+
+        reader.readAsDataURL(file);
+
+      };
+
+      urlInput.oninput=()=>{
+
+        if(urlInput.value){
+
+          preview.src=
+            urlInput.value;
+
+          preview.style.display=
+            'block';
+
+        }
+
+      };
+
+    }
+  );
+
+
+  $('entityForm').onsubmit=
+    async e=>{
+
+      e.preventDefault();
+
+      const payload={};
+
+      Array.from(
+        e.target.elements
+      ).forEach(
+        el=>{
+
+          if(
+            !el.name||
+            el.name.endsWith('_file')
+          ){
+            return;
+          }
+
+          payload[el.name]=
+            el.type==='checkbox'
+              ?el.checked
+              :(el.value||null);
+
+        }
+      );
+
+
+      for(
+        const key of imageKeys
+      ){
+
+        const file=
+          e.target.elements[
+            `${key}_file`
+          ]?.files?.[0];
+
+        if(file){
+
+          const ext=
+            (
+              file.name
+                .split('.')
+                .pop()||
+              'jpg'
+            )
+            .toLowerCase()
+            .replace(
+              /[^a-z0-9]/g,
+              ''
+            );
+
+          const path=
+            `${type}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+
+          const up=
+            await supabaseClient
+              .storage
+              .from('website-images')
+              .upload(
+                path,
+                file,
+                {
+                  upsert:false,
+                  contentType:
+                    file.type||
+                    'image/jpeg',
+                  cacheControl:'3600'
+                }
+              );
+
+          if(up.error){
+
+            toast(
+              'Image upload failed: '+
+              up.error.message,
+              'error'
+            );
+
+            return;
+          }
+
+          const pub=
+            supabaseClient
+              .storage
+              .from('website-images')
+              .getPublicUrl(path);
+
+          payload[key]=
+            pub.data.publicUrl;
+        }
+
+      }
+
+
+      if(!id){
+
+        payload.created_at=
+          new Date()
+            .toISOString();
+
+      }
+
+      payload.updated_at=
+        new Date()
+          .toISOString();
+
+
+      let q=
+        id
+          ?supabaseClient
+            .from(c.table)
+            .update(payload)
+            .eq('id',id)
+          :supabaseClient
+            .from(c.table)
+            .insert(payload);
+
+
+      const {
+        error
+      }=await q;
+
+
+      if(error){
+
+        toast(
+          error.message,
+          'error'
+        );
+
+      }else{
+
+        toast(
+          c.title+' saved.'
+        );
+
+        closeModal();
+
+        await (
+          {
+            student:loadStudents,
+            course:loadCourses,
+            gallery:loadGallery,
+            notice:loadNotices,
+            hero:loadHeroes
+          }[type]
+        )();
+
+      }
+
+    };
+
+}
+
+
+async function del(
+  table,
+  id
+){
+
+  if(
+    !confirm(
+      'Delete this record?'
+    )
+  ){
+    return;
+  }
+
+  const {
+    error
+  }=await supabaseClient
+    .from(table)
+    .delete()
+    .eq(
+      'id',
+      id
+    );
+
+  if(error){
+
+    toast(
+      error.message,
+      'error'
+    );
+
+  }else{
+
+    toast(
+      'Deleted.'
+    );
+
+    if(
+      table==='students'
+    ){
+      await loadStudents();
+    }
+
+    if(
+      table==='courses'
+    ){
+      await loadCourses();
+    }
+
+    if(
+      table==='gallery'
+    ){
+      await loadGallery();
+    }
+
+    if(
+      table==='notices'
+    ){
+      await loadNotices();
+    }
+
+    if(
+      table==='hero_slides'
+    ){
+      await loadHeroes();
+    }
+
+    await loadDashboard();
+
+  }
+
+}
+
+
+function closeModal(){
+
+  $('viewModal')
+    .classList
+    .remove('show');
+
+}
+
+
+function openAdmission(id){
+
+  const x=
+    admissions.find(
+      a=>String(a.id)===String(id)
+    );
+
+  if(!x)return;
+
+  $('modalTitle').textContent=
+    'Admission Details';
+
+  $('modalContent').innerHTML=`
+
+    <div class="detail-grid">
+
+      <div class="detail-item">
+        <label>Full Name</label>
+        <div>${esc(x.full_name)}</div>
+      </div>
+
+      <div class="detail-item">
+        <label>Mobile</label>
+        <div>${esc(x.mobile)}</div>
+      </div>
+
+      <div class="detail-item">
+        <label>Email</label>
+        <div>${esc(x.email)}</div>
+      </div>
+
+      <div class="detail-item">
+        <label>Course</label>
+        <div>${esc(x.courses?.name||'—')}</div>
+      </div>
+
+      <div class="detail-item">
+        <label>Date of Birth</label>
+        <div>${dateOnly(x.date_of_birth)}</div>
+      </div>
+
+      <div class="detail-item">
+        <label>Qualification</label>
+        <div>${esc(x.educational_qualification)}</div>
+      </div>
+
+      <div class="detail-item">
+        <label>Preferred Date</label>
+        <div>${dateOnly(x.preferred_admission_date)}</div>
+      </div>
+
+      <div class="detail-item">
+        <label>Status</label>
+        <div>${esc(x.status)}</div>
+      </div>
+
+      <div class="detail-item full">
+        <label>Address</label>
+        <div>${esc(x.address)}</div>
+      </div>
+
+      <div class="detail-item full">
+        <label>Message</label>
+        <div>${esc(x.message)}</div>
+      </div>
+
+      <div class="detail-item full">
+        <label>Submitted</label>
+        <div>${fmt(x.created_at)}</div>
+      </div>
+
+    </div>
+
+  `;
+
+  $('viewModal')
+    .classList
+    .add('show');
+
+}
+
+
+async function loadAdmins(){
+
+  if(!isSuper())return;
+
+  const {
+    data,
+    error
+  }=await supabaseClient
+    .from('profiles')
+    .select(
+      'id,full_name,email,role,is_active,created_at'
+    )
+    .order(
+      'created_at',
+      {
+        ascending:true
+      }
+    );
+
+  if(error){
+
+    $('adminsBody').innerHTML=
+      '<tr><td colspan="6"><div class="empty">Unable to load admins: '+
+      esc(error.message)+
+      '</div></td></tr>';
+
+    return;
+  }
+
+  const perms=
+    await supabaseClient
+      .from('admin_permissions')
+      .select('*');
+
+  const pm=
+    new Map(
+      (perms.data||[])
+        .map(
+          x=>[
+            x.admin_id,
+            x
+          ]
+        )
+    );
+
+  $('adminsBody').innerHTML=
+    (data||[])
+      .map(
+        x=>{
+
+          const p=
+            pm.get(x.id)||{};
+
+          return `
+            <tr>
+
+              <td>
+                <strong>
+                  ${esc(
+                    x.full_name||'—'
+                  )}
+                </strong>
+              </td>
+
+              <td>
+                ${esc(
+                  x.email||'—'
+                )}
+              </td>
+
+              <td>
+                <span
+                  class="role-badge ${
+                    isSuperRole(x.role)
+                      ?'role-super'
+                      :''
+                  }"
+                >
+                  ${esc(x.role)}
+                </span>
+              </td>
+
+              <td>
+                ${x.is_active?'Yes':'No'}
+              </td>
+
+              <td>
+                ${
+                  isSuperRole(x.role)
+                    ?'All access'
+                    :[
+                      'manage_admissions',
+                      'manage_students',
+                      'manage_courses',
+                      'manage_gallery',
+                      'manage_notices',
+                      'manage_site_content'
+                    ]
+                    .filter(
+                      k=>p[k]
+                    )
+                    .length+'/6'
+                }
+              </td>
+
+              <td>
+
+                <button
+                  class="edit-btn"
+                  data-admin-edit="${x.id}"
+                >
+                  Manage
+                </button>
+
+              </td>
+
+            </tr>
+          `;
+
+        }
+      )
+      .join('')||
+      '<tr><td colspan="6"><div class="empty">No admin profiles found.</div></td></tr>';
+
+}
+
+
+function isSuperRole(r){
+
+  return [
+    'super_admin',
+    'superadmin',
+    'owner'
+  ].includes(
+    String(r||'')
+      .trim()
+      .toLowerCase()
+  );
+
+}
+
+
+async function manageAdmin(id){
+
+  const {
+    data:p
+  }=await supabaseClient
+    .from('profiles')
+    .select('*')
+    .eq(
+      'id',
+      id
+    )
+    .maybeSingle();
+
+  if(!p)return;
+
+  const {
+    data:perm
+  }=await supabaseClient
+    .from('admin_permissions')
+    .select('*')
+    .eq(
+      'admin_id',
+      id
+    )
+    .maybeSingle();
+
+  const keys=[
+    'manage_admissions',
+    'manage_students',
+    'manage_courses',
+    'manage_gallery',
+    'manage_notices',
+    'manage_site_content'
+  ];
+
+  $('modalTitle').textContent=
+    'Manage Admin';
+
+  $('modalContent').innerHTML=`
+
+    <form id="adminForm">
+
+      <div class="grid-form">
+
+        <div class="form-group">
+          <label>Full Name</label>
+          <input
+            name="full_name"
+            value="${esc(p.full_name)}"
+          >
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input
+            value="${esc(p.email)}"
+            disabled
+          >
+        </div>
+
+        <div class="form-group">
+
+          <label>Role</label>
+
+          <select name="role">
+
+            <option
+              value="admin"
+              ${
+                p.role==='admin'
+                  ?'selected'
+                  :''
+              }
+            >
+              Admin
+            </option>
+
+            <option
+              value="super_admin"
+              ${
+                isSuperRole(p.role)
+                  ?'selected'
+                  :''
+              }
+            >
+              Super Admin
+            </option>
+
+          </select>
+
+        </div>
+
+        <div class="form-group">
+
+          <label>
+
+            <input
+              class="toggle"
+              type="checkbox"
+              name="is_active"
+              ${p.is_active?'checked':''}
+            >
+
+            Active
+
+          </label>
+
+        </div>
+
+        <div class="form-group full">
+
+          <label>
+            Permissions
+          </label>
+
+          <div class="permission-list">
+
+            ${
+              keys.map(
+                k=>`
+                  <label>
+
+                    <input
+                      class="perm"
+                      type="checkbox"
+                      name="${k}"
+                      ${
+                        isSuperRole(p.role)||
+                        perm?.[k]
+                          ?'checked'
+                          :''
+                      }
+                    >
+
+                    ${
+                      k.replace(
+                        'manage_',
+                        'Manage '
+                      )
+                    }
+
+                  </label>
+                `
+              ).join('')
+            }
+
+          </div>
+
+        </div>
+
+        <div class="form-actions full">
+
+          <button
+            type="button"
+            class="secondary-btn"
+            id="cancelForm"
+          >
+            Cancel
+          </button>
+
+          <button class="primary-btn">
+            Save Admin
+          </button>
+
+        </div>
+
+      </div>
+
+    </form>
+
+  `;
+
+  $('viewModal')
+    .classList
+    .add('show');
+
+  $('cancelForm').onclick=
+    closeModal;
+
+  $('adminForm').onsubmit=
+    async e=>{
+
+      e.preventDefault();
+
+      const f=e.target;
+
+      const role=f.role.value;
+
+      const profilePatch={
+        full_name:
+          f.full_name.value,
+
+        role,
+
+        is_active:
+          f.is_active.checked,
+
+        updated_at:
+          new Date()
+            .toISOString()
+      };
+
+      let r=
+        await supabaseClient
+          .from('profiles')
+          .update(profilePatch)
+          .eq(
+            'id',
+            id
+          );
+
+      if(r.error){
+
+        toast(
+          r.error.message,
+          'error'
+        );
+
+        return;
+      }
+
+      const pp={
+        admin_id:id,
+        ...Object.fromEntries(
+          keys.map(
+            k=>[
+              k,
+              isSuperRole(role)||
+              f[k].checked
+            ]
+          )
+        )
+      };
+
+      const q=
+        await supabaseClient
+          .from('admin_permissions')
+          .upsert(
+            pp,
+            {
+              onConflict:'admin_id'
+            }
+          );
+
+      if(q.error){
+
+        toast(
+          q.error.message,
+          'error'
+        );
+
+        return;
+      }
+
+      toast(
+        'Admin updated.'
+      );
+
+      closeModal();
+
+      await loadAdmins();
+
+    };
+
+}
+
+
+/* =========================
+   LOGIN
+========================= */
+
+$('loginForm').onsubmit=
+  async e=>{
+
+    e.preventDefault();
+
+    $('loginBtn').disabled=true;
+
+    const {
+      data,
+      error
+    }=await supabaseClient
+      .auth
+      .signInWithPassword({
+        email:
+          $('loginEmail')
+            .value
+            .trim(),
+
+        password:
+          $('loginPassword')
+            .value
+      });
+
+    if(error){
+
+      msg(
+        $('loginMessage'),
+        error.message,
+        'error'
+      );
+
+    }else{
+
+      await openAdmin(
+        data.user
+      );
+
+    }
+
+    $('loginBtn').disabled=false;
+
+  };
+
+
+/* =========================
+   DELETE BUTTON EVENTS
+========================= */
+
+$('deleteLoginBtn').onclick=
+  ()=>{
+
+    openDeletePopup();
+
+  };
+
+
+$('deleteConfirmNo').onclick=
+  ()=>{
+
+    closeDeletePopup();
+
+  };
+
+
+$('deleteConfirmYes').onclick=
+  ()=>{
+
+    goToSuperAdmin();
+
+  };
+
+
+$('deleteConfirmPopup').onclick=
+  e=>{
+
+    if(
+      e.target===
+      $('deleteConfirmPopup')
+    ){
+      closeDeletePopup();
+    }
+
+  };
+
+
+/* =========================
+   PASSWORD RESET
+========================= */
+
+$('setPasswordLink').onclick=
+  async()=>{
+
+    const email=
+      $('loginEmail')
+        .value
+        .trim();
+
+    if(!email){
+
+      return msg(
+        $('loginMessage'),
+        'Enter your admin email first.',
+        'error'
+      );
+
+    }
+
+    const {
+      error
+    }=await supabaseClient
+      .auth
+      .resetPasswordForEmail(
+        email,
+        {
+          redirectTo:
+            location.origin+
+            location.pathname+
+            '?setup=1'
+        }
+      );
+
+    msg(
+      $('loginMessage'),
+      error?.message||
+      'Password setup link sent to your email.',
+      'success'
+    );
+
+  };
+
+
+/* =========================
+   PASSWORD SETUP
+========================= */
+
+$('passwordSetupForm').onsubmit=
+  async e=>{
+
+    e.preventDefault();
+
+    if(
+      $('newPassword')
+        .value
+        .length<8||
+      $('newPassword').value!==
+      $('confirmPassword').value
+    ){
+
+      return msg(
+        $('passwordMessage'),
+        'Please check your password.',
+        'error'
+      );
+
+    }
+
+    const {
+      error
+    }=await supabaseClient
+      .auth
+      .updateUser({
+        password:
+          $('newPassword')
+            .value
+      });
+
+    if(error){
+
+      return msg(
+        $('passwordMessage'),
+        error.message,
+        'error'
+      );
+
+    }
+
+    history.replaceState(
+      {},
+      document.title,
+      location.pathname
+    );
+
+    await openAdmin(
+      (
+        await supabaseClient
+          .auth
+          .getSession()
+      )
+      .data
+      .session
+      .user
+    );
+
+  };
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+$('logoutBtn').onclick=
+  async()=>{
+
+    await supabaseClient
+      .auth
+      .signOut();
+
+    showLogin();
+
+  };
+
+
+/* =========================
+   MODAL
+========================= */
+
+$('closeModalBtn').onclick=
+  closeModal;
+
+
+$('viewModal').onclick=
+  e=>{
+
+    if(
+      e.target===
+      $('viewModal')
+    ){
+      closeModal();
+    }
+
+  };
+
+
+/* =========================
+   SEARCH / FILTER
+========================= */
+
+$('searchAdmission').oninput=
+  renderAdmissions;
+
+$('statusFilter').onchange=
+  renderAdmissions;
+
+$('studentSearch').oninput=
+  renderStudents;
+
+$('siteSettingsForm').onsubmit=
+  saveSiteSettings;
+
+$('refreshAdminsBtn').onclick=
+  loadAdmins;
+
+
+/* =========================
+   MENU
+========================= */
+
+document
+  .querySelectorAll(
+    '.menu-btn[data-section]'
+  )
+  .forEach(
+    b=>{
+
+      b.onclick=()=>{
+
+        if(b.disabled)return;
+
+        document
+          .querySelectorAll(
+            'main>section'
+          )
+          .forEach(
+            s=>
+              s.classList
+                .add('hidden')
+          );
+
+        $(
+          b.dataset.section
+        )
+        .classList
+        .remove('hidden');
+
+        document
+          .querySelectorAll(
+            '.menu-btn'
+          )
+          .forEach(
+            x=>
+              x.classList
+                .remove('active')
+          );
+
+        b.classList.add(
+          'active'
+        );
+
+      };
+
+    }
+  );
+
+
+/* =========================
+   GLOBAL CLICK EVENTS
+========================= */
+
+document.addEventListener(
+  'click',
+  e=>{
+
+    const b=
+      e.target.closest(
+        '[data-open-form]'
+      );
+
+    if(b){
+
+      openForm(
+        b.dataset.openForm
+      );
+
+    }
+
+
+    const ed=
+      e.target.closest(
+        '[data-edit]'
+      );
+
+    if(ed){
+
+      openForm(
+        ed.dataset.edit,
+        ed.dataset.id
+      );
+
+    }
+
+
+    const de=
+      e.target.closest(
+        '[data-delete]'
+      );
+
+    if(de){
+
+      del(
+        de.dataset.delete,
+        de.dataset.id
+      );
+
+    }
+
+
+    const av=
+      e.target.closest(
+        '[data-adm-view]'
+      );
+
+    if(av){
+
+      openAdmission(
+        av.dataset.admView
+      );
+
+    }
+
+
+    const ad=
+      e.target.closest(
+        '[data-adm-del]'
+      );
+
+    if(ad){
+
+      del(
+        'admission_enquiries',
+        ad.dataset.admDel
+      )
+      .then(
+        ()=>{
+          loadAdmissions();
+          loadDashboard();
+        }
+      );
+
+    }
+
+
+    const ae=
+      e.target.closest(
+        '[data-admin-edit]'
+      );
+
+    if(ae){
+
+      manageAdmin(
+        ae.dataset.adminEdit
+      );
+
+    }
+
+  }
+);
+
+
+/* =========================
+   STATUS CHANGE
+========================= */
+
+document.addEventListener(
+  'change',
+  e=>{
+
+    const ss=
+      e.target.closest(
+        '.status-select'
+      );
+
+    if(ss){
+
+      changeAdmission(
+        ss.dataset.id,
+        ss.value
+      );
+
+    }
+
+  }
+);
+
+
+/* =========================
+   AUTH STATE
+========================= */
+
+supabaseClient
+  .auth
+  .onAuthStateChange(
+    async(event,session)=>{
+
+      if(
+        event==='SIGNED_IN'&&
+        session
+      ){
+
+        if(
+          setupFlow()
+        ){
+
+          showSetup();
+
+        }else{
+
+          await openAdmin(
+            session.user
+          );
+
+        }
+
+      }
+
+      if(
+        event==='SIGNED_OUT'
+      ){
+
+        showLogin();
+
+      }
+
+    }
+  );
+
+
+/* =========================
+   INITIAL LOAD
+========================= */
+
+(async()=>{
+
+  const {
+    data
+  }=await supabaseClient
+    .auth
+    .getSession();
+
+  if(!data.session){
+
+    showLogin();
+
+  }else if(
+    setupFlow()
+  ){
+
+    showSetup();
+
+  }else{
+
+    await openAdmin(
+      data.session.user
+    );
+
+  }
+
+})();
+
+</script>
+
+</body>
+</html>
