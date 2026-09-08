@@ -1813,6 +1813,11 @@ footer p{
   .slideshow{inset:0 !important;margin:0 !important;padding:0 !important;width:100% !important;height:100% !important;}
   .slide,.slide-bg{inset:0 !important;margin:0 !important;padding:0 !important;width:100% !important;height:100% !important;}
 
+  /* Mobile hero: keep the photo clearly visible behind the text. */
+  .slideshow::after{
+    background:linear-gradient(90deg,rgba(0,0,0,.24),rgba(0,0,0,.08));
+  }
+
   .header-inner{
 
     min-height:54px;
