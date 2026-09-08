@@ -1937,18 +1937,20 @@ footer p{
     min-height:500px;
   }
 
-  /* Mobile hero text only: smaller size + clearer contrast. */
+  /* Mobile hero text: background stays only around the text, not the full hero. */
   .hero-text{
     width:calc(100% - 28px);
     max-width:520px;
     padding:12px 14px;
-    background:rgba(0,0,0,.22);
-    border-radius:12px;
+    background:transparent;
   }
 
   .hero-text .badge{
     font-size:10px;
     padding:5px 9px;
+    background:rgba(0,0,0,.38);
+    border-radius:7px;
+    display:inline-block;
   }
 
   .hero-text h1{
@@ -1957,6 +1959,10 @@ footer p{
     font-weight:700;
     opacity:1;
     text-shadow:0 2px 5px rgba(0,0,0,.65);
+    background:rgba(0,0,0,.30);
+    border-radius:8px;
+    padding:4px 8px;
+    display:table;
   }
 
   .hero-text p{
@@ -1964,6 +1970,10 @@ footer p{
     line-height:1.45;
     opacity:1;
     text-shadow:0 1px 4px rgba(0,0,0,.65);
+    background:rgba(0,0,0,.30);
+    border-radius:8px;
+    padding:5px 8px;
+    display:inline-block;
   }
 
   section{
