@@ -1937,19 +1937,33 @@ footer p{
     min-height:500px;
   }
 
-  .hero-text h1{
+  /* Mobile hero text only: smaller size + clearer contrast. */
+  .hero-text{
+    width:calc(100% - 28px);
+    max-width:520px;
+    padding:12px 14px;
+    background:rgba(0,0,0,.22);
+    border-radius:12px;
+  }
 
-    font-size:34px;
-    font-weight:600;
-    opacity:.82;
-    text-shadow:0 1px 2px rgba(0,0,0,.35);
+  .hero-text .badge{
+    font-size:10px;
+    padding:5px 9px;
+  }
+
+  .hero-text h1{
+    font-size:30px;
+    line-height:1.08;
+    font-weight:700;
+    opacity:1;
+    text-shadow:0 2px 5px rgba(0,0,0,.65);
   }
 
   .hero-text p{
-
-    font-size:14px;
-    opacity:.78;
-    text-shadow:0 1px 2px rgba(0,0,0,.28);
+    font-size:13px;
+    line-height:1.45;
+    opacity:1;
+    text-shadow:0 1px 4px rgba(0,0,0,.65);
   }
 
   section{
@@ -2004,7 +2018,11 @@ footer p{
   }
 
   .hero-text h1{
-    font-size:34px;
+    font-size:27px;
+  }
+
+  .hero-text p{
+    font-size:12px;
   }
 
 }
