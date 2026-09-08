@@ -1788,6 +1788,17 @@ footer p{
 
 @media(max-width:600px){
 
+  /* Keep the full uploaded Hero image visible on phones */
+  .slide{
+    object-fit:contain;
+    object-position:center center;
+  }
+
+  .slide-bg{
+    object-fit:cover;
+    object-position:center center;
+  }
+
   .header-inner{
 
     min-height:54px;
@@ -3687,41 +3698,104 @@ window.addEventListener(
    SLIDESHOW
    ========================================= */
 
+let heroSlidesData = [];
+let currentSlide = 0;
+let slideTimer = null;
+
+function updateHeroText(index){
+  const heroText = document.querySelector(".hero-text");
+  if(!heroText || !heroSlidesData[index]) return;
+
+  const x = heroSlidesData[index];
+  const badge = heroText.querySelector(".badge");
+  const heading = heroText.querySelector("h1");
+  const para = heroText.querySelector("p");
+  const button = heroText.querySelector(".hero-buttons a, .hero-buttons button, .hero-buttons .btn");
+
+  if(badge) badge.textContent = x.title || "Technical Training";
+  if(heading) heading.textContent = x.title || "ACE Technical Training Institute";
+  if(para) para.textContent = x.subtitle || "Practical technical training for a better career.";
+  if(button){
+    button.textContent = (x.button_text || "View Courses") + " →";
+    button.setAttribute("href", x.button_url || "#courses");
+  }
+}
+
+function showSlide(index){
+  const slides = document.querySelectorAll(".slideshow .slide");
+  const backgroundSlides = document.querySelectorAll(".slideshow .slide-bg");
+  const dots = document.querySelectorAll(".slider-dots .slider-dot");
+
+  if(!slides.length || !backgroundSlides.length || !dots.length) return;
+  if(index < 0 || index >= slides.length) return;
+
+  slides.forEach(function(slide){ slide.classList.remove("active"); });
+  backgroundSlides.forEach(function(slide){ slide.classList.remove("active"); });
+  dots.forEach(function(dot){ dot.classList.remove("active"); });
+
+  slides[index].classList.add("active");
+  backgroundSlides[index].classList.add("active");
+  dots[index].classList.add("active");
+  currentSlide = index;
+  updateHeroText(index);
+}
+
+function nextSlide(){
+  const slides = document.querySelectorAll(".slideshow .slide");
+  if(slides.length < 2) return;
+  showSlide((currentSlide + 1) % slides.length);
+}
+
+function startSlideshow(){
+  if(slideTimer) clearInterval(slideTimer);
+  const slides = document.querySelectorAll(".slideshow .slide");
+  if(slides.length > 1){
+    slideTimer = setInterval(nextSlide, 5000);
+  }
+}
+
+function bindSliderDots(){
+  const dots = document.querySelectorAll(".slider-dots .slider-dot");
+  dots.forEach(function(dot){
+    dot.onclick = function(){
+      showSlide(Number(dot.dataset.slide));
+      startSlideshow();
+    };
+  });
+}
+
 async function loadManagedPhotos(){
-
   try{
-
     const {data:heroData,error:heroError}=await supabaseClient
       .from("hero_slides")
-      .select("title,subtitle,image_url,is_active,sort_order")
+      .select("title,subtitle,image_url,button_text,button_url,is_active,sort_order")
       .eq("is_active",true)
       .order("sort_order",{ascending:true});
 
     if(!heroError && heroData && heroData.length){
-      const validHeroes=heroData.filter(x=>x.image_url);
-      if(validHeroes.length){
+      heroSlidesData = heroData.filter(x=>x.image_url);
+      if(heroSlidesData.length){
         const slideshow=document.querySelector(".slideshow");
         if(slideshow){
-          slideshow.innerHTML=validHeroes.map((x,i)=>`<img src="${x.image_url}" class="slide-bg${i===0?' active':''}" alt="">`).join('')+
-            validHeroes.map((x,i)=>`<img src="${x.image_url}" class="slide${i===0?' active':''}" alt="${x.title||'Technical Training'}">`).join('');
+          slideshow.innerHTML =
+            heroSlidesData.map((x,i)=>`<img src="${x.image_url}" class="slide-bg${i===0?' active':''}" alt="">`).join('')+
+            heroSlidesData.map((x,i)=>`<img src="${x.image_url}" class="slide${i===0?' active':''}" alt="${x.title||'Technical Training'}">`).join('');
         }
-        const heroText=document.querySelector(".hero-text");
-        if(heroText){
-          const x=validHeroes[0];
-          const badge=heroText.querySelector(".badge");
-          const heading=heroText.querySelector("h1");
-          const para=heroText.querySelector("p");
-          const button=heroText.querySelector(".hero-buttons a, .hero-buttons button, .hero-buttons .btn");
-          if(badge) badge.textContent=x.title||"Technical Training";
-          if(heading) heading.textContent=x.title||"ACE Technical Training Institute";
-          if(para) para.textContent=x.subtitle||"Practical technical training for a better career.";
-          if(button){ button.textContent=(x.button_text||"View Courses")+" →"; button.setAttribute("href",x.button_url||"#courses"); }
-        }
+
         const dotsWrap=document.querySelector(".slider-dots");
         if(dotsWrap){
-          dotsWrap.innerHTML=validHeroes.map((x,i)=>`<span class="slider-dot${i===0?' active':''}" data-slide="${i}"></span>`).join('');
+          dotsWrap.innerHTML=heroSlidesData.map((x,i)=>`<span class="slider-dot${i===0?' active':''}" data-slide="${i}"></span>`).join('');
         }
+
+        currentSlide = 0;
+        updateHeroText(0);
+        bindSliderDots();
+        startSlideshow();
       }
+    }else{
+      heroSlidesData = [];
+      bindSliderDots();
+      startSlideshow();
     }
 
     const {data:galleryData,error:galleryError}=await supabaseClient
@@ -3740,99 +3814,12 @@ async function loadManagedPhotos(){
 
   }catch(error){
     console.error("MANAGED PHOTO LOAD ERROR:",error);
+    bindSliderDots();
+    startSlideshow();
   }
 }
 
 loadManagedPhotos();
-
-
-const slides =
-  document.querySelectorAll(".slide");
-
-const backgroundSlides =
-  document.querySelectorAll(".slide-bg");
-
-const dots =
-  document.querySelectorAll(".slider-dot");
-
-let currentSlide = 0;
-
-
-function showSlide(index){
-
-  slides.forEach(function(slide){
-
-    slide.classList.remove("active");
-
-  });
-
-
-  backgroundSlides.forEach(function(slide){
-
-    slide.classList.remove("active");
-
-  });
-
-
-  dots.forEach(function(dot){
-
-    dot.classList.remove("active");
-
-  });
-
-
-  slides[index].classList.add("active");
-
-  backgroundSlides[index]
-    .classList.add("active");
-
-  dots[index].classList.add("active");
-
-  currentSlide = index;
-
-}
-
-
-function nextSlide(){
-
-  let next =
-    currentSlide + 1;
-
-  if(next >= slides.length){
-
-    next = 0;
-
-  }
-
-  showSlide(next);
-
-}
-
-
-setInterval(
-  nextSlide,
-  5000
-);
-
-
-dots.forEach(function(dot){
-
-  dot.addEventListener(
-    "click",
-    function(){
-
-      const index =
-        Number(
-          dot.dataset.slide
-        );
-
-      showSlide(index);
-
-    }
-  );
-
-});
-
 
 /* =========================================
    ADMISSION COURSE LOADING
