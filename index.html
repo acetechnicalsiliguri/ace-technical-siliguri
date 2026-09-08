@@ -2187,6 +2187,29 @@ footer p{
   .notice-colour-text{padding:4px 8px;border-radius:5px;}
 }
 
+
+
+/* =========================================
+   GOOGLE ADSENSE SLOTS
+   Hidden completely until approved + enabled
+========================================= */
+.adsense-slot{
+  display:none;
+  width:100%;
+  max-width:1150px;
+  margin:0 auto;
+  padding:0;
+  min-height:0;
+}
+.adsense-slot.show{
+  display:block;
+  margin:0 auto 30px;
+}
+.adsense-slot .adsbygoogle{
+  display:block;
+  width:100%;
+}
+
 </style>
 
 </head>
@@ -2604,6 +2627,8 @@ footer p{
 </section>
 
 
+
+<div class="adsense-slot" id="homepageAdSlot" aria-hidden="true"></div>
 
 <!-- =========================================
      COURSES
@@ -3050,6 +3075,8 @@ footer p{
 
 
 
+<div class="adsense-slot" id="coursesAdSlot" aria-hidden="true"></div>
+
 <!-- =========================================
      GALLERY
      ========================================= -->
@@ -3175,6 +3202,8 @@ footer p{
 </section>
 
 
+
+<div class="adsense-slot" id="galleryAdSlot" aria-hidden="true"></div>
 
 <!-- =========================================
      ABOUT
@@ -3699,6 +3728,8 @@ footer p{
 </section>
 
 
+
+<div class="adsense-slot" id="footerAdSlot" aria-hidden="true"></div>
 
 <!-- =========================================
      FOOTER
@@ -4723,6 +4754,10 @@ admissionForm.addEventListener(
 
 </script>
 
+
+
+
+<script src="adsense.js"></script>
 
 </body>
 </html>
