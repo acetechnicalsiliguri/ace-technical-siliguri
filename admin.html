@@ -761,6 +761,8 @@
     }
 
     .student-review-slide{
+      flex:0 0 100%;
+      width:100%;
       min-width:100%;
       box-sizing:border-box;
       padding:26px 28px;
@@ -2943,14 +2945,41 @@ function renderStudentReviews(){
 
 
 let reviewSliderTimer=null;
+let reviewSliderResetTimer=null;
 let reviewSliderIndex=0;
 let reviewSliderCount=0;
+
+function setReviewSlideSizes(){
+
+  const track=$('studentReviewsBody');
+  const slider=track?.parentElement;
+
+  if(!track||!slider)return;
+
+  const width=slider.clientWidth;
+
+  track.querySelectorAll('.student-review-slide').forEach(
+    slide=>{
+      slide.style.flex=`0 0 ${width}px`;
+      slide.style.width=`${width}px`;
+    }
+  );
+
+  track.style.width=
+    `${track.children.length*width}px`;
+
+}
 
 function clearReviewSlider(){
 
   if(reviewSliderTimer){
     clearInterval(reviewSliderTimer);
     reviewSliderTimer=null;
+  }
+
+  if(reviewSliderResetTimer){
+    clearTimeout(reviewSliderResetTimer);
+    reviewSliderResetTimer=null;
   }
 
   reviewSliderIndex=0;
@@ -2960,40 +2989,44 @@ function clearReviewSlider(){
 
   if(track){
     track.style.transition='none';
-    track.style.transform='translateX(0)';
+    track.style.transform='translate3d(0,0,0)';
   }
 
 }
-
 
 function resetReviewSliderAfterClone(){
 
   const track=$('studentReviewsBody');
   if(!track)return;
 
-  track.style.transition='none';
+  reviewSliderResetTimer=null;
   reviewSliderIndex=0;
-  track.style.transform='translateX(0)';
 
-  requestAnimationFrame(
-    ()=>requestAnimationFrame(
-      ()=>{
-        track.style.transition='transform .8s ease-in-out';
-      }
-    )
-  );
+  track.style.transition='none';
+  track.style.transform='translate3d(0,0,0)';
+
+  void track.offsetWidth;
+
+  track.style.transition='transform .8s ease-in-out';
 
 }
 
-
-function updateReviewSlider(){
+function updateReviewSlider(animate=true){
 
   const track=$('studentReviewsBody');
-  if(!track||reviewSliderCount<1)return;
+  const slider=track?.parentElement;
 
-  track.style.transition='transform .8s ease-in-out';
+  if(!track||!slider||reviewSliderCount<1)return;
+
+  const width=slider.clientWidth;
+
+  track.style.transition=
+    animate
+      ?'transform .8s ease-in-out'
+      :'none';
+
   track.style.transform=
-    'translateX(-'+(reviewSliderIndex*100)+'%)';
+    `translate3d(-${reviewSliderIndex*width}px,0,0)`;
 
   document
     .querySelectorAll('.student-review-dot')
@@ -3009,26 +3042,26 @@ function updateReviewSlider(){
 
 }
 
-
 function startReviewSlider(count){
 
   reviewSliderCount=count;
 
   if(count<=1)return;
 
+  setReviewSlideSizes();
+  updateReviewSlider(false);
+
   reviewSliderTimer=setInterval(
     ()=>{
 
       reviewSliderIndex++;
-      updateReviewSlider();
+      updateReviewSlider(true);
 
       if(reviewSliderIndex===reviewSliderCount){
-
-        setTimeout(
+        reviewSliderResetTimer=setTimeout(
           resetReviewSliderAfterClone,
           850
         );
-
       }
 
     },
@@ -3037,6 +3070,14 @@ function startReviewSlider(count){
 
 }
 
+window.addEventListener('resize',()=>{
+
+  if(reviewSliderCount>1){
+    setReviewSlideSizes();
+    updateReviewSlider(false);
+  }
+
+});
 
 async function updateReviewStatus(
   id,
@@ -4875,21 +4916,27 @@ document.addEventListener(
 
       if(reviewSliderTimer){
         clearInterval(reviewSliderTimer);
+        reviewSliderTimer=null;
+      }
+
+      if(reviewSliderResetTimer){
+        clearTimeout(reviewSliderResetTimer);
+        reviewSliderResetTimer=null;
       }
 
       reviewSliderIndex=
         Number(reviewDot.dataset.reviewDot)||0;
 
-      updateReviewSlider();
+      updateReviewSlider(true);
 
       if(reviewSliderCount>1){
         reviewSliderTimer=setInterval(
           ()=>{
             reviewSliderIndex++;
-            updateReviewSlider();
+            updateReviewSlider(true);
 
             if(reviewSliderIndex===reviewSliderCount){
-              setTimeout(
+              reviewSliderResetTimer=setTimeout(
                 resetReviewSliderAfterClone,
                 850
               );
