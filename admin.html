@@ -745,6 +745,120 @@
       background:#fecaca;
     }
 
+
+    .student-reviews-slider{
+      width:100%;
+      overflow:hidden;
+      position:relative;
+      border-radius:14px;
+    }
+
+    .student-reviews-track{
+      display:flex;
+      width:100%;
+      transition:transform .8s ease-in-out;
+      will-change:transform;
+    }
+
+    .student-review-slide{
+      min-width:100%;
+      box-sizing:border-box;
+      padding:26px 28px;
+      background:#f8fafc;
+      border:1px solid #e2e8f0;
+      border-radius:14px;
+    }
+
+    .student-review-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:14px;
+    }
+
+    .student-review-name{
+      font-size:18px;
+      font-weight:800;
+      color:#0f172a;
+    }
+
+    .student-review-course{
+      margin-top:4px;
+      color:#64748b;
+      font-size:13px;
+    }
+
+    .student-review-text{
+      color:#334155;
+      font-size:15px;
+      line-height:1.7;
+      min-height:76px;
+    }
+
+    .student-review-bottom{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-top:18px;
+      flex-wrap:wrap;
+    }
+
+    .student-review-meta{
+      color:#64748b;
+      font-size:12px;
+    }
+
+    .student-reviews-dots{
+      display:flex;
+      justify-content:center;
+      gap:7px;
+      margin-top:14px;
+    }
+
+    .student-review-dot{
+      width:8px;
+      height:8px;
+      border:0;
+      border-radius:50%;
+      padding:0;
+      background:#cbd5e1;
+      cursor:pointer;
+    }
+
+    .student-review-dot.active{
+      background:#2563eb;
+      transform:scale(1.25);
+    }
+
+    .student-reviews-empty{
+      min-width:100%;
+      box-sizing:border-box;
+      padding:30px 20px;
+      text-align:center;
+      color:#64748b;
+      background:#f8fafc;
+      border:1px solid #e2e8f0;
+      border-radius:14px;
+    }
+
+    @media(max-width:600px){
+      .student-review-slide{
+        padding:20px;
+      }
+
+      .student-review-top{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:8px;
+      }
+
+      .student-review-text{
+        min-height:90px;
+      }
+    }
+
     /* =========================
        RESPONSIVE
     ========================= */
@@ -1281,30 +1395,20 @@
         <div class="content-card">
 
           <div class="content-header">
-            <h3>Review List</h3>
+            <h3>Student Reviews</h3>
           </div>
 
-          <div class="table-wrap">
-
-            <table>
-
-              <thead>
-                <tr>
-                  <th>Student</th>
-                  <th>Course</th>
-                  <th>Rating</th>
-                  <th>Review</th>
-                  <th>Status</th>
-                  <th>Submitted</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-
-              <tbody id="studentReviewsBody"></tbody>
-
-            </table>
-
+          <div class="student-reviews-slider">
+            <div
+              class="student-reviews-track"
+              id="studentReviewsBody"
+            ></div>
           </div>
+
+          <div
+            class="student-reviews-dots"
+            id="studentReviewsDots"
+          ></div>
 
         </div>
 
@@ -2705,115 +2809,231 @@ async function loadReviews(){
 
 function renderStudentReviews(){
 
-  const body=$('studentReviewsBody');
+  const track=$('studentReviewsBody');
+  const dots=$('studentReviewsDots');
 
-  if(!body)return;
+  if(!track)return;
 
-  body.innerHTML=
-    reviews.length
-      ?reviews.map(
-        x=>{
+  clearReviewSlider();
 
-          const status=
-            String(
-              x.status||'pending'
-            ).toLowerCase();
+  if(!reviews.length){
 
-          const statusClass=
-            status==='approved'
-              ?'review-status-approved'
-              :status==='rejected'
-                ?'review-status-rejected'
-                :'review-status-pending';
+    track.innerHTML=
+      '<div class="student-reviews-empty">No student reviews found.</div>';
 
-          const statusText=
-            status.charAt(0).toUpperCase()+
-            status.slice(1);
+    if(dots)dots.innerHTML='';
+    return;
 
-          const rating=
-            Math.max(
-              0,
-              Math.min(
-                5,
-                Number(x.rating)||0
-              )
-            );
+  }
 
-          const stars=
-            '★'.repeat(rating)+
-            '☆'.repeat(5-rating);
+  const slides=reviews.map(
+    x=>{
 
-          let actions='';
+      const status=
+        String(x.status||'pending').toLowerCase();
 
-          if(status!=='approved'){
+      const statusClass=
+        status==='approved'
+          ?'review-status-approved'
+          :status==='rejected'
+            ?'review-status-rejected'
+            :'review-status-pending';
 
-            actions+=`
-              <button
-                class="approve-btn"
-                data-review-approve="${esc(x.id)}"
-              >
-                Approve
-              </button>
-            `;
+      const statusText=
+        status.charAt(0).toUpperCase()+status.slice(1);
 
-          }
+      const rating=Math.max(
+        0,
+        Math.min(5,Number(x.rating)||0)
+      );
 
-          if(status!=='rejected'){
+      const stars=
+        '★'.repeat(rating)+
+        '☆'.repeat(5-rating);
 
-            actions+=`
-              <button
-                class="reject-btn"
-                data-review-reject="${esc(x.id)}"
-              >
-                Reject
-              </button>
-            `;
+      let actions='';
 
-          }
+      if(status!=='approved'){
+        actions+=`
+          <button
+            class="approve-btn"
+            data-review-approve="${esc(x.id)}"
+          >
+            Approve
+          </button>
+        `;
+      }
 
-          return `<tr>
+      if(status!=='rejected'){
+        actions+=`
+          <button
+            class="reject-btn"
+            data-review-reject="${esc(x.id)}"
+          >
+            Reject
+          </button>
+        `;
+      }
 
-            <td>
-              <strong>
-                ${esc(x.student_name)}
-              </strong>
-            </td>
+      return `
+        <article class="student-review-slide">
 
-            <td>
-              ${esc(x.courses?.name||'—')}
-            </td>
+          <div class="student-review-top">
+            <div>
+              <div class="student-review-name">
+                ${esc(x.student_name||'Student')}
+              </div>
+              <div class="student-review-course">
+                ${esc(x.courses?.name||'—')}
+              </div>
+            </div>
 
-            <td>
-              <span class="review-stars">
-                ${stars}
-              </span>
-            </td>
+            <span class="review-stars">
+              ${stars}
+            </span>
+          </div>
 
-            <td style="max-width:360px;white-space:normal">
-              ${esc(x.review)}
-            </td>
+          <div class="student-review-text">
+            “${esc(x.review||'')}”
+          </div>
 
-            <td>
+          <div class="student-review-bottom">
+            <div class="student-review-meta">
+              ${fmt(x.created_at)}
+              &nbsp;•&nbsp;
               <span class="status ${statusClass}">
                 ${statusText}
               </span>
-            </td>
+            </div>
 
-            <td>
-              ${fmt(x.created_at)}
-            </td>
+            <div class="action-row">
+              ${actions}
+            </div>
+          </div>
 
-            <td>
-              <div class="action-row">
-                ${actions}
-              </div>
-            </td>
+        </article>
+      `;
 
-          </tr>`;
+    }
+  );
 
-        }
-      ).join('')
-      :'<tr><td colspan="7"><div class="empty">No student reviews found.</div></td></tr>';
+  const originalCount=slides.length;
+
+  track.innerHTML=
+    originalCount>1
+      ?slides.join('')+slides[0]
+      :slides.join('');
+
+  if(dots){
+    dots.innerHTML=slides.map(
+      (_,i)=>`
+        <button
+          class="student-review-dot${i===0?' active':''}"
+          type="button"
+          data-review-dot="${i}"
+          aria-label="Show review ${i+1}"
+        ></button>
+      `
+    ).join('');
+  }
+
+  startReviewSlider(originalCount);
+
+}
+
+
+let reviewSliderTimer=null;
+let reviewSliderIndex=0;
+let reviewSliderCount=0;
+
+function clearReviewSlider(){
+
+  if(reviewSliderTimer){
+    clearInterval(reviewSliderTimer);
+    reviewSliderTimer=null;
+  }
+
+  reviewSliderIndex=0;
+  reviewSliderCount=0;
+
+  const track=$('studentReviewsBody');
+
+  if(track){
+    track.style.transition='none';
+    track.style.transform='translateX(0)';
+  }
+
+}
+
+
+function resetReviewSliderAfterClone(){
+
+  const track=$('studentReviewsBody');
+  if(!track)return;
+
+  track.style.transition='none';
+  reviewSliderIndex=0;
+  track.style.transform='translateX(0)';
+
+  requestAnimationFrame(
+    ()=>requestAnimationFrame(
+      ()=>{
+        track.style.transition='transform .8s ease-in-out';
+      }
+    )
+  );
+
+}
+
+
+function updateReviewSlider(){
+
+  const track=$('studentReviewsBody');
+  if(!track||reviewSliderCount<1)return;
+
+  track.style.transition='transform .8s ease-in-out';
+  track.style.transform=
+    'translateX(-'+(reviewSliderIndex*100)+'%)';
+
+  document
+    .querySelectorAll('.student-review-dot')
+    .forEach(
+      (dot,i)=>
+        dot.classList.toggle(
+          'active',
+          i===(reviewSliderIndex>=reviewSliderCount
+            ?0
+            :reviewSliderIndex)
+        )
+    );
+
+}
+
+
+function startReviewSlider(count){
+
+  reviewSliderCount=count;
+
+  if(count<=1)return;
+
+  reviewSliderTimer=setInterval(
+    ()=>{
+
+      reviewSliderIndex++;
+      updateReviewSlider();
+
+      if(reviewSliderIndex===reviewSliderCount){
+
+        setTimeout(
+          resetReviewSliderAfterClone,
+          850
+        );
+
+      }
+
+    },
+    4000
+  );
 
 }
 
@@ -4642,6 +4862,44 @@ document.addEventListener(
         ed.dataset.edit,
         ed.dataset.id
       );
+
+    }
+
+
+    const reviewDot=
+      e.target.closest(
+        '[data-review-dot]'
+      );
+
+    if(reviewDot){
+
+      if(reviewSliderTimer){
+        clearInterval(reviewSliderTimer);
+      }
+
+      reviewSliderIndex=
+        Number(reviewDot.dataset.reviewDot)||0;
+
+      updateReviewSlider();
+
+      if(reviewSliderCount>1){
+        reviewSliderTimer=setInterval(
+          ()=>{
+            reviewSliderIndex++;
+            updateReviewSlider();
+
+            if(reviewSliderIndex===reviewSliderCount){
+              setTimeout(
+                resetReviewSliderAfterClone,
+                850
+              );
+            }
+          },
+          4000
+        );
+      }
+
+      return;
 
     }
 
