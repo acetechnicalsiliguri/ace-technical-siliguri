@@ -2209,7 +2209,159 @@ footer p{
   display:block;
   width:100%;
 }
+/* =========================================
+   STUDENT REVIEWS - ONLY NEW SECTION
+   ========================================= */
 
+.reviews-section{
+  padding:60px 0;
+}
+
+.reviews-grid{
+  display:flex;
+  gap:20px;
+  margin-top:28px;
+  overflow:hidden;
+  scroll-behavior:smooth;
+  transition:transform .6s ease;
+}
+
+.reviews-grid .review-card{
+  flex:0 0 calc((100% - 80px) / 5);
+  box-sizing:border-box;
+  background:#fff;
+  border-radius:12px;
+  padding:18px;
+  box-shadow:0 4px 15px rgba(0,0,0,.08);
+  font-size:14px;
+}
+
+.review-card h4{
+  margin:0 0 6px;
+  font-size:15px;
+}
+
+.review-stars{
+  color:#f59e0b;
+  margin-bottom:8px;
+}
+
+.review-course{
+  font-size:12px;
+  opacity:.7;
+  margin-bottom:10px;
+}
+
+.review-text{
+  font-size:13px;
+  line-height:1.5;
+}
+
+.review-action{
+  text-align:center;
+  margin-top:25px;
+}
+
+.review-submit-btn{
+  border:0;
+  border-radius:8px;
+  padding:11px 18px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.review-form-wrap{
+  max-width:700px;
+  margin:25px auto 0;
+  padding:22px;
+  border-radius:12px;
+  box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.review-form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+.review-form-group.full{
+  grid-column:1/-1;
+}
+
+.review-form-group label{
+  display:block;
+  margin-bottom:6px;
+  font-size:14px;
+  font-weight:600;
+}
+
+.review-form-group input,
+.review-form-group select,
+.review-form-group textarea{
+  width:100%;
+  box-sizing:border-box;
+  padding:10px;
+  border:1px solid #ddd;
+  border-radius:7px;
+}
+
+.review-rating{
+  display:flex;
+  gap:8px;
+}
+
+.review-empty{
+  flex:1 0 100%;
+  text-align:center;
+  padding:30px;
+}
+
+
+/* TABLET - 4 CARDS */
+
+@media(max-width:900px){
+
+  .reviews-grid .review-card{
+    flex-basis:calc((100% - 60px) / 4);
+  }
+
+  .review-card{
+    font-size:13px;
+  }
+
+}
+
+
+/* MOBILE - 3 CARDS */
+
+@media(max-width:600px){
+
+  .reviews-grid .review-card{
+    flex-basis:calc((100% - 40px) / 3);
+  }
+
+  .review-card{
+    font-size:11px;
+    padding:12px;
+  }
+
+  .review-card h4{
+    font-size:12px;
+  }
+
+  .review-text{
+    font-size:11px;
+  }
+
+  .review-form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .review-form-group.full{
+    grid-column:auto;
+  }
+
+}
 </style>
 
 </head>
@@ -2630,6 +2782,196 @@ footer p{
 
 <div class="adsense-slot" id="homepageAdSlot" aria-hidden="true"></div>
 
+  <!-- =========================================
+     STUDENT REVIEWS - NEW ONLY
+     ========================================= -->
+
+<section
+  class="reviews-section"
+  id="studentReviews"
+>
+
+  <div class="container">
+
+    <div class="section-heading">
+
+      <h2>
+        Student Reviews
+      </h2>
+
+      <p>
+        Read what our students say about their learning experience.
+      </p>
+
+    </div>
+
+    <div
+      class="reviews-grid"
+      id="reviewsGrid"
+    >
+
+      <div class="review-empty">
+        Loading student reviews...
+      </div>
+
+    </div>
+
+    <div class="review-action">
+
+      <button
+        type="button"
+        class="review-submit-btn"
+        id="writeReviewBtn"
+      >
+        ✍️ Write a Review
+      </button>
+
+    </div>
+
+    <div
+      class="review-form-wrap"
+      id="reviewFormWrap"
+      hidden
+    >
+
+      <form id="studentReviewForm">
+
+        <div class="review-form-grid">
+
+          <div class="review-form-group">
+
+            <label for="reviewStudentName">
+              Student Name *
+            </label>
+
+            <input
+              type="text"
+              id="reviewStudentName"
+              maxlength="80"
+              placeholder="Enter your name"
+              required
+            >
+
+          </div>
+
+          <div class="review-form-group">
+
+            <label for="reviewCourse">
+              Course *
+            </label>
+
+            <select
+              id="reviewCourse"
+              required
+            >
+
+              <option value="">
+                Loading courses...
+              </option>
+
+            </select>
+
+          </div>
+
+          <div class="review-form-group full">
+
+            <label>
+              Rating *
+            </label>
+
+            <div class="review-rating">
+
+              <label>
+                <input
+                  type="radio"
+                  name="reviewRating"
+                  value="5"
+                  checked
+                >
+                5 ★
+              </label>
+
+              <label>
+                <input
+                  type="radio"
+                  name="reviewRating"
+                  value="4"
+                >
+                4 ★
+              </label>
+
+              <label>
+                <input
+                  type="radio"
+                  name="reviewRating"
+                  value="3"
+                >
+                3 ★
+              </label>
+
+              <label>
+                <input
+                  type="radio"
+                  name="reviewRating"
+                  value="2"
+                >
+                2 ★
+              </label>
+
+              <label>
+                <input
+                  type="radio"
+                  name="reviewRating"
+                  value="1"
+                >
+                1 ★
+              </label>
+
+            </div>
+
+          </div>
+
+          <div class="review-form-group full">
+
+            <label for="reviewText">
+              Your Review *
+            </label>
+
+            <textarea
+              id="reviewText"
+              rows="5"
+              maxlength="1000"
+              placeholder="Write your genuine learning experience..."
+              required
+            ></textarea>
+
+          </div>
+
+        </div>
+
+        <div class="review-action">
+
+          <button
+            type="submit"
+            class="review-submit-btn"
+          >
+            Submit Review
+          </button>
+
+        </div>
+
+        <p
+          id="reviewMessage"
+          style="text-align:center;margin-top:12px;"
+        ></p>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</section>
 <!-- =========================================
      COURSES
      ========================================= -->
@@ -4850,10 +5192,438 @@ async function loadCTAContent(){
 loadCTAContent();
 loadSiteLocation();
 
+  /* =========================================
+   STUDENT REVIEWS - NEW ONLY
+   ========================================= */
+
+let reviewSliderTimer = null;
+let reviewSliderIndex = 0;
+
+function getReviewVisibleCount(){
+
+  if(window.innerWidth <= 600){
+    return 3;
+  }
+
+  if(window.innerWidth <= 900){
+    return 4;
+  }
+
+  return 5;
+
+}
+
+
+function reviewEsc(value){
+
+  return String(value ?? '')
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#039;');
+
+}
+
+
+function startReviewSlider(){
+
+  const grid =
+    document.getElementById("reviewsGrid");
+
+  if(!grid){
+    return;
+  }
+
+  clearInterval(reviewSliderTimer);
+
+  reviewSliderIndex = 0;
+
+  grid.style.transform =
+    "translateX(0)";
+
+
+  const cards =
+    grid.querySelectorAll(".review-card");
+
+  const visible =
+    getReviewVisibleCount();
+
+
+  if(cards.length <= visible){
+    return;
+  }
+
+
+  reviewSliderTimer =
+    setInterval(function(){
+
+      const currentVisible =
+        getReviewVisibleCount();
+
+      const maxIndex =
+        Math.max(
+          0,
+          cards.length - currentVisible
+        );
+
+
+      reviewSliderIndex++;
+
+
+      if(reviewSliderIndex > maxIndex){
+
+        reviewSliderIndex = 0;
+
+      }
+
+
+      const gap = 20;
+
+      const cardWidth =
+        cards[0].getBoundingClientRect().width;
+
+
+      grid.style.transform =
+        `translateX(-${reviewSliderIndex * (cardWidth + gap)}px)`;
+
+
+    },3500);
+
+}
+
+
+async function loadStudentReviews(){
+
+  const grid =
+    document.getElementById("reviewsGrid");
+
+  if(!grid){
+    return;
+  }
+
+
+  try{
+
+    const { data, error } =
+      await supabaseClient
+        .from("student_reviews")
+        .select(`
+          id,
+          student_name,
+          course_id,
+          rating,
+          review,
+          created_at,
+          courses(name)
+        `)
+        .eq("status","approved")
+        .order("created_at",{ascending:false})
+        .limit(12);
+
+
+    if(error){
+      throw error;
+    }
+
+
+    if(!data || !data.length){
+
+      grid.innerHTML = `
+        <div class="review-empty">
+          No student reviews yet.
+        </div>
+      `;
+
+      return;
+
+    }
+
+
+    grid.innerHTML =
+      data.map(function(x){
+
+        const rating =
+          Math.max(
+            1,
+            Math.min(
+              5,
+              Number(x.rating) || 5
+            )
+          );
+
+
+        const stars =
+          "★".repeat(rating) +
+          '<span style="color:#cbd5e1">' +
+          "★".repeat(5-rating) +
+          "</span>";
+
+
+        return `
+          <div class="review-card">
+
+            <h4>
+              ${reviewEsc(x.student_name)}
+            </h4>
+
+            <div class="review-stars">
+              ${stars}
+            </div>
+
+            <div class="review-course">
+              ${reviewEsc(x.courses?.name || "Student")}
+            </div>
+
+            <div class="review-text">
+              ${reviewEsc(x.review)}
+            </div>
+
+          </div>
+        `;
+
+      }).join("");
+
+
+    startReviewSlider();
+
+
+  }catch(error){
+
+    console.error(
+      "Student reviews error:",
+      error
+    );
+
+    grid.innerHTML = `
+      <div class="review-empty">
+        Reviews could not be loaded.
+      </div>
+    `;
+
+  }
+
+}
+
+
+async function loadReviewCourses(){
+
+  const select =
+    document.getElementById("reviewCourse");
+
+  if(!select){
+    return;
+  }
+
+
+  try{
+
+    const { data, error } =
+      await supabaseClient
+        .from("courses")
+        .select("id,name")
+        .eq("is_active",true)
+        .order("sort_order",{ascending:true});
+
+
+    if(error){
+      throw error;
+    }
+
+
+    select.innerHTML = `
+      <option value="">
+        Select your course
+      </option>
+
+      ${
+        (data || [])
+          .map(function(x){
+
+            return `
+              <option value="${reviewEsc(x.id)}">
+                ${reviewEsc(x.name)}
+              </option>
+            `;
+
+          })
+          .join("")
+      }
+
+    `;
+
+
+  }catch(error){
+
+    console.error(
+      "Review courses error:",
+      error
+    );
+
+    select.innerHTML = `
+      <option value="">
+        Unable to load courses
+      </option>
+    `;
+
+  }
+
+}
+
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function(){
+
+    const button =
+      document.getElementById("writeReviewBtn");
+
+    const formWrap =
+      document.getElementById("reviewFormWrap");
+
+
+    if(button && formWrap){
+
+      button.addEventListener(
+        "click",
+        function(){
+
+          formWrap.hidden =
+            !formWrap.hidden;
+
+
+          if(!formWrap.hidden){
+
+            formWrap.scrollIntoView({
+              behavior:"smooth",
+              block:"center"
+            });
+
+          }
+
+        }
+      );
+
+    }
+
+
+    const form =
+      document.getElementById("studentReviewForm");
+
+
+    if(form){
+
+      form.addEventListener(
+        "submit",
+        async function(e){
+
+          e.preventDefault();
+
+
+          const name =
+            document
+              .getElementById("reviewStudentName")
+              .value
+              .trim();
+
+
+          const courseId =
+            document
+              .getElementById("reviewCourse")
+              .value;
+
+
+          const review =
+            document
+              .getElementById("reviewText")
+              .value
+              .trim();
+
+
+          const rating =
+            Number(
+              document.querySelector(
+                'input[name="reviewRating"]:checked'
+              )?.value || 5
+            );
+
+
+          const message =
+            document.getElementById(
+              "reviewMessage"
+            );
+
+
+          if(!name || !courseId || !review){
+
+            message.textContent =
+              "Please fill all required fields.";
+
+            return;
+
+          }
+
+
+          message.textContent =
+            "Submitting review...";
+
+
+          const { error } =
+            await supabaseClient
+              .from("student_reviews")
+              .insert({
+
+                student_name:name,
+                course_id:courseId,
+                rating:rating,
+                review:review,
+                status:"pending"
+
+              });
+
+
+          if(error){
+
+            console.error(error);
+
+            message.textContent =
+              "Review submission failed. Please try again.";
+
+            return;
+
+          }
+
+
+          form.reset();
+
+
+          message.textContent =
+            "Thank you! Your review has been submitted for admin approval.";
+
+        }
+      );
+
+    }
+
+
+    loadStudentReviews();
+
+    loadReviewCourses();
+
+  }
+);
+
+
+window.addEventListener(
+  "resize",
+  function(){
+
+    startReviewSlider();
+
+  }
+);
+  
 </script>
-
-
-
 
 <script src="adsense.js"></script>
 
