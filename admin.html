@@ -761,8 +761,6 @@
     }
 
     .student-review-slide{
-      flex:0 0 100%;
-      width:100%;
       min-width:100%;
       box-sizing:border-box;
       padding:26px 28px;
@@ -2947,7 +2945,6 @@ function renderStudentReviews(){
 let reviewSliderTimer=null;
 let reviewSliderIndex=0;
 let reviewSliderCount=0;
-let reviewSliderTransitionHandler=null;
 
 function clearReviewSlider(){
 
@@ -2956,39 +2953,47 @@ function clearReviewSlider(){
     reviewSliderTimer=null;
   }
 
-  const track=$('studentReviewsBody');
-
-  if(track && reviewSliderTransitionHandler){
-    track.removeEventListener(
-      'transitionend',
-      reviewSliderTransitionHandler
-    );
-  }
-
-  reviewSliderTransitionHandler=null;
   reviewSliderIndex=0;
   reviewSliderCount=0;
 
+  const track=$('studentReviewsBody');
+
   if(track){
     track.style.transition='none';
-    track.style.transform='translate3d(0,0,0)';
+    track.style.transform='translateX(0)';
   }
 
 }
 
-function updateReviewSlider(animate=true){
+
+function resetReviewSliderAfterClone(){
 
   const track=$('studentReviewsBody');
+  if(!track)return;
 
-  if(!track || reviewSliderCount<1)return;
+  track.style.transition='none';
+  reviewSliderIndex=0;
+  track.style.transform='translateX(0)';
 
-  track.style.transition=
-    animate
-      ?'transform .8s ease-in-out'
-      :'none';
+  requestAnimationFrame(
+    ()=>requestAnimationFrame(
+      ()=>{
+        track.style.transition='transform .8s ease-in-out';
+      }
+    )
+  );
 
+}
+
+
+function updateReviewSlider(){
+
+  const track=$('studentReviewsBody');
+  if(!track||reviewSliderCount<1)return;
+
+  track.style.transition='transform .8s ease-in-out';
   track.style.transform=
-    `translate3d(-${reviewSliderIndex*100}%,0,0)`;
+    'translateX(-'+(reviewSliderIndex*100)+'%)';
 
   document
     .querySelectorAll('.student-review-dot')
@@ -3004,32 +3009,6 @@ function updateReviewSlider(animate=true){
 
 }
 
-function finishReviewSliderLoop(){
-
-  const track=$('studentReviewsBody');
-  if(!track)return;
-
-  if(reviewSliderIndex!==reviewSliderCount)return;
-
-  track.style.transition='none';
-  reviewSliderIndex=0;
-  track.style.transform='translate3d(0,0,0)';
-
-  void track.offsetWidth;
-
-  track.style.transition='transform .8s ease-in-out';
-
-  if(reviewSliderTransitionHandler){
-    track.removeEventListener(
-      'transitionend',
-      reviewSliderTransitionHandler
-    );
-    reviewSliderTransitionHandler=null;
-  }
-
-  updateReviewSlider(false);
-
-}
 
 function startReviewSlider(count){
 
@@ -3037,41 +3016,20 @@ function startReviewSlider(count){
 
   if(count<=1)return;
 
-  const track=$('studentReviewsBody');
-  if(!track)return;
-
-  track.style.width=
-    `${track.children.length*100}%`;
-
-  track.querySelectorAll('.student-review-slide').forEach(
-    slide=>{
-      slide.style.flex='0 0 '+(100/track.children.length)+'%';
-      slide.style.width=(100/track.children.length)+'%';
-    }
-  );
-
-  updateReviewSlider(false);
-
-  reviewSliderTransitionHandler=()=>{
-
-    if(reviewSliderIndex===reviewSliderCount){
-      finishReviewSliderLoop();
-    }
-
-  };
-
-  track.addEventListener(
-    'transitionend',
-    reviewSliderTransitionHandler
-  );
-
   reviewSliderTimer=setInterval(
     ()=>{
 
-      if(reviewSliderIndex>=reviewSliderCount)return;
-
       reviewSliderIndex++;
-      updateReviewSlider(true);
+      updateReviewSlider();
+
+      if(reviewSliderIndex===reviewSliderCount){
+
+        setTimeout(
+          resetReviewSliderAfterClone,
+          850
+        );
+
+      }
 
     },
     4000
@@ -3079,28 +3037,6 @@ function startReviewSlider(count){
 
 }
 
-window.addEventListener('resize',()=>{
-
-  if(reviewSliderCount>1){
-    const track=$('studentReviewsBody');
-    if(!track)return;
-
-    track.style.transition='none';
-    track.style.width=
-      `${track.children.length*100}%`;
-
-    track.querySelectorAll('.student-review-slide').forEach(
-      slide=>{
-        slide.style.flex='0 0 '+(100/track.children.length)+'%';
-        slide.style.width=(100/track.children.length)+'%';
-      }
-    );
-
-    updateReviewSlider(false);
-
-  }
-
-});
 
 async function updateReviewStatus(
   id,
@@ -4939,23 +4875,25 @@ document.addEventListener(
 
       if(reviewSliderTimer){
         clearInterval(reviewSliderTimer);
-        reviewSliderTimer=null;
       }
 
       reviewSliderIndex=
         Number(reviewDot.dataset.reviewDot)||0;
 
-      updateReviewSlider(true);
+      updateReviewSlider();
 
       if(reviewSliderCount>1){
         reviewSliderTimer=setInterval(
           ()=>{
-
-            if(reviewSliderIndex>=reviewSliderCount)return;
-
             reviewSliderIndex++;
-            updateReviewSlider(true);
+            updateReviewSlider();
 
+            if(reviewSliderIndex===reviewSliderCount){
+              setTimeout(
+                resetReviewSliderAfterClone,
+                850
+              );
+            }
           },
           4000
         );
