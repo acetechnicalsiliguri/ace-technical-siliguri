@@ -1074,12 +1074,7 @@
       >
         🌐 Website Content
       </button>
- <button
-  class="menu-btn"
-  data-section="reviewsSection"
->
-  ⭐ Student Reviews
-</button>
+
       <button
         class="menu-btn"
         id="adminsMenu"
@@ -1317,103 +1312,6 @@
 
       </section>
 
-            <section
-        id="reviewsSection"
-        class="hidden"
-      >
-
-        <div class="page-title">
-
-          <h2>⭐ Student Reviews</h2>
-
-          <p>
-            Manage student reviews and approval status.
-          </p>
-
-        </div>
-
-
-        <div class="content-card">
-
-          <div class="content-header">
-
-            <h3>Review List</h3>
-
-            <div class="section-tools">
-
-              <select id="reviewStatusFilter">
-
-                <option value="all">
-                  All Reviews
-                </option>
-
-                <option value="pending">
-                  Pending
-                </option>
-
-                <option value="approved">
-                  Approved
-                </option>
-
-                <option value="rejected">
-                  Rejected
-                </option>
-
-              </select>
-
-              <button
-                class="primary-btn"
-                data-open-form="review"
-              >
-                + Add Review
-              </button>
-
-            </div>
-
-          </div>
-
-
-          <div class="table-wrap">
-
-            <table>
-
-              <thead>
-
-                <tr>
-                  <th>Student</th>
-                  <th>Course</th>
-                  <th>Rating</th>
-                  <th>Review</th>
-                  <th>Status</th>
-                  <th>Date</th>
-                  <th>Actions</th>
-                </tr>
-
-              </thead>
-
-              <tbody id="reviewsTableBody">
-
-                <tr>
-
-                  <td
-                    colspan="7"
-                    class="muted"
-                    style="text-align:center;"
-                  >
-                    Loading reviews...
-                  </td>
-
-                </tr>
-
-              </tbody>
-
-            </table>
-
-          </div>
-
-        </div>
-
-      </section>
 
       <section
         id="gallerySection"
@@ -1514,6 +1412,9 @@
           </div>
 
         </div>
+
+      </section>
+
 
       <section
         id="contentSection"
@@ -1835,8 +1736,7 @@ let admissions=[],
     courses=[],
     gallery=[],
     notices=[],
-    heroes=[],
-    reviews=[];
+    heroes=[];
 
 
 function esc(v){
