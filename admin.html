@@ -690,6 +690,61 @@
       line-height:1.6;
     }
 
+
+    /* =========================
+       STUDENT REVIEWS
+    ========================= */
+
+    .review-stars{
+      color:#f59e0b;
+      letter-spacing:1px;
+      font-size:14px;
+      white-space:nowrap;
+    }
+
+    .review-status-pending{
+      background:#fef3c7;
+      color:#92400e;
+    }
+
+    .review-status-approved{
+      background:#dcfce7;
+      color:#166534;
+    }
+
+    .review-status-rejected{
+      background:#fee2e2;
+      color:#b91c1c;
+    }
+
+    .approve-btn{
+      border:0;
+      border-radius:7px;
+      padding:7px 9px;
+      background:#dcfce7;
+      color:#166534;
+      font-size:12px;
+      font-weight:700;
+    }
+
+    .approve-btn:hover{
+      background:#bbf7d0;
+    }
+
+    .reject-btn{
+      border:0;
+      border-radius:7px;
+      padding:7px 9px;
+      background:#fee2e2;
+      color:#b91c1c;
+      font-size:12px;
+      font-weight:700;
+    }
+
+    .reject-btn:hover{
+      background:#fecaca;
+    }
+
     /* =========================
        RESPONSIVE
     ========================= */
@@ -1035,6 +1090,14 @@
         📝 Admissions
       </button>
 
+
+      <button
+        class="menu-btn"
+        data-section="studentReviewsSection"
+      >
+        ⭐ Student Reviews
+      </button>
+
       <button
         class="menu-btn"
         data-section="studentsSection"
@@ -1201,6 +1264,51 @@
 
       </section>
 
+
+
+      <section
+        id="studentReviewsSection"
+        class="hidden"
+      >
+
+        <div class="page-title">
+          <h2>Student Reviews</h2>
+          <p>
+            Review student feedback and approve reviews for the website.
+          </p>
+        </div>
+
+        <div class="content-card">
+
+          <div class="content-header">
+            <h3>Review List</h3>
+          </div>
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Student</th>
+                  <th>Course</th>
+                  <th>Rating</th>
+                  <th>Review</th>
+                  <th>Status</th>
+                  <th>Submitted</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody id="studentReviewsBody"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
 
       <section
         id="studentsSection"
@@ -1736,7 +1844,8 @@ let admissions=[],
     courses=[],
     gallery=[],
     notices=[],
-    heroes=[];
+    heroes=[],
+    reviews=[];
 
 
 function esc(v){
@@ -2554,6 +2663,213 @@ function renderCourses(){
 
 }
 
+
+
+
+async function loadReviews(){
+
+  const {
+    data,
+    error
+  }=await supabaseClient
+    .from('student_reviews')
+    .select(
+      'id,student_name,course_id,rating,review,status,created_at,courses(name)'
+    )
+    .order(
+      'created_at',
+      {
+        ascending:false
+      }
+    );
+
+  if(error){
+
+    toast(
+      error.message,
+      'error'
+    );
+
+    reviews=[];
+
+  }else{
+
+    reviews=data||[];
+
+  }
+
+  renderStudentReviews();
+
+}
+
+
+function renderStudentReviews(){
+
+  const body=$('studentReviewsBody');
+
+  if(!body)return;
+
+  body.innerHTML=
+    reviews.length
+      ?reviews.map(
+        x=>{
+
+          const status=
+            String(
+              x.status||'pending'
+            ).toLowerCase();
+
+          const statusClass=
+            status==='approved'
+              ?'review-status-approved'
+              :status==='rejected'
+                ?'review-status-rejected'
+                :'review-status-pending';
+
+          const statusText=
+            status.charAt(0).toUpperCase()+
+            status.slice(1);
+
+          const rating=
+            Math.max(
+              0,
+              Math.min(
+                5,
+                Number(x.rating)||0
+              )
+            );
+
+          const stars=
+            '★'.repeat(rating)+
+            '☆'.repeat(5-rating);
+
+          let actions='';
+
+          if(status!=='approved'){
+
+            actions+=`
+              <button
+                class="approve-btn"
+                data-review-approve="${esc(x.id)}"
+              >
+                Approve
+              </button>
+            `;
+
+          }
+
+          if(status!=='rejected'){
+
+            actions+=`
+              <button
+                class="reject-btn"
+                data-review-reject="${esc(x.id)}"
+              >
+                Reject
+              </button>
+            `;
+
+          }
+
+          return `<tr>
+
+            <td>
+              <strong>
+                ${esc(x.student_name)}
+              </strong>
+            </td>
+
+            <td>
+              ${esc(x.courses?.name||'—')}
+            </td>
+
+            <td>
+              <span class="review-stars">
+                ${stars}
+              </span>
+            </td>
+
+            <td style="max-width:360px;white-space:normal">
+              ${esc(x.review)}
+            </td>
+
+            <td>
+              <span class="status ${statusClass}">
+                ${statusText}
+              </span>
+            </td>
+
+            <td>
+              ${fmt(x.created_at)}
+            </td>
+
+            <td>
+              <div class="action-row">
+                ${actions}
+              </div>
+            </td>
+
+          </tr>`;
+
+        }
+      ).join('')
+      :'<tr><td colspan="7"><div class="empty">No student reviews found.</div></td></tr>';
+
+}
+
+
+async function updateReviewStatus(
+  id,
+  status
+){
+
+  const label=
+    status==='approved'
+      ?'Approve'
+      :'Reject';
+
+  if(
+    !confirm(
+      label+' this student review?'
+    )
+  ){
+
+    return;
+
+  }
+
+  const {
+    error
+  }=await supabaseClient
+    .from('student_reviews')
+    .update({
+      status
+    })
+    .eq(
+      'id',
+      id
+    );
+
+  if(error){
+
+    toast(
+      error.message,
+      'error'
+    );
+
+    return;
+
+  }
+
+  toast(
+    status==='approved'
+      ?'Student review approved.'
+      :'Student review rejected.'
+  );
+
+  await loadReviews();
+
+}
 
 async function loadGallery(){
 
@@ -4277,6 +4593,24 @@ document
 
 
 /* =========================
+   STUDENT REVIEWS MENU LOAD
+========================= */
+
+document
+  .querySelectorAll(
+    '.menu-btn[data-section="studentReviewsSection"]'
+  )
+  .forEach(
+    b=>{
+      b.addEventListener(
+        'click',
+        ()=>loadReviews()
+      );
+    }
+  );
+
+
+/* =========================
    GLOBAL CLICK EVENTS
 ========================= */
 
@@ -4359,6 +4693,40 @@ document.addEventListener(
           loadDashboard();
         }
       );
+
+    }
+
+
+    const ra=
+      e.target.closest(
+        '[data-review-approve]'
+      );
+
+    if(ra){
+
+      updateReviewStatus(
+        ra.dataset.reviewApprove,
+        'approved'
+      );
+
+      return;
+
+    }
+
+
+    const rr=
+      e.target.closest(
+        '[data-review-reject]'
+      );
+
+    if(rr){
+
+      updateReviewStatus(
+        rr.dataset.reviewReject,
+        'rejected'
+      );
+
+      return;
 
     }
 
