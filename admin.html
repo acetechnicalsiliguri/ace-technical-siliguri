@@ -4586,28 +4586,27 @@ document
           'active'
         );
 
+        if(
+          b.dataset.section===
+          'studentReviewsSection'
+        ){
+
+          loadReviews().catch(
+            error=>
+              toast(
+                error.message||
+                'Unable to load student reviews.',
+                'error'
+              )
+          );
+
+        }
+
       };
 
     }
   );
 
-
-/* =========================
-   STUDENT REVIEWS MENU LOAD
-========================= */
-
-document
-  .querySelectorAll(
-    '.menu-btn[data-section="studentReviewsSection"]'
-  )
-  .forEach(
-    b=>{
-      b.addEventListener(
-        'click',
-        ()=>loadReviews()
-      );
-    }
-  );
 
 
 /* =========================
