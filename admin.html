@@ -2945,30 +2945,9 @@ function renderStudentReviews(){
 
 
 let reviewSliderTimer=null;
-let reviewSliderResetTimer=null;
 let reviewSliderIndex=0;
 let reviewSliderCount=0;
-
-function setReviewSlideSizes(){
-
-  const track=$('studentReviewsBody');
-  const slider=track?.parentElement;
-
-  if(!track||!slider)return;
-
-  const width=slider.clientWidth;
-
-  track.querySelectorAll('.student-review-slide').forEach(
-    slide=>{
-      slide.style.flex=`0 0 ${width}px`;
-      slide.style.width=`${width}px`;
-    }
-  );
-
-  track.style.width=
-    `${track.children.length*width}px`;
-
-}
+let reviewSliderTransitionHandler=null;
 
 function clearReviewSlider(){
 
@@ -2977,15 +2956,18 @@ function clearReviewSlider(){
     reviewSliderTimer=null;
   }
 
-  if(reviewSliderResetTimer){
-    clearTimeout(reviewSliderResetTimer);
-    reviewSliderResetTimer=null;
+  const track=$('studentReviewsBody');
+
+  if(track && reviewSliderTransitionHandler){
+    track.removeEventListener(
+      'transitionend',
+      reviewSliderTransitionHandler
+    );
   }
 
+  reviewSliderTransitionHandler=null;
   reviewSliderIndex=0;
   reviewSliderCount=0;
-
-  const track=$('studentReviewsBody');
 
   if(track){
     track.style.transition='none';
@@ -2994,31 +2976,11 @@ function clearReviewSlider(){
 
 }
 
-function resetReviewSliderAfterClone(){
-
-  const track=$('studentReviewsBody');
-  if(!track)return;
-
-  reviewSliderResetTimer=null;
-  reviewSliderIndex=0;
-
-  track.style.transition='none';
-  track.style.transform='translate3d(0,0,0)';
-
-  void track.offsetWidth;
-
-  track.style.transition='transform .8s ease-in-out';
-
-}
-
 function updateReviewSlider(animate=true){
 
   const track=$('studentReviewsBody');
-  const slider=track?.parentElement;
 
-  if(!track||!slider||reviewSliderCount<1)return;
-
-  const width=slider.clientWidth;
+  if(!track || reviewSliderCount<1)return;
 
   track.style.transition=
     animate
@@ -3026,7 +2988,7 @@ function updateReviewSlider(animate=true){
       :'none';
 
   track.style.transform=
-    `translate3d(-${reviewSliderIndex*width}px,0,0)`;
+    `translate3d(-${reviewSliderIndex*100}%,0,0)`;
 
   document
     .querySelectorAll('.student-review-dot')
@@ -3042,27 +3004,74 @@ function updateReviewSlider(animate=true){
 
 }
 
+function finishReviewSliderLoop(){
+
+  const track=$('studentReviewsBody');
+  if(!track)return;
+
+  if(reviewSliderIndex!==reviewSliderCount)return;
+
+  track.style.transition='none';
+  reviewSliderIndex=0;
+  track.style.transform='translate3d(0,0,0)';
+
+  void track.offsetWidth;
+
+  track.style.transition='transform .8s ease-in-out';
+
+  if(reviewSliderTransitionHandler){
+    track.removeEventListener(
+      'transitionend',
+      reviewSliderTransitionHandler
+    );
+    reviewSliderTransitionHandler=null;
+  }
+
+  updateReviewSlider(false);
+
+}
+
 function startReviewSlider(count){
 
   reviewSliderCount=count;
 
   if(count<=1)return;
 
-  setReviewSlideSizes();
+  const track=$('studentReviewsBody');
+  if(!track)return;
+
+  track.style.width=
+    `${track.children.length*100}%`;
+
+  track.querySelectorAll('.student-review-slide').forEach(
+    slide=>{
+      slide.style.flex='0 0 '+(100/track.children.length)+'%';
+      slide.style.width=(100/track.children.length)+'%';
+    }
+  );
+
   updateReviewSlider(false);
+
+  reviewSliderTransitionHandler=()=>{
+
+    if(reviewSliderIndex===reviewSliderCount){
+      finishReviewSliderLoop();
+    }
+
+  };
+
+  track.addEventListener(
+    'transitionend',
+    reviewSliderTransitionHandler
+  );
 
   reviewSliderTimer=setInterval(
     ()=>{
 
+      if(reviewSliderIndex>=reviewSliderCount)return;
+
       reviewSliderIndex++;
       updateReviewSlider(true);
-
-      if(reviewSliderIndex===reviewSliderCount){
-        reviewSliderResetTimer=setTimeout(
-          resetReviewSliderAfterClone,
-          850
-        );
-      }
 
     },
     4000
@@ -3073,8 +3082,22 @@ function startReviewSlider(count){
 window.addEventListener('resize',()=>{
 
   if(reviewSliderCount>1){
-    setReviewSlideSizes();
+    const track=$('studentReviewsBody');
+    if(!track)return;
+
+    track.style.transition='none';
+    track.style.width=
+      `${track.children.length*100}%`;
+
+    track.querySelectorAll('.student-review-slide').forEach(
+      slide=>{
+        slide.style.flex='0 0 '+(100/track.children.length)+'%';
+        slide.style.width=(100/track.children.length)+'%';
+      }
+    );
+
     updateReviewSlider(false);
+
   }
 
 });
@@ -4919,11 +4942,6 @@ document.addEventListener(
         reviewSliderTimer=null;
       }
 
-      if(reviewSliderResetTimer){
-        clearTimeout(reviewSliderResetTimer);
-        reviewSliderResetTimer=null;
-      }
-
       reviewSliderIndex=
         Number(reviewDot.dataset.reviewDot)||0;
 
@@ -4932,15 +4950,12 @@ document.addEventListener(
       if(reviewSliderCount>1){
         reviewSliderTimer=setInterval(
           ()=>{
+
+            if(reviewSliderIndex>=reviewSliderCount)return;
+
             reviewSliderIndex++;
             updateReviewSlider(true);
 
-            if(reviewSliderIndex===reviewSliderCount){
-              reviewSliderResetTimer=setTimeout(
-                resetReviewSliderAfterClone,
-                850
-              );
-            }
           },
           4000
         );
